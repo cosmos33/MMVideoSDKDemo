@@ -1,0 +1,8 @@
+{
+    "resourceNames": ["blusher.png"],
+    "parameters": {
+        "blendMode": "Multiply",
+        "landmarksType": "Makeup"
+    },
+    "type": "Blend"
+}

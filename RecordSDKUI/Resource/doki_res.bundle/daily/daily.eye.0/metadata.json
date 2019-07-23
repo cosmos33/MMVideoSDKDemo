@@ -1,0 +1,9 @@
+{
+    "resourceNames": ["eye.png"],
+    "parameters": {
+        "blendModes": ["Multiply"],
+        "landmarksType": "Makeup",
+        "blendParameters": [{}]
+    },
+    "type": "EyesAreaBlend"
+}

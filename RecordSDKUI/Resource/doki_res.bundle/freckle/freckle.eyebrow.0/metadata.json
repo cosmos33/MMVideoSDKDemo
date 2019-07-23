@@ -1,0 +1,8 @@
+{
+    "resourceNames": ["resource.png"],
+    "parameters": {
+        "blendMode": "Multiply",
+        "landmarksType": "Makeup"
+    },
+    "type": "Blend"
+}

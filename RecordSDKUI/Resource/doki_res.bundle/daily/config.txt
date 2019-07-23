@@ -1,0 +1,1 @@
+{"filter_id":"lite_dust","makeup_layers":[{"id":"daily.blush.0","intensity":1},{"id":"daily.blush.1","intensity":1},{"id":"daily.lips.1","intensity":1},{"id":"daily.normal.0","intensity":1},{"id":"daily.eye.0","intensity":1}],"makeup_intensity":0.7,"contain_makeup_res":true}

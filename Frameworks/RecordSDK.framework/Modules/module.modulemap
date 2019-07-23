@@ -1,0 +1,6 @@
+framework module RecordSDK {
+  umbrella header "MMVideoSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

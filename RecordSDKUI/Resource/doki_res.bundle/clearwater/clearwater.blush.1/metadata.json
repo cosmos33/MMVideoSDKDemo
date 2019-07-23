@@ -1,0 +1,8 @@
+{
+    "resourceNames": ["blusher.png"],
+    "parameters": {
+        "blendMode": "SoftLight",
+        "landmarksType": "Makeup"
+    },
+    "type": "Blend"
+}

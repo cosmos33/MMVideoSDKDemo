@@ -1,0 +1,8 @@
+{
+    "resourceNames": ["Overlay.png"],
+    "parameters": {
+        "blendMode": "Overlay",
+        "landmarksType": "Makeup"
+    },
+    "type": "FaceHighlightShadow"
+}

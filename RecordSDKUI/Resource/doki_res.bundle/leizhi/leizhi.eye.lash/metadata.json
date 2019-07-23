@@ -1,0 +1,9 @@
+{
+    "resourceNames": ["eye.png"],
+    "parameters": {
+        "blendModes": ["LightnessLookup"],
+        "landmarksType": "Makeup",
+        "blendParameters": [{"type": "Dark"}]
+    },
+    "type": "EyesAreaBlend"
+}

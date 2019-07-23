@@ -1,0 +1,150 @@
+PODS:
+  - GPUImage (0.2.0)
+  - JPImageresizerView (0.5.3)
+  - KVOController (1.2.0)
+  - libwebp (1.0.2):
+    - libwebp/core (= 1.0.2)
+    - libwebp/dec (= 1.0.2)
+    - libwebp/demux (= 1.0.2)
+    - libwebp/dsp (= 1.0.2)
+    - libwebp/enc (= 1.0.2)
+    - libwebp/mux (= 1.0.2)
+    - libwebp/utils (= 1.0.2)
+    - libwebp/webp (= 1.0.2)
+  - libwebp/core (1.0.2):
+    - libwebp/webp
+  - libwebp/dec (1.0.2):
+    - libwebp/core
+  - libwebp/demux (1.0.2):
+    - libwebp/core
+  - libwebp/dsp (1.0.2):
+    - libwebp/core
+  - libwebp/enc (1.0.2):
+    - libwebp/core
+  - libwebp/mux (1.0.2):
+    - libwebp/core
+  - libwebp/utils (1.0.2):
+    - libwebp/core
+  - libwebp/webp (1.0.2)
+  - Mantle (2.1.0):
+    - Mantle/extobjc (= 2.1.0)
+  - Mantle/extobjc (2.1.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.1.0)
+  - MetalPetal (1.1.2):
+    - MetalPetal/Core (= 1.1.2)
+  - MetalPetal/Core (1.1.2)
+  - MJRefresh (3.2.0)
+  - MMCV (1.0.10):
+    - ZipArchive
+  - MMFrameworks/Eta (2.5.15)
+  - MMFrameworks/MMFoundation (2.5.15)
+  - MMMedia (2.1.2):
+    - GPUImage
+    - MetalPetal (= 1.1.2)
+    - MMMedia/Base (= 2.1.2)
+    - MMMedia/Expand (= 2.1.2)
+  - MMMedia/Base (2.1.2):
+    - GPUImage
+    - KVOController
+    - MetalPetal (= 1.1.2)
+  - MMMedia/Expand (2.1.2):
+    - GPUImage
+    - Mantle
+    - MetalPetal (= 1.1.2)
+    - MMCV
+    - MMXEScene
+  - MMVideoSDK (2.2.5):
+    - GPUImage
+    - MetalPetal (= 1.1.2)
+    - MMCV (~> 1.0.2)
+    - MMMedia (~> 2.1.0)
+    - MMXEScene (~> 1.0.1)
+  - MMXEScene (1.0.6)
+  - pop (1.0.12)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SDWebImage (4.4.7):
+    - SDWebImage/Core (= 4.4.7)
+  - SDWebImage/Core (4.4.7)
+  - SDWebImage/WebP (4.4.7):
+    - libwebp (< 2.0, >= 0.5)
+    - SDWebImage/Core
+  - Toast (4.0.0)
+  - YYImage (1.0.4):
+    - YYImage/Core (= 1.0.4)
+  - YYImage/Core (1.0.4)
+  - ZipArchive (1.4.0)
+
+DEPENDENCIES:
+  - JPImageresizerView
+  - Masonry
+  - MBProgressHUD (~> 1.1.0)
+  - MJRefresh
+  - MMFrameworks/Eta (from `./MMFramework`)
+  - MMFrameworks/MMFoundation (from `./MMFramework`)
+  - MMVideoSDK (= 2.2.5)
+  - pop
+  - ReactiveCocoa (= 2.5)
+  - SDWebImage
+  - SDWebImage/WebP
+  - Toast (~> 4.0.0)
+  - YYImage
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JPImageresizerView
+    - KVOController
+    - libwebp
+    - Mantle
+    - Masonry
+    - MBProgressHUD
+    - MetalPetal
+    - MJRefresh
+    - pop
+    - ReactiveCocoa
+    - SDWebImage
+    - Toast
+    - YYImage
+    - ZipArchive
+  https://github.com/cosmos33/MMSpecs.git:
+    - GPUImage
+    - MMCV
+    - MMMedia
+    - MMVideoSDK
+    - MMXEScene
+
+EXTERNAL SOURCES:
+  MMFrameworks:
+    :path: "./MMFramework"
+
+SPEC CHECKSUMS:
+  GPUImage: bb92d22b77bd8534e516d4b21039b331a4935d44
+  JPImageresizerView: eedd90ce2082fa10f104f4282e428cd1c3da86b9
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
+  libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
+  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MetalPetal: 57ac84529b61f607ce0cfcfba387b16d23305089
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  MMCV: e66540d954c6767e815640b2404edea98430b7ac
+  MMFrameworks: 25f30733ef75766b1e88c7e9b07d87b582d9ec4c
+  MMMedia: 6afb52bbc6a079ab21c83740655747e5613c5d8a
+  MMVideoSDK: 78150606c25127dd42c124f19d238c80f051c69c
+  MMXEScene: 1a82f02362768395f0f91288f781d3d97a7eb36d
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
+
+PODFILE CHECKSUM: 939b7fbead85baa290e03152d970be2149bd82d6
+
+COCOAPODS: 1.7.4

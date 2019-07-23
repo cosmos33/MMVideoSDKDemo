@@ -1,0 +1,87 @@
+//
+//  MDScrollLabelView.h
+//  MDChat
+//
+//  Created by 孟兴东 on 2017/6/6.
+//  Copyright © 2017年 sdk.com. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+typedef NS_ENUM(NSInteger, CBAutoScrollDirection) {
+    CBAutoScrollDirectionRight,
+    CBAutoScrollDirectionLeft
+};
+
+@interface MDScrollLabelView : UIView
+
+
+@property (nonatomic) CBAutoScrollDirection scrollDirection;
+/// Scroll speed in pixels per second, defaults to 30
+@property (nonatomic) float scrollSpeed;
+@property (nonatomic) NSTimeInterval pauseInterval; // defaults to 1.5
+@property (nonatomic) NSInteger labelSpacing; // pixels, defaults to 20
+
+/**
+ * The animation options used when scrolling the UILabels.
+ * @discussion UIViewAnimationOptionAllowUserInteraction is always applied to the animations.
+ */
+@property (nonatomic) UIViewAnimationOptions animationOptions;
+// animation repeatly.
+@property (nonatomic, assign) BOOL repeat;
+
+/**
+ * Returns YES, if it is actively scrolling, NO if it has paused or if text is within bounds (disables scrolling).
+ */
+@property (nonatomic, readonly) BOOL scrolling;
+@property (nonatomic) CGFloat fadeLength; // defaults to 7
+
+// UILabel properties
+@property (nonatomic, strong, nonnull) UIFont *font;
+@property (nonatomic, copy, nullable) NSString *text;
+@property (nonatomic, copy, nullable) NSAttributedString *attributedText;
+@property (nonatomic, strong, nonnull) UIColor *textColor;
+@property (nonatomic) NSTextAlignment textAlignment; // only applies when not auto-scrolling
+@property (nonatomic, strong, nullable) UIColor *shadowColor;
+@property (nonatomic) CGSize shadowOffset;
+
+/**
+ * Lays out the scrollview contents, enabling text scrolling if the text will be clipped.
+ * @discussion Uses [scrollLabelIfNeeded] internally.
+ */
+- (void)refreshLabels;
+
+/**
+ * Set the text to the label and refresh labels, if needed.
+ * @discussion Useful when you have a situation where you need to layout the scroll label after it's text is set.
+ */
+- (void)setText:(nullable NSString *)text refreshLabels:(BOOL)refresh;
+
+/**
+ Set the attributed text and refresh labels, if needed.
+ */
+- (void)setAttributedText:(nullable NSAttributedString *)theText refreshLabels:(BOOL)refresh;
+
+/**
+ * Initiates auto-scroll, if the label width exceeds the bounds of the scrollview.
+ */
+- (void)scrollLabelIfNeeded;
+
+/**
+ * Observes UIApplication state notifications to auto-restart scrolling and watch for
+ * orientation changes to refresh the labels.
+ * @discussion Must be called to observe the notifications. Calling multiple times will still only
+ * register the notifications once.
+ */
+- (void)observeApplicationNotifications;
+
+/**
+ * 设置暂停 默认为NO
+ */
+- (void)setPause:(BOOL)pause;
+
+/**
+ * 获取暂停状态
+ */
+- (BOOL)isAnimationPaused;
+@end

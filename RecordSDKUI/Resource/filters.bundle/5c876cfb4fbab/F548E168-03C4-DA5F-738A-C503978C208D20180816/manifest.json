@@ -1,0 +1,12 @@
+{
+    "name": "color1",
+    "metadata": {
+        "displayName": "color1"
+    },
+    "postprocessingUnits": [
+        {
+            "name": "[Decoration]",
+            "resourceName": "decoration"
+        }
+    ]
+}

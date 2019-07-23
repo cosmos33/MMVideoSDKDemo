@@ -1,0 +1,9 @@
+{
+    "resourceNames": ["normal.png"],
+    "parameters": {
+        "blendModes": ["Normal"],
+        "landmarksType": "Makeup",
+        "blendParameters": [{}]
+    },
+    "type": "EyesAreaBlend"
+}
