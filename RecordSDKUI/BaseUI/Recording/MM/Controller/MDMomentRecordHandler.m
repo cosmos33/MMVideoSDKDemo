@@ -65,19 +65,6 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
         
         // 相机设置
         MDRecordingAdapter *adapter = self.adapter;
-//        [adapter setVideoCodecKey:AVVideoCodecH264];
-//
-//        float recordBitRate = 0.0;
-//        if (isFloatEqual(recordBitRate, 0.0)) {
-//            recordBitRate = kDefaultRecordBitRate;
-//        }
-//
-//        [adapter setVideoBitRate:recordBitRate];
-//        [adapter setVideoResolution:CGSizeMake(720, 1280)];
-//        [adapter setVideoScaleMode:AVVideoScalingModeResizeAspectFill];
-//        [adapter setCameraPreset:AVCaptureSessionPreset1280x720];
-//        [adapter setCameraPosition:position];
-        
         [adapter setVideoBitRate:MDRecordRecordingSettingMananger.bitRate ?: kDefaultRecordBitRate];
         [adapter setCameraFrameRate:MDRecordRecordingSettingMananger.frameRate];
         [adapter setVideoFrameRate:MDRecordRecordingSettingMananger.frameRate];
@@ -85,25 +72,17 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
         [adapter setCameraPosition:AVCaptureDevicePositionFront];
         [adapter setVideoScaleMode:AVVideoScalingModeResizeAspectFill];
         [adapter setVideoResolution:MDRecordRecordingSettingMananger.exportResolution];
-//        [adapter disableAudioRecording];
+//        adapter.shouldRecordAudio = NO;
         [adapter setupRecorder];
         
-        [adapter setCameraDidOutputVideoSampleBuffer:^(CMSampleBufferRef  _Nonnull sampleBuffer) {
-            
-        }];
-        
-        [adapter setCameraDidOutputAudioSampleBuffer:^(CMSampleBufferRef  _Nonnull sampleBuffer) {
-            
-        }];
-        
+
         if (@available(iOS 10.0, *)) {
             [adapter setCanUseAIBeautySetting:[MTIContext defaultMetalDeviceSupportsMPS]];
         }
 
 //        [adapter setMaxRecordDuration:maxDuration];
         self.recordDuration = maxDuration;
-        
-        [adapter setMinRecordDuration:kRecordSegmentMinDuration];
+        [self setMinRecordDuration:kRecordSegmentMinDuration];
 
         __weak typeof(self) weakself = self;
         adapter.detectFace = ^(BOOL tracking) {
@@ -142,8 +121,6 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
         previewView.centerY = containerView.centerY;
         [containerView addSubview:previewView];
         
-        [self downloadCXMakeupBundleIfNeeded];
-        
         // 启动3D引擎
         if (isOpen) {
             [adapter runXESEngineWithDecorationRootPath:[MDFaceDecorationFileHelper FaceDecorationBasePath]];
@@ -163,6 +140,10 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 
 - (void)setRecordDuration:(NSTimeInterval)recordDuration {
     [self.adapter setMaxRecordDuration:recordDuration];
+}
+
+- (void)setMinRecordDuration:(NSTimeInterval)minRecordDuration {
+    [self.adapter setMinRecordDuration:minRecordDuration];
 }
 
 - (void)purgeGPUCache {
@@ -502,19 +483,8 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
     return self.adapter.cameraSourceType;
 }
 
-#pragma mark - AI美颜
-
-- (void)downloadCXMakeupBundleIfNeeded {
-//    NSString *json = @"{\"metadata\":{\"title\":\"自然\",\"UUID\":\"A2EBA75C-3E7F-4CC8-835F-3002FA5C2383\",\"order\":50,\"overallSkinSmoothingAmount\":0.59999999999999998},\"faceAdjustments\":{\"chinLength\":0,\"jawWidth\":0,\"forehead\":0,\"noseLift\":0,\"noseWidth\":0,\"mouthSize\":0,\"eyeTilt\":0,\"eyeSize\":0.34999999999999998,\"noseSize\":0,\"jawShape\":0,\"noseRidgeWidth\":0,\"noseTipSize\":0,\"thinFace\":0.34999999999999998,\"lipThickness\":0,\"faceWidth\":0,\"eyeDistance\":0},\"makeup\":{\"layerConfigurations\":[{\"intensity\":0,\"layerIdentifier\":\"CXPreset.Blush.3\"}]},\"skinSmoothingSettings\":{\"amount\":0.59999999999999998,\"eyesAreaAmount\":0,\"nasolabialFoldsAreaAmount\":0},\"teethWhitenSettings\":{\"amount\":0}}";
-//    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-//    CXBeautyConfiguration *config  = [CXBeautyConfiguration beautyConfigurationFromJSONObject:dic error:nil];
-//    [self.adapter setBeautyConfiguration:config];
-
-//    NSURL *path = [[[NSBundle mainBundle] URLForResource:@"filters" withExtension:@"bundle"] URLByAppendingPathComponent:@"CXPreset.Lips.OR00/"];
-//    BOOL isDir = NO;
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:path.path isDirectory:&isDir] && isDir) {
-//        [self.adapter addMakeUpEffectWithResourceURL:path];
-//    }
+- (void)enableReverseVideoSampleBuffer:(BOOL)enable {
+    [self.adapter enableReverseVideoSampleBuffer:enable];
 }
 
 #pragma mark - 变速

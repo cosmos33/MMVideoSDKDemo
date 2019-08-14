@@ -269,7 +269,7 @@ static const NSInteger kMaxImageStickerCount = 20;
     adapter.backgroundAudioRange = self.document.backgroundMusicTimeRange;
     [adapter setSourceVolume:self.document.sourceAudioVolume];
     [adapter setBackgroundMusicVolume:self.document.backgroundMusicVolume];
-    [adapter setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+//    [adapter setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     // 更新视频源
     [adapter loadVideo:self.document.assetToBeProcessed];
 }

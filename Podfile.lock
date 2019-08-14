@@ -35,7 +35,7 @@ PODS:
     - MetalPetal/Core (= 1.1.2)
   - MetalPetal/Core (1.1.2)
   - MJRefresh (3.2.0)
-  - MMCV (1.0.10):
+  - MMCV (1.0.12):
     - ZipArchive
   - MMFrameworks/Eta (2.5.15)
   - MMFrameworks/MMFoundation (2.5.15)
@@ -54,7 +54,7 @@ PODS:
     - MetalPetal (= 1.1.2)
     - MMCV
     - MMXEScene
-  - MMVideoSDK (2.2.5):
+  - MMVideoSDK (2.2.10):
     - GPUImage
     - MetalPetal (= 1.1.2)
     - MMCV (~> 1.0.2)
@@ -86,9 +86,10 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD (~> 1.1.0)
   - MJRefresh
+  - MMCV (= 1.0.12)
   - MMFrameworks/Eta (from `./MMFramework`)
   - MMFrameworks/MMFoundation (from `./MMFramework`)
-  - MMVideoSDK (= 2.2.5)
+  - MMVideoSDK (= 2.2.10)
   - pop
   - ReactiveCocoa (= 2.5)
   - SDWebImage
@@ -133,10 +134,10 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MetalPetal: 57ac84529b61f607ce0cfcfba387b16d23305089
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
-  MMCV: e66540d954c6767e815640b2404edea98430b7ac
-  MMFrameworks: 25f30733ef75766b1e88c7e9b07d87b582d9ec4c
+  MMCV: 39aed93e7f4eb724849743860e81ac9021805018
+  MMFrameworks: ee4b4853d45d64c4e2f0bcc7b3a5bc656d84e526
   MMMedia: 6afb52bbc6a079ab21c83740655747e5613c5d8a
-  MMVideoSDK: 78150606c25127dd42c124f19d238c80f051c69c
+  MMVideoSDK: c904008d1c135f718df73b31236c45d8cc93a19f
   MMXEScene: 1a82f02362768395f0f91288f781d3d97a7eb36d
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
@@ -145,6 +146,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 939b7fbead85baa290e03152d970be2149bd82d6
+PODFILE CHECKSUM: 14338b25b7f6fac2d00a6aa3f3d20d43b845f041
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.7.3

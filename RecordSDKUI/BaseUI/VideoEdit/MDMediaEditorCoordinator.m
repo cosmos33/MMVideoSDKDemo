@@ -17,7 +17,6 @@
 #import "MDRecordVideoResult.h"
 
 #import "MDBeautySettings.h"
-#import <RecordSDK/MDFastMP4Handler.h>
 #import "Toast/Toast.h"
 
 @import RecordSDK;

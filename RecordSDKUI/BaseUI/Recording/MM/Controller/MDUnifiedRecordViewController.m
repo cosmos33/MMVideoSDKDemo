@@ -272,6 +272,14 @@
     [enableRecordAudioButton addTarget:self action:@selector(enableRecordAudioButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:enableRecordAudioButton];
     
+    UIButton *mirroredButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    mirroredButton.frame = CGRectMake(120, 268, 100, 40);
+    mirroredButton.backgroundColor = UIColor.blueColor;
+    [mirroredButton setTitle:@"水平镜像" forState:UIControlStateNormal];
+    [mirroredButton setTitle:@"原图" forState:UIControlStateSelected];
+    [mirroredButton addTarget:self action:@selector(enableMirrored:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:mirroredButton];
+    
     NSArray *availableTaps = [self tapsByAccessSource:_settingItem.accessSource];
     if (availableTaps.count>=2) {
         self.bottomView = [[MDCameraBottomView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44 + SAFEAREA_BOTTOM_MARGIN)];
@@ -298,6 +306,11 @@
 - (void)enableRecordAudioButtonTapped:(UIButton *)button {
     [self.moduleAggregate enableRecordAudio:!button.selected];
     button.selected = !button.selected;
+}
+
+- (void)enableMirrored:(UIButton *)button {
+    button.selected = !button.selected;
+    [self.moduleAggregate enableReverseVideoSampleBuffer:button.selected];
 }
 
 - (MDUnifiedRecordContainerView *)containerView

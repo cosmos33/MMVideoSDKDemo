@@ -12,7 +12,7 @@
 #import <RecordSDK/MDRecordCameraAdapter.h>
 #import <RecordSDK/MDRecordFilter.h>
 #import "MDMomentMakeupItem.h"
-#import <RecordSDK/MDGlobalDefine.h>
+#import "RecordSDK/MDGlobalDefine.h"
 #import <RecordSDK/MDRGift.h>
 
 @class FDKDecoration;
@@ -39,6 +39,16 @@
 
 @property (nonatomic, assign) BOOL                              shouldContinue;
 @property (nonatomic, assign)NSUInteger                         currentSignal;
+
+/** 是否开启ai 美白 默认关闭*/
+@property (nonatomic, assign) BOOL useAISkinWhiten;
+
+/** 是否开启ai 磨皮 默认关闭 */
+@property (nonatomic, assign) BOOL useAISkinSmooth;
+
+/** 是否开启ai 大眼 瘦脸 默认关闭 */
+@property (nonatomic, assign) BOOL useAIBigEyeThinFace;
+
 
 @property (nonatomic,assign,readonly) MDRecordCameraSourceType       cameraSourceType;
 
@@ -135,8 +145,7 @@
 - (void)configFaceTipManagerForEmptyDecoration;
 
 
-//AI美颜资源
-- (void)downloadCXMakeupBundleIfNeeded;
+- (void)enableReverseVideoSampleBuffer:(BOOL)enable;
 
 //设置将要录制的视频的变速倍数
 - (void)setNextRecordSegmentSpeedVaryFactor:(CGFloat)factor;

@@ -107,6 +107,16 @@
 @property (nonatomic,assign,readonly) BOOL                  stopMerge;
 @property (nonatomic,strong,readonly) MDRecordVideoResult   *videoResult;
 
+/** 是否开启ai 美白 默认关闭*/
+@property (nonatomic, assign) BOOL useAISkinWhiten;
+
+/** 是否开启ai 磨皮 默认关闭 */
+@property (nonatomic, assign) BOOL useAISkinSmooth;
+
+/** 是否开启ai 大眼 瘦脸 默认关闭 */
+@property (nonatomic, assign) BOOL useAIBigEyeThinFace;
+
+
 //@property (nonatomic,strong,readonly) MDBeautyMusicSelectViewController         *musicSelectPicker;
 //@property (nonatomic,strong,readonly) NSArray                                   *musicDataSourceArray;
 
@@ -214,6 +224,7 @@
 // 美妆
 - (void)activateMakeUpViewController;
 
+
 //辅助方法
 - (BOOL)isModuleViewShowed;
 - (void)hideModuleView;
@@ -222,6 +233,8 @@
 
 - (void)muteSticker:(BOOL)mute;
 - (void)enableRecordAudio:(BOOL)enable;
+
+- (void)enableReverseVideoSampleBuffer:(BOOL)enable;
 
 #pragma mark - 外传decoration
 - (FDKDecoration*)updateDecorationFromDict:(NSDictionary*)infoDict;

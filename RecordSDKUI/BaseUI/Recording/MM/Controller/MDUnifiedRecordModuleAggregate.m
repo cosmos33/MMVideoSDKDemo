@@ -882,7 +882,7 @@ MDMomentMakeUpViewControllerDelegate
         [weakSelf.filterDrawerController showAnimation];
     }];
     
-    [self.recordHandler downloadCXMakeupBundleIfNeeded];
+//    [self.recordHandler downloadCXMakeupBundleIfNeeded];
 }
 
 - (void)activateThinDrawer
@@ -903,8 +903,6 @@ MDMomentMakeUpViewControllerDelegate
     [self updateUiForBeforeSubViewIsShow:YES completeBlock:^{
         [weakSelf.filterDrawerController showAnimation];
     }];
-    
-    [self.recordHandler downloadCXMakeupBundleIfNeeded];
 }
 
 - (void)setupFilterDrawer
@@ -1791,5 +1789,35 @@ MDMomentMakeUpViewControllerDelegate
 - (void)enableRecordAudio:(BOOL)enable {
     [self.recordHandler enableRecordAudio:enable];
 }
+
+- (void)enableReverseVideoSampleBuffer:(BOOL)enable {
+    [self.recordHandler enableReverseVideoSampleBuffer:enable];
+}
+
+- (void)setUseAISkinWhiten:(BOOL)useAISkinWhiten{
+    self.recordHandler.useAISkinWhiten = useAISkinWhiten;
+}
+
+- (BOOL)useAISkinWhiten{
+    return self.recordHandler.useAISkinWhiten;
+}
+
+- (void)setUseAISkinSmooth:(BOOL)useAISkinSmooth{
+    self.recordHandler.useAISkinSmooth = useAISkinSmooth;
+    
+}
+
+- (BOOL)useAISkinSmooth{
+    return self.recordHandler.useAISkinSmooth;
+}
+
+- (void)setUseAIBigEyeThinFace:(BOOL)useAIBigEyeThinFace{
+    self.recordHandler.useAIBigEyeThinFace = useAIBigEyeThinFace;
+}
+
+- (BOOL)useAIBigEyeThinFace{
+    return self.recordHandler.useAIBigEyeThinFace;
+}
+
 
 @end
