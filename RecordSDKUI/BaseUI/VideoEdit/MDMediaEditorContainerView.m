@@ -343,11 +343,11 @@ NSString * const kImageNameForBeauty         = @"editPersonalImage";
 // 上下阴影遮罩
 - (void)addMask
 {
-    UIView *topCover = [self coverViewWithFrame:CGRectMake(0, 0, MDScreenWidth, 80) startAlpha:0.25f toBottom:YES];
-    [self addSubview:topCover];
+//    UIView *topCover = [self coverViewWithFrame:CGRectMake(0, 0, MDScreenWidth, 80) startAlpha:0.25f toBottom:YES];
+//    [self addSubview:topCover];
     
-    UIView *bottomCover = [self coverViewWithFrame:CGRectMake(0, MDScreenHeight -115, MDScreenWidth, 115) startAlpha:0.35f toBottom:NO];
-    [self addSubview:bottomCover];
+//    UIView *bottomCover = [self coverViewWithFrame:CGRectMake(0, MDScreenHeight -115, MDScreenWidth, 115) startAlpha:0.35f toBottom:NO];
+//    [self addSubview:bottomCover];
 }
 
 // 贴纸，文字，涂鸦背景视图

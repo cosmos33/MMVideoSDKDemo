@@ -45,6 +45,9 @@
 @property (nonatomic, strong) MDCameraBottomView                        *bottomView;
 @property (nonatomic, assign) CGPoint                                   acturalTranslation;
 @property (nonatomic,assign) BOOL                                       fromAlbum;
+
+@property (nonatomic, assign) BOOL isFirst;
+
 @end
 
 @implementation MDUnifiedRecordViewController
@@ -84,6 +87,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.isFirst = YES;
     
 //    BOOL didShow = [[MDContext currentUser].dbStateHoldProvider hasShowedMomentRecordSpeedVaryGuide];
 //    if (!didShow) {
@@ -192,7 +197,10 @@
     
     [self.moduleAggregate clearStashVideo];
     
-    [self.containerView.slidingFilterView setCurrentPageIndex:1 animated:NO];
+    if (self.isFirst) {
+        [self.containerView.slidingFilterView setCurrentPageIndex:1 animated:NO];
+        self.isFirst = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -267,10 +275,47 @@
     UIButton *enableRecordAudioButton = [UIButton buttonWithType:UIButtonTypeCustom];
     enableRecordAudioButton.frame = CGRectMake(220, 20, 100, 40);
     enableRecordAudioButton.backgroundColor = UIColor.greenColor;
-    [enableRecordAudioButton setTitle:@"启用麦克风" forState:UIControlStateNormal];
-    [enableRecordAudioButton setTitle:@"禁用麦克风" forState:UIControlStateSelected];
+    [enableRecordAudioButton setTitle:@"禁用麦克风" forState:UIControlStateNormal];
+    [enableRecordAudioButton setTitle:@"启用麦克风" forState:UIControlStateSelected];
     [enableRecordAudioButton addTarget:self action:@selector(enableRecordAudioButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:enableRecordAudioButton];
+    
+    UIButton *recordOrigin = [UIButton buttonWithType:UIButtonTypeCustom];
+    recordOrigin.tag = 100123;
+    recordOrigin.frame = CGRectMake(120, 68, 100, 40);
+    recordOrigin.backgroundColor = UIColor.blueColor;
+    [recordOrigin setTitle:@"录制原视频" forState:UIControlStateNormal];
+    [recordOrigin setTitle:@"美颜后视频" forState:UIControlStateSelected];
+    [recordOrigin addTarget:self action:@selector(recordOrigin:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:recordOrigin];
+    
+    UIButton *aiSkinWhite = [UIButton buttonWithType:UIButtonTypeCustom];
+    aiSkinWhite.tag = 301;
+    aiSkinWhite.frame = CGRectMake(recordOrigin.right, 68, 100, 40);
+    aiSkinWhite.backgroundColor = UIColor.orangeColor;
+    [aiSkinWhite setTitle:@"ai美白关" forState:UIControlStateNormal];
+    [aiSkinWhite setTitle:@"ai美白开" forState:UIControlStateSelected];
+    [aiSkinWhite addTarget:self action:@selector(aiBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:aiSkinWhite];
+    
+    UIButton *aiSkinSmooth = [UIButton buttonWithType:UIButtonTypeCustom];
+    aiSkinSmooth.tag = 302;
+    aiSkinSmooth.frame = CGRectMake(recordOrigin.left, recordOrigin.bottom + 3, 100, 40);
+    aiSkinSmooth.backgroundColor = UIColor.grayColor;
+    [aiSkinSmooth setTitle:@"ai磨皮关" forState:UIControlStateNormal];
+    [aiSkinSmooth setTitle:@"ai磨皮开" forState:UIControlStateSelected];
+    [aiSkinSmooth addTarget:self action:@selector(aiBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:aiSkinSmooth];
+    
+    UIButton *aiBigEyeFaceThin = [UIButton buttonWithType:UIButtonTypeCustom];
+    aiBigEyeFaceThin.tag = 303;
+    aiBigEyeFaceThin.frame = CGRectMake(aiSkinWhite.left, aiSkinWhite.bottom + 3, 100, 40);
+    aiBigEyeFaceThin.backgroundColor = UIColor.yellowColor;
+    [aiBigEyeFaceThin setTitle:@"ai大眼瘦脸关" forState:UIControlStateNormal];
+    [aiBigEyeFaceThin setTitle:@"ai大眼瘦脸开" forState:UIControlStateSelected];
+    [aiBigEyeFaceThin addTarget:self action:@selector(aiBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:aiBigEyeFaceThin];
+    
     
     UIButton *mirroredButton = [UIButton buttonWithType:UIButtonTypeCustom];
     mirroredButton.frame = CGRectMake(120, 268, 100, 40);
@@ -279,7 +324,7 @@
     [mirroredButton setTitle:@"原图" forState:UIControlStateSelected];
     [mirroredButton addTarget:self action:@selector(enableMirrored:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:mirroredButton];
-    
+
     NSArray *availableTaps = [self tapsByAccessSource:_settingItem.accessSource];
     if (availableTaps.count>=2) {
         self.bottomView = [[MDCameraBottomView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44 + SAFEAREA_BOTTOM_MARGIN)];
@@ -304,10 +349,40 @@
 }
 
 - (void)enableRecordAudioButtonTapped:(UIButton *)button {
-    [self.moduleAggregate enableRecordAudio:!button.selected];
+    [self.moduleAggregate enableRecordAudio:button.selected];
     button.selected = !button.selected;
 }
+    
+- (void)recordOrigin:(UIButton *)button {
+    button.selected = !button.selected;
+    [self.moduleAggregate recordOrigin:button.selected];
+}
 
+- (void)aiBtnClick:(UIButton *)button
+{
+    button.selected = !button.selected;
+    switch (button.tag - 300) {
+        case 1:
+        {//美白
+            self.moduleAggregate.useAISkinWhiten = button.selected;
+        }
+            break;
+        case 2:
+        {//磨皮
+            self.moduleAggregate.useAISkinSmooth = button.selected;
+        }
+            break;
+        case 3:
+        {//大眼瘦脸
+            self.moduleAggregate.useAIBigEyeThinFace = button.selected;
+
+        }
+            break;
+        default:
+            break;
+    }
+}
+    
 - (void)enableMirrored:(UIButton *)button {
     button.selected = !button.selected;
     [self.moduleAggregate enableReverseVideoSampleBuffer:button.selected];
@@ -996,6 +1071,11 @@
 #pragma mark - MDNavigationBarAppearanceDelegate
 - (UINavigationBar *)md_CustomNavigationBar {
     return nil;
+}
+
+- (void)enableRecordOriginButton:(BOOL)enable {
+    UIButton *button = [self.view viewWithTag:100123];
+    button.hidden = !enable;
 }
 
 @end

@@ -26,6 +26,8 @@
 
 - (void)mediaStickerAdjustmentView:(BBMediaStickerAdjustmentView *)view stickerDidAfterAdjust:(MDRecordBaseSticker *)sticker frame:(CGRect)frame;
 
+- (void)mediaStickerAdjustmentView:(BBMediaStickerAdjustmentView *)view stickerDidTap:(MDRecordBaseSticker *)sticker;
+
 @end
 
 @interface BBMediaStickerAdjustmentView : UIView

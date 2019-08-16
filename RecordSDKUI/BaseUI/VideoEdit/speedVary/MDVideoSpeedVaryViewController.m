@@ -297,7 +297,7 @@ static NSInteger kControlViewDefaultIndex;
         _sliderView.centerX = self.view.centerX;
         __weak typeof(self) weakself = self;
         _sliderView.valueChanged = ^(VideoNewSpeedSlider * slider, float value) {
-            if ([weakself varySpeedSegment:value]) {
+            if ([weakself varySpeedSegment: (1.0 / value)]) {
                 [weakself showGuideTipWithText:@"变速"];
             }
         };

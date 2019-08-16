@@ -37,6 +37,7 @@
 #import "MDPublicSwiftHeader.h"
 #import "MDMomentMakeUpViewController.h"
 #import "MDMomentMakeupItem.h"
+#import "MDDecorationPannelView.h"
 
 @interface MDUnifiedRecordModuleAggregate()
 <
@@ -55,7 +56,7 @@ MDMomentMakeUpViewControllerDelegate
 @property (nonatomic, assign) NSTimeInterval                            minDuration;
 //变脸模块 (不应该记录太多信息，待重构！！！)
 @property (nonatomic, strong) MDFaceDecorationDataHandle                *decorationDataHandler;
-@property (nonatomic, strong) MDMomentFaceDecorationViewController      *faceDecorationVC;
+//@property (nonatomic, strong) MDMomentFaceDecorationViewController      *faceDecorationVC;
 @property (nonatomic, strong) FDKDecoration                             *beautySettingDecoration;
 @property (nonatomic, strong) FDKDecoration                             *selectedDecoration;
 @property (nonatomic, strong) MDFaceDecorationItem                      *selectedDecorationItem;
@@ -87,6 +88,8 @@ MDMomentMakeUpViewControllerDelegate
 @property (nonatomic, strong) MDMomentMakeUpViewController *makeupVC;
 
 @property (nonatomic, strong) MDRecordFilter *currentRecordFilter;
+
+@property (nonatomic, strong) MDDecorationPannelView *decorationView;
 
 @end
 
@@ -151,6 +154,7 @@ MDMomentMakeUpViewControllerDelegate
     
     [self.recordHandler setRecordSegmentsChangedHandler:^(NSArray *durations, NSArray *presentDurations, BOOL valid) {
         [weakSelf.delegate didRecordSegmentChangedWithDurations:durations presentDurations:presentDurations valid:valid];
+        [weakSelf.recordViewController enableRecordOriginButton:durations.count == 0];
     }];
     
     [self.recordHandler setRecordDurationReachedHandler:^{
@@ -296,6 +300,7 @@ MDMomentMakeUpViewControllerDelegate
     
     BOOL canStart = [self canStartRecording];
     if (canStart) {
+        [self.recordViewController enableRecordOriginButton:NO];
         [self.delegate didStartRecording];
         [self.recordHandler startRecording];
     }
@@ -601,7 +606,8 @@ MDMomentMakeUpViewControllerDelegate
     if (![faceID isNotEmpty] && [classID isNotEmpty]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self activateFaceDecoration];
-            [self.faceDecorationVC setSelectedClassWithIdentifier:classID];
+//            [self.faceDecorationVC setSelectedClassWithIdentifier:classID];
+            [self.decorationView setSelectedClassWithIdentifier:classID];
         });
         
     }else if ([faceID isNotEmpty] && [classID isNotEmpty]) {
@@ -633,41 +639,79 @@ MDMomentMakeUpViewControllerDelegate
 
 - (void)activateFaceDecoration
 {
+//    [self setupFaceDecorationVC];
+//
+//    if (_faceDecorationVC.isAnimating) {
+//        return;
+//    }
+//
+//    if (self.faceDecorationVC.isShowed) {
+//        [self updateUiForBeforeSubViewIsShow:NO completeBlock:nil];
+//        return;
+//    }
+//
+//    __weak typeof(self) weakSelf = self;
+//    [self updateUiForBeforeSubViewIsShow:YES completeBlock:^{
+//        [weakSelf.faceDecorationVC showAnimate];
+//    }];
+    
     [self setupFaceDecorationVC];
     
-    if (_faceDecorationVC.isAnimating) {
+    if (self.decorationView.isAnimating) {
         return;
     }
     
-    if (self.faceDecorationVC.isShowed) {
+    if (self.decorationView.isShowed) {
         [self updateUiForBeforeSubViewIsShow:NO completeBlock:nil];
         return;
     }
+    [self.decorationView setRecordLevelType:MDUnifiedRecordLevelTypeHigh];
     
     __weak typeof(self) weakSelf = self;
     [self updateUiForBeforeSubViewIsShow:YES completeBlock:^{
-        [weakSelf.faceDecorationVC showAnimate];
+        [weakSelf.decorationView showAnimate];
     }];
 }
 
+//- (void)setupFaceDecorationVC
+//{
+//    if (!_faceDecorationVC) {
+//        _faceDecorationVC = [[MDMomentFaceDecorationViewController alloc] init];
+//        [self.recordViewController.view addSubview:_faceDecorationVC.view];
+//        [self.recordViewController addChildViewController:_faceDecorationVC];
+//
+//        _faceDecorationVC.dataHandle = _decorationDataHandler;
+//        [_faceDecorationVC setSelectedClassWithIndex:1];
+//
+//        __weak typeof(self) weakself = self;
+//        _faceDecorationVC.recordHandler = ^{
+//            __strong typeof(self) strongself = weakself;
+//            [strongself hideModuleView];
+//            if ([strongself.recordViewController respondsToSelector:@selector(faceDecorationViewRecordButtonTapped)]) {
+//                [strongself.recordViewController faceDecorationViewRecordButtonTapped];
+//            }
+//        };
+//    }
+//}
+
 - (void)setupFaceDecorationVC
 {
-    if (!_faceDecorationVC) {
-        _faceDecorationVC = [[MDMomentFaceDecorationViewController alloc] init];
-        [self.recordViewController.view addSubview:_faceDecorationVC.view];
-        [self.recordViewController addChildViewController:_faceDecorationVC];
-        
-        _faceDecorationVC.dataHandle = _decorationDataHandler;
-        [_faceDecorationVC setSelectedClassWithIndex:1];
-        
-        __weak typeof(self) weakself = self;
-        _faceDecorationVC.recordHandler = ^{
-            __strong typeof(self) strongself = weakself;
+    if (!_decorationView) {
+        __weak typeof(self) weakSelf = self;
+        MDDecorationPannelView *pannelView = [[MDDecorationPannelView alloc] initWithFrame:CGRectMake(0, MDScreenHeight-383, MDScreenWidth, 383)];
+        [self.recordViewController.view addSubview:pannelView];
+        pannelView.dataHandle = _decorationDataHandler;
+        [pannelView setSelectedClassWithIndex:1];
+        pannelView.vc = self.recordViewController;
+        pannelView.recordHandler = ^{
+            __strong typeof(self) strongself = weakSelf;
             [strongself hideModuleView];
             if ([strongself.recordViewController respondsToSelector:@selector(faceDecorationViewRecordButtonTapped)]) {
                 [strongself.recordViewController faceDecorationViewRecordButtonTapped];
             }
+
         };
+        _decorationView = pannelView;
     }
 }
 
@@ -848,7 +892,6 @@ MDMomentMakeUpViewControllerDelegate
 
 #pragma mark - 上下滑动滤镜
 
-#warning sunfei
 - (void)activateSlidingFilters
 {
     if (_filterModels.count == 0) {
@@ -881,8 +924,6 @@ MDMomentMakeUpViewControllerDelegate
     [self updateUiForBeforeSubViewIsShow:YES completeBlock:^{
         [weakSelf.filterDrawerController showAnimation];
     }];
-    
-//    [self.recordHandler downloadCXMakeupBundleIfNeeded];
 }
 
 - (void)activateThinDrawer
@@ -903,6 +944,7 @@ MDMomentMakeUpViewControllerDelegate
     [self updateUiForBeforeSubViewIsShow:YES completeBlock:^{
         [weakSelf.filterDrawerController showAnimation];
     }];
+    
 }
 
 - (void)setupFilterDrawer
@@ -1538,7 +1580,8 @@ MDMomentMakeUpViewControllerDelegate
 
 - (BOOL)isModuleViewShowed
 {
-    BOOL isModuleViewShowed = _filterDrawerController.isShowed || _faceDecorationVC.isShowed;
+    BOOL isModuleViewShowed = _filterDrawerController.isShowed || _decorationView.isShowed;
+//    BOOL isModuleViewShowed = _filterDrawerController.isShowed || _faceDecorationVC.isShowed;
     return isModuleViewShowed;
 }
 
@@ -1562,12 +1605,17 @@ MDMomentMakeUpViewControllerDelegate
                 }
             }];
             
-        } else if (_faceDecorationVC.isShowed) {
-            [_faceDecorationVC hideAnimateWithCompleteBlock:^{
+        } else if (self.decorationView.isShowed) { // _faceDecorationVC.isShowed
+            [self.decorationView hideAnimateWithCompleteBlock:^{
                 if (completeBlock) {
                     completeBlock();
                 }
             }];
+//            [_faceDecorationVC hideAnimateWithCompleteBlock:^{
+//                if (completeBlock) {
+//                    completeBlock();
+//                }
+//            }];
             
         } else if (_makeupVC.isShowed) {
             [_makeupVC hideAnimateWithCompleteBlock:^{
@@ -1588,8 +1636,9 @@ MDMomentMakeUpViewControllerDelegate
             [_filterDrawerController hideAnimationWithCompleteBlock:nil];
         }
         
-        if (_faceDecorationVC.isShowed) {
-            [_faceDecorationVC hideAnimateWithCompleteBlock:nil];
+        if (self.decorationView.isShowed) { // _faceDecorationVC.isShowed
+//            [_faceDecorationVC hideAnimateWithCompleteBlock:nil];
+            [self.decorationView hideAnimateWithCompleteBlock:nil];
         }
         
         if (_makeupVC.isShowed) {
@@ -1789,9 +1838,9 @@ MDMomentMakeUpViewControllerDelegate
 - (void)enableRecordAudio:(BOOL)enable {
     [self.recordHandler enableRecordAudio:enable];
 }
-
-- (void)enableReverseVideoSampleBuffer:(BOOL)enable {
-    [self.recordHandler enableReverseVideoSampleBuffer:enable];
+    
+- (void)recordOrigin:(BOOL)enable {
+    [self.recordHandler recordOrigin:enable];
 }
 
 - (void)setUseAISkinWhiten:(BOOL)useAISkinWhiten{
@@ -1819,5 +1868,9 @@ MDMomentMakeUpViewControllerDelegate
     return self.recordHandler.useAIBigEyeThinFace;
 }
 
+
+- (void)enableReverseVideoSampleBuffer:(BOOL)enable {
+    [self.recordHandler enableReverseVideoSampleBuffer:enable];
+}
 
 @end

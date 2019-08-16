@@ -144,7 +144,6 @@
 //为空变脸添加变脸提示
 - (void)configFaceTipManagerForEmptyDecoration;
 
-
 - (void)enableReverseVideoSampleBuffer:(BOOL)enable;
 
 //设置将要录制的视频的变速倍数
@@ -163,5 +162,7 @@
 
 - (void)muteSticker:(BOOL)mute;
 - (void)enableRecordAudio:(BOOL)enable;
+
+- (void)recordOrigin:(BOOL)enable;
 
 @end

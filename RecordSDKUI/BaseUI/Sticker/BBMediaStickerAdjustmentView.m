@@ -11,6 +11,7 @@
 #import <MMFoundation/MMFoundation.h>
 #import "UIView+Utils.h"
 #import "SDWebImage/UIImageView+WebCache.h"
+#import "MDRStickerImageView.h"
 
 NSString * const BBUIImageViewStickerAssocationKey = @"BBUIImageViewStickerAssocationKey";
 
@@ -45,6 +46,12 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
 - (void)setupStickerAdjustmentView {
     self.backgroundColor = [UIColor clearColor];
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapGesture.numberOfTapsRequired = 1;
+    tapGesture.numberOfTouchesRequired = 1;
+    tapGesture.delegate = self;
+    [self addGestureRecognizer:tapGesture];
+    
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     panGestureRecognizer.delegate = self;
     panGestureRecognizer.maximumNumberOfTouches = 2;
@@ -63,7 +70,7 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
+    return NO;
     /*
     if ((gestureRecognizer == self.pinchGestureRecognizer && otherGestureRecognizer == self.rotationGesutreRecognizer)
         || (gestureRecognizer == self.rotationGesutreRecognizer && otherGestureRecognizer == self.pinchGestureRecognizer)
@@ -115,9 +122,45 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
     }
 }
 
+- (void)unselectedAllStickerView {
+    for (UIView *subview in self.subviews.reverseObjectEnumerator.allObjects) {
+        if ([subview isKindOfClass:[MDRStickerImageView class]]) {
+            MDRStickerImageView *view = (MDRStickerImageView *)subview;
+            view.selected = NO;
+        }
+    }
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)tapGesture {
+    
+    [self unselectedAllStickerView];
+    
+    for (UIView *subview in self.subviews.reverseObjectEnumerator.allObjects) {
+        UIEdgeInsets insets = UIEdgeInsetsZero;
+        if (subview.frame.size.width < BBMediaStickerAdjustmentViewSubviewMinimumControlSize) {
+            CGFloat inset = (subview.frame.size.width - BBMediaStickerAdjustmentViewSubviewMinimumControlSize)/2.0;
+            insets = UIEdgeInsetsMake(inset, inset, inset, inset);
+        }
+        if (CGRectContainsPoint(UIEdgeInsetsInsetRect(subview.frame, insets), [tapGesture locationInView:self])) {
+            self.currentStickerView = subview;
+            MDRStickerImageView *view = (MDRStickerImageView *)subview;
+            view.selected = YES;
+            break;
+        }
+    }
+    
+    MDRecordBaseSticker *subviewSticker = objc_getAssociatedObject(self.currentStickerView, &BBUIImageViewStickerAssocationKey);
+    if ([self.delegate respondsToSelector:@selector(mediaStickerAdjustmentView:stickerDidTap:)]) {
+        [self.delegate mediaStickerAdjustmentView:self stickerDidTap:subviewSticker];
+    }
+    
+    [self.delegate mediaStickerAdjustmentView:self stickerDidEndChange:subviewSticker frame:self.currentStickerView.frame];
+}
+
 - (void)handlePan:(UIPanGestureRecognizer *)sender {
     switch (sender.state) {
         case UIGestureRecognizerStateBegan: {
+            [self unselectedAllStickerView];
             for (UIView *subview in self.subviews.reverseObjectEnumerator.allObjects) {
                 UIEdgeInsets insets = UIEdgeInsetsZero;
                 if (subview.frame.size.width < BBMediaStickerAdjustmentViewSubviewMinimumControlSize) {
@@ -126,6 +169,8 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
                 }
                 if (CGRectContainsPoint(UIEdgeInsetsInsetRect(subview.frame, insets), [sender locationInView:self])) {
                     self.currentStickerView = subview;
+                    MDRStickerImageView *view = (MDRStickerImageView *)subview;
+                    view.selected = YES;
                     break;
                 }
             }
@@ -151,8 +196,8 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
 - (void)handleRotate:(UIRotationGestureRecognizer *)sender {
     switch (sender.state) {
         case UIGestureRecognizerStateBegan: {
-            
             if (!self.currentStickerView) {
+                [self unselectedAllStickerView];
                 for (UIView *subview in self.subviews.reverseObjectEnumerator.allObjects) {
                     UIEdgeInsets insets = UIEdgeInsetsZero;
                     if (subview.frame.size.width < BBMediaStickerAdjustmentViewSubviewMinimumControlSize) {
@@ -161,6 +206,8 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
                     }
                     if (CGRectContainsPoint(UIEdgeInsetsInsetRect(subview.frame, insets), [sender locationInView:self])) {
                         self.currentStickerView = subview;
+                        MDRStickerImageView *view = (MDRStickerImageView *)subview;
+                        view.selected = YES;
                         break;
                     }
                 }
@@ -190,6 +237,7 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
     switch (sender.state) {
         case UIGestureRecognizerStateBegan: {
             if (!self.currentStickerView) {
+                [self unselectedAllStickerView];
                 for (UIView *subview in self.subviews.reverseObjectEnumerator.allObjects) {
                     UIEdgeInsets insets = UIEdgeInsetsZero;
                     if (subview.frame.size.width < BBMediaStickerAdjustmentViewSubviewMinimumControlSize) {
@@ -198,6 +246,8 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
                     }
                     if (CGRectContainsPoint(UIEdgeInsetsInsetRect(subview.frame, insets), [sender locationInView:self])) {
                         self.currentStickerView = subview;
+                        MDRStickerImageView *view = (MDRStickerImageView *)subview;
+                        view.selected = YES;
                         break;
                     }
                 }
@@ -232,7 +282,14 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
 
 - (void)addSticker:(MDRecordBaseSticker *)sticker center:(CGPoint)center
 {
-    UIImageView *imageView = [[UIImageView alloc] init];
+    for (UIImageView *subview in self.subviews) {
+        if ([subview isKindOfClass:[MDRStickerImageView class]]) {
+            MDRStickerImageView *view = (MDRStickerImageView *)subview;
+            view.selected = NO;
+        }
+    }
+    
+    MDRStickerImageView *imageView = [[MDRStickerImageView alloc] init];
     
     if ([sticker isKindOfClass:[MDRecordSticker class]]) {
         
@@ -244,13 +301,7 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
         } else if ([imageSticker.imageUrl isNotEmpty]) {
             
             UIImageView * weakProxy = (id)[MDWeakProxy weakProxyForObject:imageView];
-#warning sunfei image
-//            imageView.modifyBlock = ^UIImage *(UIImage *image){
-//
-//                weakProxy.size = image.size;
-//                return image;
-//            };
-            
+
             [imageView sd_setImageWithURL:[NSURL URLWithString:imageSticker.imageUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                 weakProxy.size = image.size;
             }];
@@ -264,7 +315,7 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
     }
     
     imageView.userInteractionEnabled = YES;
-
+    imageView.selected = YES;
     /*
     if (imageView.size.width < 120) {
         imageView.transform = CGAffineTransformMakeScale(120/imageView.size.width, 120/imageView.size.width);
@@ -287,6 +338,8 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
     objc_setAssociatedObject(imageView, &BBUIImageViewStickerAssocationKey, sticker, OBJC_ASSOCIATION_RETAIN);
     [self addSubview:imageView];
     
+    
+    
     if ([_delegate respondsToSelector:@selector(mediaStickerAdjustmentView:stickerDidAfterAdjust:frame:)]) {
         [_delegate mediaStickerAdjustmentView:self stickerDidAfterAdjust:sticker frame:imageView.frame];
     }
@@ -297,6 +350,7 @@ CGFloat const BBMediaStickerAdjustmentViewSubviewMinimumControlSize = 160;
         MDRecordBaseSticker *subviewSticker = objc_getAssociatedObject(subview, &BBUIImageViewStickerAssocationKey);
         if (subviewSticker == sticker) {
             [subview removeFromSuperview];
+            break;
         }
     }
 }

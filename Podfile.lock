@@ -37,30 +37,34 @@ PODS:
   - MJRefresh (3.2.0)
   - MMCV (1.0.12):
     - ZipArchive
+  - MMFileService (1.1.0):
+    - openssl-lib
   - MMFrameworks/Eta (2.5.15)
   - MMFrameworks/MMFoundation (2.5.15)
-  - MMMedia (2.1.2):
+  - MMMedia (2.3.1):
     - GPUImage
     - MetalPetal (= 1.1.2)
-    - MMMedia/Base (= 2.1.2)
-    - MMMedia/Expand (= 2.1.2)
-  - MMMedia/Base (2.1.2):
+    - MMMedia/Base (= 2.3.1)
+    - MMMedia/Expand (= 2.3.1)
+  - MMMedia/Base (2.3.1):
     - GPUImage
     - KVOController
     - MetalPetal (= 1.1.2)
-  - MMMedia/Expand (2.1.2):
+  - MMMedia/Expand (2.3.1):
     - GPUImage
     - Mantle
     - MetalPetal (= 1.1.2)
     - MMCV
     - MMXEScene
-  - MMVideoSDK (2.2.10):
+  - MMVideoSDK (2.3.0):
     - GPUImage
     - MetalPetal (= 1.1.2)
     - MMCV (~> 1.0.2)
-    - MMMedia (~> 2.1.0)
-    - MMXEScene (~> 1.0.1)
-  - MMXEScene (1.0.6)
+    - MMFileService (~> 1.1.0)
+    - MMMedia (~> 2.3.0)
+    - MMXEScene (~> 1.0.7)
+  - MMXEScene (1.0.7)
+  - openssl-lib (1.0.1)
   - pop (1.0.12)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -89,7 +93,8 @@ DEPENDENCIES:
   - MMCV (= 1.0.12)
   - MMFrameworks/Eta (from `./MMFramework`)
   - MMFrameworks/MMFoundation (from `./MMFramework`)
-  - MMVideoSDK (= 2.2.10)
+  - MMVideoSDK (= 2.3.0)
+  - MMXEScene (= 1.0.7)
   - pop
   - ReactiveCocoa (= 2.5)
   - SDWebImage
@@ -116,9 +121,11 @@ SPEC REPOS:
   https://github.com/cosmos33/MMSpecs.git:
     - GPUImage
     - MMCV
+    - MMFileService
     - MMMedia
     - MMVideoSDK
     - MMXEScene
+    - openssl-lib
 
 EXTERNAL SOURCES:
   MMFrameworks:
@@ -135,10 +142,12 @@ SPEC CHECKSUMS:
   MetalPetal: 57ac84529b61f607ce0cfcfba387b16d23305089
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   MMCV: 39aed93e7f4eb724849743860e81ac9021805018
+  MMFileService: d7df67a54f14b7ff83ce13da95b473b85c062b86
   MMFrameworks: ee4b4853d45d64c4e2f0bcc7b3a5bc656d84e526
-  MMMedia: 6afb52bbc6a079ab21c83740655747e5613c5d8a
-  MMVideoSDK: c904008d1c135f718df73b31236c45d8cc93a19f
-  MMXEScene: 1a82f02362768395f0f91288f781d3d97a7eb36d
+  MMMedia: 841bb2c16747e3ed051baa2458712191a4d86e7f
+  MMVideoSDK: baaa183b582d27825ed312cc29cb701de170f4d7
+  MMXEScene: 84e2305217b90cd7e638f14b42d224cfe957d9a1
+  openssl-lib: e3f61a10280caf261c0e4c6b3e720aa94825f07a
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
@@ -146,6 +155,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 14338b25b7f6fac2d00a6aa3f3d20d43b845f041
+PODFILE CHECKSUM: 6a95cd4f27f3ae299aa85183aaaa87f80fac8d23
 
 COCOAPODS: 1.7.3

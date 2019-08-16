@@ -163,8 +163,6 @@ const CGFloat kUnifiedRecordButtonActiveScale = 1.15f;
             if ([iconUrl isNotEmpty]) {
                 self.iconView.hidden = NO;
                 self.iconView.alpha = 1.0f;
-#warning sunfei image
-//                [self.iconView.iconView setImageWithURL:[NSURL URLWithString:iconUrl] effect:SDWebImageEffectCircle];
                 [self.iconView.iconView sd_setImageWithURL:[NSURL URLWithString:iconUrl]];
             }
         }

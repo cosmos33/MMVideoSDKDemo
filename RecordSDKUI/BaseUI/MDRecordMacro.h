@@ -134,7 +134,7 @@ static const NSTimeInterval kMaxVideoDurationForNormalLevel = 20.0f;
 static const NSTimeInterval kMaxVideoDurationForHighLevel = 60.0f;
 
 //每段可录的最短时长
-static const NSTimeInterval kRecordSegmentMinDuration = 0.0f;
+static const NSTimeInterval kRecordSegmentMinDuration = 1.0f;
 
 //本地可选取视频时的最大时长
 static const NSTimeInterval kMaxPickerLocalVideoDuration = 60.0f *5;

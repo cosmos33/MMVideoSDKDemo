@@ -16,8 +16,24 @@
 #import "UINavigationController+AnimatedTransition.h"
 #import "MDRecordImageResult.h"
 #import "MDPhotoLibraryProvider.h"
+#import "MDMediaEditorSettingItem.h"
+#import "MDRecordVideoResult.h"
+#import "MDNewMediaEditorViewController.h"
+#import "MDAssetCompressHandler.h"
+#import "MDAlbumPLayerSetting.h"
 
-@interface MDRecordVideoEditSettingViewController () <MDNavigationBarAppearanceDelegate>
+@import MBProgressHUD;
+@import RecordSDK;
+
+@interface MDRecordVideoEditSettingViewController () <MDNavigationBarAppearanceDelegate, MDGPUImageAlbumMovieExportDelegate>
+
+@property (nonatomic, strong) MDGPUImageAlbumMovieExport *exporter;
+@property (nonatomic, weak) MBProgressHUD *hub;
+@property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) MDRecordVideoResult *videoResult;
+
+@property (nonatomic, strong) MDAssetCompressHandler *handler;
 
 @end
 
@@ -27,9 +43,28 @@
     [super viewDidLoad];
     
     [self setupUI];
+    
+    self.videoResult = [[MDRecordVideoResult alloc] init];
+    self.videoResult.accessSource = MDVideoRecordAccessSource_Unkonwn;
+    self.videoResult.themeID = @"123";
+    self.videoResult.topicID = @"123;";
+    
+    self.handler = [[MDAssetCompressHandler alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(willResignActive)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    
+}
+
+- (void)willResignActive {
+    [self.exporter cancel];
 }
 
 - (void)setupUI {
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
     self.view.backgroundColor = UIColor.blackColor;
     
@@ -198,6 +233,62 @@
         if ([result isKindOfClass:[MDRecordVideoResult class]]) {
             
         } else if ([result isKindOfClass:[MDRecordImageResult class]]) {
+            
+            NSMutableArray<UIImage *> *images = [NSMutableArray array];
+            
+            MDRecordImageResult *photoResult = (MDRecordImageResult *)result;
+            for (MDPhotoItem *item in photoResult.photoItems) {
+                if (item.editedImage) {
+                    [images addObject:item.editedImage];
+                } else if (item.originImage) {
+                    [images addObject:item.originImage];
+                } else if (item.nailImage) {
+                    [images addObject:item.nailImage];
+                }
+            }
+            
+            if (images.count <= 1) {
+                [weakContainerVC dismissViewControllerAnimated:YES completion:nil];
+                return;
+            }
+            
+            NSString *localPath = [self localPathForAlbumVideo];
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
+                [[NSFileManager defaultManager] removeItemAtPath:localPath error:nil];
+            }
+            
+            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
+            hub.mode = MBProgressHUDModeAnnularDeterminate;
+            hub.label.text = @"Loading";
+            hub.backgroundView.color = [UIColor.blackColor colorWithAlphaComponent:0.3];
+            self.hub = hub;
+            
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(timerStart:) userInfo:nil repeats:YES];
+            
+            NSArray<MDPictureInputItem *> *inputItems = [MDPictureInputItem itemsForImages:images.copy
+                                                                              timeInterval:3.0
+                                                                                 frameRate:30];
+            if ([MDAlbumPLayerSetting.animationType isEqualToString:kAlbumPlayerAnimationTypeTemplate1] || [MDAlbumPLayerSetting.animationType isEqualToString:kAlbumPlayerAnimationTypeTemplate2]) {
+                inputItems = [inputItems arrayByAddingObject:inputItems.lastObject];
+            }
+            CGSize screenSize = UIScreen.mainScreen.bounds.size;
+            CGFloat scale = UIScreen.mainScreen.scale;
+            CGSize maxSize = CGSizeMake(720, 1280);
+            CGSize renderSize = maxSize;
+            if (renderSize.width > screenSize.width * scale) {
+                renderSize = CGSizeMake(screenSize.width * scale, screenSize.width * scale * 16.0f / 9.0f);
+            }
+            
+            MDGPUImageAlbumMovieExport *exporter = [[MDGPUImageAlbumMovieExport alloc] initWithItems:inputItems
+                                                                                        sizeInPixels:renderSize
+                                                                                          audioAsset:nil
+                                                                                            audioMix:nil];
+            exporter.animationType = MDAlbumPLayerSetting.animationType;
+            self.exporter = exporter;
+            exporter.delegate = self;
+            exporter.exportURL = [NSURL fileURLWithPath:localPath];
+            [exporter exportVideo];
         }
         
         [weakContainerVC dismissViewControllerAnimated:YES completion:nil];
@@ -207,6 +298,10 @@
     
     MDNavigationController *nav = [MDNavigationController md_NavigationControllerWithRootViewController:containerVC];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void)timerStart:(NSTimer *)timer {
+    self.hub.progress = self.exporter.progress;
 }
 
 - (void)tapped:(UIGestureRecognizer *)tapGesture {
@@ -227,5 +322,138 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
+- (NSString *)localPathForAlbumVideo {
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"album_player_video_tmp_dir"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:rootPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:rootPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSString *localPath = [rootPath stringByAppendingPathComponent:@"tmp.mp4"];
+    return localPath;
+}
+
+- (void)albumMovieDidCancelProcessing:(MDGPUImageAlbumMovieExport *)movie {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.hub hideAnimated:YES];
+        
+        [self.timer invalidate];
+        self.timer = nil;
+        
+        NSLog(@"export canceled");
+        self.exporter = nil;
+    });
+}
+
+- (void)albumMovieDidFinishProcessing:(MDGPUImageAlbumMovieExport *)movie {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.hub.progress = 1.0;
+        
+        [self.hub hideAnimated:YES];
+        
+        [self.timer invalidate];
+        self.timer = nil;
+
+        NSLog(@"export completed");
+        self.exporter = nil;
+        
+        NSString *localPath = [self localPathForAlbumVideo];
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
+            return;
+        }
+        
+        NSURL *videoURL = [NSURL fileURLWithPath:localPath];
+        AVAsset *asset = [AVAsset assetWithURL:videoURL];
+        [self _handleResultInfoWithOriginalURL:videoURL asset:asset];
+        [self pushToEditingVCWithAsset:asset path:localPath];
+
+//        [PHPhotoLibrary saveVideoAtPath:videoURL
+//                        toAlbumWithName:@"陌陌"
+//                             completion:^(PHFetchResult<PHAsset *> *result, NSError *error) {
+//                                 dispatch_async(dispatch_get_main_queue(), ^{
+//                                     NSLog(@"error = %@", error);
+//                                 });
+//
+//                             }];
+        
+        
+    });
+}
+
+- (void)pushToEditingVCWithAsset:(AVAsset *)asset path:(NSString *)path {
+    AVAssetTrack *videoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    
+    MDMediaEditorSettingItem *settingItem = [[MDMediaEditorSettingItem alloc] init];
+    settingItem.videoAsset = asset;
+    settingItem.videoTimeRange = videoTrack.timeRange;
+    settingItem.backgroundMusicURL = nil;
+    settingItem.backgroundMusicTimeRange = kCMTimeRangeInvalid;
+    settingItem.backgroundMusicItem = nil;
+    settingItem.supportMultiSegmentsRecord = NO;
+    settingItem.completeBlock = ^(id videoInfo) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+         [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+    };
+    
+    settingItem.videoInfo = nil;
+    settingItem.hideTopicEntrance = YES;
+    settingItem.lockTopic = YES;
+    settingItem.maxUploadDuration = 60;
+    settingItem.doneButtonTitle = @"完成";
+    settingItem.hasCutVideo = NO;
+    settingItem.needWaterMark = NO;
+    settingItem.maxThumbImageSize = 640;
+    settingItem.fromAlbum = NO;
+    
+    MDNewMediaEditorViewController *vc = [[MDNewMediaEditorViewController alloc] initWithSettingItem:settingItem];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)_handleResultInfoWithOriginalURL:(NSURL *)mediaURL asset:(AVAsset *)asset {
+    NSDictionary *resourceValues = [mediaURL resourceValuesForKeys:@[NSURLFileSizeKey,NSURLTotalFileSizeKey] error:nil];
+    
+    AVAssetTrack *track = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+    presentationSize.width = ABS(presentationSize.width);
+    presentationSize.height = ABS(presentationSize.height);
+    
+    self.videoResult.originalFileSize = [resourceValues longLongValueForKey:NSURLFileSizeKey defaultValue:0] ?: [resourceValues longLongValueForKey:NSURLTotalFileSizeKey defaultValue:0];
+    self.videoResult.originalDuration = CMTimeGetSeconds(asset.duration);
+    self.videoResult.originalVideoNaturalWidth = presentationSize.width;
+    self.videoResult.originalVideoNaturalHeight = presentationSize.height;
+    self.videoResult.originalBitRate = [track estimatedDataRate];
+    self.videoResult.originalFrameRate = [track nominalFrameRate];
+    
+    self.videoResult.isOriginalVideoCompress =  [self.handler needCompressWithAsset:asset mediaURL:mediaURL];;
+}
+
+- (void)_handleResultInfoWithEditAsset:(AVAsset *)asset hasCutVideo:(BOOL)hasCutVideo {
+    self.videoResult.isFromAlbum = YES;
+    self.videoResult.isOriginalVideoCut = hasCutVideo;
+    
+    AVAssetTrack *track = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+    presentationSize.width = ABS(presentationSize.width);
+    presentationSize.height = ABS(presentationSize.height);
+    
+    self.videoResult.editVideoDuration = CMTimeGetSeconds(asset.duration);
+    self.videoResult.editVideoNaturalWidth = presentationSize.width;
+    self.videoResult.editVideoNaturalHeight = presentationSize.height;
+    self.videoResult.editVideoBitRate = [track estimatedDataRate];
+    self.videoResult.editVideoFrameRate = [track nominalFrameRate];
+    
+    if ([asset isKindOfClass:[AVURLAsset class]]) {
+        NSURL *mediaURL = ((AVURLAsset *)asset).URL;
+        NSDictionary *resourceValues = [mediaURL resourceValuesForKeys:@[NSURLFileSizeKey,NSURLTotalFileSizeKey] error:nil];
+        self.videoResult.editVideoFileSize = [resourceValues longLongValueForKey:NSURLFileSizeKey defaultValue:0] ?: [resourceValues longLongValueForKey:NSURLTotalFileSizeKey defaultValue:0];
+    }
+}
+
 
 @end

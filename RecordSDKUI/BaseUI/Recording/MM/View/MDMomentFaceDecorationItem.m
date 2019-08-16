@@ -63,7 +63,6 @@ static const CGFloat kLabelLeftAndRightMargin = 3;
     }
     
     self.iconButton.hidden = ![item.imgUrlStr isNotEmpty];
-#warning sunfei image
     [self.iconButton.imageView sd_setImageWithURL:[NSURL URLWithString:item.imgUrlStr]];
     self.iconButton.alpha = item.isDownloading ? 0.5f: 1.0f;
     self.tagLabel.hidden = ![item.tag isNotEmpty];

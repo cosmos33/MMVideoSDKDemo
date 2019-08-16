@@ -21,6 +21,7 @@
 @property (nonatomic, assign, getter=isNeed3D)  BOOL need3D;
 @property (nonatomic, assign, getter=isFacerig) BOOL isFacerig;
 @property (nonatomic, assign, getter=isNeedAR)  BOOL needAR;
+@property (nonatomic, assign, getter=isOverlap) BOOL overlap;
 @property (nonatomic, copy) NSString *resourcePath;
 
 @property (nonatomic, assign) BOOL clickedToBounce;

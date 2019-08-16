@@ -7,15 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDRecordEditProtocol.h"
 
-@protocol MDMomentPainterToolViewDelegate <NSObject>
-
-@optional
-- (void)brushButtonTapped:(UIColor *)color;
-- (void)imageMosaicButtonTapped:(UIColor *)color;
-- (void)mosaicButtonTapped;
-
-@end
 
 @interface MDMomentPainterToolView : UIView
 

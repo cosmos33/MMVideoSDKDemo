@@ -14,6 +14,8 @@
 #import "MDRecordHeader.h"
 #import "MDPublicSwiftHeader.h"
 
+#import "MDFaceDecorationLoader.h"
+
 #define kFaceDecorationConfigPath    [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Application Support/Face_Decoration/faceDrawerConfig.plist"]
 
 #define kFaceRecommendBarConfigPath    [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Application Support/Face_Decoration/faceRecommendBarConfig.plist"]
@@ -32,6 +34,8 @@
 @property (nonatomic,strong) NSArray<MDFaceDecorationClassItem *>            *faceClassItems;
 @property (nonatomic,strong) NSDictionary<NSString *,NSArray<NSString *> *>  *faceClassMaps;
 
+@property (nonatomic,strong) MDFaceDecorationLoader *loader;
+
 @end
 
 @implementation MDFaceDecorationManager
@@ -40,6 +44,8 @@
 {
     self = [super init];
     if (self) {
+        self.loader = [[MDFaceDecorationLoader alloc] init];
+        
         [self requestFaceDecorationIfNeeded];
         [self loadConfig];
     }
@@ -262,19 +268,31 @@
     //版本号不对或者本地没有数据的时候都应该拉取数据
     if ([self getLocalVersionFromFaceDrawer:YES] != [self getAppConfigVersionFromFaceDrawer:YES] ||
         ([self.faceItems count] == 0)) {
+    
+//        [FaceDecorationLoader loadFaceDecorationWithCallback:^(NSString * json, NSError * error) {
+//            if (json && !error) {
+//
+//                NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+//
+//                dataDic = dataDic[@"data"];
+//
+//                [self requestFaceDecorationOk:dataDic];
+//            }
+//        }];
         
-        [FaceDecorationLoader loadFaceDecorationWithCallback:^(NSString * json, NSError * error) {
-            if (json && !error) {
-                [self requestFaceDecorationOk:json];
+        [self.loader fetchDecorationsWithCompletion:^(NSDictionary *data, NSError *error) {
+            NSLog(@"sunfei items = %@, error = %@", data, error);
+            if (error || !data) {
+                return;
             }
+
+            [self requestFaceDecorationOk:data];
         }];
     }
 }
 
-- (void)requestFaceDecorationOk:(NSString *)json
+- (void)requestFaceDecorationOk:(NSDictionary *)dataDic
 {
-    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-
     if (!dataDic) {
         return;
     }
@@ -544,7 +562,6 @@
     
 }
 
-#warning sunfei
 - (NSInteger)getAppConfigVersionFromFaceDrawer:(BOOL)isFromFaceDrawer
 {
     NSInteger version = 0;

@@ -38,6 +38,11 @@
 #import "Toast/Toast.h"
 #import "MBProgressHUD/MBProgressHUD.h"
 
+#import "MDAlbumVideoImageSortingContentView.h"
+#import "RecordSDK/MDAlbumPlayerTransitionAnimation.h"
+
+#import "MDAlbumPLayerSetting.h"
+
 #define KNAVHEADERhEIGHT  44
 
 
@@ -50,7 +55,8 @@
     MDAssetImageCollectionCellDelegate,
     MDAssetVideoCollectionCellDelegate,
     MDImageClipAndScaleViewControllerDelegate,
-    MDAssetPreviewControllerDelegate
+    MDAssetPreviewControllerDelegate,
+    MDAlbumVideoImageSortingContentViewDelegate
 >
 
 @property (nonatomic, strong) UICollectionView              *collectionView;
@@ -72,6 +78,10 @@
 @property (nonatomic, assign) BOOL                          scrollEndYetTouch;
 @property (nonatomic, assign) BOOL                          couldShowTakePicture;
 
+@property (nonatomic, strong) MDAlbumVideoImageSortingContentView *bottomView;
+@property (nonatomic, strong) NSLayoutConstraint *bottomConstraint;
+@property (nonatomic, strong) NSMutableArray<NSIndexPath *> *selectedCells;
+
 @end
 
 
@@ -86,6 +96,8 @@
         [[MDAssetUtility sharedInstance] cancelVideoRequest:self.iCloudVideoRequestID];
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    MDAlbumPLayerSetting.animationType = kAlbumPlayerAnimationTypeNone;
 }
 
 -(instancetype)initWithInitialItem:(MDUnifiedRecordSettingItem *)item pageType:(MDAssetCollectionViewType)pageType couldTakePicture:(BOOL)enable{
@@ -118,8 +130,60 @@
         self.item = item;
         self.couldShowTakePicture = enable;
         self.assetState = [[MDAssetSelectState alloc] init];
+        
+        self.selectedCells = [NSMutableArray array];
+        
     }
     return self;
+}
+
+- (void)createBottomView {
+    MDAlbumVideoImageSortingContentView *bottomView = [[MDAlbumVideoImageSortingContentView alloc] init];
+    bottomView.translatesAutoresizingMaskIntoConstraints = NO;
+    bottomView.currentAnimationType = kAlbumPlayerAnimationTypeNone;
+    bottomView.images = @[];
+    bottomView.delegate = self;
+    self.bottomView = bottomView;
+    [self.view addSubview:bottomView];
+    
+    if (@available(iOS 11.0, *)) {
+        self.bottomConstraint = [bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+        [bottomView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor].active = YES;
+        [bottomView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    } else {
+        self.bottomConstraint = [bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+        [bottomView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
+        [bottomView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    }
+    
+    self.bottomConstraint.active = YES;
+    [bottomView.heightAnchor constraintEqualToConstant:205].active = YES;
+}
+
+- (void)showBottomView {
+    self.bottomConstraint.active = NO;
+    if (@available(iOS 11.0, *)) {
+        self.bottomConstraint = [self.bottomView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor];
+    } else {
+        self.bottomConstraint = [self.bottomView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+    }
+        self.bottomConstraint.active = YES;
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)hideBottomView {
+    self.bottomConstraint.active = NO;
+    if (@available(iOS 11.0, *)) {
+        self.bottomConstraint = [self.bottomView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor];
+    } else {
+        self.bottomConstraint = [self.bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+    }
+    self.bottomConstraint.active = YES;
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -183,6 +247,8 @@
             }
         }
     }];
+    
+    [self createBottomView];
 }
 
 //- (void)addTipViewIfNeed
@@ -457,7 +523,26 @@
     if (![obj isKindOfClass:[MDPhotoItem class]]) {
         return;
     }
-    [self.assetState changeSelectState:selected forAsset:(MDPhotoItem *)obj indexPath:indexPath];
+
+    [self.selectedCells addObject:indexPath];
+    
+    [self activePhotoItem:obj selected:selected atIndexPath:indexPath];
+    
+    if (self.assetState.selectedCount >= 2) {
+        [self showBottomView];
+    } else {
+        [self hideBottomView];
+    }
+    [self.bottomView updateImages:self.assetState.selectedItemArray
+                    animationType:MDAlbumPLayerSetting.animationType
+                       thumbImage:nil];
+}
+
+- (void)activePhotoItem:(MDPhotoItem *)item selected:(BOOL)selected atIndexPath:(NSIndexPath *)indexPath {
+    
+    item.indexPath = indexPath;
+    
+    [self.assetState changeSelectState:selected forAsset:item indexPath:indexPath];
     NSArray<NSIndexPath*> *indexArray = [self.assetState updateAssetSelectIndex];
     [self setDisableVideo:(self.assetState.selectedCount>0)];
     
@@ -1135,7 +1220,7 @@
         
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, MDScreenWidth, MDScreenHeight - SAFEAREA_TOP_MARGIN - SAFEAREA_BOTTOM_MARGIN) collectionViewLayout:layout];
         _collectionView.showsHorizontalScrollIndicator = NO;
-        _collectionView.contentInset = UIEdgeInsetsMake(0, 9, 15, 9);
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 9, 15 + 205, 9);
         
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -1177,6 +1262,31 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+#pragma mark - MDAlbumVideoImageSortingContentViewDelegate methods
+
+- (void)contentView:(MDAlbumVideoImageSortingContentView *)view sortedImages:(NSArray<MDPhotoItem *> *)sortedImages {
+    [self.assetState cleanAll];
+    for (MDPhotoItem *photoItem in sortedImages) {
+        [self.collectionView reloadItemsAtIndexPaths:@[photoItem.indexPath]];
+        [self activePhotoItem:photoItem selected:YES atIndexPath:photoItem.indexPath];
+    }
+    [self.collectionView reloadData];
+}
+
+- (void)contentView:(MDAlbumVideoImageSortingContentView *)view musicItem:(MDMusicCollectionItem *)musicItem animationType:(NSString *)animationType {
+    MDAlbumPLayerSetting.animationType = animationType;
+}
+
+- (void)contentView:(MDAlbumVideoImageSortingContentView *)view thumImage:(MDPhotoItem *)thumbImage {
+    
+}
+
+- (void)contentView:(MDAlbumVideoImageSortingContentView *)view deleteItem:(MDPhotoItem *)photoItem {
+    photoItem.selected = NO;
+    [self.collectionView reloadItemsAtIndexPaths:@[photoItem.indexPath]];
+    [self activePhotoItem:photoItem selected:NO atIndexPath:photoItem.indexPath];
 }
 
 @end

@@ -629,7 +629,6 @@ static NSString * const kVideoRecordTipString           = @"换个场景拍一�
     [self.containerView setDeleSegmentViewEnable:YES];
 }
 
-#warning sunfei 
 - (void)showRecordTipString
 {
     self.isFirstPause = NO;

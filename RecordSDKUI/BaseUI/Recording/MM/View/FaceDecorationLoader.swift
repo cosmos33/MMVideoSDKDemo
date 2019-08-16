@@ -10,7 +10,7 @@ import UIKit
 
 @objc class FaceDecorationLoader: NSObject {
     @objc static func loadFaceDecoration(callback: @escaping (String?, Error?) -> Void) {
-        let configPath = Bundle.main.url(forResource: "Decoration_Face", withExtension: "geojson")
+        let configPath = Bundle.main.url(forResource: "New_Decoration_Face", withExtension: "geojson")
         let local = MDRecordResource(remoteURL: configPath!, customParams: [:]) { data in
             String(data: data, encoding: .utf8)
         }

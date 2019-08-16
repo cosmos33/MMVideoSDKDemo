@@ -49,7 +49,6 @@
     }
     NSData *originVideoCoverdata = UIImageJPEGRepresentation(self.originVideoCover, compressScale);
     NSString *uuid = [MDRecordContext generateLongUUID];
-#warning sunfei
     NSString *originVideoCoverUrl = [MDRecordContext imageTmpPath]; //[[MDContext currentUser].videoManager filePathDraftsWithUUID:uuid extension:@"jpg"];
 
     BOOL originVideoCoverResult = [originVideoCoverdata writeToURL:[NSURL fileURLWithPath:originVideoCoverUrl] atomically:NO];
@@ -69,7 +68,6 @@
 
     self.videoInfo.isAllowShared = YES;
     
-#warning sunfei
     AVCaptureDevicePosition position = AVCaptureDevicePositionFront;// [[[MDContext currentUser] dbStateHoldProvider] momentCameraPosition];
     self.videoInfo.isFrontCamera = position == AVCaptureDevicePositionFront ? 1 : 0 ;
 }
@@ -79,7 +77,6 @@
     if (!self.videoInfo) {
         self.videoInfo = [[MDRecordVideoResult alloc] init];
     }
-#warning sunfei
     self.videoInfo.uuid = [MDRecordContext generateLongUUID];
     if (self.videoInfo.accessSource == MDVideoRecordAccessSource_Profile || self.videoInfo.accessSource == MDVideoRecordAccessSource_QVProfile) {
         self.videoInfo.path = [MDRecordContext videoTmpPath2]; //[[MDContext currentUser].videoManager videoPathTmpWithUUID:self.videoInfo.uuid type:MDVideoRootPath_Profile];

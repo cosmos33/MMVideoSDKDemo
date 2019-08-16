@@ -34,8 +34,6 @@
         self.iconImageView.image = clipImage;
         
     } else {
-#warning sunfei image
-//        [self.iconImageView setImageWithURL:[NSURL URLWithString:model.iconUrlString] effect:SDWebImageEffectCircle];
         [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.iconUrlString]];
     }
     [self borderTypeSelected:model.isSelected];

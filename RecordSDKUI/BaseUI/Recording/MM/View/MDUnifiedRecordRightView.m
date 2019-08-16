@@ -232,7 +232,6 @@ static const CGFloat kMarginHeight = 15.0;
 }
 
 //查找当前可用的变脸入口图片
-#warning sunfei
 - (NSString *)faceIconUrlString {
     NSArray *iconInfoList = nil; //[[[MDContext currentUser] dbStateHoldProvider] faceGuideIconInfoList];
     

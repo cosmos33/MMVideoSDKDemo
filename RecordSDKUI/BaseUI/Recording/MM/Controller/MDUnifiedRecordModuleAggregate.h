@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MDUnifiedRecordCountDownAnimation.h"
 #import "MDMusicCollectionItem.h"
-#import <RecordSDK/MDGlobalDefine.h>
+#import "RecordSDK/MDGlobalDefine.h"
 #import "MDRecordVideoResult.h"
 #import <RecordSDK/MDRecordCameraAdapter.h>
 #import <RecordSDK/MDRecordFilter.h>
@@ -233,6 +233,8 @@
 
 - (void)muteSticker:(BOOL)mute;
 - (void)enableRecordAudio:(BOOL)enable;
+
+- (void)recordOrigin:(BOOL)enable;
 
 - (void)enableReverseVideoSampleBuffer:(BOOL)enable;
 

@@ -63,6 +63,13 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
     if (self) {
         NSAssert(maxDuration != 0, @"max Duration is 0");
         
+        // https://www.sunyazhou.com/2018/01/12/20180112AVAudioSession-Category/
+        
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord
+                                         withOptions:AVAudioSessionCategoryOptionDuckOthers | AVAudioSessionCategoryOptionDefaultToSpeaker
+                                               error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
+        
         // 相机设置
         MDRecordingAdapter *adapter = self.adapter;
         [adapter setVideoBitRate:MDRecordRecordingSettingMananger.bitRate ?: kDefaultRecordBitRate];
@@ -75,9 +82,11 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 //        adapter.shouldRecordAudio = NO;
         [adapter setupRecorder];
         
-
+//        adapter.saveOrigin = YES;
+        
         if (@available(iOS 10.0, *)) {
-            [adapter setCanUseAIBeautySetting:[MTIContext defaultMetalDeviceSupportsMPS]];
+//            [adapter setCanUseAIBeautySetting:[MTIContext defaultMetalDeviceSupportsMPS]];
+            
         }
 
 //        [adapter setMaxRecordDuration:maxDuration];
@@ -89,6 +98,8 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
             // 变脸提示
             [weakself updateFaceTipWithAFaceFeature:tracking];
         };
+        
+        [adapter enableReverseVideoSampleBuffer:NO];
         
         UIView<MLPixelBufferDisplay> *previewView = adapter.previewView;
         
@@ -537,4 +548,31 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
     [self.adapter enableAudioRecording:enable];
 }
 
+- (void)recordOrigin:(BOOL)enable {
+    self.adapter.saveOrigin = enable;
+}
+- (void)setUseAISkinWhiten:(BOOL)useAISkinWhiten{
+    self.adapter.useAISkinWhiten = useAISkinWhiten;
+}
+
+- (BOOL)useAISkinWhiten{
+    return self.adapter.useAISkinWhiten;
+}
+
+- (void)setUseAISkinSmooth:(BOOL)useAISkinSmooth{
+    self.adapter.useAISkinSmooth = useAISkinSmooth;
+    
+}
+
+- (BOOL)useAISkinSmooth{
+    return self.adapter.useAISkinSmooth;
+}
+
+- (void)setUseAIBigEyeThinFace:(BOOL)useAIBigEyeThinFace{
+    self.adapter.useAIBigEyeThinFace = useAIBigEyeThinFace;
+}
+
+- (BOOL)useAIBigEyeThinFace{
+    return self.adapter.useAIBigEyeThinFace;
+}
 @end

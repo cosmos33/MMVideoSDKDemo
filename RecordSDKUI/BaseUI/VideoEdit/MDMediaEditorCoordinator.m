@@ -17,6 +17,7 @@
 #import "MDRecordVideoResult.h"
 
 #import "MDBeautySettings.h"
+#import "RecordSDK/MDFastMP4Handler.h"
 #import "Toast/Toast.h"
 
 @import RecordSDK;
@@ -39,6 +40,8 @@
 
 @property (nonatomic, assign) BOOL needDeleteSticker; //是否需要删除贴纸
 @property (nonatomic, strong) MDMomentTextSticker *handlingSticker; //记录点击的文字贴纸
+
+@property (nonatomic, assign) BOOL isShowStickerVC;
 
 @end
 
@@ -99,12 +102,19 @@
 //贴纸相关
 - (void)willShowStickerChooseView {
     [self updateViewElementsWithAlpha:0 animated:YES];
+    self.isShowStickerVC = YES;
 }
 
-- (void)didHidestickerChooseViewWithSticker:(MDDynamicSticker *)aSticker
+- (void)didHideStickerChooseView {
+    [self updateViewElementsWithAlpha:1 animated:YES];
+    self.isShowStickerVC = NO;
+//    self.containerView.editNavView.hidden = YES;
+}
+
+- (void)didHidestickerChooseViewWithSticker:(MDRecordDynamicSticker *)aSticker
                                      center:(CGPoint)center
                                    errorMsg:(NSString *)errorMsg {
-    [self updateViewElementsWithAlpha:1 animated:YES];
+//    [self updateViewElementsWithAlpha:1 animated:YES];
     
     if (aSticker) {
         [self.containerView.stickerAdjustView addSticker:aSticker center:center];
@@ -112,6 +122,11 @@
     else if ([errorMsg isNotEmpty]) {
         [[MDRecordContext appWindow] makeToast:errorMsg duration:1.5f position:CSToastPositionCenter];
     }
+}
+
+- (void)didDeleteSticker:(MDRecordDynamicSticker *)aSticker {
+    [self.containerView.stickerAdjustView removeSticker:aSticker];
+    [self.moduleAggregate removeASticker:aSticker];
 }
 
 
@@ -226,6 +241,14 @@
 //    }
 }
 
+// 视频大小变化相关
+- (void)videoPlayerChangeWith:(CGPoint)center transform:(CGAffineTransform)transform
+{
+    self.containerView.costumContentView.transform = CGAffineTransformIdentity;
+    self.containerView.costumContentView.transform = transform;
+    self.containerView.costumContentView.center = center;
+}
+
 //导出相关
 - (void)willBeginExportForSaveMode:(BOOL)isSaveMode
 {
@@ -331,6 +354,8 @@
 - (void)mediaStickerAdjustmentView:(BBMediaStickerAdjustmentView *)view stickerWillBeginChange:(MDBaseSticker *)sticker frame:(CGRect)frame {
     [self updateBottomToolsWithAlpha:0 animate:YES];
     self.containerView.stickerDeleteBtn.alpha = 1.0f;
+    
+    [self.moduleAggregate selectSticker:sticker];
 }
 
 - (void)mediaStickerAdjustmentView:(BBMediaStickerAdjustmentView *)view stickerDidMove:(MDBaseSticker *)sticker frame:(CGRect)frame touchPoint:(CGPoint)point {
@@ -376,7 +401,7 @@
         self.containerView.stickerDeleteBtn.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         if (self.containerView.stickerDeleteBtn.alpha == 0.0f) {
-            [self updateBottomToolsWithAlpha:1 animate:YES];
+            [self updateBottomToolsWithAlpha:self.isShowStickerVC ? 0 : 1 animate:NO];
         }
     }];
     
@@ -454,7 +479,7 @@
         self.containerView.stickerDeleteBtn.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         if (self.containerView.stickerDeleteBtn.alpha == 0.0f) {
-            [self updateBottomToolsWithAlpha:1 animate:YES];
+            [self updateBottomToolsWithAlpha:self.isShowStickerVC ? 0 : 1 animate:YES];
         }
     }];
     
@@ -483,17 +508,12 @@
 - (void)updateViewElementsWithAlpha:(CGFloat)alpha animated:(BOOL)animated
 {
     void(^action)(void) = ^(void) {
-//        self.containerView.cancelBtn.alpha = alpha;
         self.containerView.cancelButton.alpha = alpha;
         self.containerView.doneBtn.alpha = alpha;
         self.containerView.reSendBtn.alpha = alpha;
-//        self.containerView.topicEntranceView.alpha = alpha;
         self.containerView.qualityBlockBtn.alpha = alpha;
-//        self.containerView.rightView.alpha = alpha;
-        
-//        NSArray *titleArray = @[kBtnTitleForSticker,kBtnTitleForText,kBtnTitleForMusic,kBtnTitleForthumbSelect,kBtnTitleForMoreAction];
-//        [self.containerView.bottomView setAlpha:alpha forTitleArray:titleArray];
-        self.containerView.buttonView.alpha = alpha;
+
+        [self updateBottomToolsWithAlpha:alpha animate:NO];
     };
     
     if (animated) {
@@ -507,17 +527,8 @@
 
 - (void)updateBottomToolsWithAlpha:(CGFloat)alpha animate:(BOOL)animated
 {
-//    UIButton *moreActionsButton = [self.containerView.bottomView buttonWithATitle:kBtnTitleForMoreAction];
-//    if (moreActionsButton.selected) {
-//        [self showMoreActions:NO animated:animated];
-//        return;
-//    }
- 
-    
     void(^action)(void) = ^(void) {
-//        NSArray *titleArray = @[kBtnTitleForSticker,kBtnTitleForText,kBtnTitleForMusic,kBtnTitleForthumbSelect,kBtnTitleForMoreAction];
-//        [self.containerView.bottomView setAlpha:alpha forTitleArray:titleArray];
-        self.containerView.buttonView.alpha = alpha;
+        self.containerView.buttonView.hidden = !alpha;
     };
     
     if (animated) {
@@ -528,58 +539,6 @@
         action();
     }
 }
-
-//- (void)showMoreActions:(BOOL)show {
-//    [self showMoreActions:show animated:YES];
-//}
-//- (void)showMoreActions:(BOOL)show animated:(BOOL)animated {
-//    UIButton *moreActionsButton = [self.containerView.bottomView buttonWithATitle:kBtnTitleForMoreAction];
-//    moreActionsButton.selected = show;
-//    moreActionsButton.imageEdgeInsets = show ? UIEdgeInsetsZero : UIEdgeInsetsMake(-moreActionsButton.titleLabel.size.height, 0, .0f, -moreActionsButton.titleLabel.size.width) ;
-//
-//    CGFloat alpha = show ? 1.0f : .0f ;
-//    if (self.containerView.saveButton.alpha == alpha) {
-//        return;
-//    }
-//
-//    void(^alphaChange)(void) = ^(void) {
-//        self.containerView.saveButton.alpha = alpha;
-//        self.containerView.speedVaryBtn.alpha = alpha;
-//        self.containerView.painterButton.alpha = alpha;
-//    };
-//
-//    void(^frameChange)(CGFloat) = ^(CGFloat delta) {
-//        self.containerView.saveButton.top = self.containerView.bottomView.top -kMediaEditorBottomToolButtonWidth - 5 +delta;
-//        self.containerView.speedVaryBtn.top = self.containerView.saveButton.top -kMediaEditorBottomToolButtonWidth -kMediaEditorMoreBetweenMargin;
-//        self.containerView.painterButton.top = self.containerView.speedVaryBtn.top -kMediaEditorBottomToolButtonWidth -kMediaEditorMoreBetweenMargin;
-//    };
-//
-//    if (show) {
-//        [UIView animateWithDuration:animated?0.8f:0.001f
-//                              delay:.0f
-//             usingSpringWithDamping:0.4
-//              initialSpringVelocity:12
-//                            options:UIViewAnimationOptionCurveEaseIn
-//                         animations:^{
-//                             alphaChange();
-//                             frameChange(kMediaEditorMoreBetweenMargin *-1);
-//                         } completion:^(BOOL finished) {
-//                         }];
-//        NSArray *titleArray = @[kBtnTitleForSticker,kBtnTitleForText,kBtnTitleForMusic,kBtnTitleForthumbSelect];
-//        [self.containerView.bottomView setAlpha:0.0f forTitleArray:titleArray];
-//        self.containerView.rightView.alpha = 0.0f;
-//    } else {
-//        [UIView animateWithDuration:animated?0.3f:0.001f
-//                         animations:^{
-//                             alphaChange();
-//                             frameChange(kMediaEditorMoreBetweenMargin);
-//                             [self updateBottomToolsWithAlpha:1.0f animate:NO];
-//                             self.containerView.rightView.alpha = 1.0f;
-//                         } completion:^(BOOL finished) {
-//                         }];
-//    }
-//}
-
 
 //将视图坐标大小, 映射到屏幕录制里的坐标
 - (CGRect)filterMapRectWithOriginFrame:(CGRect)frame {

@@ -11,9 +11,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@class MDDynamicSticker;
-@class MDMomentTextSticker;
-@class MDBaseSticker;
+@class MDRecordBaseSticker;
+@class MDRecordDynamicSticker;
 @class MDMomentTextSticker;
 @class MDMusicCollectionItem;
 
@@ -26,9 +25,11 @@
 
 //贴纸相关
 - (void)willShowStickerChooseView;
-- (void)didHidestickerChooseViewWithSticker:(MDDynamicSticker *)aSticker
+- (void)didHidestickerChooseViewWithSticker:(MDRecordDynamicSticker *)aSticker
                                      center:(CGPoint)center
                                    errorMsg:(NSString *)errorMsg;
+- (void)didHideStickerChooseView;
+- (void)didDeleteSticker:(MDRecordDynamicSticker *)aSticker;
 
 //文字编辑相关
 - (void)willShowTextEditingView;
@@ -76,6 +77,9 @@
 //下载相关
 - (void)didSaveVideoFinishWithVideoURL:(NSURL *)videoURL completeBlock:(void(^)())completBlock;
 
+// 播放页面变化
+- (void)videoPlayerChangeWith:(CGPoint)center transform:(CGAffineTransform)transform;
+
 @end
 
 
@@ -98,6 +102,8 @@
 //是否可以使用高清晰度策略(即视频不压缩策略)
 - (BOOL)supportHighResolutionStrategy;
 
+@property (nonatomic, strong, readonly) UIView *containerView;
+
 @end
 
 @interface MDMediaEditorModuleAggregate : NSObject
@@ -107,7 +113,7 @@
 @property (nonatomic,assign,readonly) CGRect                            videoRenderFrame;
 @property (nonatomic,assign,readonly) CGSize                            videoSize;
 
-@property (nonatomic,strong,readonly) NSMutableArray                    *stickers;
+@property (nonatomic,strong,readonly) NSArray                    *stickers;
 @property (nonatomic,strong,readonly) NSMutableArray                    *textStickers;
 @property (nonatomic,assign,readonly) BOOL                              hasGraffiti;
 @property (nonatomic,assign,readonly) BOOL                              hasSpeedEffect;
@@ -135,7 +141,8 @@
 
 //贴纸相关
 - (void)activateSticker;
-- (void)removeASticker:(MDBaseSticker *)aSticker;
+- (void)removeASticker:(MDRecordBaseSticker *)aSticker;
+- (void)selectSticker:(MDRecordDynamicSticker *)sticker;
 
 //文字编辑相关
 - (void)activateTextEdit;

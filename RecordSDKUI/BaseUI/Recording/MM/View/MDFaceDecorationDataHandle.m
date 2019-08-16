@@ -163,8 +163,7 @@ typedef NS_ENUM(NSInteger,MDFaceDecorationFromSource) {
             }
             [classItemArray addObjectSafe:faceItem];
         }
-        //分类数据补满当前页
-        [drawerDataArray addObjectSafe:[MDDecorationTool getDecorationsArrayWithDecorations:classItemArray]];
+        [drawerDataArray addObjectSafe:classItemArray];
     }
     return drawerDataArray;
 }
@@ -268,7 +267,7 @@ typedef NS_ENUM(NSInteger,MDFaceDecorationFromSource) {
     self.currentSelectItem = nil;
     
     if ([item.resourcePath isNotEmpty]) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(drawerFaceDecorationDidSelectedItem:)]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(drawerFaceDecorationDidSelectedGift:)]) {
             [self.delegate drawerFaceDecorationDidSelectedGift:item];
         }
         [self deselectAllItem];

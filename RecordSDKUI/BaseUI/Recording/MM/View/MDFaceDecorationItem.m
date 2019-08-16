@@ -28,6 +28,7 @@
         self.need3D = [dic boolForKey:@"is_3d" defaultValue:NO];
         self.isFacerig = [dic boolForKey:@"is_facerig" defaultValue:NO];
         self.needAR = [dic boolForKey:@"is_arkit" defaultValue:NO];
+        self.overlap = [dic boolForKey:@"is_overlap" defaultValue:NO];
 
         NSString *resourcePath = [MDFaceDecorationFileHelper resourcePathWithItem:self];
 
@@ -53,6 +54,7 @@
     [dict setBool:faceDecorationItem.haveSound forKey:@"sound"];
     [dict setBool:faceDecorationItem.isNeed3D forKey:@"is_3d"];
     [dict setBool:faceDecorationItem.isFacerig forKey:@"is_facerig"];
+    [dict setBool:faceDecorationItem.isOverlap forKey:@"is_overlap"];
 
     return dict;
 }

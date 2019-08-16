@@ -41,4 +41,6 @@
 #pragma mark - 仅category可以调用
 - (void)handleRotate:(UIDeviceOrientation)orientation needResponse:(BOOL)needResponse;
 
+- (void)enableRecordOriginButton:(BOOL)enable;
+
 @end

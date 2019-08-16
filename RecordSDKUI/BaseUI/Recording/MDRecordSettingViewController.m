@@ -16,7 +16,11 @@
 #import "MDRecordImageResult.h"
 #import "MDPhotoLibraryProvider.h"
 
+#import "MDFaceDecorationLoader.h"
+
 @interface MDRecordSettingViewController () <MDNavigationBarAppearanceDelegate>
+
+@property (nonatomic, strong) MDFaceDecorationLoader *loader;
 
 @end
 
@@ -26,9 +30,14 @@
     [super viewDidLoad];
     
     [self setupUI];
+    
+    self.loader = [[MDFaceDecorationLoader alloc] init];
 }
 
 - (void)setupUI {
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    
     self.view.backgroundColor = UIColor.blackColor;
     
     MDRecordRecordingSettingMananger.bitRate = 0;

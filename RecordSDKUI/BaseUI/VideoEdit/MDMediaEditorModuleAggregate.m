@@ -45,6 +45,8 @@
 #import "Toast/Toast.h"
 #import "MDRecordVideoSettingManager.h"
 
+#import "MDRStickerViewController.h"
+
 static const NSInteger kMaxImageStickerCount = 20;
 
 @interface MDMediaEditorModuleAggregate()
@@ -55,7 +57,8 @@ static const NSInteger kMaxImageStickerCount = 20;
     MDRecordFilterDrawerControllerDelegate,
     MDSpecialEffectsControllerDelegate,
     MDRecordSpecialImageDataManagerDelegate,
-    MDMusicEditPalletControllerDelegate
+    MDMusicEditPalletControllerDelegate,
+    MDRStickerViewControllerDelegate
 >
 
 @property (nonatomic, weak) UIViewController<MDMediaEditorModuleControllerDelegate>   *viewController;
@@ -74,8 +77,8 @@ static const NSInteger kMaxImageStickerCount = 20;
 @property (nonatomic, strong) NSMutableDictionary                   *realBeautySettingDict;
 @property (nonatomic, assign) NSInteger                             filterIndex;
 //动态贴纸相关
-@property (nonatomic, strong) NSMutableArray                        *stickers;
-@property (nonatomic, strong) MDMomentExpressionViewController      *stickerChooseController;
+//@property (nonatomic, strong) MDMomentExpressionViewController      *stickerChooseController;
+@property (nonatomic, strong) MDRStickerViewController *stickerViewController;
 //文字编辑相关
 @property (nonatomic, strong) NSMutableArray                        *textStickers;
 @property (nonatomic, strong) MDMomentTextOverlayEditorView         *textEditView;
@@ -100,13 +103,14 @@ static const NSInteger kMaxImageStickerCount = 20;
 
 
 //是否已经编辑过（贴纸、文字、配乐、变速、涂鸦）
-@property (nonatomic, assign) CGSize                                videoSize;
 @property (nonatomic, assign) BOOL                                  isBackground;
 
 @property (nonatomic, strong) id<MDCancellable> exportTask;
 @property (nonatomic, strong) MDVideoEditorAdapter *adapter;
 
 @property (nonatomic, assign) NSInteger currentFilterIndex;
+
+@property (nonatomic, strong) NSMutableArray<MDRecordDynamicSticker *> *tmpDynamicStickers;
 
 @end
 
@@ -140,6 +144,8 @@ static const NSInteger kMaxImageStickerCount = 20;
         [self addNotifiations];
         
         [self activateSlidingFilters];
+        
+        _tmpDynamicStickers = [NSMutableArray array];
     }
     return self;
 }
@@ -150,6 +156,7 @@ static const NSInteger kMaxImageStickerCount = 20;
                       musicTimeRange:(CMTimeRange)musicTimeRange
                            musicItem:(MDMusicCollectionItem *)musicItem
 {
+    
     __weak typeof(self) weakself = self;
     self.adapter.playToEndTime = ^(AVPlayer * _Nonnull player) {
         __strong typeof(self) self = weakself;
@@ -188,7 +195,7 @@ static const NSInteger kMaxImageStickerCount = 20;
     CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
     presentationSize.width = ABS(presentationSize.width);
     presentationSize.height = ABS(presentationSize.height);
-    self.videoSize = presentationSize;
+    _videoSize = presentationSize;
     
     [self setupMusicPicker];
     [self.musicSelectPicker setOriginDefaultMusicVolume:self.document.backgroundMusicVolume];
@@ -199,6 +206,15 @@ static const NSInteger kMaxImageStickerCount = 20;
 
 - (void)releaseSetAfterEditing {
     [self pause];
+}
+
+- (CGFloat)whRatioOfVideo:(AVAsset *)videoAsset {
+    AVAssetTrack *videoTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    CGSize presentationSize = CGSizeApplyAffineTransform(videoTrack.naturalSize, videoTrack.preferredTransform);
+    if (isnan(presentationSize.width) || isFloatEqual(presentationSize.width, 0) || isnan(presentationSize.height) || isFloatEqual(presentationSize.height, 0)) {
+        return MDScreenWidth / MDScreenHeight;
+    }
+    return fabsf(presentationSize.width / presentationSize.height);
 }
 
 #pragma mark - 通知注册 & 处理
@@ -526,84 +542,92 @@ static const NSInteger kMaxImageStickerCount = 20;
 #pragma mark - 贴纸相关
 - (void)activateSticker
 {
-    if (!_stickers) {
-        _stickers = [NSMutableArray array];
-    }
-    
     [self.delegate willShowStickerChooseView];
-
+    
     [self setupStickerChooseController];
-    [self.stickerChooseController show];
+    [self.stickerViewController showWithAnimated:YES completion: ^{
+        if ([self.delegate respondsToSelector:@selector(videoPlayerChangeWith:transform:)]) {
+            UIView *view = self.adapter.playerViewController.view;
+            [self.delegate videoPlayerChangeWith:view.center transform:view.transform];
+        }
+    }];
 }
 
 - (void)removeASticker:(MDRecordBaseSticker *)aSticker
 {
     if ([aSticker isKindOfClass:[MDRecordDynamicSticker class]]) {
-//        [self.renderPipline.renderFilter removeDynamicSticker:(id)aSticker];
-        [self.adapter removeDynamicSticker:(id)aSticker];
-        [self.stickers removeObject:aSticker];
+        [self.stickerViewController removeSticker:aSticker];
+        [self.adapter removeDynamicSticker:aSticker];
     }
 }
 
-- (void)setupStickerChooseController
-{
-    if (!_stickerChooseController) {
-        __weak __typeof(self) weakSelf = self;
-        _stickerChooseController = [[MDMomentExpressionViewController alloc] initDynamicDecoratorWithSelectBlock:^(NSDictionary *urlDict) {
-            [weakSelf handleStickerChoose:urlDict];
-        } ];
+- (void)selectSticker:(MDRecordDynamicSticker *)sticker {
+    [self.stickerViewController selectSticker:sticker];
+}
+
+- (void)setupStickerChooseController {
+    if (!_stickerViewController) {
+        _stickerViewController = [[MDRStickerViewController alloc] initWithPlayerViewController:self.adapter.playerViewController
+                                                                                          asset:self.document.asset];
+        _stickerViewController.delegate = self;
+    }
+    
+    [_stickerViewController willMoveToParentViewController:self.viewController];
+    [self.viewController.containerView insertSubview:_stickerViewController.view atIndex:0];
+    [self.viewController addChildViewController:_stickerViewController];
+    [_stickerViewController didMoveToParentViewController:self.viewController];
+}
+
+#pragma mark - MDRStickerViewControllerDelegate Methods
+
+- (void)didCompleteEditSticker:(MDRStickerViewController *)controller {
+    
+    [self.delegate didHideStickerChooseView];
+    
+    [self.tmpDynamicStickers removeAllObjects];
+    [self.viewController.view insertSubview:self.adapter.playerViewController.view atIndex:0];
+    if ([self.delegate respondsToSelector:@selector(videoPlayerChangeWith:transform:)]) {
+        UIView *view = self.adapter.playerViewController.view;
+        [self.delegate videoPlayerChangeWith:view.center transform:view.transform];
     }
 }
 
-- (void)handleStickerChoose:(NSDictionary *)dic
-{
-    NSString *errorMsg  = nil;
-    CGPoint center      = [[dic valueForKey:@"center"] CGPointValue];
-    MDRecordDynamicSticker *sticker = nil;
-    NSString *stickerId       = nil;
-    NSString *resourcePath    = nil;
+- (void)cancelEditSticker:(MDRStickerViewController *)controller {
+    [self.delegate didHideStickerChooseView];
     
-    MDMomentExpressionCellModel *model = [dic objectForKey:@"data"];
-    if (model) {
-        stickerId = model.resourceId;
-        resourcePath = model.downLoadModel.resourcePath;
+    NSArray *currentStickers = self.tmpDynamicStickers.copy;
+    for (MDRecordDynamicSticker *sticker in currentStickers) {
+        [self.delegate didDeleteSticker:sticker];
+    }
+    [self.tmpDynamicStickers removeAllObjects];
+
+    [self.viewController.view insertSubview:self.adapter.playerViewController.view atIndex:0];
+    if ([self.delegate respondsToSelector:@selector(videoPlayerChangeWith:transform:)]) {
+        UIView *view = self.adapter.playerViewController.view;
+        [self.delegate videoPlayerChangeWith:view.center transform:view.transform];
+    }
+}
+
+- (void)didSelecedSticker:(MDRStickerViewController *)controller
+                  sticker:(MDRecordDynamicSticker *)sticker
+                   center:(CGPoint)center {
+    [self handleSticker:sticker center:center];
+}
+
+- (NSArray *)stickers {
+    return self.stickerViewController.stickerArray;
+}
+
+- (void)handleSticker:(MDRecordDynamicSticker *)sticker center:(CGPoint)center {
+    if (!sticker) {
+        return;
     }
     
-    if (self.stickers.count < [self maxStickerCount]) {
-        
-        if (![resourcePath isNotEmpty] || ![stickerId isNotEmpty]) {
-            [self.delegate didHidestickerChooseViewWithSticker:sticker center:center errorMsg:errorMsg];
-            return;
-        }
-        
-        FDKDecorationFilterOptions *decorationFilterOptions = [[FDKDecorationFilterOptions alloc] init];
-        if ([MDRecordContext is32bit]) {
-            decorationFilterOptions.skinSmoothingVersion = FDKSkinSmoothingVersion3;
-        } else {
-            decorationFilterOptions.skinSmoothingVersion = FDKSkinSmoothingVersion1;
-        }
-        sticker = [[MDRecordDynamicSticker alloc] initWithDecorationURL:[NSURL fileURLWithPath:resourcePath] inputFrameSize:self.videoSize decorationFilterOptions:decorationFilterOptions];
-        sticker.stickerId = stickerId;
-//        [self.renderPipline.renderFilter addDynamicSticker:(id)sticker];
-        [self.adapter addDynamicSticker:(id)sticker];
-        
-        //更新sticker UI显示bounds
-        CGSize stickerSize = [sticker stickerSize];
-        CGFloat x = center.x - stickerSize.width/2;
-        CGFloat y = center.y - stickerSize.height/2;
-        CGRect viewFrame = CGRectMake(x, y, stickerSize.width, stickerSize.height);
-        //为了方面stickerAdjustView 调整frame, 先使用屏幕坐标赋值
-        sticker.bounds = viewFrame;
-        
-        [self.stickers addObjectSafe:sticker];
-        
-    } else {
-        if (dic) {
-            errorMsg = [NSString stringWithFormat:@"只能添加%@个贴纸", @([self maxStickerCount])];
-        }
-    }
+    [self.tmpDynamicStickers addObject:sticker];
     
-    [self.delegate didHidestickerChooseViewWithSticker:sticker center:center errorMsg:errorMsg];
+    [self.adapter addDynamicSticker:sticker];
+        
+    [self.delegate didHidestickerChooseViewWithSticker:sticker center:center errorMsg:nil];
 }
 
 #pragma mark - 文字编辑相关
@@ -725,6 +749,7 @@ static const NSInteger kMaxImageStickerCount = 20;
     }
     [self updateComposition];
     
+    // 不再调用stop或者replay临时解决因为调用pause再调用compositeVideoWithError: 造成视频卡住，mediaServiceWereReset & mediaServiceWereLost的问题
     [self.adapter seekTime:kCMTimeZero];
     [self play];
 }
@@ -879,7 +904,7 @@ static const NSInteger kMaxImageStickerCount = 20;
                 [weakSelf.delegate didEndReverseVideoOpertion];
                 if (!isCancelled) {
                     [self.viewController.view makeToast:@"特效滤镜视频处理失败" duration:1.5f position:CSToastPositionCenter];
-}
+                }
             });
             weakSelf.reserveOperation = nil;
         } progress:^(float progress) {
@@ -960,8 +985,12 @@ static const NSInteger kMaxImageStickerCount = 20;
 }
 
 #pragma mark - 变速相关
-- (void)activateSpeedVaryVc
-{
+- (void)activateSpeedVaryVc {
+    if (self.stickers.count > 0) {
+        [self.viewController.view makeToast:@"贴纸不能与变速叠加使用" duration:1.5f position:CSToastPositionCenter];
+        return;
+    }
+    
     if ([self.document hasSpecialEffects]) {
         [self.viewController.view makeToast:@"特效滤镜与变速不能叠加使用" duration:1.5f position:CSToastPositionCenter];
         return;
@@ -1075,7 +1104,8 @@ static const NSInteger kMaxImageStickerCount = 20;
 }
 
 - (void)configExportVideoSetting {
-        
+    
+    [self.adapter setVideoTimeRange:self.document.videoExportTimeRange];
     self.adapter.overlayImage = self.document.customOverlay;
     
     float destBitRate = 0.0; //[[[MDContext currentUser] dbStateHoldProvider] momentRecordExportBitRate];
@@ -1234,7 +1264,8 @@ static const NSInteger kMaxImageStickerCount = 20;
 #pragma mark - getter
 - (CGRect)videoRenderFrame
 {
-    return self.adapter.videoRenderFrame;
+//    return self.adapter.videoRenderFrame;
+    return self.adapter.playerViewController.view.bounds;
 }
 
 #pragma mark - 辅助方法

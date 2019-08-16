@@ -67,7 +67,6 @@
 
 - (void)hideActivityIndicatorWhenNeed {
     __weak __typeof(self) weakSelf = self;
-#warning sunfei image
 //    self.expressView.modifyBlock =  ^UIImage *(UIImage *image){
 //        
 //        [weakSelf.aiv stopAnimating];

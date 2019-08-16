@@ -48,8 +48,6 @@
     }
     
     self.iconView.hidden = NO;
-#warning sunfei image
-//    [self.iconView.iconView setImageWithURL:[NSURL URLWithString:item.imgUrlStr] effect:SDWebImageEffectCircle];
     [self.iconView.iconView sd_setImageWithURL:[NSURL URLWithString:item.imgUrlStr]];
     
     if (item.isDownloading) {
