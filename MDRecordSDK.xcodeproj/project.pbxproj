@@ -2754,7 +2754,7 @@
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = EnterpriseProfile1613;
+				PROVISIONING_PROFILE_SPECIFIER = Inhouse_momotest_only;
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2907,7 +2907,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momotest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momoappdemo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MomoChatDevelopmentProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";
@@ -2925,7 +2925,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 72CZEEPG39;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDRecordSDK/MDMediaKit",
@@ -2940,9 +2940,9 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momotest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momoapptest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = momotest;
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
