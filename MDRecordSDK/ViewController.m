@@ -22,8 +22,6 @@
 
 #import "MDRecordUtility.h"
 
-#import "MDPublicSwiftHeader.h"
-
 @import RecordSDK;
 
 @import MLMediaFoundation;
