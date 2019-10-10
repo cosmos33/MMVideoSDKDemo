@@ -46,16 +46,16 @@ PODS:
     - openssl-lib
   - MMFrameworks/Eta (2.5.15)
   - MMFrameworks/MMFoundation (2.5.15)
-  - MMMedia (2.3.2.1):
+  - MMMedia (2.3.2.2):
     - GPUImage
     - MetalPetal (= 1.4.2)
-    - MMMedia/Base (= 2.3.2.1)
-    - MMMedia/Expand (= 2.3.2.1)
-  - MMMedia/Base (2.3.2.1):
+    - MMMedia/Base (= 2.3.2.2)
+    - MMMedia/Expand (= 2.3.2.2)
+  - MMMedia/Base (2.3.2.2):
     - GPUImage
     - KVOController
     - MetalPetal (= 1.4.2)
-  - MMMedia/Expand (2.3.2.1):
+  - MMMedia/Expand (2.3.2.2):
     - GPUImage
     - Mantle
     - MetalPetal (= 1.4.2)
@@ -154,7 +154,7 @@ SPEC CHECKSUMS:
   MMCV: 8b4fef2ef44ab5b438929f972c5f11ac4ab14935
   MMFileService: d7df67a54f14b7ff83ce13da95b473b85c062b86
   MMFrameworks: ee4b4853d45d64c4e2f0bcc7b3a5bc656d84e526
-  MMMedia: 5ddaca906ae56fc735e5bacde95aa2990ab8499d
+  MMMedia: 3a55b09195282800e6c90d387f02a49be3501832
   MMVideoSDK: e8e3c49157661c96fc51362cdf077b6789aef71d
   MMXEScene: 3c4c7d1f7d40619d1c3d2e0986da929cadd83a15
   openssl-lib: e3f61a10280caf261c0e4c6b3e720aa94825f07a
