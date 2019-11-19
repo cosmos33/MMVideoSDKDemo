@@ -5,32 +5,29 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "71E39065-3FA3-486E-8EB8-E91318E2BDDF"
+            uuid = "32989B8E-19B5-4E92-9E6A-CE0849C56E3C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            symbolName = "- [MDCameraDetectorPipline faceFeatureWithPixelBuffer:]"
-            moduleName = "">
-            <Locations>
-            </Locations>
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "250DF1D4-CE13-4F18-8578-1BBE4002F64F"
-            shouldBeEnabled = "No"
+            uuid = "993B75D6-AE4C-4FF5-B893-DF568A57BAB6"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RecordSDKUI/BaseUI/Recording/MM/Controller/MDMomentRecordHandler.m"
-            timestampString = "585143654.729605"
+            filePath = "MDRecordSDK/ViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "-initWithContentView:maxRecordDuration:cameraPosition:openXengine:"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
