@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class MDRStickerViewController, MDRecordDynamicSticker;
+@class MDRStickerViewController, MDRecordDynamicSticker, MDVideoEditorAdapter;
 
 @protocol MDRStickerViewControllerDelegate <NSObject>
 
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MDRStickerViewController : MDViewController
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithPlayerViewController:(UIViewController *)playerViewController asset:(AVAsset *)asset;
+- (instancetype)initWithAdapter:(MDVideoEditorAdapter *)adapter asset:(AVAsset *)asset;
 
 @property (nonatomic, weak, nullable) id<MDRStickerViewControllerDelegate> delegate;
 @property (nonatomic, assign) NSUInteger maxStickerCount;

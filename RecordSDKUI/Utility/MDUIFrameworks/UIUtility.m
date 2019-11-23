@@ -90,7 +90,14 @@ static float _systemVersionFloat;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         MDRecordUIDevicePlatform type = (MDRecordUIDevicePlatform)[[UIDevice currentDevice] platformType];
-        if (type == MDRecordUIDeviceXiPhone || type == MDRecordUIDeviceXSiPhone || type == MDRecordUIDeviceXSMaxiPhone || type == MDRecordUIDeviceXRiPhone) {
+        
+        if (type == MDRecordUIDeviceXiPhone ||
+            type == MDRecordUIDeviceXSiPhone ||
+            type == MDRecordUIDeviceXSMaxiPhone ||
+            type == MDRecordUIDeviceXRiPhone ||
+            type == MDRecordUIDevice11iPhone ||
+            type == MDRecordUIDevice11ProiPhone ||
+            type == MDRecordUIDevice11ProMaxiPhone) {
             x = YES;
         } else if (type == MDRecordUIDeviceiPhoneSimulatoriPhone && (CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(375.f, 812.f)) || CGSizeEqualToSize([[UIScreen mainScreen] bounds].size, CGSizeMake(414.f, 896.f)))) {
             x = YES;

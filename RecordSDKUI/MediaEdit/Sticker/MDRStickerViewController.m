@@ -17,6 +17,7 @@
 #import "Toast/Toast.h"
 @import FaceDecorationKit;
 @import FaceDecorationKitGPUImage;
+@import RecordSDK;
 
 static NSUInteger kMaxStickerNumber = 3;
 
@@ -49,16 +50,19 @@ static NSUInteger kMaxStickerNumber = 3;
     
 }
 
-- (instancetype)initWithPlayerViewController:(UIViewController *)playerViewController asset:(AVAsset *)asset {
+- (instancetype)initWithAdapter:(MDVideoEditorAdapter *)adapter asset:(AVAsset *)asset {
     self = [super init];
     if (self) {
-        _playerController = playerViewController;
+        _playerController = adapter.playerViewController;
         
-        AVAssetTrack *track = [asset tracksWithMediaType:AVMediaTypeVideo].firstObject;
-        CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
-        presentationSize.width = ABS(presentationSize.width);
-        presentationSize.height = ABS(presentationSize.height);
-        _videoSize = presentationSize;
+        _videoSize = [adapter videoDisplaySize];
+        if (CGSizeEqualToSize(_videoSize, CGSizeZero)) {
+            AVAssetTrack *track = [asset tracksWithMediaType:AVMediaTypeVideo].firstObject;
+            CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+            presentationSize.width = ABS(presentationSize.width);
+            presentationSize.height = ABS(presentationSize.height);
+            _videoSize = presentationSize;
+        }
         
         _asset = asset.copy;
         

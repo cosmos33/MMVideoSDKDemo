@@ -1,0 +1,13 @@
+{
+    "name": "018",
+    "preprocessingUnits": [
+    ],
+    "postprocessingUnits": [
+        {
+            "name": "CXRandomSeedFilmGrainFilter",
+            "parameters": {
+                "amountScale": 0.6
+            }
+        }
+    ]
+}

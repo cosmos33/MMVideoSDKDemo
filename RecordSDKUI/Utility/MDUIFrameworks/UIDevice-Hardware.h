@@ -30,6 +30,9 @@
 #define IPHONE_XS_NAMESTRING            @"iPhone XS"
 #define IPHONE_XSMAX_NAMESTRING         @"iPhone XS Max"
 #define IPHONE_XR_NAMESTRING            @"iPhone XR"
+#define IPHONE_11_NAMESTRING            @"iPhone 11"
+#define IPHONE_11PRO_NAMESTRING         @"iPhone 11 Pro"
+#define IPHONE_11PROMAX_NAMESTRING      @"iPhone 11 Pro Max"
 #define IPHONE_UNKNOWN_NAMESTRING       @"Unknown iPhone"
 
 #define IPOD_1G_NAMESTRING              @"iPod touch 1G"
@@ -100,6 +103,9 @@ typedef enum {
     MDRecordUIDeviceXSiPhone,
     MDRecordUIDeviceXSMaxiPhone,
     MDRecordUIDeviceXRiPhone,
+    MDRecordUIDevice11iPhone,
+    MDRecordUIDevice11ProiPhone,
+    MDRecordUIDevice11ProMaxiPhone,
     
     MDRecordUIDevice1GiPod,
     MDRecordUIDevice2GiPod,

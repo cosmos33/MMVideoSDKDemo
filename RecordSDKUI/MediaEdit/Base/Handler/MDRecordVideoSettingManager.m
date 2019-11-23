@@ -10,6 +10,7 @@
 
 static NSInteger _exportFrameRate = 0;
 static NSInteger _exportBitRate = 0;
+static BOOL _enableBgBlur = NO;
 
 @implementation MDRecordVideoSettingManager
 
@@ -27,6 +28,14 @@ static NSInteger _exportBitRate = 0;
 
 + (NSInteger)exportBitRate {
     return _exportBitRate;
+}
+
++ (void)setEnableBlur:(BOOL)enableBlur {
+    _enableBgBlur = enableBlur;
+}
+
++ (BOOL)enableBlur {
+    return _enableBgBlur;
 }
 
 @end

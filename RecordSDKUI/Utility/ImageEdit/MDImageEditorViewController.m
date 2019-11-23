@@ -38,6 +38,7 @@
 #import "Toast/Toast.h"
 
 #import "MDRecordCropImageViewController.h"
+#import "MDRecordVideoSettingManager.h"
 
 @import MomoCV;
 @import FaceDecorationKitMomoCV;
@@ -178,6 +179,10 @@ MDRecordCropImageViewControllerDelegate
 
         }];
         
+        if (MDRecordVideoSettingManager.enableBlur) {
+            self.adapter.outputImageSize = CGSizeMake(720, 1280);
+        }
+        
         NSAssert(completeBlock, @"completeBlock can not be nil");
     }
     return self;
@@ -267,7 +272,8 @@ MDRecordCropImageViewControllerDelegate
     
     _cropImage = image;
     
-    self.contentView.frame = [self renderFrameForImage:image];
+    CGSize size = MDRecordVideoSettingManager.enableBlur ? self.adapter.outputImageSize : image.size;
+    self.contentView.frame = [self renderFrameForSize:size];
     self.previewView.frame = self.contentView.bounds;
     
     self.customContentView.frame = self.contentView.frame;
@@ -408,7 +414,8 @@ MDRecordCropImageViewControllerDelegate
 - (UIView *)contentView
 {
     if (!_contentView) {
-        _contentView = [[UIView alloc] initWithFrame:[self renderFrame]];
+        CGSize size = MDRecordVideoSettingManager.enableBlur ? self.adapter.outputImageSize : self.originImage.size;
+        _contentView = [[UIView alloc] initWithFrame:[self renderFrameForSize:size]];
         _contentView.backgroundColor = [UIColor clearColor];
         _contentView.center = self.view.center;
     }
@@ -1216,18 +1223,14 @@ MDRecordCropImageViewControllerDelegate
     }
 }
 
-- (CGRect)renderFrame {
-    return [self renderFrameForImage:_originImage];
-}
-
-- (CGRect)renderFrameForImage:(UIImage *)image {
+- (CGRect)renderFrameForSize:(CGSize)size {
     CGRect result = CGRectZero;
     
-    if (image.size.width > 0 && image.size.height > 0) {
+    if (size.width > 0 && size.height > 0) {
         
-        CGFloat widthRatio = image.size.width/MDScreenWidth;
-        CGFloat heightRatio = image.size.height/MDScreenHeight;
-        CGFloat imageRatio = image.size.width/image.size.height;
+        CGFloat widthRatio = size.width/MDScreenWidth;
+        CGFloat heightRatio = size.height/MDScreenHeight;
+        CGFloat imageRatio = size.width/size.height;
         
         CGFloat newWidth = 0;
         CGFloat newHeight = 0;
@@ -1253,7 +1256,7 @@ MDRecordCropImageViewControllerDelegate
     if (!self.stickerMask) {
         self.stickerMask = [[UIView alloc] initWithFrame:self.view.bounds];
         self.stickerMask.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
-        CGRect videoRegion = [self renderFrame];
+        CGRect videoRegion = self.contentView.bounds;
         
         //背景
         UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.stickerMask.bounds cornerRadius:.0f];

@@ -8,7 +8,6 @@
 
 #import "MDRecordBeautySettingDataManager.h"
 #import "MDBeautySettings.h"
-#import "UIDevice-Hardware.h"
 #import "MDRecordHeader.h"
 
 @import CXBeautyKit;

@@ -1,15 +1,15 @@
 //
-//  MDCameraEditorContext+MDAudioPitch.m
-//  MDChat
+//  MDRCameraEngine+MDAudioPitch.m
+//  MDRecordSDK
 //
-//  Created by sunfei on 2019/1/29.
-//  Copyright © 2019 sdk.com. All rights reserved.
+//  Created by 符吉胜 on 2019/11/7.
+//  Copyright © 2019 sunfei. All rights reserved.
 //
 
-#import "MDRecordingAdapter+MDAudioPitch.h"
+#import "MDRCameraEngine+MDAudioPitch.h"
 #import "MDMediaKit.h"
 
-@implementation MDRecordingAdapter (MDAudioPitch)
+@implementation MDRCameraEngine (MDAudioPitch)
 
 - (NSURL *)tempPCMUrlForSourceAudio {
     NSString *sourcePCMPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"sourceAudio.pcm"];

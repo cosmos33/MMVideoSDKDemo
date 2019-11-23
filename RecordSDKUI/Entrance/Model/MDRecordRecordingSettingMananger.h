@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <RecordSDK/MDRCommonDefine.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,8 +35,9 @@ typedef NS_ENUM(NSUInteger, MDRecordRecordingResolution) {
 @property (nonatomic, assign, class) MDRecordScreenRatio ratio;
 @property (nonatomic, assign, class) MDRecordRecordingResolution resolution;
 
-@property (nonatomic, readonly, class) NSString *cameraPreset;
+@property (nonatomic, readonly, class) MDRCaptureResolutionType cameraPreset;
 @property (nonatomic, readonly, class) CGSize exportResolution;
+@property (nonatomic, readonly, class) MDRRatio videoRatioValue;
 
 @end
 

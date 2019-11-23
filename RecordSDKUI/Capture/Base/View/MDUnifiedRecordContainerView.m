@@ -18,8 +18,6 @@
 #import "MDMoment3DTouchView.h"
 #import "MUAt8AlertBarModel.h"
 #import "Toast/Toast.h"
-//数码宝贝
-#import "MDStrokeLabel.h"
 
 #define kDefaultTopEdge 15.0f
 #define kTopEdge (IS_IPHONE_X ? (kDefaultTopEdge + 44) : kDefaultTopEdge)
@@ -59,7 +57,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 @property (nonatomic,strong) MDUnifiedRecordRightView               *currentRightView;
 
 @property (nonatomic,strong) UIImageView                            *cameraFocusView; //聚焦圆圈视图
-@property (nonatomic,strong) MDRecordExposureAdjustSlider             *exposureSlider;
+@property (nonatomic,strong) MDRecordExposureAdjustSlider           *exposureSlider;
 @property (nonatomic,strong) MDFaceDetectView                       *faceDecorationTipView;  //变脸露脸等提示
 
 @property (nonatomic,strong) UIView                                 *highMiddleBottomBgView;  //高级拍摄拍摄按钮上方的背景视图
@@ -79,8 +77,6 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 
 //拍摄类型
 @property (nonatomic,assign) MDUnifiedRecordLevelType               levelType;
-//引导模块
-@property (nonatomic,strong) MDRecordGuideTipsManager               *guideTipsManager;
 //屏幕是否是垂直的
 @property (nonatomic,assign) BOOL                                   isVertical;
 
@@ -91,9 +87,6 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 
 @property (nonatomic, strong) UIView                               *topCoverView;
 @property (nonatomic, strong) UIView                               *bottomCoverView;
-
-//数码宝贝用拍摄按钮
-@property (nonatomic, strong) UIButton                             *petRecordButton;
 
 @property (nonatomic, assign) BOOL                                  fromAlbum;
 @end
@@ -109,7 +102,6 @@ static const NSInteger kFilterGuideTipViewTag = 40;
         _isVertical = YES;
         
         self.previousSeconds = -1;
-        [self setupGuideTipsManager];
         [self configUI];
     }
     return self;
@@ -124,7 +116,6 @@ static const NSInteger kFilterGuideTipViewTag = 40;
         _isVertical = YES;
         
         self.previousSeconds = -1;
-        [self setupGuideTipsManager];
         [self configUI];
     }
     return self;
@@ -132,12 +123,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 
 - (void)dealloc
 {
-}
-
-- (void)setupGuideTipsManager
-{
-    _guideTipsManager = [[MDRecordGuideTipsManager alloc] init];
-    _guideTipsManager.delegate = self;
+    NSLog(@"%s",__func__);
 }
 
 #pragma mark - configUI
@@ -313,7 +299,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 
 - (MDUnifiedRecordTopView *)topViewWithLevelType:(MDUnifiedRecordLevelType)levelType
 {
-    MDUnifiedRecordTopView *topView = [[MDUnifiedRecordTopView alloc] initWithFrame:CGRectZero andGuideTipsManager:_guideTipsManager];
+    MDUnifiedRecordTopView *topView = [[MDUnifiedRecordTopView alloc] initWithFrame:CGRectZero andGuideTipsManager:nil];
     topView.delegate = self;
     topView.top = kTopEdge;
     
@@ -329,7 +315,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 
 - (MDUnifiedRecordRightView *)rightViewWithLevelType:(MDUnifiedRecordLevelType)levelType
 {
-    MDUnifiedRecordRightView *rightView = [[MDUnifiedRecordRightView alloc] initWithFrame:CGRectZero andGuideTipsManager:_guideTipsManager];
+    MDUnifiedRecordRightView *rightView = [[MDUnifiedRecordRightView alloc] initWithFrame:CGRectZero andGuideTipsManager:nil];
     rightView.delegate = self;
     rightView.top = kRightViewTopEdge;
     
@@ -705,9 +691,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 
 - (void)didTapCountDownView:(UIImageView *)view
 {
-//    if ([self.delegate respondsToSelector:@selector(didTapCountDownView:)]) {
-//        [self.delegate didTapCountDownView:view];
-//    }
+
 }
 
 #pragma mark - MDUnifiedRecordRightViewDelegate
@@ -1222,7 +1206,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
     
     MDUnifiedRecordTopView *nextTopView = (_levelType == MDUnifiedRecordLevelTypeHigh) ? self.topViewForNormal : self.topViewForHigh;
     MDUnifiedRecordRightView *nextRightView = (_levelType == MDUnifiedRecordLevelTypeHigh) ? self.rightViewForNormal : self.rightViewForHigh;
-    MDUnifiedRecordLevelType *nextRecordLevelType = (_levelType == MDUnifiedRecordLevelTypeHigh) ? MDUnifiedRecordLevelTypeNormal : MDUnifiedRecordLevelTypeHigh;
+    MDUnifiedRecordLevelType nextRecordLevelType = (_levelType == MDUnifiedRecordLevelTypeHigh) ? MDUnifiedRecordLevelTypeNormal : MDUnifiedRecordLevelTypeHigh;
     
     CGFloat changePercent = MIN(ABS(offset) / (MDScreenWidth / 1.5f), 1.0);
     CGFloat alpha = changePercent;

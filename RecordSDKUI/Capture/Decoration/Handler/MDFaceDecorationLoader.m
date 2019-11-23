@@ -8,7 +8,7 @@
 
 #import "MDFaceDecorationLoader.h"
 #import "MDRSimpleHttpFetcher.h"
-@import MomoCVCenter;
+@import MCCSecret;
 
 static NSString *fd_randomString(int len);
 static NSString * fd_urlencode(NSString *content);
@@ -77,7 +77,7 @@ static NSString * const MM_FACE_DECORATION_PUBLIC_KEY = @"MFwwDQYJKoZIhvcNAQEBBQ
     NSString *aesKey = fd_randomString(8);
     NSString *mscStr = [MCCSecretRSA mcc_encryptString:aesKey publicKey:MM_FACE_DECORATION_PUBLIC_KEY];
     NSDictionary *dic = @{
-                          APPID : @"100cb616072fdc76c983460b8c2b470a",
+                          APPID : @"9dac61837c9bc9eba14f8a32584bde1f",
                           DEVICEID : [UIDevice currentDevice].identifierForVendor.UUIDString,
                           };
     

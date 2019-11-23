@@ -51,60 +51,59 @@ static NSString * const kMDAssetCompressInfoKeyFileSize = @"fileSize";
 - (BOOL)needCompressWithAsset:(AVAsset *)asset
                      mediaURL:(NSURL *)mediaURL
 {
-    return NO;
     
-//    BOOL result = NO;
-//    
-//    AVAssetTrack *track = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
-//    CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
-//    presentationSize.width = ABS(presentationSize.width);
-//    presentationSize.height = ABS(presentationSize.height);
-//    CGFloat videoSize = presentationSize.width * presentationSize.height;
-//    
-//    NSMutableDictionary *compressorDict = [NSMutableDictionary dictionary];
-//    NSDictionary *dict = [[self class] compressStrategyDict];
-//    
-//    //判断分辨率
-//    CGFloat maxVideoSize = [dict floatForKey:kMDAssetCompressInfoKeyVideoSize defaultValue:0];
-//    if (videoSize > maxVideoSize) {
-//        CGFloat scale = sqrt(videoSize/maxVideoSize);
-//        presentationSize.width = roundf(presentationSize.width / scale);
-//        presentationSize.height = roundf(presentationSize.height / scale);
-//        if ((int)presentationSize.width%4 !=0) {
-//            presentationSize.width = floor(presentationSize.width/4)*4;
-//        }
-//        if ((int)presentationSize.height%4 !=0) {
-//            presentationSize.height = floor(presentationSize.height/4)*4;
-//        }
-//        result = YES;
-//    }
-//    [compressorDict setObject:[NSValue valueWithCGSize:presentationSize] forKey:kMDAssetCompressInfoKeyVideoSize];
-//
-//    //判断文件大小
-//    NSDictionary *resourceValues = [mediaURL resourceValuesForKeys:@[NSURLFileSizeKey,NSURLTotalFileSizeKey] error:nil];
-//    unsigned long long originalFileSize = [resourceValues longLongValueForKey:NSURLFileSizeKey defaultValue:0] ?: [resourceValues longLongValueForKey:NSURLTotalFileSizeKey defaultValue:0];
-//    unsigned long long maxFileSize = [dict longLongValueForKey:kMDAssetCompressInfoKeyFileSize defaultValue:0];
-//    if (originalFileSize > maxFileSize) {
-//        unsigned long long maxDataRate = [dict longLongValueForKey:kMDAssetCompressInfoKeyBitRate defaultValue:0];
-//        [compressorDict setObject:@(maxDataRate) forKey:kMDAssetCompressInfoKeyBitRate];
-//        result = YES;
-//    }
-//    
-//    //判断帧率
-//    CGFloat maxFrameRate = [dict floatForKey:kMDAssetCompressInfoKeyFrameRate defaultValue:0];
-//    if (floor([track nominalFrameRate]) > maxFrameRate) {
-//        [compressorDict setObject:@(maxFrameRate) forKey:kMDAssetCompressInfoKeyFrameRate];
-//        result = YES;
-//    }
-//    
-//    //判断编码格式
-//    AVVideoCodecType codecType = [self videoCodecTypeWithAsset:asset];
-//    if (![codecType isEqualToString:AVVideoCodecH264]) {
-//        result = YES;
-//    }
-//    
-//    self.compressorDict = [compressorDict copy];
-//    return result;
+    BOOL result = NO;
+    
+    AVAssetTrack *track = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+    presentationSize.width = ABS(presentationSize.width);
+    presentationSize.height = ABS(presentationSize.height);
+    CGFloat videoSize = presentationSize.width * presentationSize.height;
+    
+    NSMutableDictionary *compressorDict = [NSMutableDictionary dictionary];
+    NSDictionary *dict = [[self class] compressStrategyDict];
+    
+    //判断分辨率
+    CGFloat maxVideoSize = [dict floatForKey:kMDAssetCompressInfoKeyVideoSize defaultValue:0];
+    if (videoSize > maxVideoSize) {
+        CGFloat scale = sqrt(videoSize/maxVideoSize);
+        presentationSize.width = roundf(presentationSize.width / scale);
+        presentationSize.height = roundf(presentationSize.height / scale);
+        if ((int)presentationSize.width%4 !=0) {
+            presentationSize.width = floor(presentationSize.width/4)*4;
+        }
+        if ((int)presentationSize.height%4 !=0) {
+            presentationSize.height = floor(presentationSize.height/4)*4;
+        }
+        result = YES;
+    }
+    [compressorDict setObject:[NSValue valueWithCGSize:presentationSize] forKey:kMDAssetCompressInfoKeyVideoSize];
+
+    //判断文件大小
+    NSDictionary *resourceValues = [mediaURL resourceValuesForKeys:@[NSURLFileSizeKey,NSURLTotalFileSizeKey] error:nil];
+    unsigned long long originalFileSize = [resourceValues longLongValueForKey:NSURLFileSizeKey defaultValue:0] ?: [resourceValues longLongValueForKey:NSURLTotalFileSizeKey defaultValue:0];
+    unsigned long long maxFileSize = [dict longLongValueForKey:kMDAssetCompressInfoKeyFileSize defaultValue:0];
+    if (originalFileSize > maxFileSize) {
+        unsigned long long maxDataRate = [dict longLongValueForKey:kMDAssetCompressInfoKeyBitRate defaultValue:0];
+        [compressorDict setObject:@(maxDataRate) forKey:kMDAssetCompressInfoKeyBitRate];
+        result = YES;
+    }
+    
+    //判断帧率
+    CGFloat maxFrameRate = [dict floatForKey:kMDAssetCompressInfoKeyFrameRate defaultValue:0];
+    if (floor([track nominalFrameRate]) > maxFrameRate) {
+        [compressorDict setObject:@(maxFrameRate) forKey:kMDAssetCompressInfoKeyFrameRate];
+        result = YES;
+    }
+    
+    //判断编码格式
+    AVVideoCodecType codecType = [self videoCodecTypeWithAsset:asset];
+    if (![codecType isEqualToString:AVVideoCodecH264]) {
+        result = YES;
+    }
+    
+    self.compressorDict = [compressorDict copy];
+    return result;
 }
 
 

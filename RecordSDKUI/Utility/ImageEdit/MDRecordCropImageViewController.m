@@ -130,7 +130,7 @@
 }
 
 - (void)recoverButtonTapped {
-    [self.imageresizerView recovery];
+//    [self.imageresizerView recovery];
     self.recoverButton.enabled = NO;
 }
 

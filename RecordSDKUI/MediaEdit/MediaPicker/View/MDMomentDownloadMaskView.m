@@ -70,8 +70,9 @@ static const CGFloat kContainerH = kContainerW;
     CGRect rect = [MDRecordContext appWindow].bounds;
     CGRect clipRect = self.containerView.frame;
     
+    UIVisualEffectView *view = [[UIVisualEffectView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    [self.blurView drawViewHierarchyInRect:rect afterScreenUpdates:NO];
+    [view drawViewHierarchyInRect:rect afterScreenUpdates:YES];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

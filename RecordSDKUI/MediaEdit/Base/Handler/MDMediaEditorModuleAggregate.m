@@ -191,17 +191,25 @@ static const NSInteger kMaxImageStickerCount = 20;
         self.document.backgroundMusicVolume = 1.0;
     }
     
-    AVAssetTrack *track = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] firstObject];
-    CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
-    presentationSize.width = ABS(presentationSize.width);
-    presentationSize.height = ABS(presentationSize.height);
-    _videoSize = presentationSize;
+    if (MDRecordVideoSettingManager.enableBlur) {
+        [self.adapter setVideoDisplaySize:CGSizeMake(720, 1280)];
+    }
     
+    _videoSize = [self.adapter videoDisplaySize];
+    if (CGSizeEqualToSize(_videoSize, CGSizeZero)) {
+        AVAssetTrack *track = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+        CGSize presentationSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+        presentationSize.width = ABS(presentationSize.width);
+        presentationSize.height = ABS(presentationSize.height);
+        _videoSize = presentationSize;
+    }
+
     [self setupMusicPicker];
     [self.musicSelectPicker setOriginDefaultMusicVolume:self.document.backgroundMusicVolume];
     [self.musicSelectPicker updateMusicItem:musicItem timeRange:musicTimeRange];
     
     [self updateComposition];
+    
 }
 
 - (void)releaseSetAfterEditing {
@@ -567,8 +575,8 @@ static const NSInteger kMaxImageStickerCount = 20;
 
 - (void)setupStickerChooseController {
     if (!_stickerViewController) {
-        _stickerViewController = [[MDRStickerViewController alloc] initWithPlayerViewController:self.adapter.playerViewController
-                                                                                          asset:self.document.asset];
+        _stickerViewController = [[MDRStickerViewController alloc] initWithAdapter:self.adapter
+                                                                             asset:self.document.asset];
         _stickerViewController.delegate = self;
     }
     
@@ -750,8 +758,8 @@ static const NSInteger kMaxImageStickerCount = 20;
     [self updateComposition];
     
     // 不再调用stop或者replay临时解决因为调用pause再调用compositeVideoWithError: 造成视频卡住，mediaServiceWereReset & mediaServiceWereLost的问题
-    [self.adapter seekTime:kCMTimeZero];
-    [self play];
+//    [self.adapter seekTime:kCMTimeZero];
+    [self.adapter replay];
 }
 
 #pragma mark - 封面选取相关
@@ -835,7 +843,7 @@ static const NSInteger kMaxImageStickerCount = 20;
     BBMediaGraffitiEditorViewController *graffitiEditorVC = [[BBMediaGraffitiEditorViewController alloc] init];
     graffitiEditorVC.initialGraffitiCanvasImage = self.initialGraffitiCanvasImage;
     graffitiEditorVC.initialMosaicCanvasImage = self.adapter.mosaicCanvasImage;
-    graffitiEditorVC.renderFrame = [self.adapter videoRenderFrame];
+    graffitiEditorVC.renderFrame = [self videoRenderFrame];
     
     [self.delegate willShowGraffitiEditor];
     
@@ -1123,12 +1131,7 @@ static const NSInteger kMaxImageStickerCount = 20;
         }
     }
     
-    CGSize presentationSize = CGSizeApplyAffineTransform(naturalSize, self.document.videoPreferredTransform);
-    presentationSize.width = ABS(presentationSize.width);
-    presentationSize.height = ABS(presentationSize.height);
-    if (presentationSize.width <= 0 || presentationSize.height <= 0 ) {
-        presentationSize = CGSizeMake(720, 1280);
-    }
+    CGSize presentationSize = CGSizeMake(720, 1280);
     
     if (fabsf(sourceBitRate) <= 0.00001f) {
         sourceBitRate = (3.0 * 1024 * 1024);
@@ -1153,12 +1156,11 @@ static const NSInteger kMaxImageStickerCount = 20;
         [self.adapter setTargetBitRate:MDRecordVideoSettingManager.exportBitRate];
     }
     // 设置导出视频大小
-//    [self.adapter setPresentationSize:presentationSize];
+//    [self.adapter setPresentationSize:[self.adapter videoDisplaySize]];
     // 设置导出帧率
     [self.adapter setTargetFrameRate:MDRecordVideoSettingManager.exportFrameRate ?: 30];
     // 设置是否需要经过滤镜
-    BOOL needFilterEffect = self.stickers.count > 0 || self.document.customOverlay || [self needBeautySettingFilter] || self.document.hasPictureSpecialEffects;
-    [self.adapter enableFilterEffect:needFilterEffect];
+    [self.adapter enableFilterEffect:YES];
     
 }
 
