@@ -29,7 +29,7 @@
 }
 
 - (void)setupFaceDetector {
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
 //    [MDContext faceDetectorManager].delegate = self;
     
 //    self.faceDetector = [[MDDetectorManger shared] makeFaceDetector];
@@ -163,6 +163,9 @@ static void PixelBufferReleaseBytesCallback(void * CV_NULLABLE releaseRefCon, co
         case MDRecordUIDeviceXSiPhone:
         case MDRecordUIDeviceXSMaxiPhone:
         case MDRecordUIDeviceXRiPhone:
+        case MDRecordUIDevice11iPhone:
+        case MDRecordUIDevice11ProiPhone:
+        case MDRecordUIDevice11ProMaxiPhone:
             width = 500;
             break;
         default:

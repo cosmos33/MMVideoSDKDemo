@@ -989,7 +989,6 @@
     
     //开始底部切换动画
     [self.bottomView updateLayoutWithSelectedTap:toType];
-//    [[MDContext currentUser].dbStateHoldProvider setLastMomentRecordLevel:toType];
 }
 
 
@@ -1010,11 +1009,20 @@
         self.containerView.loadingTipView.hidden = YES;
     }
     
+    BOOL changeCameraPresetResult = NO;
+    
     //变速根据不同拍摄界面设置
     if (levelType == MDUnifiedRecordLevelTypeNormal) {
         [self.moduleAggregate speedVaryShouldAllow:YES];
+        changeCameraPresetResult = [self.moduleAggregate restartCapturingWithCameraPreset:AVCaptureSessionPreset1920x1080];
     } else {
         [self.moduleAggregate speedVaryShouldAllow:YES];
+        changeCameraPresetResult = [self.moduleAggregate restartCapturingWithCameraPreset:AVCaptureSessionPreset1280x720];
+    }
+    
+    //TODO:采样率更改成功
+    if (changeCameraPresetResult) {
+        
     }
     
     

@@ -95,6 +95,10 @@
     view2.translatesAutoresizingMaskIntoConstraints = NO;
     [visualEffectView.contentView addSubview:view2];
     
+    UIView *view3 = [self toggleBlurWithTitle:@"启用背景模糊: "];
+    view3.translatesAutoresizingMaskIntoConstraints = NO;
+    [visualEffectView.contentView addSubview:view3];
+    
     UIButton *completeButton = [self createSelectItemButtonWithTitle:@"导入编辑" tag:10010];
     completeButton.translatesAutoresizingMaskIntoConstraints = NO;
     [visualEffectView.contentView addSubview:completeButton];
@@ -121,6 +125,11 @@
     [view2.topAnchor constraintEqualToAnchor:view1.bottomAnchor constant:20].active = YES;
     [view2.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [view2.heightAnchor constraintEqualToConstant:80].active = YES;
+    
+    [view3.leftAnchor constraintEqualToAnchor:view1.leftAnchor].active = YES;
+    [view3.topAnchor constraintEqualToAnchor:view2.bottomAnchor constant:20].active = YES;
+    [view3.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [view3.heightAnchor constraintEqualToConstant:80].active = YES;
     
     [completeButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [completeButton.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:20].active = YES;
@@ -192,6 +201,32 @@
     textField.layer.cornerRadius = 5;
     
     return stackView;
+}
+
+- (UIView *)toggleBlurWithTitle:(NSString *)title {
+    UILabel *titleLabel = [self titleLabelWithTitle:title];
+    [titleLabel sizeToFit];
+    
+    UISwitch *toggle = [[UISwitch alloc] init];
+    toggle.translatesAutoresizingMaskIntoConstraints = NO;
+    toggle.on = MDRecordVideoSettingManager.enableBlur;
+    [toggle addTarget:self action:@selector(toggle:) forControlEvents:UIControlEventValueChanged];
+    
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[titleLabel, toggle]];
+    stackView.axis = UILayoutConstraintAxisHorizontal;
+    stackView.alignment = UIStackViewAlignmentCenter;
+    stackView.distribution = UIStackViewDistributionEqualSpacing;
+    if (@available(iOS 11.0, *)) {
+        stackView.spacing = UIStackViewSpacingUseSystem;
+    } else {
+        stackView.spacing = 8;
+    }
+
+    return stackView;
+}
+
+- (void)toggle:(UISwitch *)toggle {
+    MDRecordVideoSettingManager.enableBlur = toggle.on;
 }
 
 - (void)closeButtonTapped:(UIButton *)button {

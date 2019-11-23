@@ -543,8 +543,9 @@
 //将视图坐标大小, 映射到屏幕录制里的坐标
 - (CGRect)filterMapRectWithOriginFrame:(CGRect)frame {
     CGSize videoSize = self.moduleAggregate.videoSize;
-    CGRect renderFrame = self.moduleAggregate.videoRenderFrame;
-    CGSize renderSize = renderFrame.size;
+//    CGRect renderFrame = self.moduleAggregate.videoRenderFrame;
+//    CGSize renderSize = renderFrame.size;
+    CGSize renderSize = self.containerView.stickerAdjustView.bounds.size;
     
     CGFloat x = round((frame.origin.x / renderSize.width) * videoSize.width);
     CGFloat y = round((frame.origin.y / renderSize.height) * videoSize.height);

@@ -24,8 +24,8 @@
 @property (nonatomic, strong, readonly) MDRecordExposureAdjustSlider         *exposureSlider;
 @property (nonatomic,strong,readonly) MDUnifiedRecordTopView                 *currentTopView;
 @property (nonatomic,strong,readonly) MDUnifiedRecordRightView               *currentRightView;
-@property (nonatomic,strong, readonly) MDUnifiedRecordRightView               *rightViewForNormal;
-@property (nonatomic,strong, readonly) MDUnifiedRecordRightView               *rightViewForHigh;
+@property (nonatomic,strong, readonly) MDUnifiedRecordRightView              *rightViewForNormal;
+@property (nonatomic,strong, readonly) MDUnifiedRecordRightView              *rightViewForHigh;
 
 @property (nonatomic,strong,readonly) UILabel                                *loadingTipView;
 //供视频渲染输出

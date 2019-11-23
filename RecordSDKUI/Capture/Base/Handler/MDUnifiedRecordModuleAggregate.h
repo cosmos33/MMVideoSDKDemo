@@ -12,7 +12,6 @@
 #import "MDRecordVideoResult.h"
 #import <RecordSDK/MDRecordCameraAdapter.h>
 #import <RecordSDK/MDRecordFilter.h>
-//#import <MomoCV/MomoCV.h>
 @import MomoCV;
 
 @class MDUnifiedRecordViewController;
@@ -156,6 +155,7 @@
 
 //录制相关
 - (void)startCapturing;
+- (BOOL)restartCapturingWithCameraPreset:(AVCaptureSessionPreset)preset;
 - (void)pauseCapturing;
 - (void)stopCapturing;
 

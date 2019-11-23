@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign, class) NSInteger exportFrameRate;
 @property (nonatomic, assign, class) NSInteger exportBitRate;
+@property (nonatomic, assign, class) BOOL enableBlur;
 
 @end
 

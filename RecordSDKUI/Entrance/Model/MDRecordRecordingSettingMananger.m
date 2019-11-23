@@ -74,26 +74,26 @@ static MDRecordRecordingResolution _resolution = RecordingResolution1280x720;
     return _resolution;
 }
 
-+ (NSString *)cameraPreset {
++ (MDRCaptureResolutionType)cameraPreset {
     switch (self.resolution) {
         case RecordingResolution640x480:
-            return AVCaptureSessionPreset640x480;
+            return MDRCaptureResolutionType_480P;
             break;
             
         case RecordingResolution960x540:
-            return AVCaptureSessionPresetiFrame960x540;
+            return MDRCaptureResolutionType_540P;
             break;
             
         case RecordingResolution1280x720:
-            return AVCaptureSessionPreset1280x720;
+            return MDRCaptureResolutionType_720P;
             break;
             
         case RecordingResolution1920x1080:
-            return AVCaptureSessionPreset1920x1080;
+            return MDRCaptureResolutionType_1080P;
             break;
             
         default:
-            return AVCaptureSessionPreset1280x720;
+            return MDRCaptureResolutionType_720P;
             break;
     }
 }
@@ -133,6 +133,15 @@ static MDRecordRecordingResolution _resolution = RecordingResolution1280x720;
             return CGSizeMake(width, width);
     }
     return CGSizeMake(720, 1280);
+}
+
++ (MDRRatio)videoRatioValue {
+    switch (self.ratio) {
+        case RecordScreenRatio9to16: return MDRRatioMake(9, 16);
+        case RecordScreenRatio3to4: return MDRRatioMake(3, 4);
+        case RecordScreenRatio1to1: return MDRRatioMake(1, 1);
+        default: return MDRRatioZero;
+    }
 }
 
 @end

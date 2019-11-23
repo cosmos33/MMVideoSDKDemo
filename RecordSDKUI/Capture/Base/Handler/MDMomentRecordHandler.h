@@ -11,7 +11,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <RecordSDK/MDRecordCameraAdapter.h>
 #import <RecordSDK/MDRecordFilter.h>
-#import "MDMomentMakeupItem.h"
 #import <RecordSDK/MDRGift.h>
 @import MomoCV;
 
@@ -29,8 +28,7 @@
 @property (nonatomic, assign)           NSTimeInterval          recordDuration;
 @property (nonatomic, assign, readonly) BOOL                    stopMerge;
 @property (nonatomic, assign, readonly) NSInteger               soundEnergyRank;
-//
-@property (nonatomic, strong, readonly) id                      periodicTimeObserver;//配乐播放开始观察者
+@property (nonatomic, assign, readonly) BOOL                    isReadyToPlayMusic;
 
 //人脸是否有检测到
 @property (nonatomic, readonly)           BOOL                    isFaceCaptured;
@@ -153,7 +151,6 @@
 - (BOOL)hasPerSpeedEffect;
 
 // 美妆
-- (void)addMakeupEffectWithItem:(MDMomentMakeupItem *)item;
 - (void)removeAllMakeupEffect;
 
 // 背景模糊
@@ -166,5 +163,7 @@
 - (void)recordOrigin:(BOOL)enable;
 
 - (void)updateExposureBias:(float)bias;
+
+- (BOOL)restartCapturingWithCameraPreset:(AVCaptureSessionPreset)preset;
 
 @end

@@ -202,6 +202,9 @@
     if ([platform isEqualToString:@"iPhone11,4"] ||
         [platform isEqualToString:@"iPhone11,6"])   return MDRecordUIDeviceXSMaxiPhone;
     if ([platform isEqualToString:@"iPhone11,8"])   return MDRecordUIDeviceXRiPhone;
+    if ([platform isEqualToString:@"iPhone12,1"]) return MDRecordUIDevice11iPhone;
+    if ([platform isEqualToString:@"iPhone12,3"]) return MDRecordUIDevice11ProiPhone;
+    if ([platform isEqualToString:@"iPhone12,5"]) return MDRecordUIDevice11ProMaxiPhone;
     
     // iPod
     if ([platform hasPrefix:@"iPod1"])              return MDRecordUIDevice1GiPod;
@@ -322,6 +325,9 @@
         case MDRecordUIDeviceXSiPhone:  return IPHONE_XS_NAMESTRING;
         case MDRecordUIDeviceXSMaxiPhone: return IPHONE_XSMAX_NAMESTRING;
         case MDRecordUIDeviceXRiPhone:  return IPHONE_XR_NAMESTRING;
+        case MDRecordUIDevice11iPhone: return IPHONE_11_NAMESTRING;
+        case MDRecordUIDevice11ProiPhone: return IPHONE_11PRO_NAMESTRING;
+        case MDRecordUIDevice11ProMaxiPhone: return IPHONE_11PROMAX_NAMESTRING;
         case MDRecordUIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
             
         case MDRecordUIDevice1GiPod: return IPOD_1G_NAMESTRING;

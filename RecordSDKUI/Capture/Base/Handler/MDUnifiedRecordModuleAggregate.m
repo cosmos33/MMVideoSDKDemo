@@ -33,21 +33,18 @@
 #import "Toast/Toast.h"
 @import RecordSDK;
 
-#import "MDMomentMakeUpViewController.h"
-#import "MDMomentMakeupItem.h"
+#import "MDBackgroundMusicDownloader.h"
 #import "MDDecorationPannelView.h"
 
 #import "MDMusicEditPalletController.h"
 #import "MDMusicResourceUtility.h"
-#import "MDBackgroundMusicDownloader.h"
 
 @interface MDUnifiedRecordModuleAggregate()
 <
     MDRecordFilterDrawerControllerDelegate,
     BBMediaEditorSlidingOverlayViewDelegate,
     MDFaceDecorationDataHandleDelegate,
-MDMusicEditPalletControllerDelegate,
-MDMomentMakeUpViewControllerDelegate
+    MDMusicEditPalletControllerDelegate
 >
 
 @property (nonatomic,  weak) MDUnifiedRecordViewController<MDRecordModuleControllerDelegate>   *recordViewController;
@@ -58,7 +55,6 @@ MDMomentMakeUpViewControllerDelegate
 @property (nonatomic, assign) NSTimeInterval                            minDuration;
 //变脸模块 (不应该记录太多信息，待重构！！！)
 @property (nonatomic, strong) MDFaceDecorationDataHandle                *decorationDataHandler;
-//@property (nonatomic, strong) MDMomentFaceDecorationViewController      *faceDecorationVC;
 @property (nonatomic, strong) FDKDecoration                             *beautySettingDecoration;
 @property (nonatomic, strong) FDKDecoration                             *selectedDecoration;
 @property (nonatomic, strong) MDFaceDecorationItem                      *selectedDecorationItem;
@@ -86,9 +82,6 @@ MDMomentMakeUpViewControllerDelegate
 @property (nonatomic, strong) MDMusicEditPalletController           *musicSelectPicker;
 @property (nonatomic, strong) AVPlayer *musicPlayer;
 
-// 美妆
-@property (nonatomic, strong) MDMomentMakeUpViewController *makeupVC;
-
 @property (nonatomic, strong) MDRecordFilter *currentRecordFilter;
 
 @property (nonatomic, strong) MDDecorationPannelView *decorationView;
@@ -115,7 +108,7 @@ MDMomentMakeUpViewControllerDelegate
         _decorationDataHandler = [[MDFaceDecorationDataHandle alloc] initWithFilterARDecoration:!supportRotateCamera];
         _decorationDataHandler.delegate = self;
         
-        _beautySettingDict = [@{@"MDBeautySettingsEyesEnhancementAmountKey":@3, @"MDBeautySettingsFaceThinningAmountKey":@3, @"MDBeautySettingsLongLegAmountKey":@-1, @"MDBeautySettingsSkinSmoothingAmountKey":@3, @"MDBeautySettingsSkinWhitenAmountKey":@3, @"MDBeautySettingsThinBodyAmountKey":@-1} mutableCopy]; //[[[[MDContext currentUser] dbStateHoldProvider] beautySettingsDic] mutableCopy];
+        _beautySettingDict = [@{@"MDBeautySettingsEyesEnhancementAmountKey":@3, @"MDBeautySettingsFaceThinningAmountKey":@3, @"MDBeautySettingsLongLegAmountKey":@-1, @"MDBeautySettingsSkinSmoothingAmountKey":@3, @"MDBeautySettingsSkinWhitenAmountKey":@3, @"MDBeautySettingsThinBodyAmountKey":@-1} mutableCopy];
         
         [self addNotificationObserver];
     }
@@ -289,6 +282,11 @@ MDMomentMakeUpViewControllerDelegate
     }
 }
 
+- (BOOL)restartCapturingWithCameraPreset:(AVCaptureSessionPreset)preset
+{
+    return [self.recordHandler restartCapturingWithCameraPreset:preset];
+}
+
 - (void)pauseCapturing
 {
     [self.recordHandler pauseCapturing];
@@ -378,7 +376,7 @@ MDMomentMakeUpViewControllerDelegate
 
 - (BOOL)switchRecordingStatus
 {
-    if (self.recordHandler.isRecording || self.recordHandler.periodicTimeObserver) {
+    if (self.recordHandler.isRecording || self.recordHandler.isReadyToPlayMusic) {
         [self pauseRecording];
         return NO;
     } else if (self.countDownType != MDVideoRecordCountDownType_None){
@@ -556,45 +554,15 @@ MDMomentMakeUpViewControllerDelegate
 #pragma mark - 美妆
 
 - (void)activateMakeUpViewController {
-    if (!_makeupVC) {
-        _makeupVC = [[MDMomentMakeUpViewController alloc] init];
-        _makeupVC.delegate = self;
-        [self.recordViewController.view addSubview:_makeupVC.view];
-        [self.recordViewController addChildViewController:_makeupVC];
-    }
-    
-    if (_makeupVC.isAnimating) {
-        return;
-    }
-    
-    if (self.makeupVC.isShowed) {
-        [self updateUiForBeforeSubViewIsShow:NO completeBlock:nil];
-        return;
-    }
-    
-    __weak typeof(self) weakSelf = self;
-    [self updateUiForBeforeSubViewIsShow:YES completeBlock:^{
-        [weakSelf.makeupVC showAnimate];
-    }];
+
 }
 
 // delegates
-
-- (void)clickWithVC:(MDMomentMakeUpViewController *)vc item:(MDMomentMakeupItem *)item {
-    [self.recordHandler addMakeupEffectWithItem:item];
-}
-
-- (void)clearWithVC:(MDMomentMakeUpViewController *)vc {
-    [self.recordHandler removeAllMakeupEffect];
-}
 
 #pragma mark - 变脸模块
 
 - (void)activateAutoFaceDecorationWithFaceID:(NSString *)faceID classID:(NSString *)classID
 {
-    BOOL isGreyUser = NO; //[[[MDContext currentUser] dbStateHoldProvider] isGreyForFaceDecorationBar];
-    BOOL hasEverUseDecoration = NO; //[[[MDContext currentUser] dbStateHoldProvider] hasEverUseFaceDecoration];
-    
     if (![faceID isNotEmpty] && [classID isNotEmpty]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self activateFaceDecoration];
@@ -610,10 +578,6 @@ MDMomentMakeUpViewControllerDelegate
         [self.decorationDataHandler drawerDidSelectedItem:item];
         self.decorationDataHandler.currentSelectItem = item;
         
-    }
-    else if (isGreyUser && hasEverUseDecoration) {
-        //定位到2号位
-        [self.decorationDataHandler setRecommendScrollToIndex:1];
     }
     else {
         //定位到1号位
@@ -709,17 +673,22 @@ MDMomentMakeUpViewControllerDelegate
         
         if ([urlStr isNotEmpty]) {
             NSURL *resourceUrl = [NSURL fileURLWithPath:urlStr];
-            FDKDecoration *decoration = [FDKDecoration decorationWithContentsOfURL:resourceUrl];
+			if ([[NSFileManager defaultManager] fileExistsAtPath:resourceUrl.path]) {
+				FDKDecoration *decoration = [FDKDecoration decorationWithContentsOfURL:resourceUrl];
+				
+				if (decoration) {
+					hasFaceEffect = YES;
+					self.selectedDecoration = decoration;
+					self.selectedDecorationItem = item;
+					self.isArDecoration = item.isNeedAR;
+				} else {
+					//下载的资源异常，重新下载
+					[self.recordViewController.view makeToast:@"资源文件异常" duration:1.5f position:CSToastPositionCenter];
+				}
+			} else {
+				[self.recordViewController.view makeToast:@"资源文件异常" duration:1.5f position:CSToastPositionCenter];
+			}
             
-            if (decoration) {
-                hasFaceEffect = YES;
-                self.selectedDecoration = decoration;
-                self.selectedDecorationItem = item;
-                self.isArDecoration = item.isNeedAR;
-            } else {
-                //下载的资源异常，重新下载
-                [self.recordViewController.view makeToast:@"资源文件异常" duration:1.5f position:CSToastPositionCenter];
-            }
         }
     }
     
@@ -851,10 +820,9 @@ MDMomentMakeUpViewControllerDelegate
 {
     if (_filterModels.count == 0) {
         //上下切换滤镜资源
-//        _filterModels = [[MDContext filterDrawerManager] getFilterModels];
         MDRecordFilterModelLoader *loader = [[MDRecordFilterModelLoader alloc] init];
         _filterModels = [loader getFilterModels];
-        NSArray<MDRecordFilter *> *filters = [loader filtersArray]; // [[MDContext filterDrawerManager] filtersArrayWithFilterModelArray:_filterModels];
+        NSArray<MDRecordFilter *> *filters = [loader filtersArray];
         [self.delegate didGetFilters:filters];
     }
 }
@@ -1290,32 +1258,15 @@ MDMomentMakeUpViewControllerDelegate
     [self playWithCheckAssetValid:musicItem timeRange:timeRange];
     [self didSeletedMusicItem:musicItem timeRange:timeRange];
 }
+
 - (void)musicEditPallet:(MDMusicEditPalletController *)musicEditPallet didEditOriginalVolume:(CGFloat)originalVolume musicVolume:(CGFloat)musicVolume {
     self.musicPlayer.volume = musicVolume;
 }
+
 - (void)musicEditPalletDidClearMusic:(MDMusicEditPalletController *)musicEditPallet {
     [self.musicPlayer pause];
     [self didSeletedMusicItem:nil timeRange:kCMTimeRangeZero];
 }
-
-
-#pragma mark - RecordingMusicViewControllerDelegate
-
-//- (void)musicPicker:(MDMusicPickerController *)musicPicker didPickMusicItems:(MDMusicCollectionItem *)musicItem timeRange:(CMTimeRange)timeRange {
-//
-//}
-//
-//- (void)musicPickerDidClearMusic:(MDMusicPickerController *)musicPicker {
-//
-//}
-
-//MDMusicPickerControllerDelegate
-//- (void)musicPicker:(MDMusicPickerController *)musicPicker didPickMusicItems:(MDMusicCollectionItem *)musicItem timeRange:(CMTimeRange)timeRange {
-//    [self didSeletedMusicItem:musicItem timeRange:timeRange];
-//}
-//- (void)musicPickerDidClearMusic:(MDMusicPickerController *)musicPicker {
-//    [self didSeletedMusicItem:nil timeRange:kCMTimeRangeZero];
-//}
 
 - (void)didSeletedMusicItem:(MDMusicCollectionItem *)musicItem timeRange:(CMTimeRange)timeRange {
     //业务是否支持配乐功能
@@ -1523,12 +1474,6 @@ MDMomentMakeUpViewControllerDelegate
 //                }
 //            }];
             
-        } else if (_makeupVC.isShowed) {
-            [_makeupVC hideAnimateWithCompleteBlock:^{
-                if (completeBlock) {
-                    completeBlock();
-                }
-            }];
         }  else {
             if (completeBlock) {
                 completeBlock();
@@ -1545,10 +1490,6 @@ MDMomentMakeUpViewControllerDelegate
         if (self.decorationView.isShowed) { // _faceDecorationVC.isShowed
 //            [_faceDecorationVC hideAnimateWithCompleteBlock:nil];
             [self.decorationView hideAnimateWithCompleteBlock:nil];
-        }
-        
-        if (_makeupVC.isShowed) {
-            [_makeupVC hideAnimateWithCompleteBlock:nil];
         }
         
         [self.delegate moduleViewDidShowOrHide:NO];
