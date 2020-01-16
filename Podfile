@@ -19,7 +19,8 @@ target :MDRecordSDK do
     pod 'ReactiveCocoa', '2.5'
     pod 'JPImageresizerView'
     
-    pod 'MMVideoSDK', '2.3.2'
+    pod 'MMVideoSDK', '2.3.2.2'
+    pod 'MMMedia', '2.3.2.1'
 end
 
 post_install do |installer|
