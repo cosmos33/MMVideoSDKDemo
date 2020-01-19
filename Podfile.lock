@@ -43,30 +43,30 @@ PODS:
   - MMFileService (1.1.0-hs)
   - MMFrameworks/Eta (2.5.15)
   - MMFrameworks/MMFoundation (2.5.15)
-  - MMMedia (2.3.2.1):
+  - MMMedia (2.3.2.3.2):
     - GPUImage
     - MetalPetal (= 1.4.2)
-    - MMMedia/Base (= 2.3.2.1)
-    - MMMedia/Expand (= 2.3.2.1)
-  - MMMedia/Base (2.3.2.1):
+    - MMMedia/Base (= 2.3.2.3.2)
+    - MMMedia/Expand (= 2.3.2.3.2)
+  - MMMedia/Base (2.3.2.3.2):
     - GPUImage
     - KVOController
     - MetalPetal (= 1.4.2)
-  - MMMedia/Expand (2.3.2.1):
+  - MMMedia/Expand (2.3.2.3.2):
     - GPUImage
     - Mantle
     - MetalPetal (= 1.4.2)
     - MMCV
     - MMXEScene
-  - MMVideoSDK (2.3.2.2):
+  - MMVideoSDK (2.3.2.3.2):
     - GPUImage
     - MDLog (~> 1.2.4)
     - MetalPetal (= 1.4.2)
     - MMCV (~> 1.0.16.1)
     - MMFileService (= 1.1.0-hs)
-    - MMMedia (~> 2.3.2.1)
+    - MMMedia (~> 2.3.2.3.1)
     - MMXEScene (~> 1.1.0)
-  - MMXEScene (1.1.0)
+  - MMXEScene (1.1.3)
   - pop (1.0.12)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -94,8 +94,7 @@ DEPENDENCIES:
   - MJRefresh
   - MMFrameworks/Eta (from `./MMFramework`)
   - MMFrameworks/MMFoundation (from `./MMFramework`)
-  - MMMedia (= 2.3.2.1)
-  - MMVideoSDK (= 2.3.2.2)
+  - MMVideoSDK (= 2.3.2.3.2)
   - pop
   - ReactiveCocoa (= 2.5)
   - SDWebImage
@@ -148,9 +147,9 @@ SPEC CHECKSUMS:
   MMCV: 3777a266d9293d0f536be7247e889ea748d30137
   MMFileService: 5df06dcab167f04021c26755fac7db9fa0e164ae
   MMFrameworks: ee4b4853d45d64c4e2f0bcc7b3a5bc656d84e526
-  MMMedia: 5ddaca906ae56fc735e5bacde95aa2990ab8499d
-  MMVideoSDK: e59c68f7de1ab5b7766455a246e445f443cefc47
-  MMXEScene: 3c4c7d1f7d40619d1c3d2e0986da929cadd83a15
+  MMMedia: 17c58df5f1929040df8b12be543af2dbb74135bf
+  MMVideoSDK: 3a475ae25b0e2d8e04902158e59d46d6866895c6
+  MMXEScene: 2fea0e26484ea497524609b008804b47c0af3014
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
@@ -158,6 +157,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 69264eb1bc5d612ac3187adfcf164e4a7ffc2645
+PODFILE CHECKSUM: b39b4d460e011b9a7b329577fd8b0df3edfdc1d2
 
 COCOAPODS: 1.8.4
