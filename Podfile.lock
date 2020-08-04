@@ -26,56 +26,52 @@ PODS:
   - libwebp/utils (1.0.2):
     - libwebp/core
   - libwebp/webp (1.0.2)
-  - Mantle (2.1.0):
-    - Mantle/extobjc (= 2.1.0)
-  - Mantle/extobjc (2.1.0)
+  - Mantle (2.1.1):
+    - Mantle/extobjc (= 2.1.1)
+  - Mantle/extobjc (2.1.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MCCSecret (1.0.0)
   - MDLog (1.2.4):
     - MDLoggerService
   - MDLoggerService (0.1.0)
-  - MDREffectFilters (1.0.0):
-    - MetalPetal
   - MetalPetal (1.4.2):
     - MetalPetal/Core (= 1.4.2)
   - MetalPetal/Core (1.4.2)
   - MJRefresh (3.2.0)
-  - MMCV (1.0.19):
+  - MMCV (1.1.5):
     - MCCSecret
+    - MMFileService
+    - PhotonHTTPDNS
     - ZipArchive
-  - MMDevice (1.0.0)
-  - MMFileService (1.2.1):
-    - openssl-lib
+  - MMFileService (1.3.1)
   - MMFrameworks/Eta (2.5.15)
   - MMFrameworks/MMFoundation (2.5.15)
-  - MMMedia (2.3.2.4):
+  - MMMedia (2.3.2.3.4):
     - GPUImage
     - MetalPetal (= 1.4.2)
-    - MMMedia/Base (= 2.3.2.4)
-    - MMMedia/Expand (= 2.3.2.4)
-  - MMMedia/Base (2.3.2.4):
+    - MMMedia/Base (= 2.3.2.3.4)
+    - MMMedia/Expand (= 2.3.2.3.4)
+  - MMMedia/Base (2.3.2.3.4):
     - GPUImage
     - KVOController
     - MetalPetal (= 1.4.2)
-  - MMMedia/Expand (2.3.2.4):
+  - MMMedia/Expand (2.3.2.3.4):
     - GPUImage
     - Mantle
     - MetalPetal (= 1.4.2)
     - MMCV
     - MMXEScene
-  - MMVideoSDK (2.4.0.1):
+  - MMVideoSDK (2.3.3.3):
     - GPUImage
     - MDLog (~> 1.2.4)
-    - MDREffectFilters
     - MetalPetal (= 1.4.2)
-    - MMCV (~> 1.0.19)
-    - MMDevice
-    - MMFileService (= 1.2.1)
-    - MMMedia (~> 2.3.2.3)
-    - MMXEScene (~> 4.2.1)
-  - MMXEScene (4.2.1)
-  - openssl-lib (1.0.1)
+    - MMCV (~> 1.1.2)
+    - MMFileService (~> 1.3.0)
+    - MMMedia (~> 2.3.2.3.1)
+    - MMXEScene (~> 1.1.0)
+  - MMXEScene (1.1.3)
+  - PhotonHTTPDNS (1.0.1)
   - pop (1.0.12)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -100,11 +96,10 @@ DEPENDENCIES:
   - JPImageresizerView
   - Masonry
   - MBProgressHUD (~> 1.1.0)
-  - MCCSecret
   - MJRefresh
   - MMFrameworks/Eta (from `./MMFramework`)
   - MMFrameworks/MMFoundation (from `./MMFramework`)
-  - MMVideoSDK (= 2.4.0.1)
+  - MMVideoSDK (= 2.3.3.3)
   - pop
   - ReactiveCocoa (= 2.5)
   - SDWebImage
@@ -113,7 +108,18 @@ DEPENDENCIES:
   - YYImage
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/cosmos33/MMSpecs.git:
+    - GPUImage
+    - MCCSecret
+    - MDLog
+    - MDLoggerService
+    - MMCV
+    - MMFileService
+    - MMMedia
+    - MMVideoSDK
+    - MMXEScene
+    - PhotonHTTPDNS
+  trunk:
     - JPImageresizerView
     - KVOController
     - libwebp
@@ -128,19 +134,6 @@ SPEC REPOS:
     - Toast
     - YYImage
     - ZipArchive
-  https://github.com/cosmos33/MMSpecs.git:
-    - GPUImage
-    - MCCSecret
-    - MDLog
-    - MDLoggerService
-    - MDREffectFilters
-    - MMCV
-    - MMDevice
-    - MMFileService
-    - MMMedia
-    - MMVideoSDK
-    - MMXEScene
-    - openssl-lib
 
 EXTERNAL SOURCES:
   MMFrameworks:
@@ -151,23 +144,21 @@ SPEC CHECKSUMS:
   JPImageresizerView: eedd90ce2082fa10f104f4282e428cd1c3da86b9
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
-  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
+  Mantle: 35238ae6f2e2b2d474fa7b67fee82a59fea71915
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MCCSecret: 5658f66290969726586eddbdfe45e27731dbfa17
   MDLog: 63b50372531f8bee5c6634f23e58ce49102d6d2f
   MDLoggerService: a3a211b8327e16723335c8a2b646726c1c58bd47
-  MDREffectFilters: 4269c1325ad9b932ca2533e1e6467ae43f998483
   MetalPetal: c1773ffa37bb8a466ac93e25f6ccf8b09ee6022e
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
-  MMCV: 727b21e75021e24a2a90d9a96348ffd3f71b9cfb
-  MMDevice: 8fdf446c7aedc2243918eabcf66f1c84f362931e
-  MMFileService: f0c1d041c5ad4385a289be151accc2203511db66
+  MMCV: 45c9f6a33419f8c3661615832f14dfb4f0ff6043
+  MMFileService: 4112b6ddb95c3612731044e300bae12accff3b8e
   MMFrameworks: ee4b4853d45d64c4e2f0bcc7b3a5bc656d84e526
-  MMMedia: 3aae3289c055adda30e3551c98cf2a909b679919
-  MMVideoSDK: 3e93f5f07b1df0d3adb2a9b072c2ba5304dd2c28
-  MMXEScene: 12b09d537f912ab2383c0c0a4b17ce88eeb8ea5d
-  openssl-lib: e3f61a10280caf261c0e4c6b3e720aa94825f07a
+  MMMedia: a2699ec221c17273a8be65718136e041329a3915
+  MMVideoSDK: 3d67bcad0061a74fec845fe9eb8dcf15798c5ac1
+  MMXEScene: 2fea0e26484ea497524609b008804b47c0af3014
+  PhotonHTTPDNS: f2d67b2f6008451c5dce51e15171e2be50f58554
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
@@ -175,6 +166,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: e97bfa3bb06155d8bdbb6fc589d18f24d5c222e0
+PODFILE CHECKSUM: b3824c2f1d732529198b1145f4c29e3bab053195
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.3
