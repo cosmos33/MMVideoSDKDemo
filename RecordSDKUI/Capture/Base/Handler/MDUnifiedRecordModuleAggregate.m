@@ -31,7 +31,10 @@
 //权限
 #import "MDUnifiedRecordViewController+Permission.h"
 #import "Toast/Toast.h"
-@import RecordSDK;
+#import "MDRecordContext.h"
+#import "MDFaceDecorationManager.h"
+//@import RecordSDK;
+#import <RecordSDK/MMVideoSDK-umbrella.h>
 
 #import "MDMomentMakeUpViewController.h"
 #import "MDMomentMakeupItem.h"
@@ -118,6 +121,8 @@ MDMomentMakeUpViewControllerDelegate
         _beautySettingDict = [@{@"MDBeautySettingsEyesEnhancementAmountKey":@3, @"MDBeautySettingsFaceThinningAmountKey":@3, @"MDBeautySettingsLongLegAmountKey":@-1, @"MDBeautySettingsSkinSmoothingAmountKey":@3, @"MDBeautySettingsSkinWhitenAmountKey":@3, @"MDBeautySettingsThinBodyAmountKey":@-1} mutableCopy]; //[[[[MDContext currentUser] dbStateHoldProvider] beautySettingsDic] mutableCopy];
         
         [self addNotificationObserver];
+        
+        [[MDRecordContext faceDecorationManager] requestFaceDecorationIfNeeded];
     }
     return self;
 }
