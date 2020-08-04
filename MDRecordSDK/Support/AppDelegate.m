@@ -32,7 +32,6 @@
     });
     
 //    [MDRecordContext netConfiguration];
-    [[MDRecordContext faceDecorationManager] requestFaceDecorationIfNeeded];
 
     return YES;
 }
