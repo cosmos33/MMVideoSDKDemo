@@ -2995,7 +2995,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sunfei.test4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sunfei.test2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";

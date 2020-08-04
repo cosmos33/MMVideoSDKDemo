@@ -85,7 +85,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 //        adapter.saveOrigin = YES;
         
         if (@available(iOS 10.0, *)) {
-//            [adapter setCanUseAIBeautySetting:[MTIContext defaultMetalDeviceSupportsMPS]];
+            [adapter setCanUseAIBeautySetting:[MTIContext defaultMetalDeviceSupportsMPS]];
             
         }
 

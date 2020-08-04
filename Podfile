@@ -1,5 +1,5 @@
 source 'https://github.com/cosmos33/MMSpecs.git'
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org'
 
 platform :ios, '9.0'
 
@@ -19,7 +19,7 @@ target :MDRecordSDK do
     pod 'ReactiveCocoa', '2.5'
     pod 'JPImageresizerView'
     
-    pod 'MMVideoSDK', '2.3.2'
+    pod 'MMVideoSDK', '2.3.3.3'
 end
 
 post_install do |installer|
