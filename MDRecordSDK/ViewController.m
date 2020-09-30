@@ -41,6 +41,19 @@
     [MDRecordManager initSDK:@"100cb616072fdc76c983460b8c2b470a"];
     if ([MDRecordManager isReady]) {
         [MDRecordManager fetchConfigUsingAppId];
+        
+        NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+        NSString *dir = [cachePath stringByAppendingPathComponent:@"Logger"];
+        BOOL isDir = NO;
+        if (![[NSFileManager defaultManager] fileExistsAtPath:dir isDirectory:&isDir] || !isDir) {
+            [[NSFileManager defaultManager] createDirectoryAtPath:dir
+                                      withIntermediateDirectories:YES
+                                                       attributes:nil
+                                                            error:nil];
+        }
+        
+        id<MDRIRecordLogger> logger = [[MMRecordLogger alloc] initWithCachePath:dir];
+        [MDRecordManager configLogger:logger];
     }
 //    [MDRecordDetectorManger config];
     
