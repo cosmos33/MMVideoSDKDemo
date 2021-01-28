@@ -20,7 +20,7 @@ target :MDRecordSDK do
     pod 'JPImageresizerView'
     
     pod 'MMVideoSDK', '2.3.4.3'
-    pod 'MMMedia', '2.3.2.3.12'
+    pod 'MMMedia', '2.3.2.3.16'
     pod 'MMFileService', '1.3.3'
 end
 
