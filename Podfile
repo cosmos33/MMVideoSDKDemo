@@ -19,8 +19,9 @@ target :MDRecordSDK do
     pod 'ReactiveCocoa', '2.5'
     pod 'JPImageresizerView'
     
-    pod 'MMVideoSDK', '2.3.4.3'
-    pod 'MMMedia', '2.3.2.3.16'
+    pod 'MMVideoSDK', '2.3.5'
+    pod 'MMMedia', '2.3.5'
+    pod 'MMXEngine', '4.4.7.20210125.1445'
     pod 'MMFileService', '1.3.3'
 end
 
