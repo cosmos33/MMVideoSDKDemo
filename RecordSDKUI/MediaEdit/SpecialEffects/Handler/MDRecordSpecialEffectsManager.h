@@ -8,14 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "MDSpecialEffectsModel.h"
-#import <GPUImage/GPUImageOutput.h>
-#import <GPUImage/GPUImageContext.h>
-#import <RecordSDK/MDRSpecialFilterLifeStyleProtocol.h>
+#import <RecordSDK/MMVideoSDK-umbrella.h>
 
 @interface MDRecordSpecialEffectsManager : NSObject
 
-+ (GPUImageOutput<GPUImageInput,MDRSpecialFilterLifeStyleProtocol> *)getFilterWithSpecialEffectsType:(MDRecordSpecialEffectsType)type;
-+ (MDRecordSpecialEffectsType)getSpecialEffectsTypeWithFilter:(GPUImageOutput<GPUImageInput,MDRSpecialFilterLifeStyleProtocol> *)filter;
++ (MDRecordSpecialEffectsType)getSpecialEffectsTypeWithMFilter:(id<MDRTimeFilter>)filter;
++ (id<MDRTimeFilter>)getMFilterWithSpecialEffectsType:(MDRecordSpecialEffectsType)type;
 
 + (NSArray<MDSpecialEffectsModel*> *)getSpecialEffectsFilterModelArray;
 + (NSArray<MDSpecialEffectsModel*> *)getSpecialEffectsTimeModelArray;

@@ -11,7 +11,7 @@
 #import "UIView+Utils.h"
 #import "UIConst.h"
 #import <MMFoundation/MDWeakProxy.h>
-@import SDWebImage;
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static const CGFloat kMDDecorationCollectionCellCornerRadius = 8.0;
 

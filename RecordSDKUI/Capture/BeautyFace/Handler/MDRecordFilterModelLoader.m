@@ -160,4 +160,50 @@ static NSString * const kMDRecordFilterOriginFilterIdentifier = @"原图";
     }
 }
 
++ (void)requeseteMakeupDataWithType:(NSInteger)type block:(void(^)(NSArray *beautifyArray))finishBlock
+{
+    if(!finishBlock){return; }
+    NSMutableArray* dataArray = [NSMutableArray array];
+    NSURL *path = [[NSBundle bundleForClass:self.class] URLForResource:@"makeup" withExtension:@"bundle"];
+    NSURL *jsonPath = [[NSBundle bundleWithURL:path] URLForResource:@"makeup_list" withExtension:@"geojson"];
+    NSArray *items = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:jsonPath] options:0 error:nil];
+    NSArray *stringArr0 = @[@"无",@"甜拽",@"白雪"];
+    NSInteger index = type == 0 ? stringArr0.count : items.count;
+    for (NSInteger i = 0; i < index; i++) {
+        NSDictionary *dict = [items objectAtIndex:i];
+        MDRecordMakeUpModel* makeUpModel = [MDRecordMakeUpModel new];
+        if (type == 0) {
+            makeUpModel.makeUpId = [stringArr0 objectAtIndex:i];
+        } else {
+            makeUpModel.makeUpId = [dict objectForKey:@"title"];
+        }
+        
+        makeUpModel.isSelected = NO;
+        [dataArray addObject:makeUpModel];
+    }
+    
+    if (finishBlock) {
+        finishBlock(dataArray);
+    }
+}
+
++ (void)requeseteMicroData:(void(^)(NSArray *microSurgeryArray))finishBlock{
+    if(!finishBlock){return; }
+    NSMutableArray* dataArray = [NSMutableArray array];
+    NSArray *items = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:[NSBundle.mainBundle URLForResource:@"microSurgery" withExtension:@"geojson"]] options:0 error:nil];
+    for (int i = 0; i < items.count; ++i) {
+        NSDictionary *dict = [items objectAtIndex:i];
+        MDRecordMakeUpModel* dataModel = [MDRecordMakeUpModel new];
+        MDRMicroSurgeryModel *model = [[MDRMicroSurgeryModel alloc] initModelWithDict:dict];
+        dataModel.makeUpId = model.title;
+        dataModel.type = model.type;
+        dataModel.isSelected = i ==1;
+        dataModel.value = 0;
+        dataModel.sliderType = model.sliderType;
+        [dataArray addObject:dataModel];
+    }
+    if (finishBlock) {
+        finishBlock(dataArray);
+    }
+}
 @end

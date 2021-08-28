@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)requeseteRecordChangeFaceData:(void(^)(NSArray *changeFaceArray))finishBlock;
 + (void)requeseteRecordMakeUpData:(void(^)(NSArray *beautifyArray))finishBlock;
-
++ (void)requeseteMakeupDataWithType:(NSInteger)type block:(void(^)(NSArray *beautifyArray))finishBlock;
++ (void)requeseteMicroData:(void(^)(NSArray *microSurgeryArray))finishBlock;
 @end
 
 NS_ASSUME_NONNULL_END

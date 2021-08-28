@@ -120,6 +120,10 @@
 {
     NSString *identifier = item.identifier;
     
+    if (!identifier) {
+        return;
+    }
+    
     NSString *name = [[urlStr componentsSeparatedByString:@"/"] lastObject];
 
     NSString *str = identifier;

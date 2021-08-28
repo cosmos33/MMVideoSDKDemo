@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat sliderValue;
 
+@property (nonatomic, assign) NSInteger sliderType;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign, class) NSInteger exportFrameRate;
 @property (nonatomic, assign, class) NSInteger exportBitRate;
-@property (nonatomic, assign, class) BOOL enableBlur;
+@property (nonatomic, assign, class) CGRect cropRegion;
 
 @end
 

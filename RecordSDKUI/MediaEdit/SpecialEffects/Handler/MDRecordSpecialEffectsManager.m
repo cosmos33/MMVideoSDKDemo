@@ -9,66 +9,40 @@
 #import "MDRecordSpecialEffectsManager.h"
 #import "MDRecordHeader.h"
 @import RecordSDK;
-@import GPUImage;
-@import FaceDecorationKitSceneEffects;
 
 @implementation MDRecordSpecialEffectsManager
 
-+ (GPUImageOutput<GPUImageInput,MDRSpecialFilterLifeStyleProtocol> *)getFilterWithSpecialEffectsType:(MDRecordSpecialEffectsType)type
++ (id<MDRTimeFilter>)getMFilterWithSpecialEffectsType:(MDRecordSpecialEffectsType)type
 {
     switch (type) {
         case MDRecordSpecialEffectsTypeMirrImage:
         {
-            MDRecordMirrImageFrameFilter *filter = [[MDRecordMirrImageFrameFilter alloc] init];
-            return filter;
+        id<MDRTimeFilter> filter = [[MDRMirror4Filter alloc] init];
+        return filter;
         }
             break;
         case MDRecordSpecialEffectsTypeRainWindow:
         {
-            MDRecordRainWindowFilter *filter = [[MDRecordRainWindowFilter alloc] init];
-            return filter;
+        id<MDRTimeFilter> filter = [[MDRRainWindowFilter alloc] init];
+        return filter;
         }
             break;
         case MDRecordSpecialEffectsTypeShake:
         {
-            MDRecordShakeFilter *filter = [[MDRecordShakeFilter alloc] init];
-            return filter;
+        id<MDRTimeFilter> filter = [[MDRShakeFilter alloc] init];
+        return filter;
         }
             break;
         case MDRecordSpecialEffectsTypeSoulOut:
         {
-            MDRecordSoulOutFilter *filter = [[MDRecordSoulOutFilter alloc] init];
-            return filter;
+        id<MDRTimeFilter> filter = [[MDRSouloutFilter alloc] init];
+        return filter;
         }
             break;
         case MDRecordSpecialEffectsTypeTVArtifact:
         {
-            MDRecordTVArtifactFilter *filter = [[MDRecordTVArtifactFilter alloc] init];
-            return filter;
-        }
-            break;
-        case MDRecordSpecialEffectsTypeDazzling:
-        {
-            FDKDazzlingFilter *filter = [[FDKDazzlingFilter alloc] init];
-            return filter;
-        }
-            break;
-        case MDRecordSpecialEffectsTypeShadowing:
-        {
-            FDKShadowingFilter *filter = [[FDKShadowingFilter alloc] init];
-            return filter;
-        }
-            break;
-        case MDRecordSpecialEffectsTypeHeartBeat:
-        {
-            FDKHeartbeatFilter *filter = [[FDKHeartbeatFilter alloc] init];
-            return filter;
-        }
-            break;
-        case MDRecordSpecialEffectsTypeBlack3:
-        {
-            FDKBlack3FilterGroup *filter = [[FDKBlack3FilterGroup alloc] init];
-            return filter;
+        id<MDRTimeFilter> filter = [[MDRArtifactFilter alloc] init];
+        return filter;
         }
             break;
         default:
@@ -77,34 +51,22 @@
     return nil;
 }
 
-+ (MDRecordSpecialEffectsType)getSpecialEffectsTypeWithFilter:(GPUImageOutput<GPUImageInput,MDRSpecialFilterLifeStyleProtocol> *)filter
++ (MDRecordSpecialEffectsType)getSpecialEffectsTypeWithMFilter:(id<MDRTimeFilter>)filter
 {
-    if ([filter isKindOfClass:[MDRecordMirrImageFrameFilter class]]) {
+    if ([filter isKindOfClass:[MDRMirror4Filter class]]) {
         return MDRecordSpecialEffectsTypeMirrImage;
     }
-    else if ([filter isKindOfClass:[MDRecordRainWindowFilter class]]) {
+    else if ([filter isKindOfClass:[MDRRainWindowFilter class]]) {
         return MDRecordSpecialEffectsTypeRainWindow;
     }
-    else if ([filter isKindOfClass:[MDRecordShakeFilter class]]) {
+    else if ([filter isKindOfClass:[MDRShakeFilter class]]) {
         return MDRecordSpecialEffectsTypeShake;
     }
-    else if ([filter isKindOfClass:[MDRecordSoulOutFilter class]]) {
+    else if ([filter isKindOfClass:[MDRSouloutFilter class]]) {
         return MDRecordSpecialEffectsTypeSoulOut;
     }
-    else if ([filter isKindOfClass:[MDRecordTVArtifactFilter class]]) {
+    else if ([filter isKindOfClass:[MDRArtifactFilter class]]) {
         return MDRecordSpecialEffectsTypeTVArtifact;
-    }
-    else if ([filter isKindOfClass:[FDKDazzlingFilter class]]) {
-        return MDRecordSpecialEffectsTypeDazzling;
-    }
-    else if ([filter isKindOfClass:[FDKShadowingFilter class]]) {
-        return MDRecordSpecialEffectsTypeShadowing;
-    }
-    else if ([filter isKindOfClass:[FDKHeartbeatFilter class]]) {
-        return MDRecordSpecialEffectsTypeHeartBeat;
-    }
-    else if ([filter isKindOfClass:[FDKBlack3FilterGroup class]]) {
-        return MDRecordSpecialEffectsTypeBlack3;
     }
     return 0;
 }
@@ -143,30 +105,6 @@
     rainModel.type = MDRecordSpecialEffectsTypeRainWindow;
     rainModel.bgColor = RGBACOLOR(252, 238, 125, 0.9);
     
-    MDSpecialEffectsModel *dazzlingModel = [[MDSpecialEffectsModel alloc]init];
-    dazzlingModel.effectsTitle = @"闪烁";
-    dazzlingModel.effectsImageName = @"";
-    dazzlingModel.type = MDRecordSpecialEffectsTypeDazzling;
-    dazzlingModel.bgColor = RGBACOLOR(252, 38, 125, 0.9);
-    
-    MDSpecialEffectsModel *heartBeatModel = [[MDSpecialEffectsModel alloc]init];
-    heartBeatModel.effectsTitle = @"心跳";
-    heartBeatModel.effectsImageName = @"";
-    heartBeatModel.type = MDRecordSpecialEffectsTypeHeartBeat;
-    heartBeatModel.bgColor = RGBACOLOR(0, 0, 125, 0.9);
-    
-    MDSpecialEffectsModel *shadowingModel = [[MDSpecialEffectsModel alloc]init];
-    shadowingModel.effectsTitle = @"VHS晃动";
-    shadowingModel.effectsImageName = @"";
-    shadowingModel.type = MDRecordSpecialEffectsTypeShadowing;
-    shadowingModel.bgColor = RGBACOLOR(0, 238, 0, 0.9);
-    
-    MDSpecialEffectsModel *black3Model = [[MDSpecialEffectsModel alloc]init];
-    black3Model.effectsTitle = @"黑胶3格";
-    black3Model.effectsImageName = @"";
-    black3Model.type = MDRecordSpecialEffectsTypeBlack3;
-    black3Model.bgColor = RGBACOLOR(252, 0, 0, 0.9);
-    
    
     NSMutableArray *marr = [NSMutableArray array];
     [marr addObjectSafe:shakeModel];
@@ -174,10 +112,6 @@
     [marr addObjectSafe:tvModel];
     [marr addObjectSafe:rainModel];
     [marr addObjectSafe:mirrModel];
-    [marr addObjectSafe:dazzlingModel];
-    [marr addObjectSafe:heartBeatModel];
-    [marr addObjectSafe:shadowingModel];
-    [marr addObjectSafe:black3Model];
 
     return marr;
 }

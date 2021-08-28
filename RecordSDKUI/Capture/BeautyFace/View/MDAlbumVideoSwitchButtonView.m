@@ -71,7 +71,8 @@
 - (UIButton *)createButtonWithTitle:(NSString *)title {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:title forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:14];
+    button.titleLabel.font = [UIFont systemFontOfSize:12];
+//    button.titleLabel.adjustsFontSizeToFitWidth = YES;
     [button setTitleColor:UIColor.whiteColor forState:UIControlStateSelected];
     [button setTitleColor:[UIColor.whiteColor colorWithAlphaComponent:0.3] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -113,8 +114,7 @@
     
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:self.buttons];
     stackView.translatesAutoresizingMaskIntoConstraints = NO;
-    stackView.spacing = 28;
-    stackView.layoutMargins = UIEdgeInsetsMake(0, 14, 0, 14);
+    stackView.spacing = 4;
     stackView.axis = UILayoutConstraintAxisHorizontal;
     stackView.distribution = UIStackViewDistributionFillEqually;
     stackView.alignment = UIStackViewAlignmentFill;
@@ -123,7 +123,7 @@
 
     [stackView.leftAnchor constraintEqualToAnchor:self.leftAnchor].active = YES;
     [stackView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
-    
+    [stackView.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-10].active = YES;
     [self setupUI];
 }
 

@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@class CXBeautyConfiguration;
-
 @interface MDRecordBeautySettingDataManager : NSObject
 
-@property (nonatomic, strong, readonly) CXBeautyConfiguration *beautyConfiguration;
 @property (nonatomic, strong, readonly) NSDictionary *beautySettingsDic;
 
 - (CGFloat)realValueWithIndex:(NSInteger)index beautySettingTypeStr:(NSString *)typeStr;

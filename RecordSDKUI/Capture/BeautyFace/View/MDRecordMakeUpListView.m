@@ -86,10 +86,8 @@
         [cell refreshCellWithMakeUpModel:model];
     }];
     
-    NSInteger makeUpId = model.makeUpId.integerValue;
-    
     if (self.selectedIndexBlock && isSelected && need) {
-        self.selectedIndexBlock(makeUpId);
+        self.selectedIndexBlock(indexPath.row);
     }
 }
 

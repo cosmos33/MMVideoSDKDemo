@@ -7,30 +7,91 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E76E9D726563400005C42D8 /* MDRecordSpecialEffectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9B8265633FF005C42D8 /* MDRecordSpecialEffectsManager.m */; };
+		5E76E9D826563400005C42D8 /* MDRecordSpecialImageDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9B9265633FF005C42D8 /* MDRecordSpecialImageDataManager.m */; };
+		5E76E9D926563400005C42D8 /* MDSpecialEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9BC265633FF005C42D8 /* MDSpecialEffectsController.m */; };
+		5E76E9DA26563400005C42D8 /* MDEffectsTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9BE265633FF005C42D8 /* MDEffectsTimeManager.m */; };
+		5E76E9DB26563400005C42D8 /* MDSpecialEffectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9BF265633FF005C42D8 /* MDSpecialEffectsManager.m */; };
+		5E76E9DC26563400005C42D8 /* MDSpecialEffectsProgressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9C3265633FF005C42D8 /* MDSpecialEffectsProgressModel.m */; };
+		5E76E9DD26563400005C42D8 /* MDSpecialEffectsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9C4265633FF005C42D8 /* MDSpecialEffectsModel.m */; };
+		5E76E9DE26563400005C42D8 /* MDSpecialEffectsSelectViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9CB26563400005C42D8 /* MDSpecialEffectsSelectViewCollectionViewCell.m */; };
+		5E76E9DF26563400005C42D8 /* MDSpecialEffectsSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9CC26563400005C42D8 /* MDSpecialEffectsSelectView.m */; };
+		5E76E9E026563400005C42D8 /* MDSpecialEffectsProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9D026563400005C42D8 /* MDSpecialEffectsProgressView.m */; };
+		5E76E9E126563400005C42D8 /* MDSpecialEffectsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9D226563400005C42D8 /* MDSpecialEffectsLayer.m */; };
+		5E76E9E226563400005C42D8 /* MDSpecialEffectsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9D326563400005C42D8 /* MDSpecialEffectsView.m */; };
+		5E76E9E326563400005C42D8 /* MDSpecialEffectsSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9D426563400005C42D8 /* MDSpecialEffectsSliderView.m */; };
+		5E76E9E426563400005C42D8 /* MDSpecialEffectsTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9D626563400005C42D8 /* MDSpecialEffectsTitleView.m */; };
+		5E76EA26265634E6005C42D8 /* MDMomentRecordHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9E7265634E6005C42D8 /* MDMomentRecordHandler.m */; };
+		5E76EA27265634E6005C42D8 /* MDRSimpleHttpFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9E8265634E6005C42D8 /* MDRSimpleHttpFetcher.m */; };
+		5E76EA28265634E6005C42D8 /* MDRecordBeautySettingDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9EA265634E6005C42D8 /* MDRecordBeautySettingDataManager.m */; };
+		5E76EA29265634E6005C42D8 /* MDUnifiedRecordCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9EB265634E6005C42D8 /* MDUnifiedRecordCoordinator.m */; };
+		5E76EA2A265634E6005C42D8 /* MDUnifiedRecordModuleAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9ED265634E6005C42D8 /* MDUnifiedRecordModuleAggregate.m */; };
+		5E76EA2B265634E6005C42D8 /* MDUnifiedRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9F2265634E6005C42D8 /* MDUnifiedRecordViewController.m */; };
+		5E76EA2C265634E6005C42D8 /* MDUnifiedRecordViewController+Permission.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9F3265634E6005C42D8 /* MDUnifiedRecordViewController+Permission.m */; };
+		5E76EA2D265634E6005C42D8 /* MDUnifiedRecordViewController+horizontalRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9F5265634E6005C42D8 /* MDUnifiedRecordViewController+horizontalRecording.m */; };
+		5E76EA2E265634E6005C42D8 /* MDCameraContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9F9265634E6005C42D8 /* MDCameraContainerViewController.m */; };
+		5E76EA2F265634E6005C42D8 /* MDUnifiedRecordSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9FD265634E6005C42D8 /* MDUnifiedRecordSettingItem.m */; };
+		5E76EA30265634E6005C42D8 /* MDUnifiedRecordIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76E9FF265634E6005C42D8 /* MDUnifiedRecordIconView.m */; };
+		5E76EA31265634E6005C42D8 /* MDUnifiedRecordCountDownAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA01265634E6005C42D8 /* MDUnifiedRecordCountDownAnimation.m */; };
+		5E76EA32265634E6005C42D8 /* MDUnifiedRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA07265634E6005C42D8 /* MDUnifiedRecordButton.m */; };
+		5E76EA33265634E6005C42D8 /* MDRecordWhiteRingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA08265634E6005C42D8 /* MDRecordWhiteRingView.m */; };
+		5E76EA34265634E6005C42D8 /* MDRecordColorCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA09265634E6005C42D8 /* MDRecordColorCircleView.m */; };
+		5E76EA35265634E6005C42D8 /* MDRecordCircleStrokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA0A265634E6005C42D8 /* MDRecordCircleStrokenView.m */; };
+		5E76EA36265634E6005C42D8 /* MDScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA0C265634E6005C42D8 /* MDScrollLabelView.m */; };
+		5E76EA37265634E6005C42D8 /* MDCameraBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA0F265634E6005C42D8 /* MDCameraBottomView.m */; };
+		5E76EA38265634E6005C42D8 /* MDUnifiedRecordContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA12265634E6005C42D8 /* MDUnifiedRecordContainerView.m */; };
+		5E76EA39265634E6005C42D8 /* MDUnifiedRecordBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA13265634E6005C42D8 /* MDUnifiedRecordBottomView.m */; };
+		5E76EA3A265634E6005C42D8 /* MDRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA16265634E6005C42D8 /* MDRecordProgressView.m */; };
+		5E76EA3B265634E6005C42D8 /* MDMoment3DTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA18265634E6005C42D8 /* MDMoment3DTouchView.m */; };
+		5E76EA3C265634E6005C42D8 /* MDDurationArrayProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA1A265634E6005C42D8 /* MDDurationArrayProgressView.m */; };
+		5E76EA3D265634E6005C42D8 /* MDFaceDetectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA1B265634E6005C42D8 /* MDFaceDetectView.m */; };
+		5E76EA3E265634E6005C42D8 /* MDRecordExposureAdjustSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA1C265634E6005C42D8 /* MDRecordExposureAdjustSlider.m */; };
+		5E76EA3F265634E6005C42D8 /* MDUnifiedRecordRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA1E265634E6005C42D8 /* MDUnifiedRecordRightView.m */; };
+		5E76EA40265634E6005C42D8 /* MDUnifiedRecordTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA21265634E6005C42D8 /* MDUnifiedRecordTopView.m */; };
+		5E76EA41265634E6005C42D8 /* MDRecordContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA24265634E6005C42D8 /* MDRecordContext.m */; };
+		5E76EA4726563573005C42D8 /* MDRecordVideoEditSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA4526563573005C42D8 /* MDRecordVideoEditSettingViewController.m */; };
+		5E76EA4826563573005C42D8 /* MDRecordSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA4626563573005C42D8 /* MDRecordSettingViewController.m */; };
+		5E76EA5E265635F3005C42D8 /* MDAlbumAssetLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA4A265635F3005C42D8 /* MDAlbumAssetLibrary.m */; };
+		5E76EA5F265635F3005C42D8 /* MDBeautySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA51265635F3005C42D8 /* MDBeautySettings.m */; };
+		5E76EA60265635F3005C42D8 /* MDPhotoLibraryProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA52265635F3005C42D8 /* MDPhotoLibraryProvider.m */; };
+		5E76EA61265635F3005C42D8 /* ImageFixOrientationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA55265635F3005C42D8 /* ImageFixOrientationHelper.m */; };
+		5E76EA62265635F3005C42D8 /* MDImageEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA56265635F3005C42D8 /* MDImageEditorViewController.m */; };
+		5E76EA63265635F3005C42D8 /* MDSelectedImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA57265635F3005C42D8 /* MDSelectedImageItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5E76EA64265635F3005C42D8 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA58265635F3005C42D8 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		5E76EA65265635F3005C42D8 /* MDImageDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA59265635F3005C42D8 /* MDImageDataProvider.m */; };
+		5E76EA66265635F3005C42D8 /* MDRecordCropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA5C265635F3005C42D8 /* MDRecordCropImageViewController.m */; };
+		5E76EA67265635F3005C42D8 /* MDRecordUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA5D265635F3005C42D8 /* MDRecordUtility.m */; };
+		5E76EA8E265636C2005C42D8 /* MDStickerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA6B265636C2005C42D8 /* MDStickerDownloader.m */; };
+		5E76EA8F265636C2005C42D8 /* MDRecordEditStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA6D265636C2005C42D8 /* MDRecordEditStickersView.m */; };
+		5E76EA90265636C2005C42D8 /* MDMomentExpressionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA71265636C2005C42D8 /* MDMomentExpressionCellModel.m */; };
+		5E76EA91265636C2005C42D8 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA72265636C2005C42D8 /* UIButton+Block.m */; };
+		5E76EA92265636C2005C42D8 /* MDMomentExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA74265636C2005C42D8 /* MDMomentExpressionViewController.m */; };
+		5E76EA93265636C2005C42D8 /* UIView+Corner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA76265636C2005C42D8 /* UIView+Corner.m */; };
+		5E76EA94265636C2005C42D8 /* BBMediaStickerAdjustmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA78265636C2005C42D8 /* BBMediaStickerAdjustmentView.m */; };
+		5E76EA95265636C2005C42D8 /* MDDownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA7A265636C2005C42D8 /* MDDownLoadManager.m */; };
+		5E76EA96265636C2005C42D8 /* MDMomentExpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA7B265636C2005C42D8 /* MDMomentExpressionCell.m */; };
+		5E76EA97265636C2005C42D8 /* MDRStickerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA7D265636C2005C42D8 /* MDRStickerImageView.m */; };
+		5E76EA98265636C2005C42D8 /* MDCollectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA7F265636C2005C42D8 /* MDCollectionHelper.m */; };
+		5E76EA99265636C2005C42D8 /* MDRecordEditTItleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA80265636C2005C42D8 /* MDRecordEditTItleView.m */; };
+		5E76EA9A265636C2005C42D8 /* MDDownLoaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA81265636C2005C42D8 /* MDDownLoaderModel.m */; };
+		5E76EA9B265636C2005C42D8 /* MDMomentExpressionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA83265636C2005C42D8 /* MDMomentExpressionView.m */; };
+		5E76EA9C265636C2005C42D8 /* MDRStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA84265636C2005C42D8 /* MDRStickerViewController.m */; };
+		5E76EA9D265636C2005C42D8 /* MDRecordExpressionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA86265636C2005C42D8 /* MDRecordExpressionLoader.m */; };
+		5E76EA9E265636C2005C42D8 /* MDRecordEditFuntionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA8B265636C2005C42D8 /* MDRecordEditFuntionButtonView.m */; };
+		5E76EA9F265636C2005C42D8 /* MDRecordEditContainerPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EA8C265636C2005C42D8 /* MDRecordEditContainerPanelView.m */; };
+		5E76EAAB26563782005C42D8 /* MDVideoUploadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EAA426563782005C42D8 /* MDVideoUploadHelper.m */; };
+		5E76EAAC26563782005C42D8 /* MDMediaEditorCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EAA626563782005C42D8 /* MDMediaEditorCoordinator.m */; };
+		5E76EAAD26563782005C42D8 /* MDMediaEditorModuleAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EAA726563782005C42D8 /* MDMediaEditorModuleAggregate.m */; };
+		5E76EAAE26563782005C42D8 /* MDRecordVideoSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EAA926563782005C42D8 /* MDRecordVideoSettingManager.m */; };
+		5E76EAAF26563782005C42D8 /* MDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E76EAAA26563782005C42D8 /* MDDocument.m */; };
+		5EA4979726D8FD1600564A53 /* makeup.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4979626D8FD1600564A53 /* makeup.bundle */; };
+		5EA497B626D8FDB900564A53 /* microSurgery.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 5EA497B526D8FDB900564A53 /* microSurgery.geojson */; };
 		7603417C225607FF00713A03 /* IOS端对外接入文档.md in Resources */ = {isa = PBXBuildFile; fileRef = 7603417A225607FF00713A03 /* IOS端对外接入文档.md */; };
 		7603417D225607FF00713A03 /* IOS端接口文档.md in Resources */ = {isa = PBXBuildFile; fileRef = 7603417B225607FF00713A03 /* IOS端接口文档.md */; };
 		7616606A2387FEDD005AACCD /* MDMomentThumbSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DEC2387FEDC005AACCD /* MDMomentThumbSelectViewController.m */; };
 		7616606B2387FEDD005AACCD /* MDMomentThumbCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DEF2387FEDC005AACCD /* MDMomentThumbCell.m */; };
 		7616606C2387FEDD005AACCD /* MDMomentThumbDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DF02387FEDC005AACCD /* MDMomentThumbDataManager.m */; };
 		7616606D2387FEDD005AACCD /* MDMomentThumbFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DF12387FEDC005AACCD /* MDMomentThumbFlowLayout.m */; };
-		7616606E2387FEDD005AACCD /* MDStickerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DF62387FEDC005AACCD /* MDStickerDownloader.m */; };
-		7616606F2387FEDD005AACCD /* MDRecordEditStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DF82387FEDC005AACCD /* MDRecordEditStickersView.m */; };
-		761660702387FEDD005AACCD /* MDMomentExpressionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DFC2387FEDC005AACCD /* MDMomentExpressionCellModel.m */; };
-		761660712387FEDD005AACCD /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DFD2387FEDC005AACCD /* UIButton+Block.m */; };
-		761660722387FEDD005AACCD /* MDMomentExpressionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165DFF2387FEDC005AACCD /* MDMomentExpressionViewController.m */; };
-		761660732387FEDD005AACCD /* UIView+Corner.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E012387FEDC005AACCD /* UIView+Corner.m */; };
-		761660742387FEDD005AACCD /* BBMediaStickerAdjustmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E032387FEDC005AACCD /* BBMediaStickerAdjustmentView.m */; };
-		761660752387FEDD005AACCD /* MDDownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E052387FEDC005AACCD /* MDDownLoadManager.m */; };
-		761660762387FEDD005AACCD /* MDMomentExpressionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E062387FEDC005AACCD /* MDMomentExpressionCell.m */; };
-		761660772387FEDD005AACCD /* MDRStickerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E082387FEDC005AACCD /* MDRStickerImageView.m */; };
-		761660782387FEDD005AACCD /* MDCollectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E0A2387FEDC005AACCD /* MDCollectionHelper.m */; };
-		761660792387FEDD005AACCD /* MDRecordEditTItleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E0B2387FEDC005AACCD /* MDRecordEditTItleView.m */; };
-		7616607A2387FEDD005AACCD /* MDDownLoaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E0C2387FEDC005AACCD /* MDDownLoaderModel.m */; };
-		7616607B2387FEDD005AACCD /* MDMomentExpressionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E0E2387FEDC005AACCD /* MDMomentExpressionView.m */; };
-		7616607C2387FEDD005AACCD /* MDRStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E0F2387FEDC005AACCD /* MDRStickerViewController.m */; };
-		7616607D2387FEDD005AACCD /* MDRecordExpressionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E112387FEDC005AACCD /* MDRecordExpressionLoader.m */; };
-		7616607E2387FEDD005AACCD /* MDRecordEditFuntionButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E162387FEDC005AACCD /* MDRecordEditFuntionButtonView.m */; };
-		7616607F2387FEDD005AACCD /* MDRecordEditContainerPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E172387FEDC005AACCD /* MDRecordEditContainerPanelView.m */; };
 		761660802387FEDD005AACCD /* MDMomentVideoTrimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E1B2387FEDC005AACCD /* MDMomentVideoTrimViewController.m */; };
 		761660812387FEDD005AACCD /* MDVideoTrimmerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E1D2387FEDC005AACCD /* MDVideoTrimmerView.m */; };
 		761660822387FEDE005AACCD /* MDBluredProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E1F2387FEDC005AACCD /* MDBluredProgressView.m */; };
@@ -67,11 +128,6 @@
 		761660A12387FEDE005AACCD /* MDMomentTextOverlayEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E692387FEDC005AACCD /* MDMomentTextOverlayEditorView.m */; };
 		761660A22387FEDE005AACCD /* MDMediaEditTextColorSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E6B2387FEDC005AACCD /* MDMediaEditTextColorSelectView.m */; };
 		761660A32387FEDE005AACCD /* MDMomentTextAdjustmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E6C2387FEDC005AACCD /* MDMomentTextAdjustmentView.m */; };
-		761660A42387FEDE005AACCD /* MDVideoUploadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E732387FEDC005AACCD /* MDVideoUploadHelper.m */; };
-		761660A52387FEDE005AACCD /* MDMediaEditorCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E752387FEDC005AACCD /* MDMediaEditorCoordinator.m */; };
-		761660A62387FEDE005AACCD /* MDMediaEditorModuleAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E762387FEDC005AACCD /* MDMediaEditorModuleAggregate.m */; };
-		761660A72387FEDE005AACCD /* MDRecordVideoSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E782387FEDC005AACCD /* MDRecordVideoSettingManager.m */; };
-		761660A82387FEDE005AACCD /* MDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E792387FEDC005AACCD /* MDDocument.m */; };
 		761660A92387FEDE005AACCD /* MDNewMediaEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E7C2387FEDC005AACCD /* MDNewMediaEditorViewController.m */; };
 		761660AA2387FEDE005AACCD /* MDMediaEditorSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E7E2387FEDC005AACCD /* MDMediaEditorSettingItem.m */; };
 		761660AB2387FEDE005AACCD /* MDRecordVideoResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E802387FEDC005AACCD /* MDRecordVideoResult.m */; };
@@ -81,20 +137,6 @@
 		761660AF2387FEDE005AACCD /* MDRecordNewMediaEditorBottomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E8C2387FEDC005AACCD /* MDRecordNewMediaEditorBottomCell.m */; };
 		761660B02387FEDE005AACCD /* MDRecordNewMediaEditorBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E8D2387FEDC005AACCD /* MDRecordNewMediaEditorBottomView.m */; };
 		761660B12387FEDE005AACCD /* MDMediaEditorBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E8E2387FEDC005AACCD /* MDMediaEditorBottomView.m */; };
-		761660B22387FEDE005AACCD /* MDRecordSpecialEffectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E942387FEDC005AACCD /* MDRecordSpecialEffectsManager.m */; };
-		761660B32387FEDE005AACCD /* MDRecordSpecialImageDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E952387FEDC005AACCD /* MDRecordSpecialImageDataManager.m */; };
-		761660B42387FEDE005AACCD /* MDSpecialEffectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E982387FEDC005AACCD /* MDSpecialEffectsController.m */; };
-		761660B52387FEDE005AACCD /* MDEffectsTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E9A2387FEDC005AACCD /* MDEffectsTimeManager.m */; };
-		761660B62387FEDE005AACCD /* MDSpecialEffectsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E9B2387FEDC005AACCD /* MDSpecialEffectsManager.m */; };
-		761660B72387FEDE005AACCD /* MDSpecialEffectsProgressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165E9F2387FEDC005AACCD /* MDSpecialEffectsProgressModel.m */; };
-		761660B82387FEDE005AACCD /* MDSpecialEffectsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EA02387FEDC005AACCD /* MDSpecialEffectsModel.m */; };
-		761660B92387FEDE005AACCD /* MDSpecialEffectsSelectViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EA72387FEDC005AACCD /* MDSpecialEffectsSelectViewCollectionViewCell.m */; };
-		761660BA2387FEDE005AACCD /* MDSpecialEffectsSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EA82387FEDC005AACCD /* MDSpecialEffectsSelectView.m */; };
-		761660BB2387FEDE005AACCD /* MDSpecialEffectsProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EAC2387FEDC005AACCD /* MDSpecialEffectsProgressView.m */; };
-		761660BC2387FEDE005AACCD /* MDSpecialEffectsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EAE2387FEDC005AACCD /* MDSpecialEffectsLayer.m */; };
-		761660BD2387FEDE005AACCD /* MDSpecialEffectsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EAF2387FEDC005AACCD /* MDSpecialEffectsView.m */; };
-		761660BE2387FEDE005AACCD /* MDSpecialEffectsSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EB02387FEDC005AACCD /* MDSpecialEffectsSliderView.m */; };
-		761660BF2387FEDE005AACCD /* MDSpecialEffectsTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EB22387FEDC005AACCD /* MDSpecialEffectsTitleView.m */; };
 		761660C02387FEDE005AACCD /* MDFaceDecorationDataHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EB82387FEDC005AACCD /* MDFaceDecorationDataHandle.m */; };
 		761660C12387FEDE005AACCD /* MDRecordFaceDecorationItemDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EB92387FEDC005AACCD /* MDRecordFaceDecorationItemDownloader.m */; };
 		761660C22387FEDE005AACCD /* MDFaceDecorationFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165EBD2387FEDC005AACCD /* MDFaceDecorationFileHelper.m */; };
@@ -151,45 +193,7 @@
 		761660F52387FEDE005AACCD /* BBMediaEditorSlidingOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F362387FEDD005AACCD /* BBMediaEditorSlidingOverlayView.m */; };
 		761660F62387FEDE005AACCD /* MDRecordMakeUpListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F382387FEDD005AACCD /* MDRecordMakeUpListView.m */; };
 		761660F72387FEDE005AACCD /* RecordAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76165F3A2387FEDD005AACCD /* RecordAssets.xcassets */; };
-		761660F82387FEDE005AACCD /* MDMomentRecordHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F3D2387FEDD005AACCD /* MDMomentRecordHandler.m */; };
-		761660F92387FEDE005AACCD /* MDRSimpleHttpFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F3E2387FEDD005AACCD /* MDRSimpleHttpFetcher.m */; };
-		761660FA2387FEDE005AACCD /* MDRecordBeautySettingDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F402387FEDD005AACCD /* MDRecordBeautySettingDataManager.m */; };
-		761660FB2387FEDE005AACCD /* MDUnifiedRecordCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F412387FEDD005AACCD /* MDUnifiedRecordCoordinator.m */; };
-		761660FC2387FEDE005AACCD /* MDUnifiedRecordModuleAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F432387FEDD005AACCD /* MDUnifiedRecordModuleAggregate.m */; };
-		761660FD2387FEDE005AACCD /* MDUnifiedRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F482387FEDD005AACCD /* MDUnifiedRecordViewController.m */; };
-		761660FE2387FEDE005AACCD /* MDUnifiedRecordViewController+Permission.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F492387FEDD005AACCD /* MDUnifiedRecordViewController+Permission.m */; };
-		761660FF2387FEDE005AACCD /* MDUnifiedRecordViewController+horizontalRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F4B2387FEDD005AACCD /* MDUnifiedRecordViewController+horizontalRecording.m */; };
-		761661002387FEDE005AACCD /* MDCameraContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F4F2387FEDD005AACCD /* MDCameraContainerViewController.m */; };
-		761661012387FEDE005AACCD /* MDUnifiedRecordSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F532387FEDD005AACCD /* MDUnifiedRecordSettingItem.m */; };
-		761661022387FEDE005AACCD /* MDUnifiedRecordIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F552387FEDD005AACCD /* MDUnifiedRecordIconView.m */; };
-		761661032387FEDE005AACCD /* MDUnifiedRecordCountDownAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F572387FEDD005AACCD /* MDUnifiedRecordCountDownAnimation.m */; };
-		761661042387FEDE005AACCD /* MDUnifiedRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F5D2387FEDD005AACCD /* MDUnifiedRecordButton.m */; };
-		761661052387FEDE005AACCD /* MDRecordWhiteRingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F5E2387FEDD005AACCD /* MDRecordWhiteRingView.m */; };
-		761661062387FEDE005AACCD /* MDRecordColorCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F5F2387FEDD005AACCD /* MDRecordColorCircleView.m */; };
-		761661072387FEDE005AACCD /* MDRecordCircleStrokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F602387FEDD005AACCD /* MDRecordCircleStrokenView.m */; };
-		761661082387FEDE005AACCD /* MDScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F622387FEDD005AACCD /* MDScrollLabelView.m */; };
-		761661092387FEDE005AACCD /* MDCameraBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F652387FEDD005AACCD /* MDCameraBottomView.m */; };
-		7616610A2387FEDE005AACCD /* MDUnifiedRecordContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F682387FEDD005AACCD /* MDUnifiedRecordContainerView.m */; };
-		7616610B2387FEDE005AACCD /* MDUnifiedRecordBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F692387FEDD005AACCD /* MDUnifiedRecordBottomView.m */; };
-		7616610C2387FEDE005AACCD /* MDRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F6C2387FEDD005AACCD /* MDRecordProgressView.m */; };
-		7616610D2387FEDE005AACCD /* MDMoment3DTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F6E2387FEDD005AACCD /* MDMoment3DTouchView.m */; };
-		7616610E2387FEDE005AACCD /* MDDurationArrayProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F702387FEDD005AACCD /* MDDurationArrayProgressView.m */; };
-		7616610F2387FEDE005AACCD /* MDFaceDetectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F712387FEDD005AACCD /* MDFaceDetectView.m */; };
-		761661102387FEDE005AACCD /* MDRecordExposureAdjustSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F722387FEDD005AACCD /* MDRecordExposureAdjustSlider.m */; };
-		761661112387FEDE005AACCD /* MDUnifiedRecordRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F742387FEDD005AACCD /* MDUnifiedRecordRightView.m */; };
-		761661122387FEDE005AACCD /* MDUnifiedRecordTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F772387FEDD005AACCD /* MDUnifiedRecordTopView.m */; };
-		761661132387FEDE005AACCD /* MDRecordContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F7A2387FEDD005AACCD /* MDRecordContext.m */; };
 		761661142387FEDE005AACCD /* MDUserFeedGuideModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F7D2387FEDD005AACCD /* MDUserFeedGuideModel.m */; };
-		761661152387FEDE005AACCD /* MDAlbumVideoImageSortingViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F7F2387FEDD005AACCD /* MDAlbumVideoImageSortingViewCollectionViewCell.m */; };
-		761661162387FEDE005AACCD /* MDAlbumVideoDynamicEffectSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F842387FEDD005AACCD /* MDAlbumVideoDynamicEffectSelectView.m */; };
-		761661172387FEDE005AACCD /* MDAlbumVideoImageSortingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F852387FEDD005AACCD /* MDAlbumVideoImageSortingView.m */; };
-		761661182387FEDE005AACCD /* MDAlbumVideoImageSortingContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F872387FEDD005AACCD /* MDAlbumVideoImageSortingContentView.m */; };
-		761661192387FEDE005AACCD /* MDAlbumVideoCoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F882387FEDD005AACCD /* MDAlbumVideoCoverFlowLayout.m */; };
-		7616611A2387FEDE005AACCD /* MDAlbumVideoCoverContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F892387FEDD005AACCD /* MDAlbumVideoCoverContentView.m */; };
-		7616611B2387FEDE005AACCD /* MDAlbumVideoDynamicEffectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F8A2387FEDD005AACCD /* MDAlbumVideoDynamicEffectModel.m */; };
-		7616611C2387FEDE005AACCD /* MDAlbumPLayerSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F8B2387FEDD005AACCD /* MDAlbumPLayerSetting.m */; };
-		7616611D2387FEDE005AACCD /* MDAlbumVideoDynamicEffectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F8E2387FEDD005AACCD /* MDAlbumVideoDynamicEffectCollectionViewCell.m */; };
-		7616611E2387FEDE005AACCD /* MDAlbumVideoImageSortingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165F902387FEDD005AACCD /* MDAlbumVideoImageSortingViewController.m */; };
 		7616611F2387FEDE005AACCD /* New_Decoration_Face.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 76165F952387FEDD005AACCD /* New_Decoration_Face.geojson */; };
 		761661202387FEDE005AACCD /* RecomendMusics.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 76165F962387FEDD005AACCD /* RecomendMusics.geojson */; };
 		761661212387FEDE005AACCD /* UIBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76165F972387FEDD005AACCD /* UIBundle.bundle */; };
@@ -198,8 +202,6 @@
 		761661242387FEDE005AACCD /* DynamicExpression.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 76165F9A2387FEDD005AACCD /* DynamicExpression.geojson */; };
 		761661252387FEDE005AACCD /* StaticExpression.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 76165F9B2387FEDD005AACCD /* StaticExpression.geojson */; };
 		761661262387FEDE005AACCD /* Decoration_Face.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 76165F9C2387FEDD005AACCD /* Decoration_Face.geojson */; };
-		761661272387FEDE005AACCD /* MDRecordVideoEditSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165FA12387FEDD005AACCD /* MDRecordVideoEditSettingViewController.m */; };
-		761661282387FEDE005AACCD /* MDRecordSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165FA22387FEDD005AACCD /* MDRecordSettingViewController.m */; };
 		761661292387FEDE005AACCD /* MDRecordRecordingSettingMananger.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165FA42387FEDD005AACCD /* MDRecordRecordingSettingMananger.m */; };
 		7616612A2387FEDE005AACCD /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165FA82387FEDD005AACCD /* UIView+RoundCorner.m */; };
 		7616612B2387FEDE005AACCD /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 76165FAD2387FEDD005AACCD /* NSObject+Swizzle.m */; };
@@ -264,16 +266,6 @@
 		761661662387FEDF005AACCD /* UIView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660332387FEDD005AACCD /* UIView+Utils.m */; };
 		761661672387FEDF005AACCD /* UIPanGestureRecognizer+GestureTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660342387FEDD005AACCD /* UIPanGestureRecognizer+GestureTag.m */; };
 		761661682387FEDF005AACCD /* UIColor+MDRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660362387FEDD005AACCD /* UIColor+MDRUtils.m */; };
-		761661692387FEDF005AACCD /* MDAlbumAssetLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7616603A2387FEDD005AACCD /* MDAlbumAssetLibrary.m */; };
-		7616616A2387FEDF005AACCD /* MDBeautySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660412387FEDD005AACCD /* MDBeautySettings.m */; };
-		7616616B2387FEDF005AACCD /* MDPhotoLibraryProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660422387FEDD005AACCD /* MDPhotoLibraryProvider.m */; };
-		7616616C2387FEDF005AACCD /* ImageFixOrientationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660452387FEDD005AACCD /* ImageFixOrientationHelper.m */; };
-		7616616D2387FEDF005AACCD /* MDImageEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660462387FEDD005AACCD /* MDImageEditorViewController.m */; };
-		7616616E2387FEDF005AACCD /* MDSelectedImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660472387FEDD005AACCD /* MDSelectedImageItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7616616F2387FEDF005AACCD /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660482387FEDD005AACCD /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
-		761661702387FEDF005AACCD /* MDImageDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660492387FEDD005AACCD /* MDImageDataProvider.m */; };
-		761661712387FEDF005AACCD /* MDRecordCropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7616604C2387FEDD005AACCD /* MDRecordCropImageViewController.m */; };
-		761661722387FEDF005AACCD /* MDRecordUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7616604D2387FEDD005AACCD /* MDRecordUtility.m */; };
 		761661732387FEDF005AACCD /* MDRecordResourceDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660502387FEDD005AACCD /* MDRecordResourceDownloader.m */; };
 		761661742387FEDF005AACCD /* MDTabSegmentScrollHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660542387FEDD005AACCD /* MDTabSegmentScrollHandler.m */; };
 		761661752387FEDF005AACCD /* MDTabSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761660552387FEDD005AACCD /* MDTabSegmentView.m */; };
@@ -315,6 +307,7 @@
 		76E9A89421AFDDB5002B191A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E9A89221AFDDB5002B191A /* Main.storyboard */; };
 		76E9A89921AFDDB6002B191A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E9A89721AFDDB6002B191A /* LaunchScreen.storyboard */; };
 		76E9A89C21AFDDB6002B191A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A89B21AFDDB6002B191A /* main.m */; };
+		D4D3EE68A87DFC6B27D6CFBE /* Pods_MDRecordSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4616C4A12F389B23A30D619A /* Pods_MDRecordSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -331,6 +324,168 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		016E9C0F094B30E2FEFF6607 /* Pods-MDRecordSDK.inhouse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDRecordSDK.inhouse.xcconfig"; path = "Target Support Files/Pods-MDRecordSDK/Pods-MDRecordSDK.inhouse.xcconfig"; sourceTree = "<group>"; };
+		4616C4A12F389B23A30D619A /* Pods_MDRecordSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDRecordSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E76E9B6265633FF005C42D8 /* MDRecordSpecialEffectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordSpecialEffectsManager.h; sourceTree = "<group>"; };
+		5E76E9B7265633FF005C42D8 /* MDRecordSpecialImageDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordSpecialImageDataManager.h; sourceTree = "<group>"; };
+		5E76E9B8265633FF005C42D8 /* MDRecordSpecialEffectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordSpecialEffectsManager.m; sourceTree = "<group>"; };
+		5E76E9B9265633FF005C42D8 /* MDRecordSpecialImageDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordSpecialImageDataManager.m; sourceTree = "<group>"; };
+		5E76E9BB265633FF005C42D8 /* MDSpecialEffectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsController.h; sourceTree = "<group>"; };
+		5E76E9BC265633FF005C42D8 /* MDSpecialEffectsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsController.m; sourceTree = "<group>"; };
+		5E76E9BE265633FF005C42D8 /* MDEffectsTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEffectsTimeManager.m; sourceTree = "<group>"; };
+		5E76E9BF265633FF005C42D8 /* MDSpecialEffectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsManager.m; sourceTree = "<group>"; };
+		5E76E9C0265633FF005C42D8 /* MDEffectsTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEffectsTimeManager.h; sourceTree = "<group>"; };
+		5E76E9C1265633FF005C42D8 /* MDSpecialEffectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsManager.h; sourceTree = "<group>"; };
+		5E76E9C3265633FF005C42D8 /* MDSpecialEffectsProgressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsProgressModel.m; sourceTree = "<group>"; };
+		5E76E9C4265633FF005C42D8 /* MDSpecialEffectsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsModel.m; sourceTree = "<group>"; };
+		5E76E9C5265633FF005C42D8 /* MDSpecialEffectsProgressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsProgressModel.h; sourceTree = "<group>"; };
+		5E76E9C6265633FF005C42D8 /* MDSpecialEffectsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsModel.h; sourceTree = "<group>"; };
+		5E76E9C826563400005C42D8 /* MDSpecialEffectsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsView.h; sourceTree = "<group>"; };
+		5E76E9CA26563400005C42D8 /* MDSpecialEffectsSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsSelectView.h; sourceTree = "<group>"; };
+		5E76E9CB26563400005C42D8 /* MDSpecialEffectsSelectViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsSelectViewCollectionViewCell.m; sourceTree = "<group>"; };
+		5E76E9CC26563400005C42D8 /* MDSpecialEffectsSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsSelectView.m; sourceTree = "<group>"; };
+		5E76E9CD26563400005C42D8 /* MDSpecialEffectsSelectViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsSelectViewCollectionViewCell.h; sourceTree = "<group>"; };
+		5E76E9CE26563400005C42D8 /* MDSpecialEffectsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsLayer.h; sourceTree = "<group>"; };
+		5E76E9CF26563400005C42D8 /* MDSpecialEffectsSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsSliderView.h; sourceTree = "<group>"; };
+		5E76E9D026563400005C42D8 /* MDSpecialEffectsProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsProgressView.m; sourceTree = "<group>"; };
+		5E76E9D126563400005C42D8 /* MDSpecialEffectsTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsTitleView.h; sourceTree = "<group>"; };
+		5E76E9D226563400005C42D8 /* MDSpecialEffectsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsLayer.m; sourceTree = "<group>"; };
+		5E76E9D326563400005C42D8 /* MDSpecialEffectsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsView.m; sourceTree = "<group>"; };
+		5E76E9D426563400005C42D8 /* MDSpecialEffectsSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsSliderView.m; sourceTree = "<group>"; };
+		5E76E9D526563400005C42D8 /* MDSpecialEffectsProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsProgressView.h; sourceTree = "<group>"; };
+		5E76E9D626563400005C42D8 /* MDSpecialEffectsTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsTitleView.m; sourceTree = "<group>"; };
+		5E76E9E7265634E6005C42D8 /* MDMomentRecordHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentRecordHandler.m; sourceTree = "<group>"; };
+		5E76E9E8265634E6005C42D8 /* MDRSimpleHttpFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRSimpleHttpFetcher.m; sourceTree = "<group>"; };
+		5E76E9E9265634E6005C42D8 /* MDUnifiedRecordModuleAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordModuleAggregate.h; sourceTree = "<group>"; };
+		5E76E9EA265634E6005C42D8 /* MDRecordBeautySettingDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordBeautySettingDataManager.m; sourceTree = "<group>"; };
+		5E76E9EB265634E6005C42D8 /* MDUnifiedRecordCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordCoordinator.m; sourceTree = "<group>"; };
+		5E76E9EC265634E6005C42D8 /* MDMomentRecordHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentRecordHandler.h; sourceTree = "<group>"; };
+		5E76E9ED265634E6005C42D8 /* MDUnifiedRecordModuleAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordModuleAggregate.m; sourceTree = "<group>"; };
+		5E76E9EE265634E6005C42D8 /* MDRSimpleHttpFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRSimpleHttpFetcher.h; sourceTree = "<group>"; };
+		5E76E9EF265634E6005C42D8 /* MDUnifiedRecordCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordCoordinator.h; sourceTree = "<group>"; };
+		5E76E9F0265634E6005C42D8 /* MDRecordBeautySettingDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordBeautySettingDataManager.h; sourceTree = "<group>"; };
+		5E76E9F2265634E6005C42D8 /* MDUnifiedRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordViewController.m; sourceTree = "<group>"; };
+		5E76E9F3265634E6005C42D8 /* MDUnifiedRecordViewController+Permission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MDUnifiedRecordViewController+Permission.m"; sourceTree = "<group>"; };
+		5E76E9F4265634E6005C42D8 /* MDCameraContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCameraContainerViewController.h; sourceTree = "<group>"; };
+		5E76E9F5265634E6005C42D8 /* MDUnifiedRecordViewController+horizontalRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MDUnifiedRecordViewController+horizontalRecording.m"; sourceTree = "<group>"; };
+		5E76E9F6265634E6005C42D8 /* MDUnifiedRecordViewController+Permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDUnifiedRecordViewController+Permission.h"; sourceTree = "<group>"; };
+		5E76E9F7265634E6005C42D8 /* MDUnifiedRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordViewController.h; sourceTree = "<group>"; };
+		5E76E9F8265634E6005C42D8 /* MDUnifiedRecordViewController+horizontalRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDUnifiedRecordViewController+horizontalRecording.h"; sourceTree = "<group>"; };
+		5E76E9F9265634E6005C42D8 /* MDCameraContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCameraContainerViewController.m; sourceTree = "<group>"; };
+		5E76E9FB265634E6005C42D8 /* MDUnifiedRecordSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordSettingItem.h; sourceTree = "<group>"; };
+		5E76E9FC265634E6005C42D8 /* MDUnifiedRecordViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordViewDelegate.h; sourceTree = "<group>"; };
+		5E76E9FD265634E6005C42D8 /* MDUnifiedRecordSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordSettingItem.m; sourceTree = "<group>"; };
+		5E76E9FF265634E6005C42D8 /* MDUnifiedRecordIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordIconView.m; sourceTree = "<group>"; };
+		5E76EA00265634E6005C42D8 /* MDRecordProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordProgressView.h; sourceTree = "<group>"; };
+		5E76EA01265634E6005C42D8 /* MDUnifiedRecordCountDownAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordCountDownAnimation.m; sourceTree = "<group>"; };
+		5E76EA03265634E6005C42D8 /* MDRecordColorCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordColorCircleView.h; sourceTree = "<group>"; };
+		5E76EA04265634E6005C42D8 /* MDRecordWhiteRingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordWhiteRingView.h; sourceTree = "<group>"; };
+		5E76EA05265634E6005C42D8 /* MDUnifiedRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordButton.h; sourceTree = "<group>"; };
+		5E76EA06265634E6005C42D8 /* MDRecordCircleStrokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordCircleStrokenView.h; sourceTree = "<group>"; };
+		5E76EA07265634E6005C42D8 /* MDUnifiedRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordButton.m; sourceTree = "<group>"; };
+		5E76EA08265634E6005C42D8 /* MDRecordWhiteRingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordWhiteRingView.m; sourceTree = "<group>"; };
+		5E76EA09265634E6005C42D8 /* MDRecordColorCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordColorCircleView.m; sourceTree = "<group>"; };
+		5E76EA0A265634E6005C42D8 /* MDRecordCircleStrokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordCircleStrokenView.m; sourceTree = "<group>"; };
+		5E76EA0B265634E6005C42D8 /* MDFaceDetectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFaceDetectView.h; sourceTree = "<group>"; };
+		5E76EA0C265634E6005C42D8 /* MDScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDScrollLabelView.m; sourceTree = "<group>"; };
+		5E76EA0D265634E6005C42D8 /* MDDurationArrayProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDurationArrayProgressView.h; sourceTree = "<group>"; };
+		5E76EA0E265634E6005C42D8 /* MDMoment3DTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoment3DTouchView.h; sourceTree = "<group>"; };
+		5E76EA0F265634E6005C42D8 /* MDCameraBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCameraBottomView.m; sourceTree = "<group>"; };
+		5E76EA10265634E6005C42D8 /* MDRecordExposureAdjustSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordExposureAdjustSlider.h; sourceTree = "<group>"; };
+		5E76EA11265634E6005C42D8 /* MDUnifiedRecordTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordTopView.h; sourceTree = "<group>"; };
+		5E76EA12265634E6005C42D8 /* MDUnifiedRecordContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordContainerView.m; sourceTree = "<group>"; };
+		5E76EA13265634E6005C42D8 /* MDUnifiedRecordBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordBottomView.m; sourceTree = "<group>"; };
+		5E76EA14265634E6005C42D8 /* MDUnifiedRecordRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordRightView.h; sourceTree = "<group>"; };
+		5E76EA15265634E6005C42D8 /* MDUnifiedRecordCountDownAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordCountDownAnimation.h; sourceTree = "<group>"; };
+		5E76EA16265634E6005C42D8 /* MDRecordProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordProgressView.m; sourceTree = "<group>"; };
+		5E76EA17265634E6005C42D8 /* MDUnifiedRecordIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordIconView.h; sourceTree = "<group>"; };
+		5E76EA18265634E6005C42D8 /* MDMoment3DTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoment3DTouchView.m; sourceTree = "<group>"; };
+		5E76EA19265634E6005C42D8 /* MDScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDScrollLabelView.h; sourceTree = "<group>"; };
+		5E76EA1A265634E6005C42D8 /* MDDurationArrayProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDurationArrayProgressView.m; sourceTree = "<group>"; };
+		5E76EA1B265634E6005C42D8 /* MDFaceDetectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDFaceDetectView.m; sourceTree = "<group>"; };
+		5E76EA1C265634E6005C42D8 /* MDRecordExposureAdjustSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordExposureAdjustSlider.m; sourceTree = "<group>"; };
+		5E76EA1D265634E6005C42D8 /* MDCameraBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCameraBottomView.h; sourceTree = "<group>"; };
+		5E76EA1E265634E6005C42D8 /* MDUnifiedRecordRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordRightView.m; sourceTree = "<group>"; };
+		5E76EA1F265634E6005C42D8 /* MDUnifiedRecordBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordBottomView.h; sourceTree = "<group>"; };
+		5E76EA20265634E6005C42D8 /* MDUnifiedRecordContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordContainerView.h; sourceTree = "<group>"; };
+		5E76EA21265634E6005C42D8 /* MDUnifiedRecordTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordTopView.m; sourceTree = "<group>"; };
+		5E76EA23265634E6005C42D8 /* MDRecordMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordMacro.h; sourceTree = "<group>"; };
+		5E76EA24265634E6005C42D8 /* MDRecordContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordContext.m; sourceTree = "<group>"; };
+		5E76EA25265634E6005C42D8 /* MDRecordContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordContext.h; sourceTree = "<group>"; };
+		5E76EA4326563573005C42D8 /* MDRecordSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordSettingViewController.h; sourceTree = "<group>"; };
+		5E76EA4426563573005C42D8 /* MDRecordVideoEditSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordVideoEditSettingViewController.h; sourceTree = "<group>"; };
+		5E76EA4526563573005C42D8 /* MDRecordVideoEditSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordVideoEditSettingViewController.m; sourceTree = "<group>"; };
+		5E76EA4626563573005C42D8 /* MDRecordSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordSettingViewController.m; sourceTree = "<group>"; };
+		5E76EA4A265635F3005C42D8 /* MDAlbumAssetLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumAssetLibrary.m; sourceTree = "<group>"; };
+		5E76EA4B265635F3005C42D8 /* MDSelectedImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSelectedImageItem.h; sourceTree = "<group>"; };
+		5E76EA4C265635F3005C42D8 /* MDImageEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDImageEditorViewController.h; sourceTree = "<group>"; };
+		5E76EA4D265635F3005C42D8 /* ImageFixOrientationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFixOrientationHelper.h; sourceTree = "<group>"; };
+		5E76EA4E265635F3005C42D8 /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		5E76EA4F265635F3005C42D8 /* MDRecordUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordUtility.h; sourceTree = "<group>"; };
+		5E76EA50265635F3005C42D8 /* MDRecordCropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordCropImageViewController.h; sourceTree = "<group>"; };
+		5E76EA51265635F3005C42D8 /* MDBeautySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBeautySettings.m; sourceTree = "<group>"; };
+		5E76EA52265635F3005C42D8 /* MDPhotoLibraryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDPhotoLibraryProvider.m; sourceTree = "<group>"; };
+		5E76EA53265635F3005C42D8 /* MDImageDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDImageDataProvider.h; sourceTree = "<group>"; };
+		5E76EA54265635F3005C42D8 /* MDAlbumAssetLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumAssetLibrary.h; sourceTree = "<group>"; };
+		5E76EA55265635F3005C42D8 /* ImageFixOrientationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFixOrientationHelper.m; sourceTree = "<group>"; };
+		5E76EA56265635F3005C42D8 /* MDImageEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDImageEditorViewController.m; sourceTree = "<group>"; };
+		5E76EA57265635F3005C42D8 /* MDSelectedImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSelectedImageItem.m; sourceTree = "<group>"; };
+		5E76EA58265635F3005C42D8 /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
+		5E76EA59265635F3005C42D8 /* MDImageDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDImageDataProvider.m; sourceTree = "<group>"; };
+		5E76EA5A265635F3005C42D8 /* MDPhotoLibraryProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDPhotoLibraryProvider.h; sourceTree = "<group>"; };
+		5E76EA5B265635F3005C42D8 /* MDBeautySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBeautySettings.h; sourceTree = "<group>"; };
+		5E76EA5C265635F3005C42D8 /* MDRecordCropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordCropImageViewController.m; sourceTree = "<group>"; };
+		5E76EA5D265635F3005C42D8 /* MDRecordUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordUtility.m; sourceTree = "<group>"; };
+		5E76EA69265636C2005C42D8 /* MDCollectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCollectionHelper.h; sourceTree = "<group>"; };
+		5E76EA6A265636C2005C42D8 /* MDRecordEditTItleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditTItleView.h; sourceTree = "<group>"; };
+		5E76EA6B265636C2005C42D8 /* MDStickerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDStickerDownloader.m; sourceTree = "<group>"; };
+		5E76EA6C265636C2005C42D8 /* MDRStickerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRStickerImageView.h; sourceTree = "<group>"; };
+		5E76EA6D265636C2005C42D8 /* MDRecordEditStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditStickersView.m; sourceTree = "<group>"; };
+		5E76EA6E265636C2005C42D8 /* MDMomentExpressionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionCell.h; sourceTree = "<group>"; };
+		5E76EA6F265636C2005C42D8 /* MDMomentExpressionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionView.h; sourceTree = "<group>"; };
+		5E76EA70265636C2005C42D8 /* MDDownLoaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDownLoaderModel.h; sourceTree = "<group>"; };
+		5E76EA71265636C2005C42D8 /* MDMomentExpressionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionCellModel.m; sourceTree = "<group>"; };
+		5E76EA72265636C2005C42D8 /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Block.m"; sourceTree = "<group>"; };
+		5E76EA73265636C2005C42D8 /* MDRecordExpressionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordExpressionLoader.h; sourceTree = "<group>"; };
+		5E76EA74265636C2005C42D8 /* MDMomentExpressionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionViewController.m; sourceTree = "<group>"; };
+		5E76EA75265636C2005C42D8 /* MDRStickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRStickerViewController.h; sourceTree = "<group>"; };
+		5E76EA76265636C2005C42D8 /* UIView+Corner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Corner.m"; sourceTree = "<group>"; };
+		5E76EA77265636C2005C42D8 /* MDRecordEditContainerPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditContainerPanelView.h; sourceTree = "<group>"; };
+		5E76EA78265636C2005C42D8 /* BBMediaStickerAdjustmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMediaStickerAdjustmentView.m; sourceTree = "<group>"; };
+		5E76EA79265636C2005C42D8 /* MDRecordEditFuntionButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditFuntionButtonView.h; sourceTree = "<group>"; };
+		5E76EA7A265636C2005C42D8 /* MDDownLoadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDownLoadManager.m; sourceTree = "<group>"; };
+		5E76EA7B265636C2005C42D8 /* MDMomentExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionCell.m; sourceTree = "<group>"; };
+		5E76EA7C265636C2005C42D8 /* MDRecordEditStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditStickersView.h; sourceTree = "<group>"; };
+		5E76EA7D265636C2005C42D8 /* MDRStickerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRStickerImageView.m; sourceTree = "<group>"; };
+		5E76EA7E265636C2005C42D8 /* MDStickerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDStickerDownloader.h; sourceTree = "<group>"; };
+		5E76EA7F265636C2005C42D8 /* MDCollectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCollectionHelper.m; sourceTree = "<group>"; };
+		5E76EA80265636C2005C42D8 /* MDRecordEditTItleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditTItleView.m; sourceTree = "<group>"; };
+		5E76EA81265636C2005C42D8 /* MDDownLoaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDownLoaderModel.m; sourceTree = "<group>"; };
+		5E76EA82265636C2005C42D8 /* MDRecordEditProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditProtocol.h; sourceTree = "<group>"; };
+		5E76EA83265636C2005C42D8 /* MDMomentExpressionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionView.m; sourceTree = "<group>"; };
+		5E76EA84265636C2005C42D8 /* MDRStickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRStickerViewController.m; sourceTree = "<group>"; };
+		5E76EA85265636C2005C42D8 /* MDMomentExpressionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionViewController.h; sourceTree = "<group>"; };
+		5E76EA86265636C2005C42D8 /* MDRecordExpressionLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordExpressionLoader.m; sourceTree = "<group>"; };
+		5E76EA87265636C2005C42D8 /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
+		5E76EA88265636C2005C42D8 /* MDMomentExpressionCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionCellModel.h; sourceTree = "<group>"; };
+		5E76EA89265636C2005C42D8 /* MDDownLoadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDownLoadManager.h; sourceTree = "<group>"; };
+		5E76EA8A265636C2005C42D8 /* BBMediaStickerAdjustmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMediaStickerAdjustmentView.h; sourceTree = "<group>"; };
+		5E76EA8B265636C2005C42D8 /* MDRecordEditFuntionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditFuntionButtonView.m; sourceTree = "<group>"; };
+		5E76EA8C265636C2005C42D8 /* MDRecordEditContainerPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditContainerPanelView.m; sourceTree = "<group>"; };
+		5E76EA8D265636C2005C42D8 /* UIView+Corner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Corner.h"; sourceTree = "<group>"; };
+		5E76EAA126563782005C42D8 /* MDMediaEditorCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMediaEditorCoordinator.h; sourceTree = "<group>"; };
+		5E76EAA226563782005C42D8 /* MDMediaEditorModuleAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMediaEditorModuleAggregate.h; sourceTree = "<group>"; };
+		5E76EAA326563782005C42D8 /* MDRecordVideoSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordVideoSettingManager.h; sourceTree = "<group>"; };
+		5E76EAA426563782005C42D8 /* MDVideoUploadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDVideoUploadHelper.m; sourceTree = "<group>"; };
+		5E76EAA526563782005C42D8 /* MDDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDocument.h; sourceTree = "<group>"; };
+		5E76EAA626563782005C42D8 /* MDMediaEditorCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMediaEditorCoordinator.m; sourceTree = "<group>"; };
+		5E76EAA726563782005C42D8 /* MDMediaEditorModuleAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMediaEditorModuleAggregate.m; sourceTree = "<group>"; };
+		5E76EAA826563782005C42D8 /* MDVideoUploadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDVideoUploadHelper.h; sourceTree = "<group>"; };
+		5E76EAA926563782005C42D8 /* MDRecordVideoSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordVideoSettingManager.m; sourceTree = "<group>"; };
+		5E76EAAA26563782005C42D8 /* MDDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDocument.m; sourceTree = "<group>"; };
+		5EA4979626D8FD1600564A53 /* makeup.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = makeup.bundle; sourceTree = "<group>"; };
+		5EA497B526D8FDB900564A53 /* microSurgery.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = microSurgery.geojson; sourceTree = "<group>"; };
+		725E5C027BB1CFA2B0B93E7F /* Pods-MDRecordSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDRecordSDK.release.xcconfig"; path = "Target Support Files/Pods-MDRecordSDK/Pods-MDRecordSDK.release.xcconfig"; sourceTree = "<group>"; };
 		7603417A225607FF00713A03 /* IOS端对外接入文档.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "IOS端对外接入文档.md"; sourceTree = "<group>"; };
 		7603417B225607FF00713A03 /* IOS端接口文档.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "IOS端接口文档.md"; sourceTree = "<group>"; };
 		76165DEB2387FEDC005AACCD /* MDMomentThumbCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentThumbCell.h; sourceTree = "<group>"; };
@@ -341,43 +496,6 @@
 		76165DF02387FEDC005AACCD /* MDMomentThumbDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentThumbDataManager.m; sourceTree = "<group>"; };
 		76165DF12387FEDC005AACCD /* MDMomentThumbFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentThumbFlowLayout.m; sourceTree = "<group>"; };
 		76165DF22387FEDC005AACCD /* MDMomentThumbSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentThumbSelectViewController.h; sourceTree = "<group>"; };
-		76165DF42387FEDC005AACCD /* MDCollectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCollectionHelper.h; sourceTree = "<group>"; };
-		76165DF52387FEDC005AACCD /* MDRecordEditTItleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditTItleView.h; sourceTree = "<group>"; };
-		76165DF62387FEDC005AACCD /* MDStickerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDStickerDownloader.m; sourceTree = "<group>"; };
-		76165DF72387FEDC005AACCD /* MDRStickerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRStickerImageView.h; sourceTree = "<group>"; };
-		76165DF82387FEDC005AACCD /* MDRecordEditStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditStickersView.m; sourceTree = "<group>"; };
-		76165DF92387FEDC005AACCD /* MDMomentExpressionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionCell.h; sourceTree = "<group>"; };
-		76165DFA2387FEDC005AACCD /* MDMomentExpressionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionView.h; sourceTree = "<group>"; };
-		76165DFB2387FEDC005AACCD /* MDDownLoaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDownLoaderModel.h; sourceTree = "<group>"; };
-		76165DFC2387FEDC005AACCD /* MDMomentExpressionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionCellModel.m; sourceTree = "<group>"; };
-		76165DFD2387FEDC005AACCD /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Block.m"; sourceTree = "<group>"; };
-		76165DFE2387FEDC005AACCD /* MDRecordExpressionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordExpressionLoader.h; sourceTree = "<group>"; };
-		76165DFF2387FEDC005AACCD /* MDMomentExpressionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionViewController.m; sourceTree = "<group>"; };
-		76165E002387FEDC005AACCD /* MDRStickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRStickerViewController.h; sourceTree = "<group>"; };
-		76165E012387FEDC005AACCD /* UIView+Corner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Corner.m"; sourceTree = "<group>"; };
-		76165E022387FEDC005AACCD /* MDRecordEditContainerPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditContainerPanelView.h; sourceTree = "<group>"; };
-		76165E032387FEDC005AACCD /* BBMediaStickerAdjustmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMediaStickerAdjustmentView.m; sourceTree = "<group>"; };
-		76165E042387FEDC005AACCD /* MDRecordEditFuntionButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditFuntionButtonView.h; sourceTree = "<group>"; };
-		76165E052387FEDC005AACCD /* MDDownLoadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDownLoadManager.m; sourceTree = "<group>"; };
-		76165E062387FEDC005AACCD /* MDMomentExpressionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionCell.m; sourceTree = "<group>"; };
-		76165E072387FEDC005AACCD /* MDRecordEditStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditStickersView.h; sourceTree = "<group>"; };
-		76165E082387FEDC005AACCD /* MDRStickerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRStickerImageView.m; sourceTree = "<group>"; };
-		76165E092387FEDC005AACCD /* MDStickerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDStickerDownloader.h; sourceTree = "<group>"; };
-		76165E0A2387FEDC005AACCD /* MDCollectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCollectionHelper.m; sourceTree = "<group>"; };
-		76165E0B2387FEDC005AACCD /* MDRecordEditTItleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditTItleView.m; sourceTree = "<group>"; };
-		76165E0C2387FEDC005AACCD /* MDDownLoaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDownLoaderModel.m; sourceTree = "<group>"; };
-		76165E0D2387FEDC005AACCD /* MDRecordEditProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordEditProtocol.h; sourceTree = "<group>"; };
-		76165E0E2387FEDC005AACCD /* MDMomentExpressionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentExpressionView.m; sourceTree = "<group>"; };
-		76165E0F2387FEDC005AACCD /* MDRStickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRStickerViewController.m; sourceTree = "<group>"; };
-		76165E102387FEDC005AACCD /* MDMomentExpressionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionViewController.h; sourceTree = "<group>"; };
-		76165E112387FEDC005AACCD /* MDRecordExpressionLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordExpressionLoader.m; sourceTree = "<group>"; };
-		76165E122387FEDC005AACCD /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
-		76165E132387FEDC005AACCD /* MDMomentExpressionCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentExpressionCellModel.h; sourceTree = "<group>"; };
-		76165E142387FEDC005AACCD /* MDDownLoadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDownLoadManager.h; sourceTree = "<group>"; };
-		76165E152387FEDC005AACCD /* BBMediaStickerAdjustmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMediaStickerAdjustmentView.h; sourceTree = "<group>"; };
-		76165E162387FEDC005AACCD /* MDRecordEditFuntionButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditFuntionButtonView.m; sourceTree = "<group>"; };
-		76165E172387FEDC005AACCD /* MDRecordEditContainerPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordEditContainerPanelView.m; sourceTree = "<group>"; };
-		76165E182387FEDC005AACCD /* UIView+Corner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Corner.h"; sourceTree = "<group>"; };
 		76165E1A2387FEDC005AACCD /* MDVideoTrimmerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDVideoTrimmerView.h; sourceTree = "<group>"; };
 		76165E1B2387FEDC005AACCD /* MDMomentVideoTrimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentVideoTrimViewController.m; sourceTree = "<group>"; };
 		76165E1C2387FEDC005AACCD /* MDBluredProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBluredProgressView.h; sourceTree = "<group>"; };
@@ -451,16 +569,6 @@
 		76165E6B2387FEDC005AACCD /* MDMediaEditTextColorSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMediaEditTextColorSelectView.m; sourceTree = "<group>"; };
 		76165E6C2387FEDC005AACCD /* MDMomentTextAdjustmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentTextAdjustmentView.m; sourceTree = "<group>"; };
 		76165E6D2387FEDC005AACCD /* MDMomentTextOverlayEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentTextOverlayEditorView.h; sourceTree = "<group>"; };
-		76165E702387FEDC005AACCD /* MDMediaEditorCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMediaEditorCoordinator.h; sourceTree = "<group>"; };
-		76165E712387FEDC005AACCD /* MDMediaEditorModuleAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMediaEditorModuleAggregate.h; sourceTree = "<group>"; };
-		76165E722387FEDC005AACCD /* MDRecordVideoSettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordVideoSettingManager.h; sourceTree = "<group>"; };
-		76165E732387FEDC005AACCD /* MDVideoUploadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDVideoUploadHelper.m; sourceTree = "<group>"; };
-		76165E742387FEDC005AACCD /* MDDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDocument.h; sourceTree = "<group>"; };
-		76165E752387FEDC005AACCD /* MDMediaEditorCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMediaEditorCoordinator.m; sourceTree = "<group>"; };
-		76165E762387FEDC005AACCD /* MDMediaEditorModuleAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMediaEditorModuleAggregate.m; sourceTree = "<group>"; };
-		76165E772387FEDC005AACCD /* MDVideoUploadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDVideoUploadHelper.h; sourceTree = "<group>"; };
-		76165E782387FEDC005AACCD /* MDRecordVideoSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordVideoSettingManager.m; sourceTree = "<group>"; };
-		76165E792387FEDC005AACCD /* MDDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDocument.m; sourceTree = "<group>"; };
 		76165E7B2387FEDC005AACCD /* MDNewMediaEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMediaEditorViewController.h; sourceTree = "<group>"; };
 		76165E7C2387FEDC005AACCD /* MDNewMediaEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMediaEditorViewController.m; sourceTree = "<group>"; };
 		76165E7E2387FEDC005AACCD /* MDMediaEditorSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMediaEditorSettingItem.m; sourceTree = "<group>"; };
@@ -480,34 +588,6 @@
 		76165E8D2387FEDC005AACCD /* MDRecordNewMediaEditorBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordNewMediaEditorBottomView.m; sourceTree = "<group>"; };
 		76165E8E2387FEDC005AACCD /* MDMediaEditorBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMediaEditorBottomView.m; sourceTree = "<group>"; };
 		76165E8F2387FEDC005AACCD /* MDMediaEditorContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMediaEditorContainerView.h; sourceTree = "<group>"; };
-		76165E922387FEDC005AACCD /* MDRecordSpecialEffectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordSpecialEffectsManager.h; sourceTree = "<group>"; };
-		76165E932387FEDC005AACCD /* MDRecordSpecialImageDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordSpecialImageDataManager.h; sourceTree = "<group>"; };
-		76165E942387FEDC005AACCD /* MDRecordSpecialEffectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordSpecialEffectsManager.m; sourceTree = "<group>"; };
-		76165E952387FEDC005AACCD /* MDRecordSpecialImageDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordSpecialImageDataManager.m; sourceTree = "<group>"; };
-		76165E972387FEDC005AACCD /* MDSpecialEffectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsController.h; sourceTree = "<group>"; };
-		76165E982387FEDC005AACCD /* MDSpecialEffectsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsController.m; sourceTree = "<group>"; };
-		76165E9A2387FEDC005AACCD /* MDEffectsTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEffectsTimeManager.m; sourceTree = "<group>"; };
-		76165E9B2387FEDC005AACCD /* MDSpecialEffectsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsManager.m; sourceTree = "<group>"; };
-		76165E9C2387FEDC005AACCD /* MDEffectsTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEffectsTimeManager.h; sourceTree = "<group>"; };
-		76165E9D2387FEDC005AACCD /* MDSpecialEffectsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsManager.h; sourceTree = "<group>"; };
-		76165E9F2387FEDC005AACCD /* MDSpecialEffectsProgressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsProgressModel.m; sourceTree = "<group>"; };
-		76165EA02387FEDC005AACCD /* MDSpecialEffectsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsModel.m; sourceTree = "<group>"; };
-		76165EA12387FEDC005AACCD /* MDSpecialEffectsProgressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsProgressModel.h; sourceTree = "<group>"; };
-		76165EA22387FEDC005AACCD /* MDSpecialEffectsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsModel.h; sourceTree = "<group>"; };
-		76165EA42387FEDC005AACCD /* MDSpecialEffectsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsView.h; sourceTree = "<group>"; };
-		76165EA62387FEDC005AACCD /* MDSpecialEffectsSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsSelectView.h; sourceTree = "<group>"; };
-		76165EA72387FEDC005AACCD /* MDSpecialEffectsSelectViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsSelectViewCollectionViewCell.m; sourceTree = "<group>"; };
-		76165EA82387FEDC005AACCD /* MDSpecialEffectsSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsSelectView.m; sourceTree = "<group>"; };
-		76165EA92387FEDC005AACCD /* MDSpecialEffectsSelectViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsSelectViewCollectionViewCell.h; sourceTree = "<group>"; };
-		76165EAA2387FEDC005AACCD /* MDSpecialEffectsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsLayer.h; sourceTree = "<group>"; };
-		76165EAB2387FEDC005AACCD /* MDSpecialEffectsSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsSliderView.h; sourceTree = "<group>"; };
-		76165EAC2387FEDC005AACCD /* MDSpecialEffectsProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsProgressView.m; sourceTree = "<group>"; };
-		76165EAD2387FEDC005AACCD /* MDSpecialEffectsTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsTitleView.h; sourceTree = "<group>"; };
-		76165EAE2387FEDC005AACCD /* MDSpecialEffectsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsLayer.m; sourceTree = "<group>"; };
-		76165EAF2387FEDC005AACCD /* MDSpecialEffectsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsView.m; sourceTree = "<group>"; };
-		76165EB02387FEDC005AACCD /* MDSpecialEffectsSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsSliderView.m; sourceTree = "<group>"; };
-		76165EB12387FEDC005AACCD /* MDSpecialEffectsProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectsProgressView.h; sourceTree = "<group>"; };
-		76165EB22387FEDC005AACCD /* MDSpecialEffectsTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectsTitleView.m; sourceTree = "<group>"; };
 		76165EB62387FEDC005AACCD /* MDFaceDecorationFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFaceDecorationFileHelper.h; sourceTree = "<group>"; };
 		76165EB72387FEDC005AACCD /* MDFaceDecorationLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFaceDecorationLoader.h; sourceTree = "<group>"; };
 		76165EB82387FEDC005AACCD /* MDFaceDecorationDataHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDFaceDecorationDataHandle.m; sourceTree = "<group>"; };
@@ -621,85 +701,7 @@
 		76165F372387FEDD005AACCD /* MDRecordFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordFilterCell.h; sourceTree = "<group>"; };
 		76165F382387FEDD005AACCD /* MDRecordMakeUpListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordMakeUpListView.m; sourceTree = "<group>"; };
 		76165F3A2387FEDD005AACCD /* RecordAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RecordAssets.xcassets; sourceTree = "<group>"; };
-		76165F3D2387FEDD005AACCD /* MDMomentRecordHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMomentRecordHandler.m; sourceTree = "<group>"; };
-		76165F3E2387FEDD005AACCD /* MDRSimpleHttpFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRSimpleHttpFetcher.m; sourceTree = "<group>"; };
-		76165F3F2387FEDD005AACCD /* MDUnifiedRecordModuleAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordModuleAggregate.h; sourceTree = "<group>"; };
-		76165F402387FEDD005AACCD /* MDRecordBeautySettingDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordBeautySettingDataManager.m; sourceTree = "<group>"; };
-		76165F412387FEDD005AACCD /* MDUnifiedRecordCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordCoordinator.m; sourceTree = "<group>"; };
-		76165F422387FEDD005AACCD /* MDMomentRecordHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMomentRecordHandler.h; sourceTree = "<group>"; };
-		76165F432387FEDD005AACCD /* MDUnifiedRecordModuleAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordModuleAggregate.m; sourceTree = "<group>"; };
-		76165F442387FEDD005AACCD /* MDRSimpleHttpFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRSimpleHttpFetcher.h; sourceTree = "<group>"; };
-		76165F452387FEDD005AACCD /* MDUnifiedRecordCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordCoordinator.h; sourceTree = "<group>"; };
-		76165F462387FEDD005AACCD /* MDRecordBeautySettingDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordBeautySettingDataManager.h; sourceTree = "<group>"; };
-		76165F482387FEDD005AACCD /* MDUnifiedRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordViewController.m; sourceTree = "<group>"; };
-		76165F492387FEDD005AACCD /* MDUnifiedRecordViewController+Permission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MDUnifiedRecordViewController+Permission.m"; sourceTree = "<group>"; };
-		76165F4A2387FEDD005AACCD /* MDCameraContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCameraContainerViewController.h; sourceTree = "<group>"; };
-		76165F4B2387FEDD005AACCD /* MDUnifiedRecordViewController+horizontalRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MDUnifiedRecordViewController+horizontalRecording.m"; sourceTree = "<group>"; };
-		76165F4C2387FEDD005AACCD /* MDUnifiedRecordViewController+Permission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDUnifiedRecordViewController+Permission.h"; sourceTree = "<group>"; };
-		76165F4D2387FEDD005AACCD /* MDUnifiedRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordViewController.h; sourceTree = "<group>"; };
-		76165F4E2387FEDD005AACCD /* MDUnifiedRecordViewController+horizontalRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDUnifiedRecordViewController+horizontalRecording.h"; sourceTree = "<group>"; };
-		76165F4F2387FEDD005AACCD /* MDCameraContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCameraContainerViewController.m; sourceTree = "<group>"; };
-		76165F512387FEDD005AACCD /* MDUnifiedRecordSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordSettingItem.h; sourceTree = "<group>"; };
-		76165F522387FEDD005AACCD /* MDUnifiedRecordViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordViewDelegate.h; sourceTree = "<group>"; };
-		76165F532387FEDD005AACCD /* MDUnifiedRecordSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordSettingItem.m; sourceTree = "<group>"; };
-		76165F552387FEDD005AACCD /* MDUnifiedRecordIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordIconView.m; sourceTree = "<group>"; };
-		76165F562387FEDD005AACCD /* MDRecordProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordProgressView.h; sourceTree = "<group>"; };
-		76165F572387FEDD005AACCD /* MDUnifiedRecordCountDownAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordCountDownAnimation.m; sourceTree = "<group>"; };
-		76165F592387FEDD005AACCD /* MDRecordColorCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordColorCircleView.h; sourceTree = "<group>"; };
-		76165F5A2387FEDD005AACCD /* MDRecordWhiteRingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordWhiteRingView.h; sourceTree = "<group>"; };
-		76165F5B2387FEDD005AACCD /* MDUnifiedRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordButton.h; sourceTree = "<group>"; };
-		76165F5C2387FEDD005AACCD /* MDRecordCircleStrokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordCircleStrokenView.h; sourceTree = "<group>"; };
-		76165F5D2387FEDD005AACCD /* MDUnifiedRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordButton.m; sourceTree = "<group>"; };
-		76165F5E2387FEDD005AACCD /* MDRecordWhiteRingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordWhiteRingView.m; sourceTree = "<group>"; };
-		76165F5F2387FEDD005AACCD /* MDRecordColorCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordColorCircleView.m; sourceTree = "<group>"; };
-		76165F602387FEDD005AACCD /* MDRecordCircleStrokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordCircleStrokenView.m; sourceTree = "<group>"; };
-		76165F612387FEDD005AACCD /* MDFaceDetectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFaceDetectView.h; sourceTree = "<group>"; };
-		76165F622387FEDD005AACCD /* MDScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDScrollLabelView.m; sourceTree = "<group>"; };
-		76165F632387FEDD005AACCD /* MDDurationArrayProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDurationArrayProgressView.h; sourceTree = "<group>"; };
-		76165F642387FEDD005AACCD /* MDMoment3DTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoment3DTouchView.h; sourceTree = "<group>"; };
-		76165F652387FEDD005AACCD /* MDCameraBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCameraBottomView.m; sourceTree = "<group>"; };
-		76165F662387FEDD005AACCD /* MDRecordExposureAdjustSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordExposureAdjustSlider.h; sourceTree = "<group>"; };
-		76165F672387FEDD005AACCD /* MDUnifiedRecordTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordTopView.h; sourceTree = "<group>"; };
-		76165F682387FEDD005AACCD /* MDUnifiedRecordContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordContainerView.m; sourceTree = "<group>"; };
-		76165F692387FEDD005AACCD /* MDUnifiedRecordBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordBottomView.m; sourceTree = "<group>"; };
-		76165F6A2387FEDD005AACCD /* MDUnifiedRecordRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordRightView.h; sourceTree = "<group>"; };
-		76165F6B2387FEDD005AACCD /* MDUnifiedRecordCountDownAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordCountDownAnimation.h; sourceTree = "<group>"; };
-		76165F6C2387FEDD005AACCD /* MDRecordProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordProgressView.m; sourceTree = "<group>"; };
-		76165F6D2387FEDD005AACCD /* MDUnifiedRecordIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordIconView.h; sourceTree = "<group>"; };
-		76165F6E2387FEDD005AACCD /* MDMoment3DTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoment3DTouchView.m; sourceTree = "<group>"; };
-		76165F6F2387FEDD005AACCD /* MDScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDScrollLabelView.h; sourceTree = "<group>"; };
-		76165F702387FEDD005AACCD /* MDDurationArrayProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDurationArrayProgressView.m; sourceTree = "<group>"; };
-		76165F712387FEDD005AACCD /* MDFaceDetectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDFaceDetectView.m; sourceTree = "<group>"; };
-		76165F722387FEDD005AACCD /* MDRecordExposureAdjustSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordExposureAdjustSlider.m; sourceTree = "<group>"; };
-		76165F732387FEDD005AACCD /* MDCameraBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCameraBottomView.h; sourceTree = "<group>"; };
-		76165F742387FEDD005AACCD /* MDUnifiedRecordRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordRightView.m; sourceTree = "<group>"; };
-		76165F752387FEDD005AACCD /* MDUnifiedRecordBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordBottomView.h; sourceTree = "<group>"; };
-		76165F762387FEDD005AACCD /* MDUnifiedRecordContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUnifiedRecordContainerView.h; sourceTree = "<group>"; };
-		76165F772387FEDD005AACCD /* MDUnifiedRecordTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUnifiedRecordTopView.m; sourceTree = "<group>"; };
-		76165F792387FEDD005AACCD /* MDRecordMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordMacro.h; sourceTree = "<group>"; };
-		76165F7A2387FEDD005AACCD /* MDRecordContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordContext.m; sourceTree = "<group>"; };
-		76165F7B2387FEDD005AACCD /* MDRecordContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordContext.h; sourceTree = "<group>"; };
 		76165F7D2387FEDD005AACCD /* MDUserFeedGuideModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDUserFeedGuideModel.m; sourceTree = "<group>"; };
-		76165F7F2387FEDD005AACCD /* MDAlbumVideoImageSortingViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoImageSortingViewCollectionViewCell.m; sourceTree = "<group>"; };
-		76165F802387FEDD005AACCD /* MDAlbumVideoDynamicEffectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoDynamicEffectModel.h; sourceTree = "<group>"; };
-		76165F812387FEDD005AACCD /* MDAlbumPLayerSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumPLayerSetting.h; sourceTree = "<group>"; };
-		76165F822387FEDD005AACCD /* MDAlbumVideoCoverContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoCoverContentView.h; sourceTree = "<group>"; };
-		76165F832387FEDD005AACCD /* MDAlbumVideoImageSortingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoImageSortingViewController.h; sourceTree = "<group>"; };
-		76165F842387FEDD005AACCD /* MDAlbumVideoDynamicEffectSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoDynamicEffectSelectView.m; sourceTree = "<group>"; };
-		76165F852387FEDD005AACCD /* MDAlbumVideoImageSortingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoImageSortingView.m; sourceTree = "<group>"; };
-		76165F862387FEDD005AACCD /* MDAlbumVideoDynamicEffectCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoDynamicEffectCollectionViewCell.h; sourceTree = "<group>"; };
-		76165F872387FEDD005AACCD /* MDAlbumVideoImageSortingContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoImageSortingContentView.m; sourceTree = "<group>"; };
-		76165F882387FEDD005AACCD /* MDAlbumVideoCoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoCoverFlowLayout.m; sourceTree = "<group>"; };
-		76165F892387FEDD005AACCD /* MDAlbumVideoCoverContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoCoverContentView.m; sourceTree = "<group>"; };
-		76165F8A2387FEDD005AACCD /* MDAlbumVideoDynamicEffectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoDynamicEffectModel.m; sourceTree = "<group>"; };
-		76165F8B2387FEDD005AACCD /* MDAlbumPLayerSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumPLayerSetting.m; sourceTree = "<group>"; };
-		76165F8C2387FEDD005AACCD /* MDAlbumVideoImageSortingViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoImageSortingViewCollectionViewCell.h; sourceTree = "<group>"; };
-		76165F8D2387FEDD005AACCD /* MDAlbumVideoImageSortingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoImageSortingView.h; sourceTree = "<group>"; };
-		76165F8E2387FEDD005AACCD /* MDAlbumVideoDynamicEffectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoDynamicEffectCollectionViewCell.m; sourceTree = "<group>"; };
-		76165F8F2387FEDD005AACCD /* MDAlbumVideoDynamicEffectSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoDynamicEffectSelectView.h; sourceTree = "<group>"; };
-		76165F902387FEDD005AACCD /* MDAlbumVideoImageSortingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumVideoImageSortingViewController.m; sourceTree = "<group>"; };
-		76165F912387FEDD005AACCD /* MDAlbumVideoCoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoCoverFlowLayout.h; sourceTree = "<group>"; };
-		76165F922387FEDD005AACCD /* MDAlbumVideoImageSortingContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumVideoImageSortingContentView.h; sourceTree = "<group>"; };
 		76165F932387FEDD005AACCD /* MDUserFeedGuideModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDUserFeedGuideModel.h; sourceTree = "<group>"; };
 		76165F952387FEDD005AACCD /* New_Decoration_Face.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = New_Decoration_Face.geojson; sourceTree = "<group>"; };
 		76165F962387FEDD005AACCD /* RecomendMusics.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RecomendMusics.geojson; sourceTree = "<group>"; };
@@ -709,10 +711,6 @@
 		76165F9A2387FEDD005AACCD /* DynamicExpression.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DynamicExpression.geojson; sourceTree = "<group>"; };
 		76165F9B2387FEDD005AACCD /* StaticExpression.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StaticExpression.geojson; sourceTree = "<group>"; };
 		76165F9C2387FEDD005AACCD /* Decoration_Face.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Decoration_Face.geojson; sourceTree = "<group>"; };
-		76165F9F2387FEDD005AACCD /* MDRecordSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordSettingViewController.h; sourceTree = "<group>"; };
-		76165FA02387FEDD005AACCD /* MDRecordVideoEditSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordVideoEditSettingViewController.h; sourceTree = "<group>"; };
-		76165FA12387FEDD005AACCD /* MDRecordVideoEditSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordVideoEditSettingViewController.m; sourceTree = "<group>"; };
-		76165FA22387FEDD005AACCD /* MDRecordSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordSettingViewController.m; sourceTree = "<group>"; };
 		76165FA42387FEDD005AACCD /* MDRecordRecordingSettingMananger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordRecordingSettingMananger.m; sourceTree = "<group>"; };
 		76165FA52387FEDD005AACCD /* MDRecordRecordingSettingMananger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordRecordingSettingMananger.h; sourceTree = "<group>"; };
 		76165FA82387FEDD005AACCD /* UIView+RoundCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundCorner.m"; sourceTree = "<group>"; };
@@ -847,26 +845,6 @@
 		761660362387FEDD005AACCD /* UIColor+MDRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MDRUtils.m"; sourceTree = "<group>"; };
 		761660372387FEDD005AACCD /* UIPanGestureRecognizer+GestureTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPanGestureRecognizer+GestureTag.h"; sourceTree = "<group>"; };
 		761660382387FEDD005AACCD /* UINavigationBar+Adapter_11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Adapter_11.h"; sourceTree = "<group>"; };
-		7616603A2387FEDD005AACCD /* MDAlbumAssetLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlbumAssetLibrary.m; sourceTree = "<group>"; };
-		7616603B2387FEDD005AACCD /* MDSelectedImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSelectedImageItem.h; sourceTree = "<group>"; };
-		7616603C2387FEDD005AACCD /* MDImageEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDImageEditorViewController.h; sourceTree = "<group>"; };
-		7616603D2387FEDD005AACCD /* ImageFixOrientationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFixOrientationHelper.h; sourceTree = "<group>"; };
-		7616603E2387FEDD005AACCD /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
-		7616603F2387FEDD005AACCD /* MDRecordUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordUtility.h; sourceTree = "<group>"; };
-		761660402387FEDD005AACCD /* MDRecordCropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordCropImageViewController.h; sourceTree = "<group>"; };
-		761660412387FEDD005AACCD /* MDBeautySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBeautySettings.m; sourceTree = "<group>"; };
-		761660422387FEDD005AACCD /* MDPhotoLibraryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDPhotoLibraryProvider.m; sourceTree = "<group>"; };
-		761660432387FEDD005AACCD /* MDImageDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDImageDataProvider.h; sourceTree = "<group>"; };
-		761660442387FEDD005AACCD /* MDAlbumAssetLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlbumAssetLibrary.h; sourceTree = "<group>"; };
-		761660452387FEDD005AACCD /* ImageFixOrientationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFixOrientationHelper.m; sourceTree = "<group>"; };
-		761660462387FEDD005AACCD /* MDImageEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDImageEditorViewController.m; sourceTree = "<group>"; };
-		761660472387FEDD005AACCD /* MDSelectedImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSelectedImageItem.m; sourceTree = "<group>"; };
-		761660482387FEDD005AACCD /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
-		761660492387FEDD005AACCD /* MDImageDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDImageDataProvider.m; sourceTree = "<group>"; };
-		7616604A2387FEDD005AACCD /* MDPhotoLibraryProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDPhotoLibraryProvider.h; sourceTree = "<group>"; };
-		7616604B2387FEDD005AACCD /* MDBeautySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBeautySettings.h; sourceTree = "<group>"; };
-		7616604C2387FEDD005AACCD /* MDRecordCropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordCropImageViewController.m; sourceTree = "<group>"; };
-		7616604D2387FEDD005AACCD /* MDRecordUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordUtility.m; sourceTree = "<group>"; };
 		761660502387FEDD005AACCD /* MDRecordResourceDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecordResourceDownloader.m; sourceTree = "<group>"; };
 		761660512387FEDD005AACCD /* MDRecordResourceDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecordResourceDownloader.h; sourceTree = "<group>"; };
 		761660532387FEDD005AACCD /* MDTabSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTabSegmentView.h; sourceTree = "<group>"; };
@@ -947,6 +925,7 @@
 		76FFE4482255B21400956785 /* MMVideoSDK相关UI接入指南.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "MMVideoSDK相关UI接入指南.md"; sourceTree = "<group>"; };
 		76FFE4492255B21400956785 /* IOS_拍摄器SDK_V1.0测试报告.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IOS_拍摄器SDK_V1.0测试报告.xlsx"; sourceTree = "<group>"; };
 		76FFE44A2255B21400956785 /* MMVideoSDK接入指南.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "MMVideoSDK接入指南.md"; sourceTree = "<group>"; };
+		B6B91D1A3F5E77E06F75B9FF /* Pods-MDRecordSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDRecordSDK.debug.xcconfig"; path = "Target Support Files/Pods-MDRecordSDK/Pods-MDRecordSDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -972,15 +951,314 @@
 				767D69E4223EC02600FA343E /* libz.tbd in Frameworks */,
 				7631D4C4221A56DA00133824 /* GLKit.framework in Frameworks */,
 				7631D4C2221A56D400133824 /* OpenGLES.framework in Frameworks */,
+				D4D3EE68A87DFC6B27D6CFBE /* Pods_MDRecordSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E76E9B4265633FF005C42D8 /* SpecialEffects */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9B5265633FF005C42D8 /* Handler */,
+				5E76E9BA265633FF005C42D8 /* Controller */,
+				5E76E9BD265633FF005C42D8 /* Manager */,
+				5E76E9C2265633FF005C42D8 /* Model */,
+				5E76E9C7265633FF005C42D8 /* View */,
+			);
+			path = SpecialEffects;
+			sourceTree = "<group>";
+		};
+		5E76E9B5265633FF005C42D8 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9B6265633FF005C42D8 /* MDRecordSpecialEffectsManager.h */,
+				5E76E9B7265633FF005C42D8 /* MDRecordSpecialImageDataManager.h */,
+				5E76E9B8265633FF005C42D8 /* MDRecordSpecialEffectsManager.m */,
+				5E76E9B9265633FF005C42D8 /* MDRecordSpecialImageDataManager.m */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		5E76E9BA265633FF005C42D8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9BB265633FF005C42D8 /* MDSpecialEffectsController.h */,
+				5E76E9BC265633FF005C42D8 /* MDSpecialEffectsController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5E76E9BD265633FF005C42D8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9BE265633FF005C42D8 /* MDEffectsTimeManager.m */,
+				5E76E9BF265633FF005C42D8 /* MDSpecialEffectsManager.m */,
+				5E76E9C0265633FF005C42D8 /* MDEffectsTimeManager.h */,
+				5E76E9C1265633FF005C42D8 /* MDSpecialEffectsManager.h */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5E76E9C2265633FF005C42D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9C3265633FF005C42D8 /* MDSpecialEffectsProgressModel.m */,
+				5E76E9C4265633FF005C42D8 /* MDSpecialEffectsModel.m */,
+				5E76E9C5265633FF005C42D8 /* MDSpecialEffectsProgressModel.h */,
+				5E76E9C6265633FF005C42D8 /* MDSpecialEffectsModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5E76E9C7265633FF005C42D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9C826563400005C42D8 /* MDSpecialEffectsView.h */,
+				5E76E9C926563400005C42D8 /* EffectsSelectView */,
+				5E76E9CE26563400005C42D8 /* MDSpecialEffectsLayer.h */,
+				5E76E9CF26563400005C42D8 /* MDSpecialEffectsSliderView.h */,
+				5E76E9D026563400005C42D8 /* MDSpecialEffectsProgressView.m */,
+				5E76E9D126563400005C42D8 /* MDSpecialEffectsTitleView.h */,
+				5E76E9D226563400005C42D8 /* MDSpecialEffectsLayer.m */,
+				5E76E9D326563400005C42D8 /* MDSpecialEffectsView.m */,
+				5E76E9D426563400005C42D8 /* MDSpecialEffectsSliderView.m */,
+				5E76E9D526563400005C42D8 /* MDSpecialEffectsProgressView.h */,
+				5E76E9D626563400005C42D8 /* MDSpecialEffectsTitleView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5E76E9C926563400005C42D8 /* EffectsSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9CA26563400005C42D8 /* MDSpecialEffectsSelectView.h */,
+				5E76E9CB26563400005C42D8 /* MDSpecialEffectsSelectViewCollectionViewCell.m */,
+				5E76E9CC26563400005C42D8 /* MDSpecialEffectsSelectView.m */,
+				5E76E9CD26563400005C42D8 /* MDSpecialEffectsSelectViewCollectionViewCell.h */,
+			);
+			path = EffectsSelectView;
+			sourceTree = "<group>";
+		};
+		5E76E9E5265634E6005C42D8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9E6265634E6005C42D8 /* Handler */,
+				5E76E9F1265634E6005C42D8 /* Controller */,
+				5E76E9FA265634E6005C42D8 /* Model */,
+				5E76E9FE265634E6005C42D8 /* View */,
+				5E76EA22265634E6005C42D8 /* Utility */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5E76E9E6265634E6005C42D8 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9E7265634E6005C42D8 /* MDMomentRecordHandler.m */,
+				5E76E9E8265634E6005C42D8 /* MDRSimpleHttpFetcher.m */,
+				5E76E9E9265634E6005C42D8 /* MDUnifiedRecordModuleAggregate.h */,
+				5E76E9EA265634E6005C42D8 /* MDRecordBeautySettingDataManager.m */,
+				5E76E9EB265634E6005C42D8 /* MDUnifiedRecordCoordinator.m */,
+				5E76E9EC265634E6005C42D8 /* MDMomentRecordHandler.h */,
+				5E76E9ED265634E6005C42D8 /* MDUnifiedRecordModuleAggregate.m */,
+				5E76E9EE265634E6005C42D8 /* MDRSimpleHttpFetcher.h */,
+				5E76E9EF265634E6005C42D8 /* MDUnifiedRecordCoordinator.h */,
+				5E76E9F0265634E6005C42D8 /* MDRecordBeautySettingDataManager.h */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		5E76E9F1265634E6005C42D8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9F2265634E6005C42D8 /* MDUnifiedRecordViewController.m */,
+				5E76E9F3265634E6005C42D8 /* MDUnifiedRecordViewController+Permission.m */,
+				5E76E9F4265634E6005C42D8 /* MDCameraContainerViewController.h */,
+				5E76E9F5265634E6005C42D8 /* MDUnifiedRecordViewController+horizontalRecording.m */,
+				5E76E9F6265634E6005C42D8 /* MDUnifiedRecordViewController+Permission.h */,
+				5E76E9F7265634E6005C42D8 /* MDUnifiedRecordViewController.h */,
+				5E76E9F8265634E6005C42D8 /* MDUnifiedRecordViewController+horizontalRecording.h */,
+				5E76E9F9265634E6005C42D8 /* MDCameraContainerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5E76E9FA265634E6005C42D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9FB265634E6005C42D8 /* MDUnifiedRecordSettingItem.h */,
+				5E76E9FC265634E6005C42D8 /* MDUnifiedRecordViewDelegate.h */,
+				5E76E9FD265634E6005C42D8 /* MDUnifiedRecordSettingItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5E76E9FE265634E6005C42D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E76E9FF265634E6005C42D8 /* MDUnifiedRecordIconView.m */,
+				5E76EA00265634E6005C42D8 /* MDRecordProgressView.h */,
+				5E76EA01265634E6005C42D8 /* MDUnifiedRecordCountDownAnimation.m */,
+				5E76EA02265634E6005C42D8 /* RecordButtonView */,
+				5E76EA0B265634E6005C42D8 /* MDFaceDetectView.h */,
+				5E76EA0C265634E6005C42D8 /* MDScrollLabelView.m */,
+				5E76EA0D265634E6005C42D8 /* MDDurationArrayProgressView.h */,
+				5E76EA0E265634E6005C42D8 /* MDMoment3DTouchView.h */,
+				5E76EA0F265634E6005C42D8 /* MDCameraBottomView.m */,
+				5E76EA10265634E6005C42D8 /* MDRecordExposureAdjustSlider.h */,
+				5E76EA11265634E6005C42D8 /* MDUnifiedRecordTopView.h */,
+				5E76EA12265634E6005C42D8 /* MDUnifiedRecordContainerView.m */,
+				5E76EA13265634E6005C42D8 /* MDUnifiedRecordBottomView.m */,
+				5E76EA14265634E6005C42D8 /* MDUnifiedRecordRightView.h */,
+				5E76EA15265634E6005C42D8 /* MDUnifiedRecordCountDownAnimation.h */,
+				5E76EA16265634E6005C42D8 /* MDRecordProgressView.m */,
+				5E76EA17265634E6005C42D8 /* MDUnifiedRecordIconView.h */,
+				5E76EA18265634E6005C42D8 /* MDMoment3DTouchView.m */,
+				5E76EA19265634E6005C42D8 /* MDScrollLabelView.h */,
+				5E76EA1A265634E6005C42D8 /* MDDurationArrayProgressView.m */,
+				5E76EA1B265634E6005C42D8 /* MDFaceDetectView.m */,
+				5E76EA1C265634E6005C42D8 /* MDRecordExposureAdjustSlider.m */,
+				5E76EA1D265634E6005C42D8 /* MDCameraBottomView.h */,
+				5E76EA1E265634E6005C42D8 /* MDUnifiedRecordRightView.m */,
+				5E76EA1F265634E6005C42D8 /* MDUnifiedRecordBottomView.h */,
+				5E76EA20265634E6005C42D8 /* MDUnifiedRecordContainerView.h */,
+				5E76EA21265634E6005C42D8 /* MDUnifiedRecordTopView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5E76EA02265634E6005C42D8 /* RecordButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				5E76EA03265634E6005C42D8 /* MDRecordColorCircleView.h */,
+				5E76EA04265634E6005C42D8 /* MDRecordWhiteRingView.h */,
+				5E76EA05265634E6005C42D8 /* MDUnifiedRecordButton.h */,
+				5E76EA06265634E6005C42D8 /* MDRecordCircleStrokenView.h */,
+				5E76EA07265634E6005C42D8 /* MDUnifiedRecordButton.m */,
+				5E76EA08265634E6005C42D8 /* MDRecordWhiteRingView.m */,
+				5E76EA09265634E6005C42D8 /* MDRecordColorCircleView.m */,
+				5E76EA0A265634E6005C42D8 /* MDRecordCircleStrokenView.m */,
+			);
+			path = RecordButtonView;
+			sourceTree = "<group>";
+		};
+		5E76EA22265634E6005C42D8 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5E76EA23265634E6005C42D8 /* MDRecordMacro.h */,
+				5E76EA24265634E6005C42D8 /* MDRecordContext.m */,
+				5E76EA25265634E6005C42D8 /* MDRecordContext.h */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		5E76EA4226563573005C42D8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5E76EA4326563573005C42D8 /* MDRecordSettingViewController.h */,
+				5E76EA4426563573005C42D8 /* MDRecordVideoEditSettingViewController.h */,
+				5E76EA4526563573005C42D8 /* MDRecordVideoEditSettingViewController.m */,
+				5E76EA4626563573005C42D8 /* MDRecordSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5E76EA49265635F3005C42D8 /* ImageEdit */ = {
+			isa = PBXGroup;
+			children = (
+				5E76EA4A265635F3005C42D8 /* MDAlbumAssetLibrary.m */,
+				5E76EA4B265635F3005C42D8 /* MDSelectedImageItem.h */,
+				5E76EA4C265635F3005C42D8 /* MDImageEditorViewController.h */,
+				5E76EA4D265635F3005C42D8 /* ImageFixOrientationHelper.h */,
+				5E76EA4E265635F3005C42D8 /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				5E76EA4F265635F3005C42D8 /* MDRecordUtility.h */,
+				5E76EA50265635F3005C42D8 /* MDRecordCropImageViewController.h */,
+				5E76EA51265635F3005C42D8 /* MDBeautySettings.m */,
+				5E76EA52265635F3005C42D8 /* MDPhotoLibraryProvider.m */,
+				5E76EA53265635F3005C42D8 /* MDImageDataProvider.h */,
+				5E76EA54265635F3005C42D8 /* MDAlbumAssetLibrary.h */,
+				5E76EA55265635F3005C42D8 /* ImageFixOrientationHelper.m */,
+				5E76EA56265635F3005C42D8 /* MDImageEditorViewController.m */,
+				5E76EA57265635F3005C42D8 /* MDSelectedImageItem.m */,
+				5E76EA58265635F3005C42D8 /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+				5E76EA59265635F3005C42D8 /* MDImageDataProvider.m */,
+				5E76EA5A265635F3005C42D8 /* MDPhotoLibraryProvider.h */,
+				5E76EA5B265635F3005C42D8 /* MDBeautySettings.h */,
+				5E76EA5C265635F3005C42D8 /* MDRecordCropImageViewController.m */,
+				5E76EA5D265635F3005C42D8 /* MDRecordUtility.m */,
+			);
+			path = ImageEdit;
+			sourceTree = "<group>";
+		};
+		5E76EA68265636C2005C42D8 /* Sticker */ = {
+			isa = PBXGroup;
+			children = (
+				5E76EA69265636C2005C42D8 /* MDCollectionHelper.h */,
+				5E76EA6A265636C2005C42D8 /* MDRecordEditTItleView.h */,
+				5E76EA6B265636C2005C42D8 /* MDStickerDownloader.m */,
+				5E76EA6C265636C2005C42D8 /* MDRStickerImageView.h */,
+				5E76EA6D265636C2005C42D8 /* MDRecordEditStickersView.m */,
+				5E76EA6E265636C2005C42D8 /* MDMomentExpressionCell.h */,
+				5E76EA6F265636C2005C42D8 /* MDMomentExpressionView.h */,
+				5E76EA70265636C2005C42D8 /* MDDownLoaderModel.h */,
+				5E76EA71265636C2005C42D8 /* MDMomentExpressionCellModel.m */,
+				5E76EA72265636C2005C42D8 /* UIButton+Block.m */,
+				5E76EA73265636C2005C42D8 /* MDRecordExpressionLoader.h */,
+				5E76EA74265636C2005C42D8 /* MDMomentExpressionViewController.m */,
+				5E76EA75265636C2005C42D8 /* MDRStickerViewController.h */,
+				5E76EA76265636C2005C42D8 /* UIView+Corner.m */,
+				5E76EA77265636C2005C42D8 /* MDRecordEditContainerPanelView.h */,
+				5E76EA78265636C2005C42D8 /* BBMediaStickerAdjustmentView.m */,
+				5E76EA79265636C2005C42D8 /* MDRecordEditFuntionButtonView.h */,
+				5E76EA7A265636C2005C42D8 /* MDDownLoadManager.m */,
+				5E76EA7B265636C2005C42D8 /* MDMomentExpressionCell.m */,
+				5E76EA7C265636C2005C42D8 /* MDRecordEditStickersView.h */,
+				5E76EA7D265636C2005C42D8 /* MDRStickerImageView.m */,
+				5E76EA7E265636C2005C42D8 /* MDStickerDownloader.h */,
+				5E76EA7F265636C2005C42D8 /* MDCollectionHelper.m */,
+				5E76EA80265636C2005C42D8 /* MDRecordEditTItleView.m */,
+				5E76EA81265636C2005C42D8 /* MDDownLoaderModel.m */,
+				5E76EA82265636C2005C42D8 /* MDRecordEditProtocol.h */,
+				5E76EA83265636C2005C42D8 /* MDMomentExpressionView.m */,
+				5E76EA84265636C2005C42D8 /* MDRStickerViewController.m */,
+				5E76EA85265636C2005C42D8 /* MDMomentExpressionViewController.h */,
+				5E76EA86265636C2005C42D8 /* MDRecordExpressionLoader.m */,
+				5E76EA87265636C2005C42D8 /* UIButton+Block.h */,
+				5E76EA88265636C2005C42D8 /* MDMomentExpressionCellModel.h */,
+				5E76EA89265636C2005C42D8 /* MDDownLoadManager.h */,
+				5E76EA8A265636C2005C42D8 /* BBMediaStickerAdjustmentView.h */,
+				5E76EA8B265636C2005C42D8 /* MDRecordEditFuntionButtonView.m */,
+				5E76EA8C265636C2005C42D8 /* MDRecordEditContainerPanelView.m */,
+				5E76EA8D265636C2005C42D8 /* UIView+Corner.h */,
+			);
+			path = Sticker;
+			sourceTree = "<group>";
+		};
+		5E76EAA026563782005C42D8 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				5E76EAA126563782005C42D8 /* MDMediaEditorCoordinator.h */,
+				5E76EAA226563782005C42D8 /* MDMediaEditorModuleAggregate.h */,
+				5E76EAA326563782005C42D8 /* MDRecordVideoSettingManager.h */,
+				5E76EAA426563782005C42D8 /* MDVideoUploadHelper.m */,
+				5E76EAA526563782005C42D8 /* MDDocument.h */,
+				5E76EAA626563782005C42D8 /* MDMediaEditorCoordinator.m */,
+				5E76EAA726563782005C42D8 /* MDMediaEditorModuleAggregate.m */,
+				5E76EAA826563782005C42D8 /* MDVideoUploadHelper.h */,
+				5E76EAA926563782005C42D8 /* MDRecordVideoSettingManager.m */,
+				5E76EAAA26563782005C42D8 /* MDDocument.m */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
 		6A76F13F7DD33270E61B214F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				B6B91D1A3F5E77E06F75B9FF /* Pods-MDRecordSDK.debug.xcconfig */,
+				725E5C027BB1CFA2B0B93E7F /* Pods-MDRecordSDK.release.xcconfig */,
+				016E9C0F094B30E2FEFF6607 /* Pods-MDRecordSDK.inhouse.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1001,15 +1279,15 @@
 		76165DE92387FEDC005AACCD /* MediaEdit */ = {
 			isa = PBXGroup;
 			children = (
+				5E76EA68265636C2005C42D8 /* Sticker */,
+				5E76E9B4265633FF005C42D8 /* SpecialEffects */,
 				76165DEA2387FEDC005AACCD /* Thumb */,
-				76165DF32387FEDC005AACCD /* Sticker */,
 				76165E192387FEDC005AACCD /* Trim */,
 				76165E202387FEDC005AACCD /* SpeedVary */,
 				76165E2C2387FEDC005AACCD /* GraffitiEditor */,
 				76165E332387FEDC005AACCD /* MediaPicker */,
 				76165E672387FEDC005AACCD /* Text */,
 				76165E6E2387FEDC005AACCD /* Base */,
-				76165E902387FEDC005AACCD /* SpecialEffects */,
 			);
 			path = MediaEdit;
 			sourceTree = "<group>";
@@ -1027,50 +1305,6 @@
 				76165DF22387FEDC005AACCD /* MDMomentThumbSelectViewController.h */,
 			);
 			path = Thumb;
-			sourceTree = "<group>";
-		};
-		76165DF32387FEDC005AACCD /* Sticker */ = {
-			isa = PBXGroup;
-			children = (
-				76165DF42387FEDC005AACCD /* MDCollectionHelper.h */,
-				76165DF52387FEDC005AACCD /* MDRecordEditTItleView.h */,
-				76165DF62387FEDC005AACCD /* MDStickerDownloader.m */,
-				76165DF72387FEDC005AACCD /* MDRStickerImageView.h */,
-				76165DF82387FEDC005AACCD /* MDRecordEditStickersView.m */,
-				76165DF92387FEDC005AACCD /* MDMomentExpressionCell.h */,
-				76165DFA2387FEDC005AACCD /* MDMomentExpressionView.h */,
-				76165DFB2387FEDC005AACCD /* MDDownLoaderModel.h */,
-				76165DFC2387FEDC005AACCD /* MDMomentExpressionCellModel.m */,
-				76165DFD2387FEDC005AACCD /* UIButton+Block.m */,
-				76165DFE2387FEDC005AACCD /* MDRecordExpressionLoader.h */,
-				76165DFF2387FEDC005AACCD /* MDMomentExpressionViewController.m */,
-				76165E002387FEDC005AACCD /* MDRStickerViewController.h */,
-				76165E012387FEDC005AACCD /* UIView+Corner.m */,
-				76165E022387FEDC005AACCD /* MDRecordEditContainerPanelView.h */,
-				76165E032387FEDC005AACCD /* BBMediaStickerAdjustmentView.m */,
-				76165E042387FEDC005AACCD /* MDRecordEditFuntionButtonView.h */,
-				76165E052387FEDC005AACCD /* MDDownLoadManager.m */,
-				76165E062387FEDC005AACCD /* MDMomentExpressionCell.m */,
-				76165E072387FEDC005AACCD /* MDRecordEditStickersView.h */,
-				76165E082387FEDC005AACCD /* MDRStickerImageView.m */,
-				76165E092387FEDC005AACCD /* MDStickerDownloader.h */,
-				76165E0A2387FEDC005AACCD /* MDCollectionHelper.m */,
-				76165E0B2387FEDC005AACCD /* MDRecordEditTItleView.m */,
-				76165E0C2387FEDC005AACCD /* MDDownLoaderModel.m */,
-				76165E0D2387FEDC005AACCD /* MDRecordEditProtocol.h */,
-				76165E0E2387FEDC005AACCD /* MDMomentExpressionView.m */,
-				76165E0F2387FEDC005AACCD /* MDRStickerViewController.m */,
-				76165E102387FEDC005AACCD /* MDMomentExpressionViewController.h */,
-				76165E112387FEDC005AACCD /* MDRecordExpressionLoader.m */,
-				76165E122387FEDC005AACCD /* UIButton+Block.h */,
-				76165E132387FEDC005AACCD /* MDMomentExpressionCellModel.h */,
-				76165E142387FEDC005AACCD /* MDDownLoadManager.h */,
-				76165E152387FEDC005AACCD /* BBMediaStickerAdjustmentView.h */,
-				76165E162387FEDC005AACCD /* MDRecordEditFuntionButtonView.m */,
-				76165E172387FEDC005AACCD /* MDRecordEditContainerPanelView.m */,
-				76165E182387FEDC005AACCD /* UIView+Corner.h */,
-			);
-			path = Sticker;
 			sourceTree = "<group>";
 		};
 		76165E192387FEDC005AACCD /* Trim */ = {
@@ -1240,29 +1474,12 @@
 		76165E6E2387FEDC005AACCD /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				76165E6F2387FEDC005AACCD /* Handler */,
+				5E76EAA026563782005C42D8 /* Handler */,
 				76165E7A2387FEDC005AACCD /* Controller */,
 				76165E7D2387FEDC005AACCD /* Model */,
 				76165E852387FEDC005AACCD /* View */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		76165E6F2387FEDC005AACCD /* Handler */ = {
-			isa = PBXGroup;
-			children = (
-				76165E702387FEDC005AACCD /* MDMediaEditorCoordinator.h */,
-				76165E712387FEDC005AACCD /* MDMediaEditorModuleAggregate.h */,
-				76165E722387FEDC005AACCD /* MDRecordVideoSettingManager.h */,
-				76165E732387FEDC005AACCD /* MDVideoUploadHelper.m */,
-				76165E742387FEDC005AACCD /* MDDocument.h */,
-				76165E752387FEDC005AACCD /* MDMediaEditorCoordinator.m */,
-				76165E762387FEDC005AACCD /* MDMediaEditorModuleAggregate.m */,
-				76165E772387FEDC005AACCD /* MDVideoUploadHelper.h */,
-				76165E782387FEDC005AACCD /* MDRecordVideoSettingManager.m */,
-				76165E792387FEDC005AACCD /* MDDocument.m */,
-			);
-			path = Handler;
 			sourceTree = "<group>";
 		};
 		76165E7A2387FEDC005AACCD /* Controller */ = {
@@ -1305,99 +1522,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		76165E902387FEDC005AACCD /* SpecialEffects */ = {
-			isa = PBXGroup;
-			children = (
-				76165E912387FEDC005AACCD /* Handler */,
-				76165E962387FEDC005AACCD /* Controller */,
-				76165E992387FEDC005AACCD /* Manager */,
-				76165E9E2387FEDC005AACCD /* Model */,
-				76165EA32387FEDC005AACCD /* View */,
-			);
-			path = SpecialEffects;
-			sourceTree = "<group>";
-		};
-		76165E912387FEDC005AACCD /* Handler */ = {
-			isa = PBXGroup;
-			children = (
-				76165E922387FEDC005AACCD /* MDRecordSpecialEffectsManager.h */,
-				76165E932387FEDC005AACCD /* MDRecordSpecialImageDataManager.h */,
-				76165E942387FEDC005AACCD /* MDRecordSpecialEffectsManager.m */,
-				76165E952387FEDC005AACCD /* MDRecordSpecialImageDataManager.m */,
-			);
-			path = Handler;
-			sourceTree = "<group>";
-		};
-		76165E962387FEDC005AACCD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				76165E972387FEDC005AACCD /* MDSpecialEffectsController.h */,
-				76165E982387FEDC005AACCD /* MDSpecialEffectsController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		76165E992387FEDC005AACCD /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				76165E9A2387FEDC005AACCD /* MDEffectsTimeManager.m */,
-				76165E9B2387FEDC005AACCD /* MDSpecialEffectsManager.m */,
-				76165E9C2387FEDC005AACCD /* MDEffectsTimeManager.h */,
-				76165E9D2387FEDC005AACCD /* MDSpecialEffectsManager.h */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		76165E9E2387FEDC005AACCD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				76165E9F2387FEDC005AACCD /* MDSpecialEffectsProgressModel.m */,
-				76165EA02387FEDC005AACCD /* MDSpecialEffectsModel.m */,
-				76165EA12387FEDC005AACCD /* MDSpecialEffectsProgressModel.h */,
-				76165EA22387FEDC005AACCD /* MDSpecialEffectsModel.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		76165EA32387FEDC005AACCD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				76165EA42387FEDC005AACCD /* MDSpecialEffectsView.h */,
-				76165EA52387FEDC005AACCD /* EffectsSelectView */,
-				76165EAA2387FEDC005AACCD /* MDSpecialEffectsLayer.h */,
-				76165EAB2387FEDC005AACCD /* MDSpecialEffectsSliderView.h */,
-				76165EAC2387FEDC005AACCD /* MDSpecialEffectsProgressView.m */,
-				76165EAD2387FEDC005AACCD /* MDSpecialEffectsTitleView.h */,
-				76165EAE2387FEDC005AACCD /* MDSpecialEffectsLayer.m */,
-				76165EAF2387FEDC005AACCD /* MDSpecialEffectsView.m */,
-				76165EB02387FEDC005AACCD /* MDSpecialEffectsSliderView.m */,
-				76165EB12387FEDC005AACCD /* MDSpecialEffectsProgressView.h */,
-				76165EB22387FEDC005AACCD /* MDSpecialEffectsTitleView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		76165EA52387FEDC005AACCD /* EffectsSelectView */ = {
-			isa = PBXGroup;
-			children = (
-				76165EA62387FEDC005AACCD /* MDSpecialEffectsSelectView.h */,
-				76165EA72387FEDC005AACCD /* MDSpecialEffectsSelectViewCollectionViewCell.m */,
-				76165EA82387FEDC005AACCD /* MDSpecialEffectsSelectView.m */,
-				76165EA92387FEDC005AACCD /* MDSpecialEffectsSelectViewCollectionViewCell.h */,
-			);
-			path = EffectsSelectView;
-			sourceTree = "<group>";
-		};
 		76165EB32387FEDC005AACCD /* Capture */ = {
 			isa = PBXGroup;
 			children = (
+				5E76E9E5265634E6005C42D8 /* Base */,
 				76165EB42387FEDC005AACCD /* Decoration */,
 				76165ED52387FEDD005AACCD /* Music */,
 				76165F062387FEDD005AACCD /* MDFaceTip */,
 				76165F0D2387FEDD005AACCD /* AudioPitch */,
 				76165F1E2387FEDD005AACCD /* BeautyFace */,
 				76165F392387FEDD005AACCD /* Resource */,
-				76165F3B2387FEDD005AACCD /* Base */,
 			);
 			path = Capture;
 			sourceTree = "<group>";
@@ -1630,6 +1764,7 @@
 		76165F1F2387FEDD005AACCD /* Handler */ = {
 			isa = PBXGroup;
 			children = (
+				5EA497B526D8FDB900564A53 /* microSurgery.geojson */,
 				76165F202387FEDD005AACCD /* MDRecordFilterModelLoader.h */,
 				76165F212387FEDD005AACCD /* MDRecordFilterModelLoader.m */,
 			);
@@ -1685,159 +1820,19 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		76165F3B2387FEDD005AACCD /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				76165F3C2387FEDD005AACCD /* Handler */,
-				76165F472387FEDD005AACCD /* Controller */,
-				76165F502387FEDD005AACCD /* Model */,
-				76165F542387FEDD005AACCD /* View */,
-				76165F782387FEDD005AACCD /* Utility */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		76165F3C2387FEDD005AACCD /* Handler */ = {
-			isa = PBXGroup;
-			children = (
-				76165F3D2387FEDD005AACCD /* MDMomentRecordHandler.m */,
-				76165F3E2387FEDD005AACCD /* MDRSimpleHttpFetcher.m */,
-				76165F3F2387FEDD005AACCD /* MDUnifiedRecordModuleAggregate.h */,
-				76165F402387FEDD005AACCD /* MDRecordBeautySettingDataManager.m */,
-				76165F412387FEDD005AACCD /* MDUnifiedRecordCoordinator.m */,
-				76165F422387FEDD005AACCD /* MDMomentRecordHandler.h */,
-				76165F432387FEDD005AACCD /* MDUnifiedRecordModuleAggregate.m */,
-				76165F442387FEDD005AACCD /* MDRSimpleHttpFetcher.h */,
-				76165F452387FEDD005AACCD /* MDUnifiedRecordCoordinator.h */,
-				76165F462387FEDD005AACCD /* MDRecordBeautySettingDataManager.h */,
-			);
-			path = Handler;
-			sourceTree = "<group>";
-		};
-		76165F472387FEDD005AACCD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				76165F482387FEDD005AACCD /* MDUnifiedRecordViewController.m */,
-				76165F492387FEDD005AACCD /* MDUnifiedRecordViewController+Permission.m */,
-				76165F4A2387FEDD005AACCD /* MDCameraContainerViewController.h */,
-				76165F4B2387FEDD005AACCD /* MDUnifiedRecordViewController+horizontalRecording.m */,
-				76165F4C2387FEDD005AACCD /* MDUnifiedRecordViewController+Permission.h */,
-				76165F4D2387FEDD005AACCD /* MDUnifiedRecordViewController.h */,
-				76165F4E2387FEDD005AACCD /* MDUnifiedRecordViewController+horizontalRecording.h */,
-				76165F4F2387FEDD005AACCD /* MDCameraContainerViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		76165F502387FEDD005AACCD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				76165F512387FEDD005AACCD /* MDUnifiedRecordSettingItem.h */,
-				76165F522387FEDD005AACCD /* MDUnifiedRecordViewDelegate.h */,
-				76165F532387FEDD005AACCD /* MDUnifiedRecordSettingItem.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		76165F542387FEDD005AACCD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				76165F552387FEDD005AACCD /* MDUnifiedRecordIconView.m */,
-				76165F562387FEDD005AACCD /* MDRecordProgressView.h */,
-				76165F572387FEDD005AACCD /* MDUnifiedRecordCountDownAnimation.m */,
-				76165F582387FEDD005AACCD /* RecordButtonView */,
-				76165F612387FEDD005AACCD /* MDFaceDetectView.h */,
-				76165F622387FEDD005AACCD /* MDScrollLabelView.m */,
-				76165F632387FEDD005AACCD /* MDDurationArrayProgressView.h */,
-				76165F642387FEDD005AACCD /* MDMoment3DTouchView.h */,
-				76165F652387FEDD005AACCD /* MDCameraBottomView.m */,
-				76165F662387FEDD005AACCD /* MDRecordExposureAdjustSlider.h */,
-				76165F672387FEDD005AACCD /* MDUnifiedRecordTopView.h */,
-				76165F682387FEDD005AACCD /* MDUnifiedRecordContainerView.m */,
-				76165F692387FEDD005AACCD /* MDUnifiedRecordBottomView.m */,
-				76165F6A2387FEDD005AACCD /* MDUnifiedRecordRightView.h */,
-				76165F6B2387FEDD005AACCD /* MDUnifiedRecordCountDownAnimation.h */,
-				76165F6C2387FEDD005AACCD /* MDRecordProgressView.m */,
-				76165F6D2387FEDD005AACCD /* MDUnifiedRecordIconView.h */,
-				76165F6E2387FEDD005AACCD /* MDMoment3DTouchView.m */,
-				76165F6F2387FEDD005AACCD /* MDScrollLabelView.h */,
-				76165F702387FEDD005AACCD /* MDDurationArrayProgressView.m */,
-				76165F712387FEDD005AACCD /* MDFaceDetectView.m */,
-				76165F722387FEDD005AACCD /* MDRecordExposureAdjustSlider.m */,
-				76165F732387FEDD005AACCD /* MDCameraBottomView.h */,
-				76165F742387FEDD005AACCD /* MDUnifiedRecordRightView.m */,
-				76165F752387FEDD005AACCD /* MDUnifiedRecordBottomView.h */,
-				76165F762387FEDD005AACCD /* MDUnifiedRecordContainerView.h */,
-				76165F772387FEDD005AACCD /* MDUnifiedRecordTopView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		76165F582387FEDD005AACCD /* RecordButtonView */ = {
-			isa = PBXGroup;
-			children = (
-				76165F592387FEDD005AACCD /* MDRecordColorCircleView.h */,
-				76165F5A2387FEDD005AACCD /* MDRecordWhiteRingView.h */,
-				76165F5B2387FEDD005AACCD /* MDUnifiedRecordButton.h */,
-				76165F5C2387FEDD005AACCD /* MDRecordCircleStrokenView.h */,
-				76165F5D2387FEDD005AACCD /* MDUnifiedRecordButton.m */,
-				76165F5E2387FEDD005AACCD /* MDRecordWhiteRingView.m */,
-				76165F5F2387FEDD005AACCD /* MDRecordColorCircleView.m */,
-				76165F602387FEDD005AACCD /* MDRecordCircleStrokenView.m */,
-			);
-			path = RecordButtonView;
-			sourceTree = "<group>";
-		};
-		76165F782387FEDD005AACCD /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				76165F792387FEDD005AACCD /* MDRecordMacro.h */,
-				76165F7A2387FEDD005AACCD /* MDRecordContext.m */,
-				76165F7B2387FEDD005AACCD /* MDRecordContext.h */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
 		76165F7C2387FEDD005AACCD /* UnKnow */ = {
 			isa = PBXGroup;
 			children = (
 				76165F7D2387FEDD005AACCD /* MDUserFeedGuideModel.m */,
-				76165F7E2387FEDD005AACCD /* AlbumPlayer */,
 				76165F932387FEDD005AACCD /* MDUserFeedGuideModel.h */,
 			);
 			path = UnKnow;
 			sourceTree = "<group>";
 		};
-		76165F7E2387FEDD005AACCD /* AlbumPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				76165F7F2387FEDD005AACCD /* MDAlbumVideoImageSortingViewCollectionViewCell.m */,
-				76165F802387FEDD005AACCD /* MDAlbumVideoDynamicEffectModel.h */,
-				76165F812387FEDD005AACCD /* MDAlbumPLayerSetting.h */,
-				76165F822387FEDD005AACCD /* MDAlbumVideoCoverContentView.h */,
-				76165F832387FEDD005AACCD /* MDAlbumVideoImageSortingViewController.h */,
-				76165F842387FEDD005AACCD /* MDAlbumVideoDynamicEffectSelectView.m */,
-				76165F852387FEDD005AACCD /* MDAlbumVideoImageSortingView.m */,
-				76165F862387FEDD005AACCD /* MDAlbumVideoDynamicEffectCollectionViewCell.h */,
-				76165F872387FEDD005AACCD /* MDAlbumVideoImageSortingContentView.m */,
-				76165F882387FEDD005AACCD /* MDAlbumVideoCoverFlowLayout.m */,
-				76165F892387FEDD005AACCD /* MDAlbumVideoCoverContentView.m */,
-				76165F8A2387FEDD005AACCD /* MDAlbumVideoDynamicEffectModel.m */,
-				76165F8B2387FEDD005AACCD /* MDAlbumPLayerSetting.m */,
-				76165F8C2387FEDD005AACCD /* MDAlbumVideoImageSortingViewCollectionViewCell.h */,
-				76165F8D2387FEDD005AACCD /* MDAlbumVideoImageSortingView.h */,
-				76165F8E2387FEDD005AACCD /* MDAlbumVideoDynamicEffectCollectionViewCell.m */,
-				76165F8F2387FEDD005AACCD /* MDAlbumVideoDynamicEffectSelectView.h */,
-				76165F902387FEDD005AACCD /* MDAlbumVideoImageSortingViewController.m */,
-				76165F912387FEDD005AACCD /* MDAlbumVideoCoverFlowLayout.h */,
-				76165F922387FEDD005AACCD /* MDAlbumVideoImageSortingContentView.h */,
-			);
-			path = AlbumPlayer;
-			sourceTree = "<group>";
-		};
 		76165F942387FEDD005AACCD /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5EA4979626D8FD1600564A53 /* makeup.bundle */,
 				76165F952387FEDD005AACCD /* New_Decoration_Face.geojson */,
 				76165F962387FEDD005AACCD /* RecomendMusics.geojson */,
 				76165F972387FEDD005AACCD /* UIBundle.bundle */,
@@ -1853,21 +1848,10 @@
 		76165F9D2387FEDD005AACCD /* Entrance */ = {
 			isa = PBXGroup;
 			children = (
-				76165F9E2387FEDD005AACCD /* Controller */,
+				5E76EA4226563573005C42D8 /* Controller */,
 				76165FA32387FEDD005AACCD /* Model */,
 			);
 			path = Entrance;
-			sourceTree = "<group>";
-		};
-		76165F9E2387FEDD005AACCD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				76165F9F2387FEDD005AACCD /* MDRecordSettingViewController.h */,
-				76165FA02387FEDD005AACCD /* MDRecordVideoEditSettingViewController.h */,
-				76165FA12387FEDD005AACCD /* MDRecordVideoEditSettingViewController.m */,
-				76165FA22387FEDD005AACCD /* MDRecordSettingViewController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		76165FA32387FEDD005AACCD /* Model */ = {
@@ -1882,9 +1866,9 @@
 		76165FA62387FEDD005AACCD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				5E76EA49265635F3005C42D8 /* ImageEdit */,
 				7616617E2387FF85005AACCD /* Debug */,
 				76165FA72387FEDD005AACCD /* MDUIFrameworks */,
-				761660392387FEDD005AACCD /* ImageEdit */,
 				7616604E2387FEDD005AACCD /* Component */,
 				7616605E2387FEDD005AACCD /* thirdParty */,
 			);
@@ -2134,33 +2118,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		761660392387FEDD005AACCD /* ImageEdit */ = {
-			isa = PBXGroup;
-			children = (
-				7616603A2387FEDD005AACCD /* MDAlbumAssetLibrary.m */,
-				7616603B2387FEDD005AACCD /* MDSelectedImageItem.h */,
-				7616603C2387FEDD005AACCD /* MDImageEditorViewController.h */,
-				7616603D2387FEDD005AACCD /* ImageFixOrientationHelper.h */,
-				7616603E2387FEDD005AACCD /* ALAssetsLibrary+CustomPhotoAlbum.h */,
-				7616603F2387FEDD005AACCD /* MDRecordUtility.h */,
-				761660402387FEDD005AACCD /* MDRecordCropImageViewController.h */,
-				761660412387FEDD005AACCD /* MDBeautySettings.m */,
-				761660422387FEDD005AACCD /* MDPhotoLibraryProvider.m */,
-				761660432387FEDD005AACCD /* MDImageDataProvider.h */,
-				761660442387FEDD005AACCD /* MDAlbumAssetLibrary.h */,
-				761660452387FEDD005AACCD /* ImageFixOrientationHelper.m */,
-				761660462387FEDD005AACCD /* MDImageEditorViewController.m */,
-				761660472387FEDD005AACCD /* MDSelectedImageItem.m */,
-				761660482387FEDD005AACCD /* ALAssetsLibrary+CustomPhotoAlbum.m */,
-				761660492387FEDD005AACCD /* MDImageDataProvider.m */,
-				7616604A2387FEDD005AACCD /* MDPhotoLibraryProvider.h */,
-				7616604B2387FEDD005AACCD /* MDBeautySettings.h */,
-				7616604C2387FEDD005AACCD /* MDRecordCropImageViewController.m */,
-				7616604D2387FEDD005AACCD /* MDRecordUtility.m */,
-			);
-			path = ImageEdit;
-			sourceTree = "<group>";
-		};
 		7616604E2387FEDD005AACCD /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -2389,6 +2346,7 @@
 				76322A2821CCDA960038013C /* CoreAudio.framework */,
 				7657D77C21AFF79E0092D320 /* MetalShaders */,
 				7657D76421AFE7310092D320 /* UIKit.framework */,
+				4616C4A12F389B23A30D619A /* Pods_MDRecordSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2400,10 +2358,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76E9A89F21AFDDB6002B191A /* Build configuration list for PBXNativeTarget "MDRecordSDK" */;
 			buildPhases = (
+				626BEE7EE4442D29CE96DE11 /* [CP] Check Pods Manifest.lock */,
 				76E9A88521AFDDB5002B191A /* Sources */,
 				76E9A88621AFDDB5002B191A /* Frameworks */,
 				76E9A88721AFDDB5002B191A /* Resources */,
 				76E9A8C421AFE5F0002B191A /* Embed Frameworks */,
+				9B718610AF359E98DF7E5D78 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2458,6 +2418,8 @@
 				7616611F2387FEDE005AACCD /* New_Decoration_Face.geojson in Resources */,
 				7665F7352241DD1A006F5999 /* GT.bundle in Resources */,
 				761661222387FEDE005AACCD /* filters.bundle in Resources */,
+				5EA497B626D8FDB900564A53 /* microSurgery.geojson in Resources */,
+				5EA4979726D8FD1600564A53 /* makeup.bundle in Resources */,
 				7616617A2387FEDF005AACCD /* README.md in Resources */,
 				761661212387FEDE005AACCD /* UIBundle.bundle in Resources */,
 				7603417D225607FF00713A03 /* IOS端接口文档.md in Resources */,
@@ -2475,164 +2437,204 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		626BEE7EE4442D29CE96DE11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MDRecordSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B718610AF359E98DF7E5D78 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MDRecordSDK/Pods-MDRecordSDK-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MDRecordSDK/Pods-MDRecordSDK-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MDRecordSDK/Pods-MDRecordSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		76E9A88521AFDDB5002B191A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761660FC2387FEDE005AACCD /* MDUnifiedRecordModuleAggregate.m in Sources */,
+				5E76E9E226563400005C42D8 /* MDSpecialEffectsView.m in Sources */,
 				761660CC2387FEDE005AACCD /* MDDecorationCollectionCell.m in Sources */,
 				7616608C2387FEDE005AACCD /* MDRegLoginPortraitManager.m in Sources */,
 				7616614A2387FEDF005AACCD /* UIImage+Bundle.m in Sources */,
-				761660FD2387FEDE005AACCD /* MDUnifiedRecordViewController.m in Sources */,
 				761661142387FEDE005AACCD /* MDUserFeedGuideModel.m in Sources */,
 				761660C52387FEDE005AACCD /* MDFaceDecorationDownloader.m in Sources */,
-				7616611B2387FEDE005AACCD /* MDAlbumVideoDynamicEffectModel.m in Sources */,
-				761661122387FEDE005AACCD /* MDUnifiedRecordTopView.m in Sources */,
 				7616615B2387FEDF005AACCD /* MDViewControllerAnimatedTransitioning.m in Sources */,
+				5E76EA3B265634E6005C42D8 /* MDMoment3DTouchView.m in Sources */,
 				761661442387FEDF005AACCD /* MDRightButtonItem.m in Sources */,
 				761661512387FEDF005AACCD /* UIImage+LargeImage.m in Sources */,
 				761661732387FEDF005AACCD /* MDRecordResourceDownloader.m in Sources */,
-				761660BF2387FEDE005AACCD /* MDSpecialEffectsTitleView.m in Sources */,
 				761660DC2387FEDE005AACCD /* MDMusicEditActionCell.m in Sources */,
 				761661402387FEDF005AACCD /* MDEffectImageView.m in Sources */,
+				5E76EA65265635F3005C42D8 /* MDImageDataProvider.m in Sources */,
 				761660EC2387FEDE005AACCD /* MDRecordFilterModelLoader.m in Sources */,
-				761660B62387FEDE005AACCD /* MDSpecialEffectsManager.m in Sources */,
 				76E9A89121AFDDB5002B191A /* ViewController.m in Sources */,
+				5E76EA92265636C2005C42D8 /* MDMomentExpressionViewController.m in Sources */,
 				7616614C2387FEDF005AACCD /* UIImage+RoundedCorner.m in Sources */,
 				761660A22387FEDE005AACCD /* MDMediaEditTextColorSelectView.m in Sources */,
-				761660BA2387FEDE005AACCD /* MDSpecialEffectsSelectView.m in Sources */,
-				761660FE2387FEDE005AACCD /* MDUnifiedRecordViewController+Permission.m in Sources */,
-				7616610F2387FEDE005AACCD /* MDFaceDetectView.m in Sources */,
+				5E76E9E426563400005C42D8 /* MDSpecialEffectsTitleView.m in Sources */,
 				761661292387FEDE005AACCD /* MDRecordRecordingSettingMananger.m in Sources */,
 				761660EB2387FEDE005AACCD /* MDSoundTracker.m in Sources */,
-				761661022387FEDE005AACCD /* MDUnifiedRecordIconView.m in Sources */,
+				5E76E9DD26563400005C42D8 /* MDSpecialEffectsModel.m in Sources */,
+				5E76EA35265634E6005C42D8 /* MDRecordCircleStrokenView.m in Sources */,
 				761661432387FEDF005AACCD /* MDReturnButtonItem.m in Sources */,
 				761660E62387FEDE005AACCD /* MDPCMToWav.m in Sources */,
-				7616616C2387FEDF005AACCD /* ImageFixOrientationHelper.m in Sources */,
 				761661392387FEDF005AACCD /* MUAt3AlertBarModel.m in Sources */,
-				761660FA2387FEDE005AACCD /* MDRecordBeautySettingDataManager.m in Sources */,
 				761661302387FEDF005AACCD /* MUAlertBar.m in Sources */,
+				5E76EA3F265634E6005C42D8 /* MDUnifiedRecordRightView.m in Sources */,
+				5E76EAAC26563782005C42D8 /* MDMediaEditorCoordinator.m in Sources */,
+				5E76EA36265634E6005C42D8 /* MDScrollLabelView.m in Sources */,
 				761660DD2387FEDE005AACCD /* MDMusicEditCardItem.m in Sources */,
-				7616611D2387FEDE005AACCD /* MDAlbumVideoDynamicEffectCollectionViewCell.m in Sources */,
+				5E76EA27265634E6005C42D8 /* MDRSimpleHttpFetcher.m in Sources */,
 				761660802387FEDD005AACCD /* MDMomentVideoTrimViewController.m in Sources */,
-				761660BD2387FEDE005AACCD /* MDSpecialEffectsView.m in Sources */,
 				761660B12387FEDE005AACCD /* MDMediaEditorBottomView.m in Sources */,
+				5E76EA3C265634E6005C42D8 /* MDDurationArrayProgressView.m in Sources */,
 				7616613D2387FEDF005AACCD /* MUAt8AlertBarModel.m in Sources */,
 				761661362387FEDF005AACCD /* MUAt2AlertBarModel.m in Sources */,
-				761660722387FEDD005AACCD /* MDMomentExpressionViewController.m in Sources */,
+				5E76EA2E265634E6005C42D8 /* MDCameraContainerViewController.m in Sources */,
 				761661892387FF85005AACCD /* UIWindow+MDRMotion.m in Sources */,
 				7616617D2387FEDF005AACCD /* JSONKit.m in Sources */,
+				5E76EA3D265634E6005C42D8 /* MDFaceDetectView.m in Sources */,
 				7616613C2387FEDF005AACCD /* MUAt7AlertBarModel.m in Sources */,
 				7616615E2387FEDF005AACCD /* UIViewController+MDTransitionType.m in Sources */,
 				761660F12387FEDE005AACCD /* MDAlbumVideoSwitchButtonView.m in Sources */,
+				5E76EA29265634E6005C42D8 /* MDUnifiedRecordCoordinator.m in Sources */,
 				761660982387FEDE005AACCD /* MDAssetTakePictureCollectionViewCell.m in Sources */,
 				761660962387FEDE005AACCD /* MDAssetCollectionHeaderReusableView.m in Sources */,
 				761660942387FEDE005AACCD /* MDImagePreviewViewController.m in Sources */,
-				7616616A2387FEDF005AACCD /* MDBeautySettings.m in Sources */,
-				761660752387FEDD005AACCD /* MDDownLoadManager.m in Sources */,
 				761661452387FEDF005AACCD /* MDNormalButtonItem.m in Sources */,
 				761660F22387FEDE005AACCD /* MDRecordFilterDrawerSlider.m in Sources */,
 				761660D42387FEDE005AACCD /* MDMusicBaseCollectionItem.m in Sources */,
 				761660C72387FEDE005AACCD /* MDFilterSegmentView.m in Sources */,
+				5E76EA96265636C2005C42D8 /* MDMomentExpressionCell.m in Sources */,
 				761660842387FEDE005AACCD /* MDVideoSpeedVaryViewController.m in Sources */,
-				7616607A2387FEDD005AACCD /* MDDownLoaderModel.m in Sources */,
-				761661132387FEDE005AACCD /* MDRecordContext.m in Sources */,
+				5E76EA30265634E6005C42D8 /* MDUnifiedRecordIconView.m in Sources */,
+				5E76E9DE26563400005C42D8 /* MDSpecialEffectsSelectViewCollectionViewCell.m in Sources */,
+				5E76EA3A265634E6005C42D8 /* MDRecordProgressView.m in Sources */,
 				761661772387FEDF005AACCD /* MDRecordTipItem.m in Sources */,
-				7616610B2387FEDE005AACCD /* MDUnifiedRecordBottomView.m in Sources */,
 				7616612D2387FEDF005AACCD /* MDHitTestExpandView.m in Sources */,
+				5E76EA39265634E6005C42D8 /* MDUnifiedRecordBottomView.m in Sources */,
+				5E76EA2A265634E6005C42D8 /* MDUnifiedRecordModuleAggregate.m in Sources */,
 				761660912387FEDE005AACCD /* MDNewAssetContainerController.m in Sources */,
 				761660C82387FEDE005AACCD /* MDDecorationCategoryView.m in Sources */,
 				761661602387FEDF005AACCD /* UIAlertView+Blocks.m in Sources */,
 				761660E02387FEDE005AACCD /* MDSMSelectIntervalProgressView.m in Sources */,
-				761660792387FEDD005AACCD /* MDRecordEditTItleView.m in Sources */,
 				761660AD2387FEDE005AACCD /* MDMediaEditorRightView.m in Sources */,
 				76E9A89C21AFDDB6002B191A /* main.m in Sources */,
 				761661312387FEDF005AACCD /* MUAt7AlertBar.m in Sources */,
 				761661412387FEDF005AACCD /* UINavigationBar+Adapter_11.m in Sources */,
 				7616613E2387FEDF005AACCD /* MUAlertBarDispatcher.m in Sources */,
 				761660E42387FEDE005AACCD /* MDFaceTipItem.m in Sources */,
-				7616611E2387FEDE005AACCD /* MDAlbumVideoImageSortingViewController.m in Sources */,
 				761660EA2387FEDE005AACCD /* MDVideoToPCM.m in Sources */,
-				761660B92387FEDE005AACCD /* MDSpecialEffectsSelectViewCollectionViewCell.m in Sources */,
-				761661192387FEDE005AACCD /* MDAlbumVideoCoverFlowLayout.m in Sources */,
+				5E76EA3E265634E6005C42D8 /* MDRecordExposureAdjustSlider.m in Sources */,
 				761660A32387FEDE005AACCD /* MDMomentTextAdjustmentView.m in Sources */,
+				5E76EA41265634E6005C42D8 /* MDRecordContext.m in Sources */,
+				5E76EA95265636C2005C42D8 /* MDDownLoadManager.m in Sources */,
 				761660E82387FEDE005AACCD /* MDMediaCommandQueue.m in Sources */,
-				761660BB2387FEDE005AACCD /* MDSpecialEffectsProgressView.m in Sources */,
-				7616610C2387FEDE005AACCD /* MDRecordProgressView.m in Sources */,
-				761660762387FEDD005AACCD /* MDMomentExpressionCell.m in Sources */,
-				761661282387FEDE005AACCD /* MDRecordSettingViewController.m in Sources */,
-				761660B22387FEDE005AACCD /* MDRecordSpecialEffectsManager.m in Sources */,
+				5E76EA31265634E6005C42D8 /* MDUnifiedRecordCountDownAnimation.m in Sources */,
 				761660F02387FEDE005AACCD /* MDRecordFilterCell.m in Sources */,
 				7616617B2387FEDF005AACCD /* WAPersistenceObjectSerialization.m in Sources */,
+				5E76E9E126563400005C42D8 /* MDSpecialEffectsLayer.m in Sources */,
 				7616612E2387FEDF005AACCD /* SDDownloadProgressView.m in Sources */,
 				761660D32387FEDE005AACCD /* MDMusicBVO.m in Sources */,
-				7616611A2387FEDE005AACCD /* MDAlbumVideoCoverContentView.m in Sources */,
-				761660B42387FEDE005AACCD /* MDSpecialEffectsController.m in Sources */,
-				761661272387FEDE005AACCD /* MDRecordVideoEditSettingViewController.m in Sources */,
-				761661002387FEDE005AACCD /* MDCameraContainerViewController.m in Sources */,
 				761660D82387FEDE005AACCD /* MDMusicCollectionCell.m in Sources */,
 				761661592387FEDF005AACCD /* MDDefaultAnimation.m in Sources */,
-				761660F92387FEDE005AACCD /* MDRSimpleHttpFetcher.m in Sources */,
 				761660CE2387FEDE005AACCD /* MDMusicFavouriteManager.m in Sources */,
 				761660832387FEDE005AACCD /* MDRecordVideoNewSpeedSlider.m in Sources */,
 				761661552387FEDF005AACCD /* UIImageEffects.m in Sources */,
-				761661172387FEDE005AACCD /* MDAlbumVideoImageSortingView.m in Sources */,
+				5E76EA38265634E6005C42D8 /* MDUnifiedRecordContainerView.m in Sources */,
 				761660C02387FEDE005AACCD /* MDFaceDecorationDataHandle.m in Sources */,
 				761661782387FEDF005AACCD /* MDRecordFilterTipView.m in Sources */,
-				761660A82387FEDE005AACCD /* MDDocument.m in Sources */,
 				761660CF2387FEDE005AACCD /* MDMusicResourceUtility.m in Sources */,
-				761661152387FEDE005AACCD /* MDAlbumVideoImageSortingViewCollectionViewCell.m in Sources */,
+				5E76EA40265634E6005C42D8 /* MDUnifiedRecordTopView.m in Sources */,
 				761660922387FEDE005AACCD /* MDImageClipAndScaleViewController.m in Sources */,
-				761661092387FEDE005AACCD /* MDCameraBottomView.m in Sources */,
+				5E76EA94265636C2005C42D8 /* BBMediaStickerAdjustmentView.m in Sources */,
 				761661622387FEDF005AACCD /* SDBaseProgressView.m in Sources */,
-				761661162387FEDE005AACCD /* MDAlbumVideoDynamicEffectSelectView.m in Sources */,
 				761661742387FEDF005AACCD /* MDTabSegmentScrollHandler.m in Sources */,
 				761660D12387FEDE005AACCD /* MDMusicEditPalletController.m in Sources */,
-				761660702387FEDD005AACCD /* MDMomentExpressionCellModel.m in Sources */,
 				761661582387FEDF005AACCD /* UINavigationBar+AppearenceEx.m in Sources */,
+				5E76EA32265634E6005C42D8 /* MDUnifiedRecordButton.m in Sources */,
 				7616606A2387FEDD005AACCD /* MDMomentThumbSelectViewController.m in Sources */,
 				761660B02387FEDE005AACCD /* MDRecordNewMediaEditorBottomView.m in Sources */,
-				761661102387FEDE005AACCD /* MDRecordExposureAdjustSlider.m in Sources */,
-				761661042387FEDE005AACCD /* MDUnifiedRecordButton.m in Sources */,
+				5E76E9D726563400005C42D8 /* MDRecordSpecialEffectsManager.m in Sources */,
 				761660E52387FEDE005AACCD /* MDRCameraEngine+MDAudioPitch.m in Sources */,
-				761660732387FEDD005AACCD /* UIView+Corner.m in Sources */,
 				7616613B2387FEDF005AACCD /* MUAt6AlertBarModel.m in Sources */,
 				7616615F2387FEDF005AACCD /* UINavigationController+AnimatedTransition.m in Sources */,
 				761660862387FEDE005AACCD /* MDVideoSpeedVaryHandler.m in Sources */,
-				761660A52387FEDE005AACCD /* MDMediaEditorCoordinator.m in Sources */,
 				761661492387FEDF005AACCD /* NSBundle+ImageScaled.m in Sources */,
+				5E76EA63265635F3005C42D8 /* MDSelectedImageItem.m in Sources */,
 				761660AC2387FEDE005AACCD /* MDRecordImageResult.m in Sources */,
+				5E76EA5F265635F3005C42D8 /* MDBeautySettings.m in Sources */,
 				761660C42387FEDE005AACCD /* MDFaceDecorationManager.m in Sources */,
 				761660E22387FEDE005AACCD /* MDBeautyMusicVolumeView.m in Sources */,
+				5E76EA5E265635F3005C42D8 /* MDAlbumAssetLibrary.m in Sources */,
+				5E76EA9D265636C2005C42D8 /* MDRecordExpressionLoader.m in Sources */,
 				761661322387FEDF005AACCD /* MUAt1AlertBar.m in Sources */,
 				761660A02387FEDE005AACCD /* MDAssetUtility.m in Sources */,
 				761660A92387FEDE005AACCD /* MDNewMediaEditorViewController.m in Sources */,
+				5E76EA66265635F3005C42D8 /* MDRecordCropImageViewController.m in Sources */,
+				5E76E9E026563400005C42D8 /* MDSpecialEffectsProgressView.m in Sources */,
 				761660E12387FEDE005AACCD /* MPMediaLibrary+CustomMediaLibrary.m in Sources */,
-				761661082387FEDE005AACCD /* MDScrollLabelView.m in Sources */,
 				7616614E2387FEDF005AACCD /* UIImage+Utility.m in Sources */,
+				5E76EA98265636C2005C42D8 /* MDCollectionHelper.m in Sources */,
+				5E76EA2B265634E6005C42D8 /* MDUnifiedRecordViewController.m in Sources */,
 				761660D92387FEDE005AACCD /* MDMusicBaseCollectionCell.m in Sources */,
-				7616616F2387FEDF005AACCD /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
-				7616607F2387FEDD005AACCD /* MDRecordEditContainerPanelView.m in Sources */,
 				761660C32387FEDE005AACCD /* MDFaceDecorationLoader.m in Sources */,
 				761661572387FEDF005AACCD /* UIImage+animatedGIF.m in Sources */,
+				5E76EA60265635F3005C42D8 /* MDPhotoLibraryProvider.m in Sources */,
 				7616608E2387FEDE005AACCD /* MDAssetCollectionViewController.m in Sources */,
 				761661472387FEDF005AACCD /* UIView+MDSpringAnimation.m in Sources */,
-				7616610A2387FEDE005AACCD /* MDUnifiedRecordContainerView.m in Sources */,
-				7616607C2387FEDD005AACCD /* MDRStickerViewController.m in Sources */,
+				5E76EA28265634E6005C42D8 /* MDRecordBeautySettingDataManager.m in Sources */,
+				5E76EA9C265636C2005C42D8 /* MDRStickerViewController.m in Sources */,
+				5E76EA4826563573005C42D8 /* MDRecordSettingViewController.m in Sources */,
 				7616606C2387FEDD005AACCD /* MDMomentThumbDataManager.m in Sources */,
+				5E76EAAE26563782005C42D8 /* MDRecordVideoSettingManager.m in Sources */,
 				761660CA2387FEDE005AACCD /* MDFilterRecordView.m in Sources */,
 				7616615A2387FEDF005AACCD /* MDModelAnimation.m in Sources */,
-				761661072387FEDE005AACCD /* MDRecordCircleStrokenView.m in Sources */,
-				7616616D2387FEDF005AACCD /* MDImageEditorViewController.m in Sources */,
+				5E76E9DA26563400005C42D8 /* MDEffectsTimeManager.m in Sources */,
 				7616614D2387FEDF005AACCD /* UIImage+ClipScaleCircle.m in Sources */,
 				761660F32387FEDE005AACCD /* MDRecordFilterListView.m in Sources */,
-				761660A42387FEDE005AACCD /* MDVideoUploadHelper.m in Sources */,
 				761661682387FEDF005AACCD /* UIColor+MDRUtils.m in Sources */,
-				7616610E2387FEDE005AACCD /* MDDurationArrayProgressView.m in Sources */,
+				5E76EA62265635F3005C42D8 /* MDImageEditorViewController.m in Sources */,
+				5E76E9DF26563400005C42D8 /* MDSpecialEffectsSelectView.m in Sources */,
+				5E76EA97265636C2005C42D8 /* MDRStickerImageView.m in Sources */,
 				761660D52387FEDE005AACCD /* MDSheetMusicProgressLayer.m in Sources */,
 				761661672387FEDF005AACCD /* UIPanGestureRecognizer+GestureTag.m in Sources */,
+				5E76EAAB26563782005C42D8 /* MDVideoUploadHelper.m in Sources */,
+				5E76EA26265634E6005C42D8 /* MDMomentRecordHandler.m in Sources */,
 				761660882387FEDE005AACCD /* MDMomentPainterToolView.m in Sources */,
+				5E76EA4726563573005C42D8 /* MDRecordVideoEditSettingViewController.m in Sources */,
 				761660AF2387FEDE005AACCD /* MDRecordNewMediaEditorBottomCell.m in Sources */,
 				761660F62387FEDE005AACCD /* MDRecordMakeUpListView.m in Sources */,
 				761660DB2387FEDE005AACCD /* MDMusicEditActionItem.m in Sources */,
@@ -2641,104 +2643,96 @@
 				76E9A88E21AFDDB5002B191A /* AppDelegate.m in Sources */,
 				761660D22387FEDE005AACCD /* MDMusicCollectionItem.m in Sources */,
 				761661482387FEDF005AACCD /* UIImage+Bubble.m in Sources */,
-				7616606F2387FEDD005AACCD /* MDRecordEditStickersView.m in Sources */,
+				5E76E9D826563400005C42D8 /* MDRecordSpecialImageDataManager.m in Sources */,
 				761661752387FEDF005AACCD /* MDTabSegmentView.m in Sources */,
 				761660822387FEDE005AACCD /* MDBluredProgressView.m in Sources */,
 				761660F52387FEDE005AACCD /* BBMediaEditorSlidingOverlayView.m in Sources */,
 				761661632387FEDF005AACCD /* MDViewController.m in Sources */,
 				761661342387FEDF005AACCD /* MUAt8AlertBar.m in Sources */,
-				7616610D2387FEDE005AACCD /* MDMoment3DTouchView.m in Sources */,
 				761660AB2387FEDE005AACCD /* MDRecordVideoResult.m in Sources */,
-				761661712387FEDF005AACCD /* MDRecordCropImageViewController.m in Sources */,
+				5E76E9D926563400005C42D8 /* MDSpecialEffectsController.m in Sources */,
+				5E76EA99265636C2005C42D8 /* MDRecordEditTItleView.m in Sources */,
 				761660E92387FEDE005AACCD /* MDSoundPitchShift.mm in Sources */,
 				761660D02387FEDE005AACCD /* MDBackgroundMusicDownloader.m in Sources */,
+				5E76EA90265636C2005C42D8 /* MDMomentExpressionCellModel.m in Sources */,
+				5E76EA9E265636C2005C42D8 /* MDRecordEditFuntionButtonView.m in Sources */,
+				5E76EA9B265636C2005C42D8 /* MDMomentExpressionView.m in Sources */,
 				761661372387FEDF005AACCD /* MUAt5AlertBarModel.m in Sources */,
-				761660A72387FEDE005AACCD /* MDRecordVideoSettingManager.m in Sources */,
-				761660712387FEDD005AACCD /* UIButton+Block.m in Sources */,
 				761660AA2387FEDE005AACCD /* MDMediaEditorSettingItem.m in Sources */,
 				761660EF2387FEDE005AACCD /* MDRecordFilterDrawerSliderPanel.m in Sources */,
+				5E76EA61265635F3005C42D8 /* ImageFixOrientationHelper.m in Sources */,
 				761661662387FEDF005AACCD /* UIView+Utils.m in Sources */,
-				7616616E2387FEDF005AACCD /* MDSelectedImageItem.m in Sources */,
-				761660782387FEDD005AACCD /* MDCollectionHelper.m in Sources */,
+				5E76EA34265634E6005C42D8 /* MDRecordColorCircleView.m in Sources */,
 				761660992387FEDE005AACCD /* MDAssetImageCollectionCell.m in Sources */,
 				761660892387FEDE005AACCD /* BBMediaGraffitiEditorViewController.m in Sources */,
 				7616612C2387FEDE005AACCD /* MDNavigationController.m in Sources */,
-				761660F82387FEDE005AACCD /* MDMomentRecordHandler.m in Sources */,
-				761660B52387FEDE005AACCD /* MDEffectsTimeManager.m in Sources */,
+				5E76E9DB26563400005C42D8 /* MDSpecialEffectsManager.m in Sources */,
+				5E76EA9F265636C2005C42D8 /* MDRecordEditContainerPanelView.m in Sources */,
+				5E76EA64265635F3005C42D8 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				7616608D2387FEDE005AACCD /* MDAssetCompressHandler.m in Sources */,
+				5E76EA67265635F3005C42D8 /* MDRecordUtility.m in Sources */,
 				7616615C2387FEDF005AACCD /* MDNavigationHelper.m in Sources */,
 				7616613A2387FEDF005AACCD /* MUAt1AlertBarModel.m in Sources */,
-				761660742387FEDD005AACCD /* BBMediaStickerAdjustmentView.m in Sources */,
+				5E76EA33265634E6005C42D8 /* MDRecordWhiteRingView.m in Sources */,
+				5E76EA91265636C2005C42D8 /* UIButton+Block.m in Sources */,
 				7616609C2387FEDE005AACCD /* MDAssetVideoCollectionCell.m in Sources */,
-				761661692387FEDF005AACCD /* MDAlbumAssetLibrary.m in Sources */,
 				761660DF2387FEDE005AACCD /* MDVolumeBarView.m in Sources */,
 				761660902387FEDE005AACCD /* MDPreviewPageViewController.m in Sources */,
 				7616609B2387FEDE005AACCD /* MDAssetPreviewCell.m in Sources */,
 				761660C22387FEDE005AACCD /* MDFaceDecorationFileHelper.m in Sources */,
 				7616609E2387FEDE005AACCD /* MDAssetAlbumItem.m in Sources */,
-				761661032387FEDE005AACCD /* MDUnifiedRecordCountDownAnimation.m in Sources */,
 				761660E32387FEDE005AACCD /* MDFaceTipManager.m in Sources */,
 				761660CB2387FEDE005AACCD /* MDDecorationCategoryCell.m in Sources */,
+				5E76EA93265636C2005C42D8 /* UIView+Corner.m in Sources */,
+				5E76E9E326563400005C42D8 /* MDSpecialEffectsSliderView.m in Sources */,
 				761660C12387FEDE005AACCD /* MDRecordFaceDecorationItemDownloader.m in Sources */,
 				761661612387FEDF005AACCD /* MDStrokeLabel.m in Sources */,
+				5E76EA2F265634E6005C42D8 /* MDUnifiedRecordSettingItem.m in Sources */,
 				761660812387FEDD005AACCD /* MDVideoTrimmerView.m in Sources */,
 				7616615D2387FEDF005AACCD /* MDNavigationTransitionUtility.m in Sources */,
 				7616618A2387FF85005AACCD /* MDRDebugSwitchCell.m in Sources */,
 				761660ED2387FEDE005AACCD /* MDRecordFilterDrawerController.m in Sources */,
-				761661112387FEDE005AACCD /* MDUnifiedRecordRightView.m in Sources */,
-				761660FF2387FEDE005AACCD /* MDUnifiedRecordViewController+horizontalRecording.m in Sources */,
-				761660B82387FEDE005AACCD /* MDSpecialEffectsModel.m in Sources */,
 				761661562387FEDF005AACCD /* UIImage+ImageEffects.m in Sources */,
-				7616607D2387FEDD005AACCD /* MDRecordExpressionLoader.m in Sources */,
+				5E76EA9A265636C2005C42D8 /* MDDownLoaderModel.m in Sources */,
 				761661762387FEDF005AACCD /* MDRecordGuideTipsManager.m in Sources */,
 				761660C62387FEDE005AACCD /* MDFaceDecorationItem.m in Sources */,
 				761660D62387FEDE005AACCD /* MDRecordNewMusicTrimView.m in Sources */,
 				761661462387FEDF005AACCD /* MDUIBaseConfiguration.m in Sources */,
-				761661052387FEDE005AACCD /* MDRecordWhiteRingView.m in Sources */,
 				761661332387FEDF005AACCD /* MUAt4AlertBar.m in Sources */,
 				761661532387FEDF005AACCD /* UIImage+ClipScaleRect.m in Sources */,
-				761661012387FEDE005AACCD /* MDUnifiedRecordSettingItem.m in Sources */,
 				7616609A2387FEDE005AACCD /* MDAssetBaseCollectionCell.m in Sources */,
 				7616608A2387FEDE005AACCD /* WLCanvasView.m in Sources */,
-				7616607E2387FEDD005AACCD /* MDRecordEditFuntionButtonView.m in Sources */,
-				761660B32387FEDE005AACCD /* MDRecordSpecialImageDataManager.m in Sources */,
 				7616613F2387FEDF005AACCD /* SDLoopProgressView.m in Sources */,
 				761661642387FEDF005AACCD /* UIUtility+View.m in Sources */,
 				761660972387FEDE005AACCD /* MDMomentDownloadMaskView.m in Sources */,
 				761660DE2387FEDE005AACCD /* MDMusicEditCardCell.m in Sources */,
-				761660BC2387FEDE005AACCD /* MDSpecialEffectsLayer.m in Sources */,
-				7616607B2387FEDD005AACCD /* MDMomentExpressionView.m in Sources */,
-				761661182387FEDE005AACCD /* MDAlbumVideoImageSortingContentView.m in Sources */,
 				761660F42387FEDE005AACCD /* MDRecordFaceMakeUpCell.m in Sources */,
-				761661722387FEDF005AACCD /* MDRecordUtility.m in Sources */,
-				761660772387FEDD005AACCD /* MDRStickerImageView.m in Sources */,
 				7616618C2387FF85005AACCD /* MDRDebugCellModel.m in Sources */,
+				5E76E9DC26563400005C42D8 /* MDSpecialEffectsProgressModel.m in Sources */,
+				5E76EAAF26563782005C42D8 /* MDDocument.m in Sources */,
 				761661352387FEDF005AACCD /* MUAlertBarModel.m in Sources */,
 				761660EE2387FEDE005AACCD /* MDRecordFilterModel.m in Sources */,
 				7616612A2387FEDE005AACCD /* UIView+RoundCorner.m in Sources */,
 				7616609F2387FEDE005AACCD /* MDNewAssetAlbumCell.m in Sources */,
 				7616618B2387FF85005AACCD /* MDRDebugHandler.m in Sources */,
-				761660FB2387FEDE005AACCD /* MDUnifiedRecordCoordinator.m in Sources */,
 				761660952387FEDE005AACCD /* MDAssetSelectState.m in Sources */,
 				7616608B2387FEDE005AACCD /* MDAlbumiCloudAssetHelper.m in Sources */,
 				7616612B2387FEDE005AACCD /* NSObject+Swizzle.m in Sources */,
+				5E76EA2D265634E6005C42D8 /* MDUnifiedRecordViewController+horizontalRecording.m in Sources */,
 				761660932387FEDE005AACCD /* MDAssetPreviewController.m in Sources */,
 				761661422387FEDF005AACCD /* MFBarButtonItem.m in Sources */,
 				7616614B2387FEDF005AACCD /* UIImage+Alpha.m in Sources */,
 				7616609D2387FEDE005AACCD /* MDNewAssetAlbumController.m in Sources */,
 				761660A12387FEDE005AACCD /* MDMomentTextOverlayEditorView.m in Sources */,
-				761661702387FEDF005AACCD /* MDImageDataProvider.m in Sources */,
-				761660BE2387FEDE005AACCD /* MDSpecialEffectsSliderView.m in Sources */,
 				7616614F2387FEDF005AACCD /* UIImage+BoxBlur.m in Sources */,
-				761660B72387FEDE005AACCD /* MDSpecialEffectsProgressModel.m in Sources */,
 				7616612F2387FEDF005AACCD /* UIDevice-Hardware.m in Sources */,
+				5E76EA8E265636C2005C42D8 /* MDStickerDownloader.m in Sources */,
 				7616618D2387FF85005AACCD /* MDRDebugViewWindow.m in Sources */,
 				761660C92387FEDE005AACCD /* MDDecorationPannelView.m in Sources */,
-				7616606E2387FEDD005AACCD /* MDStickerDownloader.m in Sources */,
-				7616611C2387FEDE005AACCD /* MDAlbumPLayerSetting.m in Sources */,
 				761661542387FEDF005AACCD /* UIImage+MDUtility.m in Sources */,
 				761660872387FEDE005AACCD /* MDRecordSpeedSlider.m in Sources */,
-				761661062387FEDE005AACCD /* MDRecordColorCircleView.m in Sources */,
+				5E76EA37265634E6005C42D8 /* MDCameraBottomView.m in Sources */,
+				5E76EA2C265634E6005C42D8 /* MDUnifiedRecordViewController+Permission.m in Sources */,
 				761661382387FEDF005AACCD /* MUAt4AlertBarModel.m in Sources */,
 				761660DA2387FEDE005AACCD /* MDMusicEditPalletHandler.m in Sources */,
 				7616606D2387FEDD005AACCD /* MDMomentThumbFlowLayout.m in Sources */,
@@ -2747,10 +2741,10 @@
 				761660AE2387FEDE005AACCD /* MDMediaEditorContainerView.m in Sources */,
 				761661652387FEDF005AACCD /* UIUtility.m in Sources */,
 				761661502387FEDF005AACCD /* UIImage+MDBlur.m in Sources */,
-				761660A62387FEDE005AACCD /* MDMediaEditorModuleAggregate.m in Sources */,
+				5E76EA8F265636C2005C42D8 /* MDRecordEditStickersView.m in Sources */,
 				761660852387FEDE005AACCD /* MDVideoNewSpeedControlView.m in Sources */,
 				7616617C2387FEDF005AACCD /* WAKeyValuePersistenceStore.m in Sources */,
-				7616616B2387FEDF005AACCD /* MDPhotoLibraryProvider.m in Sources */,
+				5E76EAAD26563782005C42D8 /* MDMediaEditorModuleAggregate.m in Sources */,
 				761661522387FEDF005AACCD /* UIImage+MDBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2837,7 +2831,9 @@
 		};
 		7619634A222628A400927134 /* InHouse */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 016E9C0F094B30E2FEFF6607 /* Pods-MDRecordSDK.inhouse.xcconfig */;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -2992,14 +2988,16 @@
 		};
 		76E9A8A021AFDDB6002B191A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6B91D1A3F5E77E06F75B9FF /* Pods-MDRecordSDK.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = DV7X3S33D8;
+				DEVELOPMENT_TEAM = F52PY255FC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDRecordSDK/MDMediaKit",
@@ -3015,7 +3013,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sunfei.test2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.momo.yanbo.videoSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";
@@ -3027,10 +3025,12 @@
 		};
 		76E9A8A121AFDDB6002B191A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 725E5C027BB1CFA2B0B93E7F /* Pods-MDRecordSDK.release.xcconfig */;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72CZEEPG39;
@@ -3049,9 +3049,9 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momoapptest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = momotest;
+				PROVISIONING_PROFILE_SPECIFIER = Inhouse_momotest_only;
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -123,4 +123,17 @@
     self.slider.value = sliderValue;
 }
 
+- (void)setSliderType:(NSInteger)sliderType{
+    if (sliderType == 0) {
+        self.slider.maximumValue = 1;
+        self.slider.minimumValue = 0;
+    } else if (sliderType == 1){
+        self.slider.maximumValue = 1;
+        self.slider.minimumValue = -1;
+    } else {
+        self.slider.maximumValue = 0;
+        self.slider.minimumValue = -1;
+    }
+}
+
 @end

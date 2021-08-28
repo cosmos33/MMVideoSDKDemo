@@ -31,3 +31,21 @@
 
 @end
 
+@implementation MDRMicroSurgeryModel
+
+- (instancetype)initModelWithDict:(NSDictionary *)dict{
+    if (self = [super init]) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    NSLog(@"%@",key);
+}
+
+- (void)setNilValueForKey:(NSString *)key{
+    NSLog(@"%@",key);
+}
+
+@end

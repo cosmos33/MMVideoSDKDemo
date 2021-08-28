@@ -1,0 +1,193 @@
+
+[
+        {
+            "title":"脸宽",
+            "icon":"thinW",
+            "highlight":"thinW-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"faceWidth"
+
+        }, {
+            "title":"削脸",
+            "icon":"shape",
+            "highlight":"shape-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"jawShape"
+
+        }, {
+            "title":"短脸",
+            "icon":"face",
+            "highlight":"face-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"shortenFace"
+
+        }, {
+            "title":"额头",
+            "icon":"forehead",
+            "highlight":"forehead-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"forehead"
+
+        }, {
+            "title":"下巴",
+            "icon":"chin",
+            "highlight":"chin-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"chinLength"
+
+        }, {
+            "title":"颧骨",
+            "icon":"thincheekbone",
+            "highlight":"thincheekbone-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"cheekboneWidth"
+
+        }, {
+            "title":"下颌骨",
+            "icon":"thinjaw",
+            "highlight":"thinjaw-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"jaw2Width"
+
+        }, {
+            "title":"鼻子宽度",
+            "icon":"nosewidth",
+            "highlight":"nosewidth-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"noseWidth"
+
+        }, {
+            "title":"鼻子大小",
+            "icon":"noseShape",
+            "highlight":"noseShape-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"noseSize"
+
+        }, {
+            "title":"鼻高",
+            "icon":"noseH",
+            "highlight":"nose-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"noseLift"
+
+        }, {
+            "title":"鼻梁",
+            "icon":"noseBridge",
+            "highlight":"noseBridge-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"noseRidgeWidth"
+
+        }, {
+            "title":"鼻尖",
+            "icon":"nosetip",
+            "highlight":"nosetip-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"noseTipSize"
+
+        }, {
+            "title":"眼睛角度",
+            "icon":"eyetint",
+            "highlight":"eyetint-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"eyeTilt"
+
+        }, {
+            "title":"眼距",
+            "icon":"eyedif",
+            "highlight":"eyedif-selected",
+            "value":0,
+            "sliderType":-1,
+            "type":"eyeDistance"
+
+        }, {
+            "title":"眼高",
+            "icon":"eyeH",
+            "highlight":"eyeH-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"eyeHeight"
+
+        }, {
+            "title":"嘴唇厚度",
+            "icon":"mouth",
+            "highlight":"mouth-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"lipThickness"
+
+        }, {
+            "title":"嘴唇大小",
+            "icon":"mouth2",
+            "highlight":"mouth2-selected",
+            "value":0,
+            "sliderType":1,
+            "type":"mouthSize"
+
+        }, 
+        {
+           "title":"亮眼",
+           "icon":"eyebrighten",
+           "highlight":"eyebrighten-selected",
+           "value":0.0,
+           "sliderType":0,
+           "type":"eye_brighten"
+
+       },{
+            "title":"白牙",
+            "icon":"teethwhiten",
+            "highlight":"teethwhiten-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"teeth_whiten"
+
+        },
+       {
+            "title":"法令纹",
+            "icon":"teethwhiten",
+            "highlight":"teethwhiten-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"remove_nasolabial_floads"
+
+        },
+       {
+            "title":"眼袋",
+            "icon":"teethwhiten",
+            "highlight":"teethwhiten-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"remove_pouch"
+
+        },
+       {
+            "title":"锐化",
+            "icon":"teethwhiten",
+            "highlight":"teethwhiten-selected",
+            "value":0,
+            "sliderType":0,
+            "type":"sharpen"
+
+        },
+       {
+           "title":"红润",
+           "icon":"ruddy",
+           "highlight":"ruddy-selected",
+           "value":0.5,
+           "sliderType":0,
+           "type":"redden"
+
+       }
+]

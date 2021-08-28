@@ -45,7 +45,8 @@
 - (UIButton *)makeUpButton{
     if(!_makeUpButton){
         _makeUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _makeUpButton.titleLabel.font = [UIFont systemFontOfSize:20];
+        _makeUpButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _makeUpButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         [_makeUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _makeUpButton.enabled = NO;
 

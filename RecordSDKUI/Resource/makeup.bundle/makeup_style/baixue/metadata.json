@@ -1,0 +1,39 @@
+{
+    "name": "BAIXUE",
+    "makeup": [
+        {
+            "type": "makeup_pupil",
+            "resources": ["makeup_baixue/makeup_pupil/pupil.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_lips",
+            "resources": ["makeup_baixue/makeup_lip/lip.png", "makeup_baixue/makeup_lip/lip00.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_facial",
+            "resources": ["makeup_baixue/makeup_xiurong/face.png"],
+            "blendMode": "SoftLight"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["makeup_baixue/makeup_eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_blush",
+            "resources": ["makeup_baixue/makeup_cheek/blush.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_blush",
+            "resources": ["makeup_baixue/makeup_cheek2/blush.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_lut",
+            "resources": ["makeup_baixue/lookup/lookup.png"]
+        }
+    ]
+}

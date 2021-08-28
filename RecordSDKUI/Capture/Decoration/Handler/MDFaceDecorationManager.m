@@ -268,7 +268,7 @@
         ([self.faceItems count] == 0)) {
         
         [self.loader fetchDecorationsWithCompletion:^(NSDictionary *data, NSError *error) {
-            NSLog(@"sunfei items = %@, error = %@", data, error);
+//            NSLog(@"sunfei items = %@, error = %@", data, error);
             if (error || !data) {
                 return;
             }
@@ -321,6 +321,8 @@
     }
     
     [self backupConfig:self.configForFaceDrawer isForFaceDrawer:YES];
+    
+    [self parseConfigForFaceDrawer];
 }
 
 - (void)removeOldVersionLocalItemFilesWithDictionary:(NSDictionary *)itemDic

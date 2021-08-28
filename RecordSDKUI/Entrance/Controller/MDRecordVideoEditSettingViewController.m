@@ -20,14 +20,14 @@
 #import "MDRecordVideoResult.h"
 #import "MDNewMediaEditorViewController.h"
 #import "MDAssetCompressHandler.h"
-#import "MDAlbumPLayerSetting.h"
+//#import "MDAlbumPLayerSetting.h"
 
-@import MBProgressHUD;
+#import <MBProgressHUD/MBProgressHUD.h>
 @import RecordSDK;
 
-@interface MDRecordVideoEditSettingViewController () <MDNavigationBarAppearanceDelegate, MDGPUImageAlbumMovieExportDelegate>
+@interface MDRecordVideoEditSettingViewController () <MDNavigationBarAppearanceDelegate> //, MDGPUImageAlbumMovieExportDelegate>
 
-@property (nonatomic, strong) MDGPUImageAlbumMovieExport *exporter;
+//@property (nonatomic, strong) MDGPUImageAlbumMovieExport *exporter;
 @property (nonatomic, weak) MBProgressHUD *hub;
 @property (nonatomic, strong) NSTimer *timer;
 
@@ -59,7 +59,7 @@
 }
 
 - (void)willResignActive {
-    [self.exporter cancel];
+//    [self.exporter cancel];
 }
 
 - (void)setupUI {
@@ -70,6 +70,7 @@
     
     MDRecordVideoSettingManager.exportBitRate = 0;
     MDRecordVideoSettingManager.exportFrameRate = 0;
+	MDRecordVideoSettingManager.cropRegion = CGRectMake(0, 0, 1, 1);
     
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:effect];
@@ -95,9 +96,13 @@
     view2.translatesAutoresizingMaskIntoConstraints = NO;
     [visualEffectView.contentView addSubview:view2];
     
-    UIView *view3 = [self toggleBlurWithTitle:@"启用背景模糊: "];
-    view3.translatesAutoresizingMaskIntoConstraints = NO;
-    [visualEffectView.contentView addSubview:view3];
+//    UIView *view3 = [self toggleBlurWithTitle:@"启用背景模糊: "];
+//    view3.translatesAutoresizingMaskIntoConstraints = NO;
+//    [visualEffectView.contentView addSubview:view3];
+	
+	UIView *view4 = [self itemWithTitle:@"裁剪" placeholder:@"x,y,w,h 0-1 no space" textFiedlTag:1002];
+	view4.translatesAutoresizingMaskIntoConstraints = NO;
+	[visualEffectView.contentView addSubview:view4];
     
     UIButton *completeButton = [self createSelectItemButtonWithTitle:@"导入编辑" tag:10010];
     completeButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -126,10 +131,15 @@
     [view2.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [view2.heightAnchor constraintEqualToConstant:80].active = YES;
     
-    [view3.leftAnchor constraintEqualToAnchor:view1.leftAnchor].active = YES;
-    [view3.topAnchor constraintEqualToAnchor:view2.bottomAnchor constant:20].active = YES;
-    [view3.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    [view3.heightAnchor constraintEqualToConstant:80].active = YES;
+//    [view3.leftAnchor constraintEqualToAnchor:view1.leftAnchor].active = YES;
+//    [view3.topAnchor constraintEqualToAnchor:view2.bottomAnchor constant:20].active = YES;
+//    [view3.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+//    [view3.heightAnchor constraintEqualToConstant:80].active = YES;
+	
+	[view4.leftAnchor constraintEqualToAnchor:view1.leftAnchor].active = YES;
+	[view4.topAnchor constraintEqualToAnchor:view2.bottomAnchor constant:20].active = YES;
+	[view4.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+	[view4.heightAnchor constraintEqualToConstant:80].active = YES;
     
     [completeButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [completeButton.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:20].active = YES;
@@ -186,7 +196,7 @@
     [titleLabel sizeToFit];
     
     UITextField *textField = [self textFieldWithPlaceholder:placeholder tag:tag];
-    textField.keyboardType = UIKeyboardTypePhonePad;
+    textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     textField.translatesAutoresizingMaskIntoConstraints = NO;
     
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[titleLabel, textField]];
@@ -209,7 +219,6 @@
     
     UISwitch *toggle = [[UISwitch alloc] init];
     toggle.translatesAutoresizingMaskIntoConstraints = NO;
-    toggle.on = MDRecordVideoSettingManager.enableBlur;
     [toggle addTarget:self action:@selector(toggle:) forControlEvents:UIControlEventValueChanged];
     
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[titleLabel, toggle]];
@@ -226,7 +235,7 @@
 }
 
 - (void)toggle:(UISwitch *)toggle {
-    MDRecordVideoSettingManager.enableBlur = toggle.on;
+    
 }
 
 - (void)closeButtonTapped:(UIButton *)button {
@@ -242,6 +251,20 @@
         case 1001:
             MDRecordVideoSettingManager.exportBitRate = [textField.text floatValue] * 1024 * 1024;
             break;
+			
+		case 1002:
+		{
+			NSString *text = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+			NSArray *rect = [text componentsSeparatedByString:@","];
+			if (rect.count == 4) {
+				CGFloat x = [rect[0] floatValue];
+				CGFloat y = [rect[1] floatValue];
+				CGFloat w = [rect[2] floatValue];
+				CGFloat h = [rect[3] floatValue];
+				MDRecordVideoSettingManager.cropRegion = CGRectMake(x, y, w, h);
+			}
+		}
+			break;
             
         default:
             break;
@@ -269,61 +292,61 @@
             
         } else if ([result isKindOfClass:[MDRecordImageResult class]]) {
             
-            NSMutableArray<UIImage *> *images = [NSMutableArray array];
-            
-            MDRecordImageResult *photoResult = (MDRecordImageResult *)result;
-            for (MDPhotoItem *item in photoResult.photoItems) {
-                if (item.editedImage) {
-                    [images addObject:item.editedImage];
-                } else if (item.originImage) {
-                    [images addObject:item.originImage];
-                } else if (item.nailImage) {
-                    [images addObject:item.nailImage];
-                }
-            }
-            
-            if (images.count <= 1) {
-                [weakContainerVC dismissViewControllerAnimated:YES completion:nil];
-                return;
-            }
-            
-            NSString *localPath = [self localPathForAlbumVideo];
-            
-            if ([[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
-                [[NSFileManager defaultManager] removeItemAtPath:localPath error:nil];
-            }
-            
-            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
-            hub.mode = MBProgressHUDModeAnnularDeterminate;
-            hub.label.text = @"Loading";
-            hub.backgroundView.color = [UIColor.blackColor colorWithAlphaComponent:0.3];
-            self.hub = hub;
-            
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(timerStart:) userInfo:nil repeats:YES];
-            
-            NSArray<MDPictureInputItem *> *inputItems = [MDPictureInputItem itemsForImages:images.copy
-                                                                              timeInterval:3.0
-                                                                                 frameRate:30];
-            if ([MDAlbumPLayerSetting.animationType isEqualToString:kAlbumPlayerAnimationTypeTemplate1] || [MDAlbumPLayerSetting.animationType isEqualToString:kAlbumPlayerAnimationTypeTemplate2]) {
-                inputItems = [inputItems arrayByAddingObject:inputItems.lastObject];
-            }
-            CGSize screenSize = UIScreen.mainScreen.bounds.size;
-            CGFloat scale = UIScreen.mainScreen.scale;
-            CGSize maxSize = CGSizeMake(720, 1280);
-            CGSize renderSize = maxSize;
-            if (renderSize.width > screenSize.width * scale) {
-                renderSize = CGSizeMake(screenSize.width * scale, screenSize.width * scale * 16.0f / 9.0f);
-            }
-            
-            MDGPUImageAlbumMovieExport *exporter = [[MDGPUImageAlbumMovieExport alloc] initWithItems:inputItems
-                                                                                        sizeInPixels:renderSize
-                                                                                          audioAsset:nil
-                                                                                            audioMix:nil];
-            exporter.animationType = MDAlbumPLayerSetting.animationType;
-            self.exporter = exporter;
-            exporter.delegate = self;
-            exporter.exportURL = [NSURL fileURLWithPath:localPath];
-            [exporter exportVideo];
+//            NSMutableArray<UIImage *> *images = [NSMutableArray array];
+//
+//            MDRecordImageResult *photoResult = (MDRecordImageResult *)result;
+//            for (MDPhotoItem *item in photoResult.photoItems) {
+//                if (item.editedImage) {
+//                    [images addObject:item.editedImage];
+//                } else if (item.originImage) {
+//                    [images addObject:item.originImage];
+//                } else if (item.nailImage) {
+//                    [images addObject:item.nailImage];
+//                }
+//            }
+//
+//            if (images.count <= 1) {
+//                [weakContainerVC dismissViewControllerAnimated:YES completion:nil];
+//                return;
+//            }
+//
+//            NSString *localPath = [self localPathForAlbumVideo];
+//
+//            if ([[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
+//                [[NSFileManager defaultManager] removeItemAtPath:localPath error:nil];
+//            }
+//
+//            MBProgressHUD *hub = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
+//            hub.mode = MBProgressHUDModeAnnularDeterminate;
+//            hub.label.text = @"Loading";
+//            hub.backgroundView.color = [UIColor.blackColor colorWithAlphaComponent:0.3];
+//            self.hub = hub;
+//
+//            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(timerStart:) userInfo:nil repeats:YES];
+//
+//            NSArray<MDPictureInputItem *> *inputItems = [MDPictureInputItem itemsForImages:images.copy
+//                                                                              timeInterval:3.0
+//                                                                                 frameRate:30];
+//            if ([MDAlbumPLayerSetting.animationType isEqualToString:kAlbumPlayerAnimationTypeTemplate1] || [MDAlbumPLayerSetting.animationType isEqualToString:kAlbumPlayerAnimationTypeTemplate2]) {
+//                inputItems = [inputItems arrayByAddingObject:inputItems.lastObject];
+//            }
+//            CGSize screenSize = UIScreen.mainScreen.bounds.size;
+//            CGFloat scale = UIScreen.mainScreen.scale;
+//            CGSize maxSize = CGSizeMake(720, 1280);
+//            CGSize renderSize = maxSize;
+//            if (renderSize.width > screenSize.width * scale) {
+//                renderSize = CGSizeMake(screenSize.width * scale, screenSize.width * scale * 16.0f / 9.0f);
+//            }
+//
+//            MDGPUImageAlbumMovieExport *exporter = [[MDGPUImageAlbumMovieExport alloc] initWithItems:inputItems
+//                                                                                        sizeInPixels:renderSize
+//                                                                                          audioAsset:nil
+//                                                                                            audioMix:nil];
+//            exporter.animationType = MDAlbumPLayerSetting.animationType;
+//            self.exporter = exporter;
+//            exporter.delegate = self;
+//            exporter.exportURL = [NSURL fileURLWithPath:localPath];
+//            [exporter exportVideo];
         }
         
         [weakContainerVC dismissViewControllerAnimated:YES completion:nil];
@@ -336,7 +359,7 @@
 }
 
 - (void)timerStart:(NSTimer *)timer {
-    self.hub.progress = self.exporter.progress;
+//    self.hub.progress = self.exporter.progress;
 }
 
 - (void)tapped:(UIGestureRecognizer *)tapGesture {
@@ -344,6 +367,8 @@
     [field1 resignFirstResponder];
     UITextField *field2 = [self.view viewWithTag:1001];
     [field2 resignFirstResponder];
+	UITextField *field3 = [self.view viewWithTag:1002];
+	[field3 resignFirstResponder];
 }
 
 - (UINavigationBar *)md_CustomNavigationBar {
@@ -369,55 +394,55 @@
     return localPath;
 }
 
-- (void)albumMovieDidCancelProcessing:(MDGPUImageAlbumMovieExport *)movie {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.hub hideAnimated:YES];
-        
-        [self.timer invalidate];
-        self.timer = nil;
-        
-        NSLog(@"export canceled");
-        self.exporter = nil;
-    });
-}
-
-- (void)albumMovieDidFinishProcessing:(MDGPUImageAlbumMovieExport *)movie {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        self.hub.progress = 1.0;
-        
-        [self.hub hideAnimated:YES];
-        
-        [self.timer invalidate];
-        self.timer = nil;
-
-        NSLog(@"export completed");
-        self.exporter = nil;
-        
-        NSString *localPath = [self localPathForAlbumVideo];
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
-            return;
-        }
-        
-        NSURL *videoURL = [NSURL fileURLWithPath:localPath];
-        AVAsset *asset = [AVAsset assetWithURL:videoURL];
-        [self _handleResultInfoWithOriginalURL:videoURL asset:asset];
-        [self pushToEditingVCWithAsset:asset path:localPath];
-
-//        [PHPhotoLibrary saveVideoAtPath:videoURL
-//                        toAlbumWithName:@"陌陌"
-//                             completion:^(PHFetchResult<PHAsset *> *result, NSError *error) {
-//                                 dispatch_async(dispatch_get_main_queue(), ^{
-//                                     NSLog(@"error = %@", error);
-//                                 });
+//- (void)albumMovieDidCancelProcessing:(MDGPUImageAlbumMovieExport *)movie {
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [self.hub hideAnimated:YES];
+//        
+//        [self.timer invalidate];
+//        self.timer = nil;
+//        
+//        NSLog(@"export canceled");
+//        self.exporter = nil;
+//    });
+//}
 //
-//                             }];
-        
-        
-    });
-}
+//- (void)albumMovieDidFinishProcessing:(MDGPUImageAlbumMovieExport *)movie {
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        
+//        self.hub.progress = 1.0;
+//        
+//        [self.hub hideAnimated:YES];
+//        
+//        [self.timer invalidate];
+//        self.timer = nil;
+//
+//        NSLog(@"export completed");
+//        self.exporter = nil;
+//        
+//        NSString *localPath = [self localPathForAlbumVideo];
+//        
+//        if (![[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
+//            return;
+//        }
+//        
+//        NSURL *videoURL = [NSURL fileURLWithPath:localPath];
+//        AVAsset *asset = [AVAsset assetWithURL:videoURL];
+//        [self _handleResultInfoWithOriginalURL:videoURL asset:asset];
+//        [self pushToEditingVCWithAsset:asset path:localPath];
+//
+////        [PHPhotoLibrary saveVideoAtPath:videoURL
+////                        toAlbumWithName:@"陌陌"
+////                             completion:^(PHFetchResult<PHAsset *> *result, NSError *error) {
+////                                 dispatch_async(dispatch_get_main_queue(), ^{
+////                                     NSLog(@"error = %@", error);
+////                                 });
+////
+////                             }];
+//        
+//        
+//    });
+//}
 
 - (void)pushToEditingVCWithAsset:(AVAsset *)asset path:(NSString *)path {
     AVAssetTrack *videoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];

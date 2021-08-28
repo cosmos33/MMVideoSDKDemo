@@ -10,8 +10,7 @@
 #import "MDBeautySettings.h"
 #import "MDRecordHeader.h"
 
-@import CXBeautyKit;
-@import MetalPetal;
+#import <MetalPetal/MetalPetal.h>
 
 #define kBeautySettingBasePath  [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Application Support/filters/beautySetting"]
 
@@ -21,7 +20,6 @@
 @property (nonatomic,strong) NSMutableSet *urlStrSet;
 @property (nonatomic,strong) NSString *path;
 
-@property (nonatomic, strong) CXBeautyConfiguration *beautyConfiguration;
 @property (nonatomic, strong) NSDictionary *beautySettingsDic;
 
 @end
@@ -48,66 +46,13 @@ static NSArray * kMDBeautySettingsLegLongerLevels;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         kMDBeautySettingsSkinSmoothingLevels = @[@0,@20,@40,@60,@80,@100];
-        kMDBeautySettingsSkinWhitenLevels = @[@0,@20,@40,@60,@80,@100];
+        kMDBeautySettingsSkinWhitenLevels = @[@0,@20,@40,@65,@80,@100];
         kMDBeautySettingsEyesEnhancementLevels = @[@0,@10,@20,@35,@45,@65];
-        kMDBeautySettingsFaceThinningLevels = @[@0,@10,@20,@35,@50,@70];
+        kMDBeautySettingsFaceThinningLevels = @[@0,@10,@20,@35,@55,@70];
         kMDBeautySettingsBodyThinningLevels = @[@0,@20,@40,@60,@80,@100];
         kMDBeautySettingsLegLongerLevels = @[@0,@30,@50,@60,@80,@100];
     });
 }
-
-- (void)getBeautyConfigurationWithCompletion:(void (^)(void))completion {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSDictionary *jsonDict = nil;
-        if ([self.path isNotEmpty] && [[NSFileManager defaultManager] fileExistsAtPath:self.path]) {
-            NSData *data = [NSData dataWithContentsOfFile:self.path];
-            
-            @try {
-                jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:NULL];
-            } @catch (NSException *exception) {
-            } @finally {
-            }
-        }
-        
-        if (jsonDict) {
-            __weak typeof(self) weakSelf = self;
-            [self downloadCXMakeupBundleWithCompltion:^(BOOL success) {
-                if (success) {
-                  CXBeautyConfiguration *config  = [CXBeautyConfiguration beautyConfigurationFromJSONObject:jsonDict error:nil];
-                    weakSelf.beautyConfiguration = config;
-                        if (completion) completion();
-                    
-                }
-            }];
-        }
-    });
-}
-
-- (void)getBeautySettingLevelWithConfiguration:(CXBeautyConfiguration *)configuration {
-    CGFloat skinSmoothingAmount = configuration.skinSmoothingSettings.amount;
-    CGFloat eyesEnhancementAmount = configuration.faceAdjustments.eyeSize;
-    CGFloat faceThinningAmount = configuration.faceAdjustments.thinFace;
-    CGFloat bodyThinningAmout = 0.f;
-    CGFloat longLegAmount = 0.f;
-    
-    NSInteger skinSmoothingLevel = [self indexWithRealValue:skinSmoothingAmount beautySettingTypeStr:MDBeautySettingsSkinSmoothingAmountKey];
-    NSInteger eyesEnhancementLevel = [self indexWithRealValue:eyesEnhancementAmount beautySettingTypeStr:MDBeautySettingsEyesEnhancementAmountKey];
-    NSInteger faceThinningLevel = [self indexWithRealValue:faceThinningAmount beautySettingTypeStr:MDBeautySettingsFaceThinningAmountKey];
-    NSInteger bodyThinningLevel = [self indexWithRealValue:bodyThinningAmout beautySettingTypeStr:MDBeautySettingsThinBodyAmountKey];
-    NSInteger longLegLevel = [self indexWithRealValue:longLegAmount beautySettingTypeStr:MDBeautySettingsLongLegAmountKey];
-    
-    self.beautySettingsDic = @{
-                               MDBeautySettingsSkinSmoothingAmountKey:@(skinSmoothingLevel),
-                               MDBeautySettingsSkinWhitenAmountKey:@(skinSmoothingLevel),
-                               MDBeautySettingsEyesEnhancementAmountKey:@(eyesEnhancementLevel),
-                               MDBeautySettingsFaceThinningAmountKey:@(faceThinningLevel),
-                               MDBeautySettingsThinBodyAmountKey:@(bodyThinningLevel),
-                               MDBeautySettingsLongLegAmountKey:@(longLegLevel),
-                               };
-    
-    [MDRecordContext  setBeautySetting:self.beautySettingsDic];
-}
-
 
 - (CGFloat)realValueWithIndex:(NSInteger)index beautySettingTypeStr:(NSString *)typeStr
 {

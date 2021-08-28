@@ -7,13 +7,14 @@
 //
 
 #import "MDBeautySettings.h"
-@import FaceDecorationKit.FDKBeautySettings;
+#import <FaceDecorationKit/FaceDecorationKit.h>
 #import <MMFoundation/MMFoundation.h>
 
 NSString * const MDBeautySettingsSkinSmoothingAmountKey     = @"MDBeautySettingsSkinSmoothingAmountKey";
 NSString * const MDBeautySettingsEyesEnhancementAmountKey   = @"MDBeautySettingsEyesEnhancementAmountKey";
 NSString * const MDBeautySettingsFaceThinningAmountKey      = @"MDBeautySettingsFaceThinningAmountKey";
 NSString * const MDBeautySettingsSkinWhitenAmountKey        = @"MDBeautySettingsSkinWhitenAmountKey";
+NSString * const MDBeautySettingsSkinRuddyAmountKey        = @"MDBeautySettingsSkinRuddyAmountKey";
 NSString * const MDBeautySettingsThinBodyAmountKey          = @"MDBeautySettingsThinBodyAmountKey";
 NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettingsLongLegAmountKey";
 
@@ -22,6 +23,7 @@ NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettings
 @property (nonatomic) float eyesEnhancementAmount;
 @property (nonatomic) float faceThinningAmount;
 @property (nonatomic) float skinWhitenAmount;
+@property (nonatomic) float skinRuddyAmount;
 @property (nonatomic) float thinBodyAmount;
 @property (nonatomic) float longLegAmount;
 @end
@@ -39,6 +41,7 @@ NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettings
     [aCoder encodeObject:@(self.faceThinningAmount) forKey:NSStringFromSelector(@selector(faceThinningAmount))];
     [aCoder encodeObject:@(self.eyesEnhancementAmount) forKey:NSStringFromSelector(@selector(eyesEnhancementAmount))];
     [aCoder encodeObject:@(self.skinWhitenAmount) forKey:NSStringFromSelector(@selector(skinWhitenAmount))];
+    [aCoder encodeObject:@(self.skinRuddyAmount) forKey:NSStringFromSelector(@selector(skinRuddyAmount))];
     [aCoder encodeObject:@(self.thinBodyAmount) forKey:NSStringFromSelector(@selector(thinBodyAmount))];
     [aCoder encodeObject:@(self.longLegAmount) forKey:NSStringFromSelector(@selector(longLegAmount))];
 }
@@ -51,6 +54,7 @@ NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettings
         self.faceThinningAmount = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(faceThinningAmount))] floatValue];
         self.eyesEnhancementAmount = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(eyesEnhancementAmount))] floatValue];
         self.skinWhitenAmount = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(skinWhitenAmount))] floatValue];
+        self.skinWhitenAmount = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(skinRuddyAmount))] floatValue];
         self.thinBodyAmount = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(thinBodyAmount))] floatValue];
         self.longLegAmount = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(longLegAmount))] floatValue];
     }
@@ -65,6 +69,7 @@ NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettings
         self.faceThinningAmount = [dictionary floatForKey:MDBeautySettingsFaceThinningAmountKey defaultValue:0];
         self.eyesEnhancementAmount = [dictionary floatForKey:MDBeautySettingsEyesEnhancementAmountKey defaultValue:0];
         self.skinWhitenAmount = [dictionary floatForKey:MDBeautySettingsSkinWhitenAmountKey defaultValue:0];
+        self.skinRuddyAmount = [dictionary floatForKey:MDBeautySettingsSkinRuddyAmountKey defaultValue:0];
         self.thinBodyAmount = [dictionary floatForKey:MDBeautySettingsThinBodyAmountKey defaultValue:0];
         self.longLegAmount = [dictionary floatForKey:MDBeautySettingsLongLegAmountKey defaultValue:0];
     }
@@ -78,6 +83,7 @@ NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettings
     settings.faceThinningAmount = self.faceThinningAmount;
     settings.eyesEnhancementAmount = self.eyesEnhancementAmount;
     settings.skinWhitenAmount = self.skinWhitenAmount;
+    settings.skinRuddyAmount = self.skinRuddyAmount;
     settings.thinBodyAmount = self.thinBodyAmount;
     settings.longLegAmount = self.longLegAmount;
     return settings;
@@ -90,7 +96,7 @@ NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettings
     }
     if ([object isKindOfClass:[MDBeautySettings class]]) {
         MDBeautySettings *aObject = (MDBeautySettings *)object;
-        return self.skinWhitenAmount == aObject.skinWhitenAmount && self.skinSmoothingAmount == aObject.skinSmoothingAmount && self.faceThinningAmount == aObject.faceThinningAmount && self.eyesEnhancementAmount == aObject.eyesEnhancementAmount && self.thinBodyAmount == aObject.thinBodyAmount && self.longLegAmount == aObject.longLegAmount;
+        return self.skinWhitenAmount == aObject.skinWhitenAmount && self.skinRuddyAmount == aObject.skinRuddyAmount && self.skinSmoothingAmount == aObject.skinSmoothingAmount && self.faceThinningAmount == aObject.faceThinningAmount && self.eyesEnhancementAmount == aObject.eyesEnhancementAmount && self.thinBodyAmount == aObject.thinBodyAmount && self.longLegAmount == aObject.longLegAmount;
     }
     return NO;
 }
@@ -107,6 +113,7 @@ NSString * const MDBeautySettingsLongLegAmountKey           = @"MDBeautySettings
     decoration.beautySettings.thinFaceFactor = self.faceThinningAmount;
     decoration.beautySettings.skinSmoothingFactor = self.skinSmoothingAmount;
     decoration.beautySettings.skinWhitenFactor = self.skinWhitenAmount;
+    decoration.beautySettings.skinRuddyFactor = self.skinRuddyAmount;
     decoration.beautySettings.bodyWidthFactor = self.thinBodyAmount;
     decoration.beautySettings.legsLenghtFactor = self.longLegAmount;
 }

@@ -28,8 +28,12 @@
 NSString *const kDrawerControllerFilterKey       = @"滤镜";
 NSString *const kDrawerControllerMakeupKey       = @"美肌";
 NSString *const kDrawerControllerChangeFacialKey = @"美颜";
+NSString *const kDrawerControllerMicroKey        = @"微整形";
 NSString *const kDrawerControllerThinBodyKey     = @"瘦身";
 NSString *const kDrawerControllerLongLegKey      = @"长腿";
+NSString *const kDrawerControllerMakeUpKey       = @"美妆";
+NSString *const kDrawerControllerMakeupStyleKey      = @"风格妆";
+
 
 static NSInteger const kSelectViewHeiht = 41;
 static CGFloat   const kDuration        = 0.3;
@@ -42,17 +46,24 @@ static CGFloat   const kContentInset    = 20;
 @property (nonatomic, strong) UIVisualEffectView            *visualEffectView;//高斯模糊view
 @property (nonatomic, strong) MDRecordFilterListView        *filterView;//滤镜
 @property (nonatomic, strong) MDRecordMakeUpListView        *makeUpView;//美颜
+@property (nonatomic, strong) MDRecordMakeUpListView        *microSurgeryView;//美颜
 @property (nonatomic, strong) MDRecordMakeUpListView        *faceLiftView;//瘦脸（大眼）
 @property (nonatomic, strong) MDRecordMakeUpListView        *thinBodyView;//瘦身
 @property (nonatomic, strong) MDRecordMakeUpListView        *longLegView;//长腿
+@property (nonatomic, strong) MDRecordMakeUpListView        *makeupBeautyView;//美妆
+@property (nonatomic, strong) MDRecordMakeUpListView        *makeupStyleView;//风格妆
 @property (nonatomic, strong) MDAlbumVideoSwitchButtonView  *switchView;
 @property (nonatomic, strong) UIView                        *bottomBgView;//底部背景view
 
 @property (nonatomic, strong) UIView *lineView;
 
 @property (nonatomic, strong) MDRecordFilterDrawerSlider *filterIntensitySlider;
+@property (nonatomic, strong) MDRecordFilterDrawerSlider *makeupLookUpSlider;
+@property (nonatomic, strong) MDRecordFilterDrawerSlider *microsurgerySlider;
 @property (nonatomic, strong) MDRecordFilterDrawerSliderPanel *makeUpSliderPanel;
 @property (nonatomic, strong) MDRecordFilterDrawerSliderPanel *faceListSliderPanel;
+@property (nonatomic, strong) MDRecordFilterDrawerSliderPanel *makeStyleSliderPanel;
+
 
 @property (nonatomic, strong) UIButton *detailButton;
 @property (nonatomic, strong) UIButton *backButton;
@@ -73,8 +84,12 @@ static CGFloat   const kContentInset    = 20;
     NSArray *tagArray = @[kDrawerControllerFilterKey,
                           kDrawerControllerMakeupKey,
                           kDrawerControllerChangeFacialKey,
+                          kDrawerControllerMicroKey,
                           kDrawerControllerThinBodyKey,
-                          kDrawerControllerLongLegKey];
+                          kDrawerControllerLongLegKey,
+                          kDrawerControllerMakeUpKey,
+                          kDrawerControllerMakeupStyleKey
+                        ];
     return [self initWithTagArray:tagArray];
 }
 
@@ -148,6 +163,28 @@ static CGFloat   const kContentInset    = 20;
                 [self.longLegView reloadData];
             }];
     }
+    // 美妆
+    if ([_tagArray containsObject:kDrawerControllerMakeUpKey]) {
+        [MDRecordFilterModelLoader requeseteMakeupDataWithType:1 block:^(NSArray * _Nonnull beautifyArray) {
+            self.makeupBeautyView.dataArray = beautifyArray;
+            [self.makeupBeautyView reloadData];
+        }];
+    }
+    // 风格妆
+    if ([_tagArray containsObject:kDrawerControllerMakeupStyleKey]) {
+        [MDRecordFilterModelLoader requeseteMakeupDataWithType:0 block:^(NSArray * _Nonnull beautifyArray) {
+            self.makeupStyleView.dataArray = beautifyArray;
+            [self.makeupStyleView reloadData];
+        }];
+    }
+    // 微整形
+    
+    if ([_tagArray containsObject:kDrawerControllerMakeupStyleKey]) {
+        [MDRecordFilterModelLoader requeseteMicroData:^(NSArray * _Nonnull microSurgeryArray) {
+            self.microSurgeryView.dataArray = microSurgeryArray;
+            [self.microSurgeryView reloadData];
+        }];
+    }
 }
 
 - (void)setFilterModels:(NSArray<MDRecordFilterModel *> *)filterModels
@@ -167,11 +204,11 @@ static CGFloat   const kContentInset    = 20;
     [self.visualEffectView.contentView addSubview:self.detailButton];
     [self.visualEffectView.contentView addSubview:self.backButton];
     
-    [self.detailButton.centerYAnchor constraintEqualToAnchor:self.switchView.centerYAnchor].active = YES;
-    [self.detailButton.rightAnchor constraintEqualToAnchor:self.visualEffectView.contentView.rightAnchor constant:-28].active = YES;
+    [self.detailButton.centerYAnchor constraintEqualToAnchor:self.switchView.centerYAnchor constant:-3].active = YES;
+    [self.detailButton.rightAnchor constraintEqualToAnchor:self.visualEffectView.contentView.rightAnchor constant:-12].active = YES;
     
-    [self.backButton.centerYAnchor constraintEqualToAnchor:self.switchView.centerYAnchor].active = YES;
-    [self.backButton.rightAnchor constraintEqualToAnchor:self.visualEffectView.contentView.rightAnchor constant:-28].active = YES;
+    [self.backButton.centerYAnchor constraintEqualToAnchor:self.switchView.centerYAnchor constant:-3].active = YES;
+    [self.backButton.rightAnchor constraintEqualToAnchor:self.visualEffectView.contentView.rightAnchor constant:-12].active = YES;
     
 
     if ([_tagArray containsObject:kDrawerControllerFilterKey]) {
@@ -195,6 +232,18 @@ static CGFloat   const kContentInset    = 20;
 //        if ([[MDContext beautySettingDataManager] canUseLongLegSetting]) {// 长腿
             [self.visualEffectView.contentView addSubview:[self setupLongLegView]];
 //        }
+    }
+    if ([_tagArray containsObject:kDrawerControllerMakeUpKey]) {
+        [self.visualEffectView.contentView addSubview:self.makeupBeautyView];
+        [self.visualEffectView.contentView addSubview:self.makeupLookUpSlider];
+    }
+    if ([_tagArray containsObject:kDrawerControllerMakeupStyleKey]) {
+        [self.visualEffectView.contentView addSubview:self.makeupStyleView];
+        [self.visualEffectView.contentView addSubview:self.makeStyleSliderPanel];
+    }
+    if ([_tagArray containsObject:kDrawerControllerMicroKey]) {
+        [self.visualEffectView.contentView addSubview:self.microSurgeryView];
+        [self.visualEffectView.contentView addSubview:self.microsurgerySlider];
     }
     
     [self.visualEffectView.contentView addSubview:self.bottomBgView];
@@ -242,6 +291,15 @@ static CGFloat   const kContentInset    = 20;
         self.thinBodyView.hidden = NO;
     } else if ([title isEqualToString:kDrawerControllerLongLegKey]) {
         self.longLegView.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMakeUpKey]){
+        self.makeupBeautyView.hidden = NO;
+        self.detailButton.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMakeupStyleKey]){
+        self.makeupStyleView.hidden = NO;
+        self.detailButton.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMicroKey]){
+        self.detailButton.hidden = NO;
+        self.microSurgeryView.hidden = NO;
     }
 }
 
@@ -256,6 +314,12 @@ static CGFloat   const kContentInset    = 20;
     self.longLegView.hidden = YES;
     self.detailButton.hidden = YES;
     self.backButton.hidden = YES;
+    self.makeStyleSliderPanel.hidden = YES;
+    self.makeupStyleView.hidden = YES;
+    self.makeupBeautyView.hidden = YES;
+    self.makeupLookUpSlider.hidden = YES;
+    self.microsurgerySlider.hidden = YES;
+    self.microSurgeryView.hidden = YES;
 }
 
 #pragma mark --显示隐藏
@@ -300,7 +364,15 @@ static CGFloat   const kContentInset    = 20;
         }
     }];
 }
-
+- (void)setMicroSurgeryIndex:(NSUInteger)index{
+    [self.microSurgeryView selectedAndReloadCollectionView:index];
+}
+- (void)setMakeupBeautyIndex:(NSUInteger)index{
+    [self.makeupBeautyView selectedAndReloadCollectionView:index];
+}
+- (void)setMakeupStyleIndex:(NSUInteger)index{
+    [self.makeupStyleView selectedAndReloadCollectionView:index];
+}
 - (void)setFilterIndex:(NSUInteger)index
 {
     [self.filterView selectedAndReloadCollectionView:index];
@@ -336,12 +408,24 @@ static CGFloat   const kContentInset    = 20;
     NSInteger index = self.switchView.currentSelectedIndex;
     
     [self hideAllView];
-    if (index == 0) {
+    NSString *title = [self.tagArray objectAtIndex:index defaultValue:nil];
+    
+    if ([title isEqualToString:kDrawerControllerFilterKey]) { // 0
         self.filterIntensitySlider.hidden = NO;
-    } else if (index == 1) {
+    } else if ([title isEqualToString:kDrawerControllerMakeupKey]) { // 1
         self.makeUpSliderPanel.hidden = NO;
-    } else if (index == 2) {
+    } else if ([title isEqualToString:kDrawerControllerChangeFacialKey]) { // 2
         self.faceListSliderPanel.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerThinBodyKey]) { // 4
+        self.microsurgerySlider.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerLongLegKey]) { // 5
+        self.longLegView.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMakeUpKey]){ // 6
+        self.makeupLookUpSlider.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMakeupStyleKey]){ // 7
+        self.makeStyleSliderPanel.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMicroKey]){ // 3
+        self.microsurgerySlider.hidden = NO;
     }
     self.backButton.hidden = NO;
 }
@@ -350,12 +434,24 @@ static CGFloat   const kContentInset    = 20;
     NSInteger index = self.switchView.currentSelectedIndex;
     
     [self hideAllView];
-    if (index == 0) {
+    NSString *title = [self.tagArray objectAtIndex:index defaultValue:nil];
+    
+    if ([title isEqualToString:kDrawerControllerFilterKey]) { // 0
         self.filterView.hidden = NO;
-    } else if (index == 1) {
+    } else if ([title isEqualToString:kDrawerControllerMakeupKey]) { // 1
         self.makeUpView.hidden = NO;
-    } else if (index == 2) {
+    } else if ([title isEqualToString:kDrawerControllerChangeFacialKey]) { // 2
         self.faceLiftView.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerThinBodyKey]) { // 4
+        self.microsurgerySlider.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerLongLegKey]) { // 5
+        self.longLegView.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMakeUpKey]){ // 6
+        self.makeupBeautyView.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMakeupStyleKey]){ // 7
+        self.makeupStyleView.hidden = NO;
+    } else if ([title isEqualToString:kDrawerControllerMicroKey]){ // 3
+        self.microSurgeryView.hidden = NO;
     }
     self.detailButton.hidden = NO;
 }
@@ -388,6 +484,21 @@ static CGFloat   const kContentInset    = 20;
         }];
     }
     return _makeUpView;
+}
+
+- (MDRecordMakeUpListView *)microSurgeryView{
+    if (!_microSurgeryView) {
+        _microSurgeryView = [[MDRecordMakeUpListView alloc] initWithFrame:CGRectMake(0, kSelectViewHeiht, MDScreenWidth, kTotalHeight - kSelectViewHeiht - HOME_INDICATOR_HEIGHT)];
+        WEAKSelf
+        [_microSurgeryView setSelectedIndexBlock:^(NSInteger index){
+            if([weakSelf.delegate respondsToSelector:@selector(didselectedMicroSurgeryModel:)]){
+                MDRecordMakeUpModel *model = [weakSelf.microSurgeryView.dataArray objectAtIndex:index];
+                weakSelf.microsurgerySlider.sliderType = model.sliderType.intValue;
+                [weakSelf.delegate didselectedMicroSurgeryModel:model.type];
+            }
+        }];
+    }
+    return _microSurgeryView;
 }
 
 - (MDRecordMakeUpListView *)faceLiftView
@@ -433,9 +544,37 @@ static CGFloat   const kContentInset    = 20;
     return _longLegView;
 }
 
+- (MDRecordMakeUpListView *)makeupBeautyView{
+    if (!_makeupBeautyView) {
+        _makeupBeautyView = [[MDRecordMakeUpListView alloc] initWithFrame:CGRectMake(0, kSelectViewHeiht, MDScreenWidth, kTotalHeight - kSelectViewHeiht - HOME_INDICATOR_HEIGHT)];
+        WEAKSelf
+        [_makeupBeautyView setSelectedIndexBlock:^(NSInteger index) {
+            if([weakSelf.delegate respondsToSelector:@selector(didSelectedMakeUpModel:)]){
+                MDRecordMakeUpModel *model = [weakSelf.makeupBeautyView.dataArray objectAtIndex:index];
+                [weakSelf.delegate didSelectedMakeUpModel:model.makeUpId];
+            }
+        }];
+    }
+    return  _makeupBeautyView;
+}
+
+- (MDRecordMakeUpListView *)makeupStyleView{
+    if (!_makeupStyleView) {
+        _makeupStyleView = [[MDRecordMakeUpListView alloc] initWithFrame:CGRectMake(0, kSelectViewHeiht, MDScreenWidth, kTotalHeight - kSelectViewHeiht - HOME_INDICATOR_HEIGHT)];
+        WEAKSelf
+        [_makeupStyleView setSelectedIndexBlock:^(NSInteger index) {
+            if([weakSelf.delegate respondsToSelector:@selector(didSelectedMakeUpModel:)]){
+                MDRecordMakeUpModel *model = [weakSelf.makeupStyleView.dataArray objectAtIndex:index];
+                [weakSelf.delegate didSelectedMakeUpModel:model.makeUpId];
+            }
+        }];
+    }
+    return  _makeupStyleView;
+}
+
 - (MDAlbumVideoSwitchButtonView *)switchView {
     if (!_switchView) {
-        _switchView = [[MDAlbumVideoSwitchButtonView alloc] initWithFrame:CGRectMake(28, 8, 280, kSelectViewHeiht - 8)];
+        _switchView = [[MDAlbumVideoSwitchButtonView alloc] initWithFrame:CGRectMake(10, 8, MDScreenWidth - 30, kSelectViewHeiht - 8)];
         __weak typeof(self) weakself = self;
         _switchView.titleButtonClicked = ^(MDAlbumVideoSwitchButtonView *switchButtonView, NSInteger index) {
             [weakself setSelectedIndex:index];
@@ -451,6 +590,9 @@ static CGFloat   const kContentInset    = 20;
         _detailButton.hidden = YES;
         [_detailButton setImage:[UIImage imageNamed:@"filterDrawerSetting"] forState:UIControlStateNormal];
         [_detailButton addTarget:self action:@selector(detailButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTounchBtnClick:)];
+        longGesture.minimumPressDuration = 0.8;
+        [_detailButton addGestureRecognizer:longGesture];
     }
     return _detailButton;
 }
@@ -462,8 +604,57 @@ static CGFloat   const kContentInset    = 20;
         _backButton.hidden = YES;
         [_backButton setImage:[UIImage imageNamed:@"filterDrawerSetting"] forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTounchBtnClick:)];
+        longGesture.minimumPressDuration = 0.8;
+        [_backButton addGestureRecognizer:longGesture];
     }
     return _backButton;
+}
+
+- (void)longTounchBtnClick:(UILongPressGestureRecognizer *)longPrss{
+    NSLog(@"bobo start long");
+    if (longPrss.state == UIGestureRecognizerStateBegan) {
+        if([self.delegate respondsToSelector:@selector(longTounchBtnClickStart)]){
+            NSLog(@"bobo longTounchBtnClickStart");
+            [self.delegate longTounchBtnClickStart];
+        }
+    } else {
+        if([self.delegate respondsToSelector:@selector(longTounchBtnClickEnd)]){
+            NSLog(@"bobo longTounchBtnClickEnd");
+            [self.delegate longTounchBtnClickEnd];
+        }
+    }
+   
+}
+
+- (MDRecordFilterDrawerSlider *)microsurgerySlider{
+    if (!_microsurgerySlider) {
+        _microsurgerySlider = [[MDRecordFilterDrawerSlider alloc] initWithFrame:CGRectMake(28, kSelectViewHeiht, MDScreenWidth - 56, kTotalHeight - kSelectViewHeiht - HOME_INDICATOR_HEIGHT)];
+        _microsurgerySlider.title = @"浓度";
+        _microsurgerySlider.sliderValue = 1.0;
+        __weak typeof(self) weakself = self;
+        _microsurgerySlider.valueChanged = ^(MDRecordFilterDrawerSlider *slider, CGFloat intensity) {
+            if ([weakself.delegate respondsToSelector:@selector(didSetMicroSurgeryIntensity:)]) {
+                [weakself.delegate didSetMicroSurgeryIntensity:intensity];
+            }
+        };
+    }
+    return _microsurgerySlider;
+}
+
+- (MDRecordFilterDrawerSlider *)makeupLookUpSlider{
+    if (!_makeupLookUpSlider) {
+        _makeupLookUpSlider = [[MDRecordFilterDrawerSlider alloc] initWithFrame:CGRectMake(28, kSelectViewHeiht, MDScreenWidth - 56, kTotalHeight - kSelectViewHeiht - HOME_INDICATOR_HEIGHT)];
+        _makeupLookUpSlider.title = @"浓度";
+        _makeupLookUpSlider.sliderValue = 1.0;
+        __weak typeof(self) weakself = self;
+        _makeupLookUpSlider.valueChanged = ^(MDRecordFilterDrawerSlider *slider, CGFloat intensity) {
+            if ([weakself.delegate respondsToSelector:@selector(didSetMakeUpBeautyIntensity:)]) {
+                [weakself.delegate didSetMakeUpBeautyIntensity:intensity];
+            }
+        };
+    }
+    return _makeupLookUpSlider;
 }
 
 - (MDRecordFilterDrawerSlider *)filterIntensitySlider {
@@ -490,6 +681,18 @@ static CGFloat   const kContentInset    = 20;
         _makeUpSliderPanel.hidden = YES;
     }
     return _makeUpSliderPanel;
+}
+
+
+- (MDRecordFilterDrawerSliderPanel *)makeStyleSliderPanel{
+    if (!_makeStyleSliderPanel) {
+        _makeStyleSliderPanel = [[MDRecordFilterDrawerSliderPanel alloc] initWithFrame:CGRectMake(28, kSelectViewHeiht, MDScreenWidth - 56, kTotalHeight - kSelectViewHeiht - HOME_INDICATOR_HEIGHT)];
+        _makeStyleSliderPanel.title1 = @"滤镜";
+        _makeStyleSliderPanel.title2 = @"整装";
+        _makeStyleSliderPanel.delegate = self;
+        _makeStyleSliderPanel.hidden = YES;
+    }
+    return _makeStyleSliderPanel;
 }
 
 - (MDRecordFilterDrawerSliderPanel *)faceListSliderPanel {
@@ -542,9 +745,13 @@ static CGFloat   const kContentInset    = 20;
                 if ([self.delegate respondsToSelector:@selector(didSetSkinWhitenValue:)]) {
                     [self.delegate didSetSkinWhitenValue:value];
                 }
-            } else {
+            } else if (panel == self.faceListSliderPanel) {
                 if ([self.delegate respondsToSelector:@selector(didSetBigEyeValue:)]) {
                     [self.delegate didSetBigEyeValue:value];
+                }
+            } else if (panel == self.makeStyleSliderPanel){
+                if ([self.delegate respondsToSelector:@selector(didSetMakeUpLookIntensity:)]) {
+                    [self.delegate didSetMakeUpLookIntensity:value];
                 }
             }
             break;
@@ -553,9 +760,13 @@ static CGFloat   const kContentInset    = 20;
                 if ([self.delegate respondsToSelector:@selector(didSetSmoothSkinValue:)]) {
                     [self.delegate didSetSmoothSkinValue:value];
                 }
-            } else {
+            } else if (panel == self.faceListSliderPanel) {
                 if ([self.delegate respondsToSelector:@selector(didSetThinFaceValue:)]) {
                     [self.delegate didSetThinFaceValue:value];
+                }
+            } else if (panel == self.makeStyleSliderPanel){
+                if ([self.delegate respondsToSelector:@selector(didSetMakeUpBeautyIntensity:)]) {
+                    [self.delegate didSetMakeUpBeautyIntensity:value];
                 }
             }
             break;

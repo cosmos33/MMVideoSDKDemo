@@ -15,8 +15,7 @@
 #import "MDMomentExpressionCellModel.h"
 #import "MDSMSelectIntervalProgressView.h"
 #import "Toast/Toast.h"
-@import FaceDecorationKit;
-@import FaceDecorationKitGPUImage;
+#import <FaceDecorationKit/FaceDecorationKit.h>
 @import RecordSDK;
 
 static NSUInteger kMaxStickerNumber = 3;
@@ -345,15 +344,8 @@ static NSUInteger kMaxStickerNumber = 3;
         return;
     }
     
-    FDKDecorationFilterOptions *decorationFilterOptions = [[FDKDecorationFilterOptions alloc] init];
-    if ([MDRecordContext is32bit]) {
-        decorationFilterOptions.skinSmoothingVersion = FDKSkinSmoothingVersion3;
-    } else {
-        decorationFilterOptions.skinSmoothingVersion = FDKSkinSmoothingVersion1;
-    }
     sticker = [[MDRecordDynamicSticker alloc] initWithDecorationURL:[NSURL fileURLWithPath:resourcePath]
-                                                     inputFrameSize:self.videoSize
-                                            decorationFilterOptions:decorationFilterOptions];
+                                                     inputFrameSize:self.videoSize];
     sticker.stickerId = stickerId;
     sticker.duration = CMTimeRangeMake(kCMTimeZero, self.asset.duration);
     

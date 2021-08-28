@@ -7,8 +7,7 @@
 //
 
 #import "MDMoment3DTouchView.h"
-@import FaceDecorationKitX3D;
-@import GPUImage;
+
 
 @implementation MDMoment3DTouchView
 
@@ -16,7 +15,7 @@
     if (self.touchLevelHandle && self.touchLevelHandle()) {
         _acceptTouct = NO;
         return nil;
-    } else if ([[FDKX3DEngine shareInstance] hitTestTouch:point withView:self]) {
+    } else if ([self.delegate respondsToSelector:@selector(touchView:hitTestTouch:withView:)] && [self.delegate touchView:self hitTestTouch:point withView:self]) {   // [[FDKX3DEngine shareInstance] hitTestTouch:point withView:self]
         _acceptTouct = YES;
         return self;
     }
@@ -25,29 +24,33 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    runSynchronouslyOnVideoProcessingQueue(^{
-        [[FDKX3DEngine shareInstance] touchesBegan:touches withEvent:event];
-    });
+    if (![self.delegate respondsToSelector:@selector(touchView:touchesBegan:withEvent:)]) {
+        return;
+    }
+    [self.delegate touchView:self touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    runSynchronouslyOnVideoProcessingQueue(^{
-        [[FDKX3DEngine shareInstance] touchesMoved:touches withEvent:event];
-    });
+    if (![self.delegate respondsToSelector:@selector(touchView:touchesMoved:withEvent:)]) {
+        return;
+    }
+    [self.delegate touchView:self touchesMoved:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     self.acceptTouct = NO;
-    runSynchronouslyOnVideoProcessingQueue(^{
-        [[FDKX3DEngine shareInstance] touchesEnded:touches withEvent:event];
-    });
+    if (![self.delegate respondsToSelector:@selector(touchView:touchesEnded:withEvent:)]) {
+        return;
+    }
+    [self.delegate touchView:self touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     self.acceptTouct = NO;
-    runSynchronouslyOnVideoProcessingQueue(^{
-        [[FDKX3DEngine shareInstance] touchesCancelled:touches withEvent:event];
-    });
+    if (![self.delegate respondsToSelector:@selector(touchView:touchesCancelled:withEvent:)]) {
+        return;
+    }
+    [self.delegate touchView:self touchesCancelled:touches withEvent:event];
 }
 
 @end

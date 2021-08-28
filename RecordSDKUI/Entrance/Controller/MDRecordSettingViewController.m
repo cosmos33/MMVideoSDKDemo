@@ -15,6 +15,8 @@
 #import "UINavigationController+AnimatedTransition.h"
 #import "MDRecordImageResult.h"
 #import "MDFaceDecorationLoader.h"
+#import "MDUnifiedRecordViewController+Permission.h"
+#import <Photos/Photos.h>
 
 @interface MDRecordSettingViewController () <MDNavigationBarAppearanceDelegate>
 
@@ -30,6 +32,15 @@
     [self setupUI];
     
     self.loader = [[MDFaceDecorationLoader alloc] init];
+    
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {}];
+    
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        
+    }];
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted) {
+        
+    }];
 }
 
 - (void)setupUI {

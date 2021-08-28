@@ -1,0 +1,12 @@
+{
+    "name": "blush",
+    "makeup": [
+        {
+        "type": "makeup_blush",
+        "resources": ["blush_cute/blush.png"],
+        "blendMode": "Normal"
+        }
+    ]
+}
+
+

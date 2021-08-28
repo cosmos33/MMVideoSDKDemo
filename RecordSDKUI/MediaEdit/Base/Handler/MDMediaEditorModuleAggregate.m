@@ -19,7 +19,6 @@
 #import "MDMomentExpressionViewController.h"
 #import "MDMomentExpressionCellModel.h"
 @import RecordSDK;
-@import CXBeautyKit;
 
 //文字编辑相关
 #import "MDMomentTextOverlayEditorView.h"
@@ -112,6 +111,9 @@ static const NSInteger kMaxImageStickerCount = 20;
 
 @property (nonatomic, strong) NSMutableArray<MDRecordDynamicSticker *> *tmpDynamicStickers;
 
+@property (nonatomic, copy) NSString *makeupType;
+@property (nonatomic, copy) NSString *microSurgeryType;
+
 @end
 
 @implementation MDMediaEditorModuleAggregate
@@ -189,10 +191,6 @@ static const NSInteger kMaxImageStickerCount = 20;
         self.document.sourceAudioVolume = 0;
         self.document.muteSourceAudioVolume = YES;
         self.document.backgroundMusicVolume = 1.0;
-    }
-    
-    if (MDRecordVideoSettingManager.enableBlur) {
-        [self.adapter setVideoDisplaySize:CGSizeMake(720, 1280)];
     }
     
     _videoSize = [self.adapter videoDisplaySize];
@@ -369,6 +367,9 @@ static const NSInteger kMaxImageStickerCount = 20;
         NSArray *tagArray = @[kDrawerControllerFilterKey,
                               kDrawerControllerMakeupKey,
                               kDrawerControllerChangeFacialKey,
+                              kDrawerControllerMicroKey,
+                              kDrawerControllerMakeUpKey,
+                              kDrawerControllerMakeupStyleKey
                               ];
         _filterDrawerController = [[MDRecordFilterDrawerController alloc] initWithTagArray:tagArray];
         _filterDrawerController.delegate = self;
@@ -389,6 +390,9 @@ static const NSInteger kMaxImageStickerCount = 20;
         [_filterDrawerController setThinFaceIndex:thinFaceIndex];
         [_filterDrawerController setThinBodyIndex:thinBodyIndex];
         [_filterDrawerController setLongLegIndex:longLegIndex];
+        [_filterDrawerController setMakeupStyleIndex:0];
+        [_filterDrawerController setMakeupBeautyIndex:0];
+        [_filterDrawerController setMicroSurgeryIndex:0];
     }
 }
 
@@ -429,7 +433,112 @@ static const NSInteger kMaxImageStickerCount = 20;
     [filterA setLutIntensity:value];
 }
 
-//MDRecordFilterDrawerControllerDelegate
+
+#pragma mark - MDRecordFilterDrawerControllerDelegate相关
+
+- (void)didSelectedMakeUpModel:(NSString *)modelType{
+    NSLog(@"波仔看看是 : %@",modelType);
+    if ([modelType isEqualToString: @"无"]) {
+        [self.adapter removeAllMakeupEffect];
+        return;
+    }
+    self.makeupType = [self getTypeWithName:modelType];
+    [self.adapter removeAllMakeupEffect];
+    NSString *rescousePath = [self getPathWithName:modelType];
+    [self.adapter addMakeupEffect:rescousePath];
+    [self.adapter setMakeupEffectIntensity:1 makeupType:self.makeupType];
+}
+
+- (NSString *)getTypeWithName:(NSString*)name{
+    if ([name hasPrefix:@"腮红"]) {
+        return  @"makeup_blush";
+    }
+    if ([name hasPrefix:@"修容"]) {
+        return  @"makeup_facial";
+    }
+    if ([name hasPrefix:@"眉毛"]) {
+        return  @"makeup_eyebrow";
+    }
+    if ([name hasPrefix:@"眼妆"]) {
+        return  @"makeup_eyes";
+    }
+    if ([name hasPrefix:@"口红"]) {
+        return  @"makeup_lips";
+    }
+    if ([name hasPrefix:@"美瞳"]){
+        return @"makeup_pupil";
+    }
+    return @"makeup_all";
+}
+
+- (NSString *)getPathWithName:(NSString *)name{
+    NSString *rootPath = [[NSBundle mainBundle] pathForResource:@"makeup" ofType:@"bundle"];
+    NSURL *path = [[NSBundle bundleForClass:self.class] URLForResource:@"makeup" withExtension:@"bundle"];
+    NSURL *jsonPath = [[NSBundle bundleWithURL:path] URLForResource:@"makeup_list" withExtension:@"geojson"];
+    NSArray *items = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:jsonPath] options:0 error:nil];
+    NSDictionary *dict = @{
+        @"甜拽":@"makeup_style/abg",
+        @"白雪":@"makeup_style/baixue",
+        @"芭比":@"makeup_style/babi",
+        @"黑童话":@"makeup_style/heitonghua",
+        @"裸装":@"makeup_style/luozhuang",
+        @"韩式":@"makeup_style/hanshi",
+        @"玉兔":@"makeup_style/yutu",
+        @"闪闪":@"makeup_style/hanshi",
+        @"秋日":@"makeup_style/qiuri",
+        @"跨年装":@"makeup_style/kuanianzhuang",
+        @"蜜桃":@"makeup_style/mitao",
+        @"元气":@"makeup_style/yuanqi",
+        @"混血":@"makeup_style/hunxue",
+        @"神秘":@"makeup_style/shenmi",
+    };
+    if ([dict objectForKey:name]) {
+        return [NSString stringWithFormat:@"%@/%@",rootPath,[dict objectForKey:name]];;
+    }
+    
+    for (NSDictionary *item in items) {
+        NSString *title = [item objectForKey:@"title"];
+        if ([title isEqualToString:name]) {
+            NSString *path = [item objectForKey:@"highlight"] ;
+            if ([path isEqualToString:@"none"]) {
+                path = @"";
+            }
+            return [NSString stringWithFormat:@"%@/%@",rootPath,path];
+        }
+    }
+    return  @"";
+}
+- (void)didselectedMicroSurgeryModel:(NSString *)index{
+    if (index) {
+        self.microSurgeryType = index;
+        [self.adapter adjustBeauty:1.0 forKey:index];
+    }
+    
+}
+- (void)didSetMicroSurgeryIntensity:(CGFloat)value{
+    if (self.microSurgeryType) {
+        [self.adapter adjustBeauty:value forKey:self.microSurgeryType];
+    }
+}
+
+- (void)longTounchBtnClickEnd{
+    [self.adapter setRenderStatus:YES];
+}
+
+- (void)longTounchBtnClickStart{
+    [self.adapter setRenderStatus:NO];
+}
+
+- (void)didSetMakeUpLookIntensity:(CGFloat)value{
+    [self.adapter setMakeupEffectIntensity:value makeupType:@"makeup_lut"];
+}
+- (void)didSetMakeUpBeautyIntensity:(CGFloat)value{
+    if (self.makeupType) {
+        [self.adapter setMakeupEffectIntensity:value makeupType:self.makeupType];
+    }
+}
+
+
 ///瘦身
 - (void)didSelectedThinBodyItem:(NSInteger)index {
     [self.beautySettingDict setInteger:index forKey:MDBeautySettingsThinBodyAmountKey];
@@ -442,14 +551,11 @@ static const NSInteger kMaxImageStickerCount = 20;
 }
 
 - (void)didSelectedFilterItem:(NSInteger)index {
-    runSynchronouslyOnVideoProcessingQueue(^{
-        if (self.filters.count >= 2) {
-            self.currentFilterIndex = index;
-            MDRecordFilter *filterA = [self.filters objectAtIndex:index defaultValue:nil];
-            [self.adapter configCurrentFilter:filterA];
-        }
-        
-    });
+    if (self.filters.count >= 2) {
+        self.currentFilterIndex = index;
+        MDRecordFilter *filterA = [self.filters objectAtIndex:index defaultValue:nil];
+        [self.adapter configCurrentFilter:filterA];
+    }
 }
 
 - (void)didSelectedMakeUpItem:(NSInteger)index {
@@ -970,8 +1076,8 @@ static const NSInteger kMaxImageStickerCount = 20;
 
 - (NSArray *)specialEffectsTypeArray {
     NSMutableSet *set = [NSMutableSet set];
-    for (GPUImageOutput<GPUImageInput,MDRSpecialFilterLifeStyleProtocol> *filter in [self.adapter.specialFilters copy]) {
-        MDRecordSpecialEffectsType type = [MDRecordSpecialEffectsManager getSpecialEffectsTypeWithFilter:filter];
+    for (id filter in [self.adapter.specialFilters copy]) {
+        MDRecordSpecialEffectsType type = [MDRecordSpecialEffectsManager getSpecialEffectsTypeWithMFilter:filter];
         [set addObject:@(type)];
     }
     if (self.document.timeEffectsItem) {
@@ -1155,6 +1261,11 @@ static const NSInteger kMaxImageStickerCount = 20;
     } else {
         [self.adapter setTargetBitRate:MDRecordVideoSettingManager.exportBitRate];
     }
+	// 设置裁剪
+	CGRect region = MDRecordVideoSettingManager.cropRegion;
+	if (!CGSizeEqualToSize(region.size, CGSizeZero)) {
+    	[self.adapter setCropRegion:region];
+	}
     // 设置导出视频大小
 //    [self.adapter setPresentationSize:[self.adapter videoDisplaySize]];
     // 设置导出帧率

@@ -1,13 +1,15 @@
 source 'https://github.com/cosmos33/MMSpecs.git'
-source 'https://cdn.cocoapods.org'
+source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://cdn.cocoapods.org'
 
-platform :ios, '9.0'
+platform :ios, '11.0'
 
 inhibit_all_warnings!
-use_frameworks!
+
+use_frameworks! :linkage => :static
 
 target :MDRecordSDK do
-    pod 'MMFrameworks', :path => './MMFramework', :subspecs => ['Eta', 'MMFoundation']
+    pod 'MMFrameworks', :source => 'https://github.com/cosmos33/MMSpecs.git'
     pod 'Toast', '~> 4.0.0'
     pod 'MBProgressHUD', '~> 1.1.0'
     pod 'MJRefresh'
@@ -17,9 +19,15 @@ target :MDRecordSDK do
     pod 'pop'
     pod 'YYImage'
     pod 'ReactiveCocoa', '2.5'
-    pod 'JPImageresizerView'
-    
-    pod 'MMVideoSDK', '2.3.3.3'
+    pod 'Mantle', '2.1.0'
+    pod 'ZipArchive'
+    pod 'JPImageresizerView', '0.5.0'
+
+    pod 'MMVideoSDK', '2.5.0'
+    pod 'MMMedia','2.5.0'
+    pod 'MMCV','3.0.0-s'
+     pod 'MetalPetal/Static', '1.13.0'
+#  pod 'MetalPetal', '1.13.0'
 end
 
 post_install do |installer|

@@ -86,6 +86,9 @@
 
 @property (nonatomic, strong) MDDecorationPannelView *decorationView;
 
+@property (nonatomic, copy) NSString *makeupType;
+@property (nonatomic, copy) NSString *microSurgeryType;
+
 @end
 
 @implementation MDUnifiedRecordModuleAggregate
@@ -108,7 +111,7 @@
         _decorationDataHandler = [[MDFaceDecorationDataHandle alloc] initWithFilterARDecoration:!supportRotateCamera];
         _decorationDataHandler.delegate = self;
         
-        _beautySettingDict = [@{@"MDBeautySettingsEyesEnhancementAmountKey":@3, @"MDBeautySettingsFaceThinningAmountKey":@3, @"MDBeautySettingsLongLegAmountKey":@-1, @"MDBeautySettingsSkinSmoothingAmountKey":@3, @"MDBeautySettingsSkinWhitenAmountKey":@3, @"MDBeautySettingsThinBodyAmountKey":@-1} mutableCopy];
+        _beautySettingDict = [@{@"MDBeautySettingsEyesEnhancementAmountKey":@3, @"MDBeautySettingsFaceThinningAmountKey":@4, @"MDBeautySettingsLongLegAmountKey":@-1, @"MDBeautySettingsSkinSmoothingAmountKey":@3, @"MDBeautySettingsSkinWhitenAmountKey":@3, @"MDBeautySettingsThinBodyAmountKey":@-1} mutableCopy];
         
         [self addNotificationObserver];
     }
@@ -231,10 +234,6 @@
     if (_countDownAnimation) {
         [self.countDownAnimation cancelAnimation];
     }
-    
-    runSynchronouslyOnVideoProcessingQueue(^{
-        /* this space intentionally left blank */
-    });
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
@@ -278,7 +277,7 @@
 {
     [self.recordHandler startCapturing];
     if (self.selectedDecoration) {
-        [self.recordHandler addDecoration:self.selectedDecoration];
+        [self updateBeautySetting];
     }
 }
 
@@ -415,8 +414,6 @@
 
 - (void)rotateCamera
 {
-    if (self.recordHandler.cameraSourceType == MDRecordCameraSourceType_ARKIT) return;
-    
     [self.recordHandler rotateCamera];
     [self setFlashLightWithFlashMode:_currentFlashMode];
     
@@ -554,7 +551,22 @@
 #pragma mark - 美妆
 
 - (void)activateMakeUpViewController {
+    [self setupFilterDrawer];
+    
+    if (self.filterDrawerController.isAnimating) {
+        return;
+    }
+    
+    if (self.filterDrawerController.isShowed) {
+        [self updateUiForBeforeSubViewIsShow:NO completeBlock:nil];
+        return;
+    }
+    [self.filterDrawerController setDefaultSelectIndex:6];
 
+    __weak typeof(self) weakSelf = self;
+    [self updateUiForBeforeSubViewIsShow:YES completeBlock:^{
+        [weakSelf.filterDrawerController showAnimation];
+    }];
 }
 
 // delegates
@@ -646,15 +658,7 @@
 
 - (void)handleFaceDecorationDidSelectedGift:(MDFaceDecorationItem *)gift
 {
-    if (gift) {
-        NSString *urlStr = gift.resourcePath;
-        
-        if ([urlStr isNotEmpty]) {
-            NSURL *resourceUrl = [NSURL fileURLWithPath:urlStr];
-            MDRGift *gift = [[MDRGift alloc] initWithResourceURL:resourceUrl duration:2];
-            [self addGift:gift];
-        }
-    }
+   
 }
 
 - (void)handleFaceDecorationDidSelectedItem:(MDFaceDecorationItem *)item
@@ -806,7 +810,7 @@
 }
 
 - (void)drawerFaceDecorationDidClearAllGift {
-    [self.recordHandler clearAllGifts];
+    
 }
 
 - (void)recommendFaceDecorationDidDownLoadFail:(MDFaceDecorationItem *)item
@@ -892,6 +896,8 @@
         [_filterDrawerController setThinFaceIndex:thinFaceIndex];
         [_filterDrawerController setThinBodyIndex:thinBodyIndex];
         [_filterDrawerController setLongLegIndex:longLegIndex];
+        [_filterDrawerController setMakeupBeautyIndex:0];
+        [_filterDrawerController setMakeupStyleIndex:0];
         [_filterDrawerController setFilterIndex:self.recordViewController.containerView.slidingFilterView.currentFilterIndex];
     }
 }
@@ -910,6 +916,86 @@
     [self.beautySettingDict setInteger:index forKey:MDBeautySettingsSkinWhitenAmountKey];
     
     [self setBeautySetting];
+}
+
+- (void)didSelectedMakeUpModel:(NSString *)modelType{
+    NSLog(@"波仔看看是 : %@",modelType);
+    if ([modelType isEqualToString: @"无"]) {
+        [self.recordHandler removeAllMakeupEffect];
+        return;
+    }
+    self.makeupType = [self getTypeWithName:modelType];
+    [self.recordHandler removeAllMakeupEffect];
+    NSString *rescousePath = [self getPathWithName:modelType];
+    [self.recordHandler addMakeupEffect:rescousePath];
+    [self.recordHandler setMakeupEffectIntensity:1 makeupType:self.makeupType];
+}
+/*
+ XEngineMakeupKey const  MAKEUP_BLUSH            = @"makeup_blush";   // 腮红 0 - 1
+ XEngineMakeupKey const  MAKEUP_FACIAL           = @"makeup_facial";   // 修容 0 - 1
+ XEngineMakeupKey const  MAKEUP_EYEBROW          = @"makeup_eyebrow";   // 眼眉 0 - 1
+ XEngineMakeupKey const  MAKEUP_EYES             = @"makeup_eyes";   // 眼妆 0 - 1
+ XEngineMakeupKey const  MAKEUP_LIPS             = @"makeup_lips";   // 口红 0 - 1
+ XEngineMakeupKey const  MAKEUP_PUPIL            = @"makeup_pupil";   // 瞳孔 0 - 1
+ */
+- (NSString *)getTypeWithName:(NSString*)name{
+    if ([name hasPrefix:@"腮红"]) {
+        return  @"makeup_blush";
+    }
+    if ([name hasPrefix:@"修容"]) {
+        return  @"makeup_facial";
+    }
+    if ([name hasPrefix:@"眉毛"]) {
+        return  @"makeup_eyebrow";
+    }
+    if ([name hasPrefix:@"眼妆"]) {
+        return  @"makeup_eyes";
+    }
+    if ([name hasPrefix:@"口红"]) {
+        return  @"makeup_lips";
+    }
+    if ([name hasPrefix:@"美瞳"]){
+        return @"makeup_pupil";
+    }
+    return @"makeup_all";
+}
+
+- (NSString *)getPathWithName:(NSString *)name{
+    NSString *rootPath = [[NSBundle mainBundle] pathForResource:@"makeup" ofType:@"bundle"];
+    NSURL *path = [[NSBundle bundleForClass:self.class] URLForResource:@"makeup" withExtension:@"bundle"];
+    NSURL *jsonPath = [[NSBundle bundleWithURL:path] URLForResource:@"makeup_list" withExtension:@"geojson"];
+    NSArray *items = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:jsonPath] options:0 error:nil];
+    NSDictionary *dict = @{
+        @"甜拽":@"makeup_style/abg",
+        @"白雪":@"makeup_style/baixue",
+        @"芭比":@"makeup_style/babi",
+        @"黑童话":@"makeup_style/heitonghua",
+        @"裸装":@"makeup_style/luozhuang",
+        @"韩式":@"makeup_style/hanshi",
+        @"玉兔":@"makeup_style/yutu",
+        @"闪闪":@"makeup_style/hanshi",
+        @"秋日":@"makeup_style/qiuri",
+        @"跨年装":@"makeup_style/kuanianzhuang",
+        @"蜜桃":@"makeup_style/mitao",
+        @"元气":@"makeup_style/yuanqi",
+        @"混血":@"makeup_style/hunxue",
+        @"神秘":@"makeup_style/shenmi",
+    };
+    if ([dict objectForKey:name]) {
+        return [NSString stringWithFormat:@"%@/%@",rootPath,[dict objectForKey:name]];;
+    }
+    
+    for (NSDictionary *item in items) {
+        NSString *title = [item objectForKey:@"title"];
+        if ([title isEqualToString:name]) {
+            NSString *path = [item objectForKey:@"highlight"] ;
+            if ([path isEqualToString:@"none"]) {
+                path = @"";
+            }
+            return [NSString stringWithFormat:@"%@/%@",rootPath,path];
+        }
+    }
+    return  @"";
 }
 
 //大眼瘦脸
@@ -959,6 +1045,36 @@
     [self.currentRecordFilter setLutIntensity:value];
 }
 
+- (void)didSetMakeUpLookIntensity:(CGFloat)value{
+    [self.recordHandler setMakeupEffectIntensity:value makeupType:@"makeup_lut"];
+}
+- (void)didSetMakeUpBeautyIntensity:(CGFloat)value{
+    if (self.makeupType) {
+        [self.recordHandler setMakeupEffectIntensity:value makeupType:self.makeupType];
+    }
+}
+
+- (void)didSetMicroSurgeryIntensity:(CGFloat)value{
+    if (self.microSurgeryType) {
+        [self.recordHandler adjustBeauty:value forKey:self.microSurgeryType];
+    }
+}
+
+- (void)longTounchBtnClickEnd{
+    [self.recordHandler setRenderStatus:YES];
+}
+
+- (void)longTounchBtnClickStart{
+    [self.recordHandler setRenderStatus:NO];
+}
+
+- (void)didselectedMicroSurgeryModel:(NSString *)index{
+    if (index) {
+        self.microSurgeryType = index;
+        [self.recordHandler adjustBeauty:1.0 forKey:index];
+    }
+}
+
 // 关闭瘦身长腿功能
 - (void)_removeThinBodySetting
 {
@@ -979,30 +1095,7 @@
         [self.delegate didSwitchToArDecoration:self.isArDecoration];
     }
     
-    MDRecordCameraSourceType oldCameraSourceType = self.recordHandler.cameraSourceType;
-    
-    if (self.selectedDecoration && self.isArDecoration && supportRotateCamera) {
-        //ar素材，自动切后置
-        if (self.recordHandler.cameraPosition == AVCaptureDevicePositionFront) {
-            [self rotateCamera];
-        }
-        [self.recordHandler switchToCameraSourceType:MDRecordCameraSourceType_ARKIT];
-    } else {
-        [self.recordHandler switchToCameraSourceType:MDRecordCameraSourceType_captureSession];
-    }
-    
     //如果切换成功需要禁用一些功能
-    if (self.recordHandler.cameraSourceType == MDRecordCameraSourceType_ARKIT) {
-        [self setFlashMode:MDRecordCaptureFlashModeOff];
-    }
-    
-    //camera的输出改变了
-    if (oldCameraSourceType != self.recordHandler.cameraSourceType) {
-        if ([self.delegate respondsToSelector:@selector(didSwitchToMDCameraSourceType:)]) {
-            [self.delegate didSwitchToMDCameraSourceType:self.recordHandler.cameraSourceType];
-        }
-    }
-    
     if (self.selectedDecoration) {
         
 //        if (self.selectedDecoration.filterDisable) {
@@ -1024,6 +1117,7 @@
         CGFloat thinFaceFactor = _originBeautySettings.thinFaceFactor;
         CGFloat skinSmoothFactor = _originBeautySettings.skinSmoothingFactor;
         CGFloat skinWhitenFactor = _originBeautySettings.skinWhitenFactor;
+        CGFloat skinRuddyFactor = _originBeautySettings.skinRuddyFactor;
         CGFloat thinBodyFactor = _originBeautySettings.bodyWidthFactor;
         CGFloat longLegFactor = _originBeautySettings.legsLenghtFactor;
         
@@ -1035,6 +1129,8 @@
         
         skinWhitenFactor = skinWhitenFactor == (-1) ? [self.realBeautySettingDict floatForKey:MDBeautySettingsSkinWhitenAmountKey defaultValue:0.0f] : skinWhitenFactor;
         
+        skinRuddyFactor = skinRuddyFactor == (-1) ? [self.realBeautySettingDict floatForKey:MDBeautySettingsSkinRuddyAmountKey defaultValue:0.0f] : skinRuddyFactor;
+        
         thinBodyFactor = thinBodyFactor == (-1) ? [self.realBeautySettingDict floatForKey:MDBeautySettingsThinBodyAmountKey defaultValue:-1.0f] : thinBodyFactor;
         
         longLegFactor = longLegFactor == (-1) ? [self.realBeautySettingDict floatForKey:MDBeautySettingsLongLegAmountKey defaultValue:-1.0f] : longLegFactor;
@@ -1042,10 +1138,11 @@
         FDKBeautySettings *beautySettings = [[FDKBeautySettings alloc] init];
         beautySettings.bigEyeFactor = bigEyeFactor;
         beautySettings.thinFaceFactor = thinFaceFactor;
-        beautySettings.skinSmoothingFactor = skinSmoothFactor;
+        beautySettings.skinRuddyFactor = skinRuddyFactor;
         beautySettings.skinWhitenFactor = skinWhitenFactor;
         beautySettings.bodyWidthFactor = thinBodyFactor;
         beautySettings.legsLenghtFactor = longLegFactor;
+        beautySettings.skinSmoothingFactor = skinSmoothFactor;
 
         self.selectedDecoration.beautySettings = beautySettings;
         
@@ -1061,14 +1158,6 @@
     }
 }
 
-- (void)addGift:(MDRGift *)gift {
-    [self.recordHandler addGift:gift];
-}
-
-- (void)removeGiftWithID:(NSString *)giftID {
-    [self.recordHandler removeGift:giftID];
-}
-
 - (void)setBeautySetting
 {
     [self transferBeautySettingToRealBeautySetting];
@@ -1080,10 +1169,8 @@
 {
     __weak __typeof(self) weakSelf = self;
     [self.beautySettingDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        if (YES) {
-            CGFloat realValue = [[MDRecordContext beautySettingDataManager] realValueWithIndex:[obj integerValue] beautySettingTypeStr:key];
-            [weakSelf.realBeautySettingDict setFloat:realValue forKey:key];
-        }
+        CGFloat realValue = [[MDRecordContext beautySettingDataManager] realValueWithIndex:[obj integerValue] beautySettingTypeStr:key];
+        [weakSelf.realBeautySettingDict setFloat:realValue forKey:key];
     }];
 }
 
@@ -1722,6 +1809,22 @@
 
 - (void)updateExposureBias:(float)bias {
     [self.recordHandler updateExposureBias:bias];
+}
+
+- (BOOL)hitTestTouch:(CGPoint)point withView:(UIView *)view {
+    return [self.recordHandler hitTestTouch:point withView:view];
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.recordHandler touchesBegan:touches withEvent:event];
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.recordHandler touchesMoved:touches withEvent:event];
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.recordHandler touchesEnded:touches withEvent:event];
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.recordHandler touchesCancelled:touches withEvent:event];
 }
 
 @end

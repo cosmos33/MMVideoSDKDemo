@@ -38,10 +38,10 @@
 #import "Toast/Toast.h"
 #import "MBProgressHUD/MBProgressHUD.h"
 
-#import "MDAlbumVideoImageSortingContentView.h"
-#import <RecordSDK/MDAlbumPlayerTransitionAnimation.h>
+//#import "MDAlbumVideoImageSortingContentView.h"
+//#import <RecordSDK/MDAlbumPlayerTransitionAnimation.h>
 
-#import "MDAlbumPLayerSetting.h"
+//#import "MDAlbumPLayerSetting.h"
 
 #define KNAVHEADERhEIGHT  44
 
@@ -55,8 +55,8 @@
     MDAssetImageCollectionCellDelegate,
     MDAssetVideoCollectionCellDelegate,
     MDImageClipAndScaleViewControllerDelegate,
-    MDAssetPreviewControllerDelegate,
-    MDAlbumVideoImageSortingContentViewDelegate
+    MDAssetPreviewControllerDelegate
+//    MDAlbumVideoImageSortingContentViewDelegate
 >
 
 @property (nonatomic, strong) UICollectionView              *collectionView;
@@ -78,7 +78,7 @@
 @property (nonatomic, assign) BOOL                          scrollEndYetTouch;
 @property (nonatomic, assign) BOOL                          couldShowTakePicture;
 
-@property (nonatomic, strong) MDAlbumVideoImageSortingContentView *bottomView;
+//@property (nonatomic, strong) MDAlbumVideoImageSortingContentView *bottomView;
 @property (nonatomic, strong) NSLayoutConstraint *bottomConstraint;
 @property (nonatomic, strong) NSMutableArray<NSIndexPath *> *selectedCells;
 
@@ -97,7 +97,7 @@
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    MDAlbumPLayerSetting.animationType = kAlbumPlayerAnimationTypeNone;
+//    MDAlbumPLayerSetting.animationType = kAlbumPlayerAnimationTypeNone;
 }
 
 -(instancetype)initWithInitialItem:(MDUnifiedRecordSettingItem *)item pageType:(MDAssetCollectionViewType)pageType couldTakePicture:(BOOL)enable{
@@ -138,35 +138,35 @@
 }
 
 - (void)createBottomView {
-    MDAlbumVideoImageSortingContentView *bottomView = [[MDAlbumVideoImageSortingContentView alloc] init];
-    bottomView.translatesAutoresizingMaskIntoConstraints = NO;
-    bottomView.currentAnimationType = kAlbumPlayerAnimationTypeNone;
-    bottomView.images = @[];
-    bottomView.delegate = self;
-    self.bottomView = bottomView;
-    [self.view addSubview:bottomView];
-    
-    if (@available(iOS 11.0, *)) {
-        self.bottomConstraint = [bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
-        [bottomView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor].active = YES;
-        [bottomView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    } else {
-        self.bottomConstraint = [bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
-        [bottomView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
-        [bottomView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    }
-    
-    self.bottomConstraint.active = YES;
-    [bottomView.heightAnchor constraintEqualToConstant:205].active = YES;
+//    MDAlbumVideoImageSortingContentView *bottomView = [[MDAlbumVideoImageSortingContentView alloc] init];
+//    bottomView.translatesAutoresizingMaskIntoConstraints = NO;
+//    bottomView.currentAnimationType = kAlbumPlayerAnimationTypeNone;
+//    bottomView.images = @[];
+//    bottomView.delegate = self;
+//    self.bottomView = bottomView;
+//    [self.view addSubview:bottomView];
+//
+//    if (@available(iOS 11.0, *)) {
+//        self.bottomConstraint = [bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+//        [bottomView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor].active = YES;
+//        [bottomView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+//    } else {
+//        self.bottomConstraint = [bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+//        [bottomView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
+//        [bottomView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+//    }
+//
+//    self.bottomConstraint.active = YES;
+//    [bottomView.heightAnchor constraintEqualToConstant:205].active = YES;
 }
 
 - (void)showBottomView {
     self.bottomConstraint.active = NO;
-    if (@available(iOS 11.0, *)) {
-        self.bottomConstraint = [self.bottomView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor];
-    } else {
-        self.bottomConstraint = [self.bottomView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor];
-    }
+//    if (@available(iOS 11.0, *)) {
+//        self.bottomConstraint = [self.bottomView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor];
+//    } else {
+//        self.bottomConstraint = [self.bottomView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+//    }
         self.bottomConstraint.active = YES;
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
@@ -175,11 +175,11 @@
 
 - (void)hideBottomView {
     self.bottomConstraint.active = NO;
-    if (@available(iOS 11.0, *)) {
-        self.bottomConstraint = [self.bottomView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor];
-    } else {
-        self.bottomConstraint = [self.bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
-    }
+//    if (@available(iOS 11.0, *)) {
+//        self.bottomConstraint = [self.bottomView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor];
+//    } else {
+//        self.bottomConstraint = [self.bottomView.topAnchor constraintEqualToAnchor:self.view.bottomAnchor];
+//    }
     self.bottomConstraint.active = YES;
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
@@ -263,11 +263,11 @@
 //        MUButton *button = [MUButtonDispatcher buttonWithType:MUButtonTypeB14];
 //        [button setTitle:KASSETTIPTEXT forState:UIControlStateNormal];
 //        button.mj_y =  0;
-//        
+//
 //        UIEdgeInsets insets = self.collectionView.contentInset;
 //        insets.top += button.height-5;
 //        self.collectionView.contentInset = insets;
-//        
+//
 //        [self.view addSubview:button];
 //    }
 //}
@@ -533,9 +533,9 @@
     } else {
         [self hideBottomView];
     }
-    [self.bottomView updateImages:self.assetState.selectedItemArray
-                    animationType:MDAlbumPLayerSetting.animationType
-                       thumbImage:nil];
+//    [self.bottomView updateImages:self.assetState.selectedItemArray
+//                    animationType:MDAlbumPLayerSetting.animationType
+//                       thumbImage:nil];
 }
 
 - (void)activePhotoItem:(MDPhotoItem *)item selected:(BOOL)selected atIndexPath:(NSIndexPath *)indexPath {
@@ -1264,29 +1264,30 @@
     return YES;
 }
 
-#pragma mark - MDAlbumVideoImageSortingContentViewDelegate methods
-
-- (void)contentView:(MDAlbumVideoImageSortingContentView *)view sortedImages:(NSArray<MDPhotoItem *> *)sortedImages {
-    [self.assetState cleanAll];
-    for (MDPhotoItem *photoItem in sortedImages) {
-        [self.collectionView reloadItemsAtIndexPaths:@[photoItem.indexPath]];
-        [self activePhotoItem:photoItem selected:YES atIndexPath:photoItem.indexPath];
-    }
-    [self.collectionView reloadData];
-}
-
-- (void)contentView:(MDAlbumVideoImageSortingContentView *)view musicItem:(MDMusicCollectionItem *)musicItem animationType:(NSString *)animationType {
-    MDAlbumPLayerSetting.animationType = animationType;
-}
-
-- (void)contentView:(MDAlbumVideoImageSortingContentView *)view thumImage:(MDPhotoItem *)thumbImage {
-    
-}
-
-- (void)contentView:(MDAlbumVideoImageSortingContentView *)view deleteItem:(MDPhotoItem *)photoItem {
-    photoItem.selected = NO;
-    [self.collectionView reloadItemsAtIndexPaths:@[photoItem.indexPath]];
-    [self activePhotoItem:photoItem selected:NO atIndexPath:photoItem.indexPath];
-}
+//#pragma mark - MDAlbumVideoImageSortingContentViewDelegate methods
+//
+//- (void)contentView:(MDAlbumVideoImageSortingContentView *)view sortedImages:(NSArray<MDPhotoItem *> *)sortedImages {
+//    [self.assetState cleanAll];
+//    for (MDPhotoItem *photoItem in sortedImages) {
+//        [self.collectionView reloadItemsAtIndexPaths:@[photoItem.indexPath]];
+//        [self activePhotoItem:photoItem selected:YES atIndexPath:photoItem.indexPath];
+//    }
+//    [self.collectionView reloadData];
+//}
+//
+//- (void)contentView:(MDAlbumVideoImageSortingContentView *)view musicItem:(MDMusicCollectionItem *)musicItem animationType:(NSString *)animationType {
+//    MDAlbumPLayerSetting.animationType = animationType;
+//}
+//
+//- (void)contentView:(MDAlbumVideoImageSortingContentView *)view thumImage:(MDPhotoItem *)thumbImage {
+//
+//}
+//
+//- (void)contentView:(MDAlbumVideoImageSortingContentView *)view deleteItem:(MDPhotoItem *)photoItem {
+//    photoItem.selected = NO;
+//    [self.collectionView reloadItemsAtIndexPaths:@[photoItem.indexPath]];
+//    [self activePhotoItem:photoItem selected:NO atIndexPath:photoItem.indexPath];
+//}
 
 @end
+

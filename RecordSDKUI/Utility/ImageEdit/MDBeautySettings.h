@@ -13,6 +13,7 @@ FOUNDATION_EXPORT NSString * const MDBeautySettingsSkinSmoothingAmountKey;
 FOUNDATION_EXPORT NSString * const MDBeautySettingsEyesEnhancementAmountKey;
 FOUNDATION_EXPORT NSString * const MDBeautySettingsFaceThinningAmountKey;
 FOUNDATION_EXPORT NSString * const MDBeautySettingsSkinWhitenAmountKey;
+FOUNDATION_EXPORT NSString * const MDBeautySettingsSkinRuddyAmountKey;
 FOUNDATION_EXPORT NSString * const MDBeautySettingsThinBodyAmountKey;
 FOUNDATION_EXPORT NSString * const MDBeautySettingsLongLegAmountKey;
 
@@ -22,6 +23,7 @@ FOUNDATION_EXPORT NSString * const MDBeautySettingsLongLegAmountKey;
 @property (readonly) float eyesEnhancementAmount;
 @property (readonly) float faceThinningAmount;
 @property (readonly) float skinWhitenAmount;
+@property (readonly) float skinRuddyAmount;
 @property (readonly) float thinBodyAmount;
 @property (readonly) float longLegAmount;
 

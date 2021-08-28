@@ -1,0 +1,142 @@
+[
+            {
+                "title": "口红-无",
+                "icon": "none",
+                "highlight": "none",
+                "type": "lip",
+                "value": 0,
+                "sliderType":0,
+                "selected":1,
+                "identifier": "-1"
+            },{
+                "title": "口红-流光红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_liuguanghong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },{
+                "title": "口红-豆沙红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_doushahong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "腮红-无",
+                "icon": "none",
+                "highlight": "none",
+                "type": "blush",
+                "value": 0,
+                "sliderType":0,
+                "selected":1,
+                "identifier": "-1"
+            }, {
+                "title": "腮红-自然",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/ziran",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "腮红-可爱",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/cute",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-无",
+                "icon": "none",
+                "highlight": "none",
+                "type": "eyeshadow",
+                "value": 0,
+                "sliderType":0,
+                "selected":1,
+                "identifier": "-1"
+            },{
+                "title": "眼妆-星河",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/xinghe",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-碎钻",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/suizuan",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },
+            {
+               "title": "眉毛-少女",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/shaonv",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "眉毛-韩式",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/hanshi",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           },{
+                "title": "美瞳-无",
+                "icon": "none",
+                "highlight": "none",
+                "type": "pupil",
+                "value": 0,
+                "sliderType":0,
+                "selected":1,
+                "identifier": "-1"
+            },
+            {
+               "title": "美瞳-碎钻",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/suizuan",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "美瞳-树莓",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/xingzi",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+                "title": "修容-无",
+                "icon": "none",
+                "highlight": "none",
+                "type": "facial",
+                "value": 0,
+                "sliderType":0,
+                "selected":1,
+                "identifier": "-1"
+            }, {
+                "title": "修容-日常",
+                "icon": "icon.png",
+                "highlight": "makeup_facial/richang",
+                "type": "facial",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }
+            
+]

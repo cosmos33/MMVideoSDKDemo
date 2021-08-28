@@ -58,12 +58,7 @@
 
 - (void)setDataHandle:(MDFaceDecorationDataHandle *)dataHandle {
     _dataHandle = dataHandle;
-    //变脸分类数据源
-    NSArray *classArray = [dataHandle getDrawerClassDataArray];
-    [self.categoryView setCategoryArray:classArray];
-    //变脸item数据源
-    NSArray *itemsArray = [dataHandle getDrawerDataArray];
-    [self.collectionView configDrawerDataArray:itemsArray needLayout:YES];
+    
 }
 
 - (void)setRecordLevelType:(MDUnifiedRecordLevelType)levelType {
@@ -85,6 +80,14 @@
     self.show = YES;
     self.animating = YES;
     [self.recordView beginAniamtion];
+    
+    //变脸分类数据源
+    NSArray *classArray = [self.dataHandle getDrawerClassDataArray];
+    [self.categoryView setCategoryArray:classArray];
+    //变脸item数据源
+    NSArray *itemsArray = [self.dataHandle getDrawerDataArray];
+    [self.collectionView configDrawerDataArray:itemsArray needLayout:YES];
+    [self.collectionView reloadData];
 
     self.transform = CGAffineTransformMakeTranslation(0, self.height);
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{

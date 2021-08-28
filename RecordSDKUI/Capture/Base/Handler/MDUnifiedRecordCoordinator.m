@@ -273,19 +273,6 @@ static NSString * const kVideoRecordTipString           = @"换个场景拍一�
     self.containerView.slidingFilterView.scrollEnabled = !isArDecoration;
 }
 
-- (void)didSwitchToMDCameraSourceType:(MDRecordCameraSourceType)cameraSourceType
-{
-    CGFloat alpha = 1.0f;
-    if (cameraSourceType == MDRecordCameraSourceType_ARKIT) {
-        alpha = 0.0f;
-    }
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        self.containerView.currentTopView.flashLightView.alpha = alpha;
-        self.containerView.currentTopView.switchCameraView.alpha = alpha;
-    }];
-}
-
 - (void)didFocusCameraInPoint:(CGPoint)point
 {
 //    self.containerView.cameraFocusView.center = point;

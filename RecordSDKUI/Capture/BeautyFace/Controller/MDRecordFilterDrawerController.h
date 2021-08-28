@@ -18,8 +18,11 @@ typedef NS_ENUM(NSInteger, MDRecordFilterScenceType) {
 FOUNDATION_EXPORT NSString *const kDrawerControllerFilterKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerMakeupKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerChangeFacialKey;
+FOUNDATION_EXPORT NSString *const kDrawerControllerMicroKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerThinBodyKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerLongLegKey;
+FOUNDATION_EXPORT NSString *const kDrawerControllerMakeUpKey;
+FOUNDATION_EXPORT NSString *const kDrawerControllerMakeupStyleKey;
 
 @protocol MDRecordFilterDrawerControllerDelegate<NSObject>
 
@@ -44,6 +47,17 @@ FOUNDATION_EXPORT NSString *const kDrawerControllerLongLegKey;
 - (void)didSetThinFaceValue:(CGFloat)value;
 // 滤镜浓度
 - (void)didSetFilterIntensity:(CGFloat)value;
+
+- (void)didSelectedMakeUpModel:(NSString *)modelType;
+
+- (void)didSetMakeUpLookIntensity:(CGFloat)value;
+- (void)didSetMakeUpBeautyIntensity:(CGFloat)value;
+
+- (void)didselectedMicroSurgeryModel:(NSString *)index;
+- (void)didSetMicroSurgeryIntensity:(CGFloat)value;
+
+- (void)longTounchBtnClickStart;
+- (void)longTounchBtnClickEnd;
 
 @end
 
@@ -71,4 +85,7 @@ FOUNDATION_EXPORT NSString *const kDrawerControllerLongLegKey;
 - (void)setThinBodyIndex:(NSInteger)index;
 - (void)setLongLegIndex:(NSInteger)index;
 
+- (void)setMakeupBeautyIndex:(NSUInteger)index;
+- (void)setMakeupStyleIndex:(NSUInteger)index;
+- (void)setMicroSurgeryIndex:(NSUInteger)index;
 @end

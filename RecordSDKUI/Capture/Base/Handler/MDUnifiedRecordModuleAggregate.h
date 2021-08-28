@@ -12,7 +12,7 @@
 #import "MDRecordVideoResult.h"
 #import <RecordSDK/MDRecordCameraAdapter.h>
 #import <RecordSDK/MDRecordFilter.h>
-@import MomoCV;
+#import <MomoCV/MomoCV.h>
 
 @class MDUnifiedRecordViewController;
 @class MDMomentMusicListCellModel;
@@ -45,7 +45,6 @@
 - (void)didFocusCameraInPoint:(CGPoint)point;
 
 - (void)didSwitchToArDecoration:(BOOL)isArDecoration;
-- (void)didSwitchToMDCameraSourceType:(MDRecordCameraSourceType)cameraSourceType;
 
 //拍照相关
 - (void)didStopCaptureStillImage:(UIImage *)image
@@ -243,5 +242,13 @@
 
 #pragma mark - 外传decoration
 - (FDKDecoration*)updateDecorationFromDict:(NSDictionary*)infoDict;
+
+#pragma mark touchevent
+
+- (BOOL)hitTestTouch:(CGPoint)point withView:(UIView *)view;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
 
 @end

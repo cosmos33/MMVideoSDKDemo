@@ -9,7 +9,7 @@
 #import "MDRecordCropImageViewController.h"
 #import "MDNavigationTransitionDelegate.h"
 
-@import JPImageresizerView;
+#import <JPImageresizerView/JPImageresizerView.h>
 
 @interface MDRecordCropImageViewController () <MDNavigationBarAppearanceDelegate>
 
@@ -130,7 +130,7 @@
 }
 
 - (void)recoverButtonTapped {
-//    [self.imageresizerView recovery];
+    [self.imageresizerView recovery];
     self.recoverButton.enabled = NO;
 }
 

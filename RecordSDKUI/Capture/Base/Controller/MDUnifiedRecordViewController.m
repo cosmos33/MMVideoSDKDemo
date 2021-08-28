@@ -19,6 +19,7 @@
 #import "Toast/Toast.h"
 
 #import "MDRecordExposureAdjustSlider.h"
+#import <sys/utsname.h>
 
 @interface MDUnifiedRecordViewController ()
 <
@@ -1077,6 +1078,24 @@
 - (void)enableRecordOriginButton:(BOOL)enable {
     UIButton *button = [self.view viewWithTag:100123];
     button.hidden = !enable;
+}
+
+#pragma mark MDUnifiedRecordContainerViewDelegate
+
+- (BOOL)recordView:(MDUnifiedRecordContainerView *)view hitTestTouch:(CGPoint)point withView:(UIView *)view {
+    return [self.moduleAggregate hitTestTouch:point withView:view];
+}
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.moduleAggregate touchesBegan:touches withEvent:event];
+}
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.moduleAggregate touchesMoved:touches withEvent:event];
+}
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.moduleAggregate touchesEnded:touches withEvent:event];
+}
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.moduleAggregate touchesCancelled:touches withEvent:event];
 }
 
 @end

@@ -8,11 +8,10 @@
 
 #import "MDSpecialEffectsSelectViewCollectionViewCell.h"
 #import "MDSpecialEffectsView.h"
-#import <YYImage/YYImage.h>
 #import "MDRecordHeader.h"
 
 @interface MDSpecialEffectsSelectViewCollectionViewCell() <UIGestureRecognizerDelegate>
-@property (nonatomic, strong) YYAnimatedImageView *previewImageView;///<预览icon
+@property (nonatomic, strong) UIImageView *previewImageView;///<预览icon
 @property (nonatomic, strong) UIImageView *coverImageView;///<时间特效选中后的蒙层
 @property (nonatomic, strong) UILabel *previewLabel;///<标题
 @property (nonatomic, strong) MDSpecialEffectsModel *model;
@@ -99,9 +98,9 @@
     }
 }
 
-- (YYAnimatedImageView *)previewImageView{
+- (UIImageView *)previewImageView{
     if (!_previewImageView) {
-        _previewImageView = [[YYAnimatedImageView alloc]initWithFrame:CGRectMake(0, 28, 55, 55)];
+        _previewImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 28, 55, 55)];
         _previewImageView.centerX = self.width/2.0;
         _previewImageView.clipsToBounds = YES;
         [_previewImageView.layer setCornerRadius:self.coverImageView.height/2.0];

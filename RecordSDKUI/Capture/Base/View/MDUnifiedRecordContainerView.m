@@ -19,13 +19,22 @@
 #import "MUAt8AlertBarModel.h"
 #import "Toast/Toast.h"
 
+#define isIphoneX ({\
+BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+    if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].delegate.window.safeAreaInsets, UIEdgeInsetsZero)) {\
+    isPhoneX = YES;\
+    }\
+}\
+isPhoneX;\
+})
 #define kDefaultTopEdge 15.0f
-#define kTopEdge (IS_IPHONE_X ? (kDefaultTopEdge + 44) : kDefaultTopEdge)
+#define kTopEdge (isIphoneX ? (kDefaultTopEdge + 44) : kDefaultTopEdge)
 
 #define kCancelCaptureTipTop (MDScreenHeight - 200 - SAFEAREA_BOTTOM_MARGIN)
 
 #define kLeftMarginOfTopView 75
-#define kRightViewTopEdge (IS_IPHONE_X ? (100 + 44) : 100)
+#define kRightViewTopEdge (isIphoneX ? (100 + 44) : 100)
 
 #define kCancelButtonImageViewTag   987462
 
@@ -41,7 +50,8 @@ static const NSInteger kFilterGuideTipViewTag = 40;
     MDUnifiedRecordButtonDelegate,
     MDRecordGuideTipsManagerDelegate,
     UIGestureRecognizerDelegate,
-    MDRecordExposureAdjustSliderDelegate
+    MDRecordExposureAdjustSliderDelegate,
+    MDMoment3DTouchViewDelegate
 >
 
 @property (nonatomic,strong) MDHitTestExpandView                    *cancelButton;
@@ -134,7 +144,6 @@ static const NSInteger kFilterGuideTipViewTag = 40;
     [self addSubview:self.contentView];
     [self addSubview:self.slidingFilterView];
     [self addSubview:self.touchView];
-    
     UIView *topCover = [self coverViewWtihFrame:CGRectMake(0, 0, MDScreenWidth, 80) startAlpha:0.25f toBottom:YES];
     UIView *bottomCover = [self coverViewWtihFrame:CGRectMake(0, MDScreenHeight -115, MDScreenWidth, 115) startAlpha:0.35f toBottom:NO];
     self.topCoverView = topCover;
@@ -220,6 +229,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
             bounds = CGRectMake(-offX, 0, bounds.size.width + 2 * offX, bounds.size.height);
         }
         _touchView = [[MDMoment3DTouchView alloc] initWithFrame:bounds];
+        _touchView.delegate = self;
         _touchView.backgroundColor = [UIColor clearColor];
         _touchView.multipleTouchEnabled = YES;
         __weak typeof(self) weakSelf = self;
@@ -1302,6 +1312,43 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 
 - (void)hideSlider:(UISlider *)slider {
     slider.hidden = YES;
+}
+
+#pragma mark - MDMoment3DTouchViewDelegate
+
+- (BOOL)touchView:(MDMoment3DTouchView *)view hitTestTouch:(CGPoint)point withView:(UIView *)view {
+    if (![self.delegate respondsToSelector:@selector(recordView:hitTestTouch:withView:)]) {
+        return NO;
+    }
+    return [self.delegate recordView:self hitTestTouch:point withView:view];
+}
+
+- (void)touchView:(MDMoment3DTouchView *)view touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![self.delegate respondsToSelector:@selector(recordView:touchesBegan:withEvent:)]) {
+        return;
+    }
+    [self.delegate recordView:self touchesBegan:touches withEvent:event];
+}
+
+- (void)touchView:(MDMoment3DTouchView *)view touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![self.delegate respondsToSelector:@selector(recordView:touchesMoved:withEvent:)]) {
+        return;
+    }
+    [self.delegate recordView:self touchesMoved:touches withEvent:event];
+}
+
+- (void)touchView:(MDMoment3DTouchView *)view touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![self.delegate respondsToSelector:@selector(recordView:touchesEnded:withEvent:)]) {
+        return;
+    }
+    [self.delegate recordView:self touchesEnded:touches withEvent:event];
+}
+
+- (void)touchView:(MDMoment3DTouchView *)view touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![self.delegate respondsToSelector:@selector(recordView:touchesCancelled:withEvent:)]) {
+        return;
+    }
+    [self.delegate recordView:self touchesCancelled:touches withEvent:event];
 }
 
 @end

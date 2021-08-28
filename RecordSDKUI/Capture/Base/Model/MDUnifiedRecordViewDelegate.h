@@ -9,6 +9,8 @@
 #import "MDRecordHeader.h"
 #import <RecordSDK/MDRecordCameraAdapter.h>
 
+@class MDUnifiedRecordContainerView;
+
 @protocol MDUnifiedRecordViewDelegate <NSObject>
 
 @required
@@ -63,4 +65,10 @@
 
 - (MDVideoRecordAccessSource)videoRecordAccessSource;
 
+- (BOOL)recordView:(MDUnifiedRecordContainerView *)view hitTestTouch:(CGPoint)point withView:(UIView *)view;
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)recordView:(MDUnifiedRecordContainerView *)view touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+    
 @end

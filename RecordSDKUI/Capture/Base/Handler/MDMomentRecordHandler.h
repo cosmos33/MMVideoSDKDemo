@@ -9,10 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import <RecordSDK/MDRecordCameraAdapter.h>
-#import <RecordSDK/MDRecordFilter.h>
-#import <RecordSDK/MDRGift.h>
-@import MomoCV;
+@import RecordSDK;
+#import <MomoCV/MomoCV.h>
 
 @class FDKDecoration;
 
@@ -47,8 +45,6 @@
 /** 是否开启ai 大眼 瘦脸 默认关闭 */
 @property (nonatomic, assign) BOOL useAIBigEyeThinFace;
 
-
-@property (nonatomic,assign,readonly) MDRecordCameraSourceType       cameraSourceType;
 
 /* Callbacks */
 @property (nonatomic, copy) void (^recordProgressChangedHandler)(double progress);
@@ -109,10 +105,6 @@
 - (FDKDecoration *)makeDecorationWithBeautySettingsDict:(NSDictionary *)beautySettingsDict;
 - (void)updateDecorationWithBeautySettingsDict:(NSDictionary *)beautySettingsDict decoration:(FDKDecoration *)decoration;
 
-- (void)addGift:(MDRGift *)gift;
-- (void)removeGift:(NSString *)giftID;
-- (void)clearAllGifts;
-
 // purge cache buffer
 - (void)cleanCache;         //all
 - (void)purgeGPUCache;      //gpu alone
@@ -128,8 +120,6 @@
 - (void)resetRecorder;
 - (BOOL)canStartRecording;
 - (void)clearStashVideo;
-
-- (void)switchToCameraSourceType:(MDRecordCameraSourceType)cameraSourceType;
 
 /* audio pitch */
 - (void)handleSoundPitchWithAssert:(AVAsset *)videoAsset
@@ -150,8 +140,6 @@
 - (void)speedVaryShouldAllow:(BOOL)isAllow;
 - (BOOL)hasPerSpeedEffect;
 
-// 美妆
-- (void)removeAllMakeupEffect;
 
 // 背景模糊
 - (void)addBlurEffect;
@@ -166,4 +154,32 @@
 
 - (BOOL)restartCapturingWithCameraPreset:(AVCaptureSessionPreset)preset;
 
+- (BOOL)hitTestTouch:(CGPoint)point withView:(UIView *)view;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+
+// 美妆相关操作
+
+// 美妆、风格妆
+/// 添加美妆子项或整装风格妆
+/// @params makeupEffect 美妆资源路径
+- (void)addMakeupEffect:(NSString *)makeupEffect;
+
+/// 设置美妆强度
+/// @params intensity 强度 [0-1]
+/// @params makeupType 美妆子项类型
+- (void)setMakeupEffectIntensity:(CGFloat)intensity makeupType:(XEngineMakeupKey)makeupType;
+
+/// 按美妆子项移除美妆
+/// @params makeupType 美妆子项类型
+- (void)removeMakeupEffectWithType:(XEngineMakeupKey)makeupType;
+
+/// 移除所有美妆效果
+- (void)removeAllMakeupEffect;
+
+- (void)adjustBeauty:(CGFloat)value forKey:(NSString *)type;
+
+- (void)setRenderStatus:(BOOL)status;
 @end

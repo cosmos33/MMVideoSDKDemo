@@ -34,6 +34,24 @@ static NSString* const revoke_Id     = @"0";
 
 @property(nonatomic,copy)  NSString* makeUpId;
 @property(nonatomic,assign)BOOL isSelected;
+@property(nonatomic,copy) NSString *type;
+@property(nonatomic,strong) NSNumber *value;
+@property(nonatomic,strong) NSNumber *sliderType;
+
+@end
+
+@interface MDRMicroSurgeryModel : NSObject
+
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *icon;
+@property (nonatomic, readonly) NSString *highlight;
+@property (nonatomic, readonly) NSNumber *value;
+@property (nonatomic, readonly) NSString *type;
+@property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) NSNumber *index;
+@property (nonatomic, readonly) NSNumber *sliderType;
+
+- (instancetype)initModelWithDict:(NSDictionary *)dict;
 
 @end
 

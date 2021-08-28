@@ -12,7 +12,7 @@
 #import "MDSpecialEffectsView.h"
 
 @import RecordSDK;
-@import KVOController;
+#import <KVOController/KVOController.h>
 #import "MDRecordSpecialEffectsManager.h"
 #import "MDMediaEffect.h"
 
@@ -188,15 +188,12 @@ static const CGFloat kBottomViewHeight = 297.0f;
 - (void)filterPressWithSpecialEffectsType:(MDRecordSpecialEffectsType)type currentTime:(CMTime)currentTime isStart:(BOOL)isStart {
     if (isStart) {
         self.beginTime = currentTime;
-        
-        GPUImageOutput<GPUImageInput,MDRSpecialFilterLifeStyleProtocol> *filter = [MDRecordSpecialEffectsManager getFilterWithSpecialEffectsType:type];
-//        [self.specialEffectsFilter addFilter:filter timeRange:CMTimeRangeMake(self.beginTime, self.assetDuration)];
+        id<MDRTimeFilter> filter = [MDRecordSpecialEffectsManager getMFilterWithSpecialEffectsType:type];
         [self.document.adapter addSpecialFilter:filter timeRange:CMTimeRangeMake(self.beginTime, self.assetDuration)];
     }else {
         CMTime endTime = currentTime;
         if (CMTimeCompare(endTime, self.beginTime)>0) {
             CMTimeRange timeRange = CMTimeRangeFromTimeToTime(self.beginTime, endTime);
-//            [self.specialEffectsFilter updateCurrentFilterWithTime:endTime timeRange:timeRange];
             [self.document.adapter updateCurrentFilterWithTime:endTime timeRange:timeRange];
         }
         self.beginTime = kCMTimeZero;

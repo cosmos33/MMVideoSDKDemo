@@ -13,7 +13,6 @@
 #import "MDPhotoLibraryProvider.h"
 //滤镜相关
 #import "MDRecordFilterDrawerController.h"
-//#import "BBGPUImageMediaEditorPreviewFilter.h"
 #import "MDRecordFilterModel.h"
 //贴纸相关
 #import "BBMediaStickerAdjustmentView.h"
@@ -33,6 +32,7 @@
 #import "MDRecordContext.h"
 #import "MDRecordMacro.h"
 @import RecordSDK;
+@import VideoToolbox;
 
 #import "MDRecordFilterModelLoader.h"
 #import "Toast/Toast.h"
@@ -40,10 +40,9 @@
 #import "MDRecordCropImageViewController.h"
 #import "MDRecordVideoSettingManager.h"
 
-@import MomoCV;
-@import FaceDecorationKitMomoCV;
-@import MLGPUImageCVPixelBufferIO;
-@import MLMediaFoundation.MLPixelBufferGLDisplayView;
+#import <MomoCV/MomoCV.h>
+#import <FaceDecorationKitMomoCV/FaceDecorationKitMomoCV.h>
+#import <MLMediaFoundation/MLMediaFoundation.h>
 
 static const CGFloat kViewLeftRightMargin   = 30;
 static const CGFloat kBottomToolButtonWidth = 45;
@@ -81,7 +80,6 @@ MDRecordCropImageViewControllerDelegate
 @property (nonatomic,strong) UIButton                           *cropButton;
 
 //滤镜相关
-//@property (nonatomic,strong) BBGPUImageMediaEditorPreviewFilter *previewFilter;
 
 @property (nonatomic,strong) MDRecordFilterDrawerController     *filterDrawerController;
 @property (nonatomic,  copy) NSArray<MDRecordFilter *>                *filters;
@@ -90,8 +88,6 @@ MDRecordCropImageViewControllerDelegate
 @property (nonatomic,strong) NSMutableDictionary                *realBeautySettingDict;
 @property (nonatomic,assign) NSInteger                          currentFilterIndex;
 
-//@property (nonatomic,strong) GPUImageView                       *previewView;
-//@property (nonatomic,strong) GPUImagePicture                    *originImagePicture;
 //贴纸相关
 @property (nonatomic,strong) NSMutableArray                     *stickers;
 @property (nonatomic,strong) BBMediaStickerAdjustmentView       *stickerAdjustView;
@@ -127,6 +123,9 @@ MDRecordCropImageViewControllerDelegate
 
 // AR宠物需要再编辑页面增添气泡提示
 //@property (nonatomic, strong) MMArpetResult             *qualityResult;
+
+@property (nonatomic, copy) NSString *makeupType;
+@property (nonatomic, copy) NSString *microSurgeryType;
 
 @end
 
@@ -179,8 +178,8 @@ MDRecordCropImageViewControllerDelegate
 
         }];
         
-        if (MDRecordVideoSettingManager.enableBlur) {
-            self.adapter.outputImageSize = CGSizeMake(720, 1280);
+        if (!CGRectEqualToRect(MDRecordVideoSettingManager.cropRegion, CGRectZero)) {
+            self.adapter.cropRegion = MDRecordVideoSettingManager.cropRegion;
         }
         
         NSAssert(completeBlock, @"completeBlock can not be nil");
@@ -210,6 +209,7 @@ MDRecordCropImageViewControllerDelegate
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.adapter startProcess];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -228,6 +228,7 @@ MDRecordCropImageViewControllerDelegate
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.adapter stopProcess];
 }
 
 #pragma mark - config UI
@@ -272,7 +273,7 @@ MDRecordCropImageViewControllerDelegate
     
     _cropImage = image;
     
-    CGSize size = MDRecordVideoSettingManager.enableBlur ? self.adapter.outputImageSize : image.size;
+    CGSize size = image.size;
     self.contentView.frame = [self renderFrameForSize:size];
     self.previewView.frame = self.contentView.bounds;
     
@@ -282,7 +283,6 @@ MDRecordCropImageViewControllerDelegate
     self.textAdjustView.frame = self.customContentView.bounds;
     
     [self.adapter reloadImage:image];
-    [self updateRender];
 }
 
 - (void)tapAction:(UITapGestureRecognizer*)tapGuesture {
@@ -414,7 +414,7 @@ MDRecordCropImageViewControllerDelegate
 - (UIView *)contentView
 {
     if (!_contentView) {
-        CGSize size = MDRecordVideoSettingManager.enableBlur ? self.adapter.outputImageSize : self.originImage.size;
+        CGSize size = self.originImage.size;
         _contentView = [[UIView alloc] initWithFrame:[self renderFrameForSize:size]];
         _contentView.backgroundColor = [UIColor clearColor];
         _contentView.center = self.view.center;
@@ -612,6 +612,9 @@ MDRecordCropImageViewControllerDelegate
         NSArray *tagArray = @[kDrawerControllerFilterKey,
                               kDrawerControllerMakeupKey,
                               kDrawerControllerChangeFacialKey,
+                              kDrawerControllerMicroKey,
+                              kDrawerControllerMakeUpKey,
+                              kDrawerControllerMakeupStyleKey
                               ];
         _filterDrawerController = [[MDRecordFilterDrawerController alloc] initWithTagArray:tagArray];
         _filterDrawerController.delegate = self;
@@ -627,6 +630,10 @@ MDRecordCropImageViewControllerDelegate
         [_filterDrawerController setFilterModels:_filterModels];
         
         [_filterDrawerController setFilterIndex:0];
+        [_filterDrawerController setMakeupBeautyIndex:0];
+        [_filterDrawerController setMakeupStyleIndex:0];
+        [_filterDrawerController setMicroSurgeryIndex:0];
+        
     }
     return _filterDrawerController;
 }
@@ -811,11 +818,106 @@ MDRecordCropImageViewControllerDelegate
 
 
 #pragma mark - MDRecordFilterDrawerControllerDelegate
-- (void)updateRender
-{
-    runSynchronouslyOnVideoProcessingQueue(^{
-        [self.adapter startProcess];
-    });
+
+- (void)didSelectedMakeUpModel:(NSString *)modelType{
+    NSLog(@"波仔看看是 : %@",modelType);
+    if ([modelType isEqualToString: @"无"]) {
+        [self.adapter removeAllMakeupEffect];
+        return;
+    }
+    self.makeupType = [self getTypeWithName:modelType];
+    [self.adapter removeAllMakeupEffect];
+    NSString *rescousePath = [self getPathWithName:modelType];
+    [self.adapter addMakeupEffect:rescousePath];
+    [self.adapter setMakeupEffectIntensity:1 makeupType:self.makeupType];
+}
+
+- (NSString *)getTypeWithName:(NSString*)name{
+    if ([name hasPrefix:@"腮红"]) {
+        return  @"makeup_blush";
+    }
+    if ([name hasPrefix:@"修容"]) {
+        return  @"makeup_facial";
+    }
+    if ([name hasPrefix:@"眉毛"]) {
+        return  @"makeup_eyebrow";
+    }
+    if ([name hasPrefix:@"眼妆"]) {
+        return  @"makeup_eyes";
+    }
+    if ([name hasPrefix:@"口红"]) {
+        return  @"makeup_lips";
+    }
+    if ([name hasPrefix:@"美瞳"]){
+        return @"makeup_pupil";
+    }
+    return @"makeup_all";
+}
+
+- (NSString *)getPathWithName:(NSString *)name{
+    NSString *rootPath = [[NSBundle mainBundle] pathForResource:@"makeup" ofType:@"bundle"];
+    NSURL *path = [[NSBundle bundleForClass:self.class] URLForResource:@"makeup" withExtension:@"bundle"];
+    NSURL *jsonPath = [[NSBundle bundleWithURL:path] URLForResource:@"makeup_list" withExtension:@"geojson"];
+    NSArray *items = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:jsonPath] options:0 error:nil];
+    NSDictionary *dict = @{
+        @"甜拽":@"makeup_style/abg",
+        @"白雪":@"makeup_style/baixue",
+        @"芭比":@"makeup_style/babi",
+        @"黑童话":@"makeup_style/heitonghua",
+        @"裸装":@"makeup_style/luozhuang",
+        @"韩式":@"makeup_style/hanshi",
+        @"玉兔":@"makeup_style/yutu",
+        @"闪闪":@"makeup_style/hanshi",
+        @"秋日":@"makeup_style/qiuri",
+        @"跨年装":@"makeup_style/kuanianzhuang",
+        @"蜜桃":@"makeup_style/mitao",
+        @"元气":@"makeup_style/yuanqi",
+        @"混血":@"makeup_style/hunxue",
+        @"神秘":@"makeup_style/shenmi",
+    };
+    if ([dict objectForKey:name]) {
+        return [NSString stringWithFormat:@"%@/%@",rootPath,[dict objectForKey:name]];;
+    }
+    
+    for (NSDictionary *item in items) {
+        NSString *title = [item objectForKey:@"title"];
+        if ([title isEqualToString:name]) {
+            NSString *path = [item objectForKey:@"highlight"] ;
+            if ([path isEqualToString:@"none"]) {
+                path = @"";
+            }
+            return [NSString stringWithFormat:@"%@/%@",rootPath,path];
+        }
+    }
+    return  @"";
+}
+- (void)didselectedMicroSurgeryModel:(NSString *)index{
+    if (index) {
+        self.microSurgeryType = index;
+        [self.adapter adjustBeauty:1.0 forKey:index];
+    }
+    
+}
+- (void)didSetMicroSurgeryIntensity:(CGFloat)value{
+    if (self.microSurgeryType) {
+        [self.adapter adjustBeauty:value forKey:self.microSurgeryType];
+    }
+}
+
+- (void)longTounchBtnClickEnd{
+    [self.adapter setRenderStatus:YES];
+}
+
+- (void)longTounchBtnClickStart{
+    [self.adapter setRenderStatus:NO];
+}
+- (void)didSetMakeUpLookIntensity:(CGFloat)value{
+    [self.adapter setMakeupEffectIntensity:value makeupType:@"makeup_lut"];
+}
+- (void)didSetMakeUpBeautyIntensity:(CGFloat)value{
+    if (self.makeupType) {
+        [self.adapter setMakeupEffectIntensity:value makeupType:self.makeupType];
+    }
 }
 
 // 滤镜
@@ -823,14 +925,11 @@ MDRecordCropImageViewControllerDelegate
 {
     self.currentFilterIndex = index;
     
-    runSynchronouslyOnVideoProcessingQueue(^{
-        if (self.filters.count >= 2) {
-            MDRecordFilter *filterA = [self.filters objectAtIndex:self.currentFilterIndex defaultValue:nil];
-            [self.adapter configCurrentFilter:filterA];
-        }
-        [self updateRender];
-    });
-    
+    if (self.filters.count >= 2) {
+        MDRecordFilter *filterA = [self.filters objectAtIndex:self.currentFilterIndex defaultValue:nil];
+        [self.adapter configCurrentFilter:filterA];
+    }
+
 }
 
 // 磨皮美白
@@ -844,7 +943,6 @@ MDRecordCropImageViewControllerDelegate
     
     [self.adapter setSkinSmoothValue:skinSmoothFactor];
     [self.adapter setSkinWhitenValue:skinWhitenFactor];
-    [self updateRender];
 }
 
 // 大眼瘦脸
@@ -858,13 +956,11 @@ MDRecordCropImageViewControllerDelegate
     
     [self.adapter setBeautyBigEyeValue:bigEyeFactor];
     [self.adapter setBeautyThinFaceValue:thinFaceFactor];
-    [self updateRender];
 }
 
 - (void)didSetFilterIntensity:(CGFloat)value {
     MDRecordFilter *filterA = [self.filters objectAtIndex:self.currentFilterIndex defaultValue:nil];
     [filterA setLutIntensity:value];
-    [self updateRender];
 }
 
 // 瘦身
@@ -873,7 +969,6 @@ MDRecordCropImageViewControllerDelegate
     
     CGFloat thinBodyFactor = [self realValueWithIndex:index beautySettingTypeStr:MDBeautySettingsThinBodyAmountKey];
     [self.adapter setBeautyThinBodyValue:thinBodyFactor];
-    [self updateRender];
 }
 // 长腿
 - (void)didSelectedLongLegItem:(NSInteger)index {
@@ -881,27 +976,22 @@ MDRecordCropImageViewControllerDelegate
     
     CGFloat longLegFactor = [self realValueWithIndex:index beautySettingTypeStr:MDBeautySettingsLongLegAmountKey];
     [self.adapter setBeautyLenghLegValue:longLegFactor];
-    [self updateRender];
 }
 
 - (void)didSetSkinWhitenValue:(CGFloat)value {
     [self.adapter setSkinWhitenValue:value];
-    [self updateRender];
 }
 
 - (void)didSetSmoothSkinValue:(CGFloat)value {
     [self.adapter setSkinSmoothValue:value];
-    [self updateRender];
 }
 
 - (void)didSetBigEyeValue:(CGFloat)value {
     [self.adapter setBeautyBigEyeValue:value];
-    [self updateRender];
 }
 
 - (void)didSetThinFaceValue:(CGFloat)value {
     [self.adapter setBeautyThinFaceValue:value];
-    [self updateRender];
 }
 
 - (void)updateBeautySetting {
@@ -910,7 +1000,6 @@ MDRecordCropImageViewControllerDelegate
     decoration.beautySettings.gradualSwitch = NO;
     [self.adapter updateDecoration:decoration];
 
-    [self updateRender];
 }
 
 - (void)setBeautySetting

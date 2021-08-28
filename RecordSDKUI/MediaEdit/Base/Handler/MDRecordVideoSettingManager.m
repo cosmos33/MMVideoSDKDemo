@@ -11,6 +11,7 @@
 static NSInteger _exportFrameRate = 0;
 static NSInteger _exportBitRate = 0;
 static BOOL _enableBgBlur = NO;
+static CGRect _cropRegion;
 
 @implementation MDRecordVideoSettingManager
 
@@ -36,6 +37,14 @@ static BOOL _enableBgBlur = NO;
 
 + (BOOL)enableBlur {
     return _enableBgBlur;
+}
+
++ (void)setCropRegion:(CGRect)cropRegion {
+	_cropRegion = cropRegion;
+}
+
++ (CGRect)cropRegion {
+	return _cropRegion;
 }
 
 @end

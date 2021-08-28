@@ -1,0 +1,16 @@
+{
+    "name": "eyeshadow",
+    "makeup": [
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_suizuan/eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_suizuan/eyeshadow2/eyeshadow.png"],
+            "blendMode": "Screen"
+        }
+    ]
+}
+

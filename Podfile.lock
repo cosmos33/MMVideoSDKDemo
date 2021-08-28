@@ -1,77 +1,81 @@
 PODS:
-  - GPUImage (0.2.0)
-  - JPImageresizerView (0.5.3)
+  - JPImageresizerView (0.5.0)
   - KVOController (1.2.0)
-  - libwebp (1.0.2):
-    - libwebp/core (= 1.0.2)
-    - libwebp/dec (= 1.0.2)
-    - libwebp/demux (= 1.0.2)
-    - libwebp/dsp (= 1.0.2)
-    - libwebp/enc (= 1.0.2)
-    - libwebp/mux (= 1.0.2)
-    - libwebp/utils (= 1.0.2)
-    - libwebp/webp (= 1.0.2)
-  - libwebp/core (1.0.2):
+  - libwebp (1.2.0):
+    - libwebp/demux (= 1.2.0)
+    - libwebp/mux (= 1.2.0)
+    - libwebp/webp (= 1.2.0)
+  - libwebp/demux (1.2.0):
     - libwebp/webp
-  - libwebp/dec (1.0.2):
-    - libwebp/core
-  - libwebp/demux (1.0.2):
-    - libwebp/core
-  - libwebp/dsp (1.0.2):
-    - libwebp/core
-  - libwebp/enc (1.0.2):
-    - libwebp/core
-  - libwebp/mux (1.0.2):
-    - libwebp/core
-  - libwebp/utils (1.0.2):
-    - libwebp/core
-  - libwebp/webp (1.0.2)
-  - Mantle (2.1.1):
-    - Mantle/extobjc (= 2.1.1)
-  - Mantle/extobjc (2.1.1)
+  - libwebp/mux (1.2.0):
+    - libwebp/demux
+  - libwebp/webp (1.2.0)
+  - Mantle (2.1.0):
+    - Mantle/extobjc (= 2.1.0)
+  - Mantle/extobjc (2.1.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MCCSecret (1.0.0)
   - MDLog (1.2.4):
     - MDLoggerService
   - MDLoggerService (0.1.0)
-  - MetalPetal (1.4.2):
-    - MetalPetal/Core (= 1.4.2)
-  - MetalPetal/Core (1.4.2)
-  - MJRefresh (3.2.0)
-  - MMCV (1.1.5):
+  - MDREffectFilters (1.0.0):
+    - MetalPetal
+  - MetalPetal (1.13.0):
+    - MetalPetal/Static (= 1.13.0)
+  - MetalPetal/Static (1.13.0)
+  - MJRefresh (3.7.2)
+  - MMCV (3.0.0-s):
     - MCCSecret
     - MMFileService
     - PhotonHTTPDNS
     - ZipArchive
-  - MMFileService (1.3.1)
-  - MMFrameworks/Eta (2.5.15)
-  - MMFrameworks/MMFoundation (2.5.15)
-  - MMMedia (2.3.2.3.4):
-    - GPUImage
-    - MetalPetal (= 1.4.2)
-    - MMMedia/Base (= 2.3.2.3.4)
-    - MMMedia/Expand (= 2.3.2.3.4)
-  - MMMedia/Base (2.3.2.3.4):
-    - GPUImage
+  - MMDevice (1.0.1)
+  - MMFileService (1.3.6)
+  - MMFrameworks (1.0.0):
+    - MMFrameworks/Eta (= 1.0.0)
+    - MMFrameworks/MMFoundation (= 1.0.0)
+  - MMFrameworks/Eta (1.0.0)
+  - MMFrameworks/MMFoundation (1.0.0)
+  - MMLightningRender (4.5.1.20210826.1833):
+    - MMXEngine
+  - MMMedia (2.5.0):
+    - MetalPetal/Static (= 1.13.0)
+    - MMMedia/Base (= 2.5.0)
+    - MMMedia/Expand (= 2.5.0)
+  - MMMedia/Base (2.5.0):
     - KVOController
-    - MetalPetal (= 1.4.2)
-  - MMMedia/Expand (2.3.2.3.4):
-    - GPUImage
+    - MetalPetal/Static (= 1.13.0)
+  - MMMedia/Expand (2.5.0):
     - Mantle
-    - MetalPetal (= 1.4.2)
+    - MDREffectFilters
+    - MetalPetal/Static (= 1.13.0)
     - MMCV
-    - MMXEScene
-  - MMVideoSDK (2.3.3.3):
-    - GPUImage
-    - MDLog (~> 1.2.4)
-    - MetalPetal (= 1.4.2)
-    - MMCV (~> 1.1.2)
-    - MMFileService (~> 1.3.0)
-    - MMMedia (~> 2.3.2.3.1)
-    - MMXEScene (~> 1.1.0)
-  - MMXEScene (1.1.3)
-  - PhotonHTTPDNS (1.0.1)
+    - MMLightningRender
+    - MMXEngine
+  - MMVideoSDK (2.5.0):
+    - MDLog
+    - MDREffectFilters
+    - MetalPetal/Static (= 1.13.0)
+    - MMCV
+    - MMDevice
+    - MMFileService
+    - MMLightningRender
+    - MMMedia
+    - MMXEngine
+    - MMXEngineAudio
+    - MMXEngineBase
+    - MMXEngineLua
+    - MMXEnginePhysics
+    - MMXEngineUI
+  - MMXEngine (4.5.1.20210826.1833):
+    - MMXEngineBase (= 4.5.0)
+  - MMXEngineAudio (4.5.1.20210826.1833)
+  - MMXEngineBase (4.5.0)
+  - MMXEngineLua (4.5.1.20210826.1833)
+  - MMXEnginePhysics (4.5.1.20210826.1833)
+  - MMXEngineUI (4.5.1.20210826.1833)
+  - PhotonHTTPDNS (1.0.4)
   - pop (1.0.12)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -80,10 +84,10 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (4.4.7):
-    - SDWebImage/Core (= 4.4.7)
-  - SDWebImage/Core (4.4.7)
-  - SDWebImage/WebP (4.4.7):
+  - SDWebImage (4.4.8):
+    - SDWebImage/Core (= 4.4.8)
+  - SDWebImage/Core (4.4.8)
+  - SDWebImage/WebP (4.4.8):
     - libwebp (< 2.0, >= 0.5)
     - SDWebImage/Core
   - Toast (4.0.0)
@@ -93,40 +97,32 @@ PODS:
   - ZipArchive (1.4.0)
 
 DEPENDENCIES:
-  - JPImageresizerView
+  - JPImageresizerView (= 0.5.0)
+  - Mantle (= 2.1.0)
   - Masonry
   - MBProgressHUD (~> 1.1.0)
+  - MetalPetal/Static (= 1.13.0)
   - MJRefresh
-  - MMFrameworks/Eta (from `./MMFramework`)
-  - MMFrameworks/MMFoundation (from `./MMFramework`)
-  - MMVideoSDK (= 2.3.3.3)
+  - MMCV (= 3.0.0-s)
+  - MMFrameworks
+  - MMMedia (= 2.5.0)
+  - MMVideoSDK (= 2.5.0)
   - pop
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - SDWebImage/WebP
   - Toast (~> 4.0.0)
   - YYImage
+  - ZipArchive
 
 SPEC REPOS:
-  https://github.com/cosmos33/MMSpecs.git:
-    - GPUImage
-    - MCCSecret
-    - MDLog
-    - MDLoggerService
-    - MMCV
-    - MMFileService
-    - MMMedia
-    - MMVideoSDK
-    - MMXEScene
-    - PhotonHTTPDNS
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - JPImageresizerView
     - KVOController
     - libwebp
     - Mantle
     - Masonry
     - MBProgressHUD
-    - MetalPetal
     - MJRefresh
     - pop
     - ReactiveCocoa
@@ -134,38 +130,61 @@ SPEC REPOS:
     - Toast
     - YYImage
     - ZipArchive
-
-EXTERNAL SOURCES:
-  MMFrameworks:
-    :path: "./MMFramework"
+  https://github.com/cosmos33/MMSpecs.git:
+    - MCCSecret
+    - MDLog
+    - MDLoggerService
+    - MDREffectFilters
+    - MetalPetal
+    - MMCV
+    - MMDevice
+    - MMFileService
+    - MMFrameworks
+    - MMLightningRender
+    - MMMedia
+    - MMVideoSDK
+    - MMXEngine
+    - MMXEngineAudio
+    - MMXEngineBase
+    - MMXEngineLua
+    - MMXEnginePhysics
+    - MMXEngineUI
+    - PhotonHTTPDNS
 
 SPEC CHECKSUMS:
-  GPUImage: bb92d22b77bd8534e516d4b21039b331a4935d44
-  JPImageresizerView: eedd90ce2082fa10f104f4282e428cd1c3da86b9
+  JPImageresizerView: 14447180bf39cb66e4d70d2a2935a900fb07a920
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
-  libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
-  Mantle: 35238ae6f2e2b2d474fa7b67fee82a59fea71915
+  libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
+  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MCCSecret: 5658f66290969726586eddbdfe45e27731dbfa17
   MDLog: 63b50372531f8bee5c6634f23e58ce49102d6d2f
   MDLoggerService: a3a211b8327e16723335c8a2b646726c1c58bd47
-  MetalPetal: c1773ffa37bb8a466ac93e25f6ccf8b09ee6022e
-  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
-  MMCV: 45c9f6a33419f8c3661615832f14dfb4f0ff6043
-  MMFileService: 4112b6ddb95c3612731044e300bae12accff3b8e
-  MMFrameworks: ee4b4853d45d64c4e2f0bcc7b3a5bc656d84e526
-  MMMedia: a2699ec221c17273a8be65718136e041329a3915
-  MMVideoSDK: 3d67bcad0061a74fec845fe9eb8dcf15798c5ac1
-  MMXEScene: 2fea0e26484ea497524609b008804b47c0af3014
-  PhotonHTTPDNS: f2d67b2f6008451c5dce51e15171e2be50f58554
+  MDREffectFilters: 4269c1325ad9b932ca2533e1e6467ae43f998483
+  MetalPetal: 3f0fb530b09db6896bcf1fa05739fdb2f489515c
+  MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
+  MMCV: 03321d38ce7611abb88275a82f114ba8ec949a2b
+  MMDevice: ea2f783f769331e40c558ef894541e31ced9aa13
+  MMFileService: 780cd7e63331b6cb66a78e2aa5adb682dd3ab78c
+  MMFrameworks: f9b83d3ef607b4ad1a95b412e44ae6038b0e881f
+  MMLightningRender: 3317073e139f29c00b2dfe374316118fd7dcea30
+  MMMedia: ddba7b1b9ead39ff2dd54325440ebee22e59d625
+  MMVideoSDK: b058e5310bc48c272f9bbe5918a766d3ea43b204
+  MMXEngine: ec42c6429c58f6f42688aba3a22b2ca4023a0160
+  MMXEngineAudio: 499e0805f7926409646f43d9eba1c59c549ef88b
+  MMXEngineBase: 329b6d8f3397f9c0cd19ae12481e72f658c828a4
+  MMXEngineLua: 31d24661168e47f1fdcbbee3cb526535b5cc4022
+  MMXEnginePhysics: 2aac7c084faa8a77f0b5c579e83bd443f6bc143f
+  MMXEngineUI: fd3787d6b46517551d58e38fb3df35174179a5b5
+  PhotonHTTPDNS: 1eb4881bf659a78fc304bce5830b37f1b1ec25ad
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: b3824c2f1d732529198b1145f4c29e3bab053195
+PODFILE CHECKSUM: ea75356cdc7f14498cbfb3f1041db58ced95c8aa
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1
