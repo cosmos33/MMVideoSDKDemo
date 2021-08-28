@@ -1,0 +1,12 @@
+{
+    "name": "totoro",
+    "metadata": {
+        "displayName": "totoro"
+    },
+    "postprocessingUnits": [
+        {
+            "name": "[Decoration]",
+            "resourceName": "decoration"
+        }
+    ]
+}
