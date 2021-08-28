@@ -1,1 +1,0 @@
-{"name":"totoro","frameRate":15,"beautyFace":{"bigEyeAmount":0.5,"thinFaceAmount":0.5},"filterList":[{"triggerType":0,"folder":"effect1"}],"itemList":[]}
