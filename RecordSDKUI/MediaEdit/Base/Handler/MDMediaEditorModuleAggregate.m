@@ -437,7 +437,6 @@ static const NSInteger kMaxImageStickerCount = 20;
 #pragma mark - MDRecordFilterDrawerControllerDelegate相关
 
 - (void)didSelectedMakeUpModel:(NSString *)modelType{
-    NSLog(@"波仔看看是 : %@",modelType);
     if ([modelType isEqualToString: @"无"]) {
         [self.adapter removeAllMakeupEffect];
         return;

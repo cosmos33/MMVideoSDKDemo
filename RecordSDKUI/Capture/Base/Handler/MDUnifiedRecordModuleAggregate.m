@@ -919,7 +919,6 @@
 }
 
 - (void)didSelectedMakeUpModel:(NSString *)modelType{
-    NSLog(@"波仔看看是 : %@",modelType);
     if ([modelType isEqualToString: @"无"]) {
         [self.recordHandler removeAllMakeupEffect];
         return;

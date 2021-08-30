@@ -3,7 +3,7 @@
     "makeup": [
         {
             "type": "makeup_pupil",
-            "resources": ["pupil_shumei/pupil.png"],
+            "resources": ["pupil_zhenzhu/pupil.png"],
             "blendMode": "Normal"
         }
     ]

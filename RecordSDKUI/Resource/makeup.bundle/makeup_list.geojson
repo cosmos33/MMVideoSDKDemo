@@ -113,9 +113,9 @@
                "sliderType":0,
                "identifier": "1"
            }, {
-               "title": "美瞳-树莓",
+               "title": "美瞳-珍珠",
                "icon": "icon.png",
-               "highlight": "makeup_pupil/shumei",
+               "highlight": "makeup_pupil/zhenzhu",
                "type": "pupil",
                "value": 0.4,
                "sliderType":0,
