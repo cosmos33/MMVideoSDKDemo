@@ -178,7 +178,7 @@
             "highlight":"teethwhiten-selected",
             "value":0,
             "sliderType":0,
-            "type":"skin_sharpen"
+            "type":"sharpen"
 
         },
        {
