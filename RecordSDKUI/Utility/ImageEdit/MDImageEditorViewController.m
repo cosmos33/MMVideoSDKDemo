@@ -614,6 +614,8 @@ MDRecordCropImageViewControllerDelegate
                               kDrawerControllerChangeFacialKey,
                               kDrawerControllerMicroKey,
                               kDrawerControllerMakeUpKey,
+                              kDrawerControllerLongLegKey,
+                              kDrawerControllerThinBodyKey,
                               kDrawerControllerMakeupStyleKey
                               ];
         _filterDrawerController = [[MDRecordFilterDrawerController alloc] initWithTagArray:tagArray];

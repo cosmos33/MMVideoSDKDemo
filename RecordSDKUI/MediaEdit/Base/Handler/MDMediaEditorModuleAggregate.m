@@ -369,6 +369,8 @@ static const NSInteger kMaxImageStickerCount = 20;
                               kDrawerControllerChangeFacialKey,
                               kDrawerControllerMicroKey,
                               kDrawerControllerMakeUpKey,
+                              kDrawerControllerThinBodyKey,
+                              kDrawerControllerLongLegKey,
                               kDrawerControllerMakeupStyleKey
                               ];
         _filterDrawerController = [[MDRecordFilterDrawerController alloc] initWithTagArray:tagArray];
@@ -598,8 +600,8 @@ static const NSInteger kMaxImageStickerCount = 20;
     [self.adapter setBeautyThinFaceValue:[self.realBeautySettingDict floatForKey:MDBeautySettingsFaceThinningAmountKey defaultValue:0.0f]];
     [self.adapter setSkinWhitenValue: [self.realBeautySettingDict floatForKey:MDBeautySettingsSkinWhitenAmountKey defaultValue:0.0f]];
     [self.adapter setSkinSmoothValue:[self.realBeautySettingDict floatForKey:MDBeautySettingsSkinSmoothingAmountKey defaultValue:0.0f]];
-//    [self.adapter setBeautyLenghLegValue:[self.realBeautySettingDict floatForKey:MDBeautySettingsLongLegAmountKey defaultValue:-1]];
-//    [self.adapter setBeautyThinBodyValue:[self.realBeautySettingDict floatForKey:MDBeautySettingsThinBodyAmountKey defaultValue:-1]];
+    [self.adapter setBeautyLenghLegValue:[self.realBeautySettingDict floatForKey:MDBeautySettingsLongLegAmountKey defaultValue:-1]];
+    [self.adapter setBeautyThinBodyValue:[self.realBeautySettingDict floatForKey:MDBeautySettingsThinBodyAmountKey defaultValue:-1]];
     
     // 打点相关
     if ([self.delegate respondsToSelector:@selector(didSelectedBeautySetting:)]) {
