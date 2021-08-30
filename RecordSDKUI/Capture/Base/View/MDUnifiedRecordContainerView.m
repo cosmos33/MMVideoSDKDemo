@@ -224,7 +224,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
 - (MDMoment3DTouchView *)touchView {
     if (!_touchView) {
         CGRect bounds = self.bounds;
-        if (IS_IPHONE_X) {
+        if (isIphoneX) {
             CGFloat offX = bounds.size.width * ((bounds.size.height / 667.0) - 1.0) * 0.5;
             bounds = CGRectMake(-offX, 0, bounds.size.width + 2 * offX, bounds.size.height);
         }
@@ -558,7 +558,7 @@ static const NSInteger kFilterGuideTipViewTag = 40;
         UIColor *progressColor = RGBCOLOR(0, 192, 255);
         UIColor *trackColor = RGBACOLOR(255, 255, 255, 0.45f);
         _progressView = [[MDDurationArrayProgressView alloc] initWithProgressColor:progressColor trackColor:trackColor];
-        _progressView.frame = CGRectMake(0, (IS_IPHONE_X ? 30 : 0), MDScreenWidth, 10);
+        _progressView.frame = CGRectMake(0, (isIphoneX ? 30 : 0), MDScreenWidth, 10);
         _progressView.hilightedColor = RGBCOLOR(245, 40, 36);
         
         _progressView.progress = 0.f;

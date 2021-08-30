@@ -10,6 +10,16 @@
 #import "MDRecordMacro.h"
 #import "MDFaceDecorationManager.h"
 
+#define isIphoneX ({\
+BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+    if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].delegate.window.safeAreaInsets, UIEdgeInsetsZero)) {\
+    isPhoneX = YES;\
+    }\
+}\
+isPhoneX;\
+})
+
 static float _systemVersionFloat;
 static MDFaceDecorationManager  *_faceDecorationManager;
 static NSArray *_musicCatgary;
@@ -24,7 +34,7 @@ static NSInteger _assetViewShowCount;
     static CGFloat height;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (IS_IPHONE_X) {
+        if (isIphoneX) {
             height = 34.f;
         } else {
             height = 0.f;
@@ -38,7 +48,7 @@ static NSInteger _assetViewShowCount;
     static CGFloat height;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (IS_IPHONE_X) {
+        if (isIphoneX) {
             height = 44.f;
         } else {
             height = 20.f;

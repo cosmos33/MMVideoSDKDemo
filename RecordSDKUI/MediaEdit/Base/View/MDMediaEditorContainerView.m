@@ -17,7 +17,17 @@ const CGFloat kMediaEditorBottomToolButtonWidth = 45;
 const CGFloat kMediaEditorMoreBetweenMargin = 22;
 const CGFloat kMediaEditorBottomBelowMargin = 9;
 
-#define kMediaEditorRightViewTopEdge (IS_IPHONE_X ? (130 + 44) : 130)
+#define isIphoneX ({\
+BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+    if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].delegate.window.safeAreaInsets, UIEdgeInsetsZero)) {\
+    isPhoneX = YES;\
+    }\
+}\
+isPhoneX;\
+})
+
+#define kMediaEditorRightViewTopEdge (isIphoneX ? (130 + 44) : 130)
 
 NSString * const kBtnTitleForFilter         = @"滤镜";
 NSString * const kBtnTitleForSticker        = @"贴纸";
@@ -41,7 +51,7 @@ NSString * const kImageNameForPainter        = @"editDraw";
 NSString * const kImageNameForSpecialEffect  = @"editSpecial";
 NSString * const kImageNameForBeauty         = @"editPersonalImage";
 
-#define kBottomEdgeFor720p (IS_IPHONE_X ? ((MDScreenHeight - (MDScreenWidth * (1280.0/720.0))) / 2.0) : 0)
+#define kBottomEdgeFor720p (isIphoneX ? ((MDScreenHeight - (MDScreenWidth * (1280.0/720.0))) / 2.0) : 0)
 
 @interface MDMediaEditorContainerView ()
 <
@@ -81,7 +91,7 @@ NSString * const kImageNameForBeauty         = @"editPersonalImage";
 {
     if (self = [self initWithFrame:CGRectMake(0, 0, MDScreenWidth, MDScreenHeight)]) {
         self.delegate = delegate;
-        _edgeMargin = (whRatio > 0.5 && whRatio < 0.6) ? kBottomEdgeFor720p : (IS_IPHONE_X ? HOME_INDICATOR_HEIGHT : 0);
+        _edgeMargin = (whRatio > 0.5 && whRatio < 0.6) ? kBottomEdgeFor720p : (isIphoneX ? HOME_INDICATOR_HEIGHT : 0);
         [self setupSubViews];
     }
     return self;

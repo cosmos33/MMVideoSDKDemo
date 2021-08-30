@@ -8,6 +8,16 @@
 
 #import "MDCameraBottomView.h"
 
+#define isIphoneX ({\
+BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+    if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].delegate.window.safeAreaInsets, UIEdgeInsetsZero)) {\
+    isPhoneX = YES;\
+    }\
+}\
+isPhoneX;\
+})
+
 static const NSInteger kButtonBaseTag = 3700;
 
 @interface MDCameraBottomView ()
@@ -244,7 +254,7 @@ static const NSInteger kButtonBaseTag = 3700;
     
     if (!_tipView) {
         _tipView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 4, 6.5)];
-        if (IS_IPHONE_X) {
+        if (isIphoneX) {
             _tipView.size = CGSizeMake(7, 3);
         }
         _tipView.centerX = self.width/2;

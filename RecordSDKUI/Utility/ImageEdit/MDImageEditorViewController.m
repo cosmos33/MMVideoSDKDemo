@@ -49,9 +49,19 @@ static const CGFloat kBottomToolButtonWidth = 45;
 static const CGFloat kBottomBelowMargin     = 9;
 static const NSInteger kMaxStickerCount     = 20;
 
+#define isPhoneX ({\
+BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+    if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].delegate.window.safeAreaInsets, UIEdgeInsetsZero)) {\
+    isPhoneX = YES;\
+    }\
+}\
+isPhoneX;\
+})
+
 #define kBottomButtonMargin (MDScreenWidth -kViewLeftRightMargin *2 -kBottomToolButtonWidth *6) / 5
 
-#define kEdgeFor720p (IS_IPHONE_X ? ((MDScreenHeight - (MDScreenWidth * (1280.0/720.0))) / 2.0) : 0)
+#define kEdgeFor720p (isPhoneX ? ((MDScreenHeight - (MDScreenWidth * (1280.0/720.0))) / 2.0) : 0)
 
 @interface MDImageEditorViewController ()
 <
@@ -235,7 +245,7 @@ MDRecordCropImageViewControllerDelegate
 - (void)configUI
 {
     CGFloat whRatio = self.originImage.size.width / self.originImage.size.height;
-    _edgeMargin = (whRatio > 0.5 && whRatio < 0.6) ? kEdgeFor720p : (IS_IPHONE_X ? HOME_INDICATOR_HEIGHT : 0);
+    _edgeMargin = (whRatio > 0.5 && whRatio < 0.6) ? kEdgeFor720p : (isPhoneX ? HOME_INDICATOR_HEIGHT : 0);
     
     [self.contentView addSubview:self.previewView];
     [self.view addSubview:self.contentView];
