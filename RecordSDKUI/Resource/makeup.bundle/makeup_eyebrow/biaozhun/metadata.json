@@ -1,0 +1,11 @@
+{
+    "name": "eyebrow",
+    "makeup": [
+        {
+            "type": "makeup_eyebrow",
+            "resources": ["eyebrow_biaozhun/eyebrow.png"],
+            "blendMode": "Normal"
+        }
+    ]
+}
+

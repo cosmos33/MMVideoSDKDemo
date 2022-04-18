@@ -8,7 +8,7 @@
 
 #import "MDMomentThumbDataManager.h"
 #import "MDRecordHeader.h"
-@import MomoCV;
+#import <MomoCV/MomoCV.h>
 
 #if !__has_feature(objc_arc)
 #error MDMomentThumbDataManager must be built with ARC.

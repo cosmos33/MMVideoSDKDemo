@@ -193,6 +193,10 @@ static const NSInteger kMaxImageStickerCount = 20;
         self.document.backgroundMusicVolume = 1.0;
     }
     
+    if (MDRecordVideoSettingManager.enableBlur) {
+        [self.adapter setVideoDisplaySize:CGSizeMake(720, 1280)];
+    }
+    
     _videoSize = [self.adapter videoDisplaySize];
     if (CGSizeEqualToSize(_videoSize, CGSizeZero)) {
         AVAssetTrack *track = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] firstObject];
@@ -367,10 +371,10 @@ static const NSInteger kMaxImageStickerCount = 20;
         NSArray *tagArray = @[kDrawerControllerFilterKey,
                               kDrawerControllerMakeupKey,
                               kDrawerControllerChangeFacialKey,
-                              kDrawerControllerMicroKey,
-                              kDrawerControllerMakeUpKey,
                               kDrawerControllerThinBodyKey,
                               kDrawerControllerLongLegKey,
+                              kDrawerControllerMicroKey,
+                              kDrawerControllerMakeUpBeautyKey,
                               kDrawerControllerMakeupStyleKey
                               ];
         _filterDrawerController = [[MDRecordFilterDrawerController alloc] initWithTagArray:tagArray];
@@ -439,6 +443,7 @@ static const NSInteger kMaxImageStickerCount = 20;
 #pragma mark - MDRecordFilterDrawerControllerDelegate相关
 
 - (void)didSelectedMakeUpModel:(NSString *)modelType{
+    NSLog(@"波仔看看是 : %@",modelType);
     if ([modelType isEqualToString: @"无"]) {
         [self.adapter removeAllMakeupEffect];
         return;
@@ -534,9 +539,7 @@ static const NSInteger kMaxImageStickerCount = 20;
     [self.adapter setMakeupEffectIntensity:value makeupType:@"makeup_lut"];
 }
 - (void)didSetMakeUpBeautyIntensity:(CGFloat)value{
-    if (self.makeupType) {
-        [self.adapter setMakeupEffectIntensity:value makeupType:self.makeupType];
-    }
+    [self.adapter setMakeupEffectIntensity:value makeupType:self.makeupType];
 }
 
 
@@ -628,7 +631,7 @@ static const NSInteger kMaxImageStickerCount = 20;
 - (NSMutableDictionary *)beautySettingDict
 {
     if (!_beautySettingDict) {
-        _beautySettingDict = [NSMutableDictionary dictionaryWithCapacity:4];
+        _beautySettingDict = [NSMutableDictionary dictionary];
     }
     return _beautySettingDict;
 }
@@ -636,7 +639,7 @@ static const NSInteger kMaxImageStickerCount = 20;
 - (NSMutableDictionary *)realBeautySettingDict
 {
     if (!_realBeautySettingDict) {
-        _realBeautySettingDict = [NSMutableDictionary dictionaryWithCapacity:4];
+        _realBeautySettingDict = [NSMutableDictionary dictionary];
     }
     return _realBeautySettingDict;
 }

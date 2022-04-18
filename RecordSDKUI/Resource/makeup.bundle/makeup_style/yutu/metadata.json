@@ -1,0 +1,45 @@
+{
+    "name": "yutu",
+    "makeup": [
+        {
+            "type": "makeup_pupil",
+            "resources": ["makeup_yutu/makeup_pupil/pupil.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_lips",
+            "resources": ["makeup_yutu/makeup_lip/lip.png", "makeup_yutu/makeup_lip/lip00.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_facial",
+            "resources": ["makeup_yutu/makeup_xiurong/face.png"],
+            "blendMode": "SoftLight"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["makeup_yutu/makeup_eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["makeup_yutu/makeup_eyeshadow2/eyeshadow.png"],
+            "blendMode": "Screen"
+        },
+        {
+            "type": "makeup_eyebrow",
+            "resources": ["makeup_yutu/makeup_eyebrow/eyebrow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_blush",
+            "resources": ["makeup_yutu/makeup_cheek/blush.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_lut",
+            "resources": ["makeup_yutu/lookup/lookup.png"]
+        }
+    ]
+}
+

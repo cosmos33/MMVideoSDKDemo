@@ -1,0 +1,10 @@
+{
+    "name": "facial",
+    "makeup": [
+        {
+            "type": "makeup_facial",
+            "resources": ["facial_xiaolian/face.png"],
+            "blendMode": "SoftLight"
+        }
+    ]
+}

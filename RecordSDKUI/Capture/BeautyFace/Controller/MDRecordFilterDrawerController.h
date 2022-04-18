@@ -21,7 +21,7 @@ FOUNDATION_EXPORT NSString *const kDrawerControllerChangeFacialKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerMicroKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerThinBodyKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerLongLegKey;
-FOUNDATION_EXPORT NSString *const kDrawerControllerMakeUpKey;
+FOUNDATION_EXPORT NSString *const kDrawerControllerMakeUpBeautyKey;
 FOUNDATION_EXPORT NSString *const kDrawerControllerMakeupStyleKey;
 
 @protocol MDRecordFilterDrawerControllerDelegate<NSObject>

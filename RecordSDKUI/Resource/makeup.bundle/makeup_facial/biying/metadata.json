@@ -1,0 +1,11 @@
+{
+    "name": "facial",
+    "makeup": [
+        {
+            "type": "makeup_facial",
+            "resources": ["facial_biying/face.png"],
+            "blendMode": "SoftLight"
+        }
+    ]
+}
+

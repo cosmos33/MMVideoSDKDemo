@@ -1,0 +1,10 @@
+{
+    "name": "lips",
+    "makeup": [
+        {
+            "type": "makeup_lips",
+            "resources": ["lip_nuanzonghong/lookup.png"],
+            "blendMode": "LutSoftLight"
+        }
+    ]
+}

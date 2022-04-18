@@ -31,7 +31,7 @@ NSString *const kDrawerControllerChangeFacialKey = @"美颜";
 NSString *const kDrawerControllerMicroKey        = @"微整形";
 NSString *const kDrawerControllerThinBodyKey     = @"瘦身";
 NSString *const kDrawerControllerLongLegKey      = @"长腿";
-NSString *const kDrawerControllerMakeUpKey       = @"美妆";
+NSString *const kDrawerControllerMakeUpBeautyKey       = @"美妆";
 NSString *const kDrawerControllerMakeupStyleKey      = @"风格妆";
 
 
@@ -87,7 +87,7 @@ static CGFloat   const kContentInset    = 20;
                           kDrawerControllerMicroKey,
                           kDrawerControllerThinBodyKey,
                           kDrawerControllerLongLegKey,
-                          kDrawerControllerMakeUpKey,
+                          kDrawerControllerMakeUpBeautyKey,
                           kDrawerControllerMakeupStyleKey
                         ];
     return [self initWithTagArray:tagArray];
@@ -164,7 +164,7 @@ static CGFloat   const kContentInset    = 20;
             }];
     }
     // 美妆
-    if ([_tagArray containsObject:kDrawerControllerMakeUpKey]) {
+    if ([_tagArray containsObject:kDrawerControllerMakeUpBeautyKey]) {
         [MDRecordFilterModelLoader requeseteMakeupDataWithType:1 block:^(NSArray * _Nonnull beautifyArray) {
             self.makeupBeautyView.dataArray = beautifyArray;
             [self.makeupBeautyView reloadData];
@@ -233,7 +233,7 @@ static CGFloat   const kContentInset    = 20;
             [self.visualEffectView.contentView addSubview:[self setupLongLegView]];
 //        }
     }
-    if ([_tagArray containsObject:kDrawerControllerMakeUpKey]) {
+    if ([_tagArray containsObject:kDrawerControllerMakeUpBeautyKey]) {
         [self.visualEffectView.contentView addSubview:self.makeupBeautyView];
         [self.visualEffectView.contentView addSubview:self.makeupLookUpSlider];
     }
@@ -291,7 +291,7 @@ static CGFloat   const kContentInset    = 20;
         self.thinBodyView.hidden = NO;
     } else if ([title isEqualToString:kDrawerControllerLongLegKey]) {
         self.longLegView.hidden = NO;
-    } else if ([title isEqualToString:kDrawerControllerMakeUpKey]){
+    } else if ([title isEqualToString:kDrawerControllerMakeUpBeautyKey]){
         self.makeupBeautyView.hidden = NO;
         self.detailButton.hidden = NO;
     } else if ([title isEqualToString:kDrawerControllerMakeupStyleKey]){
@@ -420,7 +420,7 @@ static CGFloat   const kContentInset    = 20;
         self.microsurgerySlider.hidden = NO;
     } else if ([title isEqualToString:kDrawerControllerLongLegKey]) { // 5
         self.longLegView.hidden = NO;
-    } else if ([title isEqualToString:kDrawerControllerMakeUpKey]){ // 6
+    } else if ([title isEqualToString:kDrawerControllerMakeUpBeautyKey]){ // 6
         self.makeupLookUpSlider.hidden = NO;
     } else if ([title isEqualToString:kDrawerControllerMakeupStyleKey]){ // 7
         self.makeStyleSliderPanel.hidden = NO;
@@ -446,7 +446,7 @@ static CGFloat   const kContentInset    = 20;
         self.microsurgerySlider.hidden = NO;
     } else if ([title isEqualToString:kDrawerControllerLongLegKey]) { // 5
         self.longLegView.hidden = NO;
-    } else if ([title isEqualToString:kDrawerControllerMakeUpKey]){ // 6
+    } else if ([title isEqualToString:kDrawerControllerMakeUpBeautyKey]){ // 6
         self.makeupBeautyView.hidden = NO;
     } else if ([title isEqualToString:kDrawerControllerMakeupStyleKey]){ // 7
         self.makeupStyleView.hidden = NO;
@@ -774,5 +774,7 @@ static CGFloat   const kContentInset    = 20;
             break;
     }
 }
+
+
 
 @end

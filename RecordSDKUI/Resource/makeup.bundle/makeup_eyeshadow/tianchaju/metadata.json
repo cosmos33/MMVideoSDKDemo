@@ -1,0 +1,16 @@
+{
+    "name": "eyeshadow",
+    "makeup": [
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_tianchaju/eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_tianchaju/eyeshadow2/eyeshadow.png"],
+            "blendMode": "Screen"
+        }
+    ]
+}
+

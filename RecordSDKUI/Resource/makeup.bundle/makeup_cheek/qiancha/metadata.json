@@ -1,0 +1,11 @@
+{
+    "name": "blush",
+    "makeup": [
+        {
+        "type": "makeup_blush",
+        "resources": ["blush_qiancha/blush.png"],
+        "blendMode": "Normal"
+        }
+    ]
+}
+

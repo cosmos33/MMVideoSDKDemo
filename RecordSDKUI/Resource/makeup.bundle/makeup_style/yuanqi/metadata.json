@@ -1,0 +1,36 @@
+{
+    "name": "yuanqi",
+    "makeup": [
+        {
+            "type": "makeup_blush",
+            "resources": ["makeup_yuanqi/makeup_lip/blush.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_facial",
+            "resources": ["makeup_yuanqi/makeup_xiurong/face.png"],
+            "blendMode": "SoftLight"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["makeup_yuanqi/makeup_eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["makeup_yuanqi/makeup_eyeshadow2/eyeshadow.png"],
+            "blendMode": "Screen"
+        },
+        {
+            "type": "makeup_blush",
+            "resources": ["makeup_yuanqi/makeup_cheek/blush.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_lut",
+            "resources": ["makeup_yuanqi/lookup/lookup.png"]
+        }
+    ]
+}
+
+

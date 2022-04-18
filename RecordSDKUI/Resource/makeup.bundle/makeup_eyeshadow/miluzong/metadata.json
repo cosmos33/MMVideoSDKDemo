@@ -1,0 +1,11 @@
+{
+    "name": "eyeshadow",
+    "makeup": [
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_miluzong/eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        }
+    ]
+}
+

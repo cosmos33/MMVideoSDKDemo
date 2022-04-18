@@ -49,19 +49,9 @@ static const CGFloat kBottomToolButtonWidth = 45;
 static const CGFloat kBottomBelowMargin     = 9;
 static const NSInteger kMaxStickerCount     = 20;
 
-#define isPhoneX ({\
-BOOL isPhoneX = NO;\
-if (@available(iOS 11.0, *)) {\
-    if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].delegate.window.safeAreaInsets, UIEdgeInsetsZero)) {\
-    isPhoneX = YES;\
-    }\
-}\
-isPhoneX;\
-})
-
 #define kBottomButtonMargin (MDScreenWidth -kViewLeftRightMargin *2 -kBottomToolButtonWidth *6) / 5
 
-#define kEdgeFor720p (isPhoneX ? ((MDScreenHeight - (MDScreenWidth * (1280.0/720.0))) / 2.0) : 0)
+#define kEdgeFor720p (IS_IPHONE_X ? ((MDScreenHeight - (MDScreenWidth * (1280.0/720.0))) / 2.0) : 0)
 
 @interface MDImageEditorViewController ()
 <
@@ -188,6 +178,10 @@ MDRecordCropImageViewControllerDelegate
 
         }];
         
+        if (MDRecordVideoSettingManager.enableBlur) {
+            self.adapter.outputImageSize = CGSizeMake(720, 1280);
+        }
+        
         if (!CGRectEqualToRect(MDRecordVideoSettingManager.cropRegion, CGRectZero)) {
             self.adapter.cropRegion = MDRecordVideoSettingManager.cropRegion;
         }
@@ -245,7 +239,7 @@ MDRecordCropImageViewControllerDelegate
 - (void)configUI
 {
     CGFloat whRatio = self.originImage.size.width / self.originImage.size.height;
-    _edgeMargin = (whRatio > 0.5 && whRatio < 0.6) ? kEdgeFor720p : (isPhoneX ? HOME_INDICATOR_HEIGHT : 0);
+    _edgeMargin = (whRatio > 0.5 && whRatio < 0.6) ? kEdgeFor720p : (IS_IPHONE_X ? HOME_INDICATOR_HEIGHT : 0);
     
     [self.contentView addSubview:self.previewView];
     [self.view addSubview:self.contentView];
@@ -283,7 +277,7 @@ MDRecordCropImageViewControllerDelegate
     
     _cropImage = image;
     
-    CGSize size = image.size;
+    CGSize size = MDRecordVideoSettingManager.enableBlur ? self.adapter.outputImageSize : image.size;
     self.contentView.frame = [self renderFrameForSize:size];
     self.previewView.frame = self.contentView.bounds;
     
@@ -424,7 +418,7 @@ MDRecordCropImageViewControllerDelegate
 - (UIView *)contentView
 {
     if (!_contentView) {
-        CGSize size = self.originImage.size;
+        CGSize size = MDRecordVideoSettingManager.enableBlur ? self.adapter.outputImageSize : self.originImage.size;
         _contentView = [[UIView alloc] initWithFrame:[self renderFrameForSize:size]];
         _contentView.backgroundColor = [UIColor clearColor];
         _contentView.center = self.view.center;
@@ -623,9 +617,9 @@ MDRecordCropImageViewControllerDelegate
                               kDrawerControllerMakeupKey,
                               kDrawerControllerChangeFacialKey,
                               kDrawerControllerMicroKey,
-                              kDrawerControllerMakeUpKey,
-                              kDrawerControllerLongLegKey,
                               kDrawerControllerThinBodyKey,
+                              kDrawerControllerLongLegKey,
+                              kDrawerControllerMakeUpBeautyKey,
                               kDrawerControllerMakeupStyleKey
                               ];
         _filterDrawerController = [[MDRecordFilterDrawerController alloc] initWithTagArray:tagArray];
@@ -764,7 +758,7 @@ MDRecordCropImageViewControllerDelegate
 
 - (void)thinBodyButtonTapped
 {
-    [self.filterDrawerController setDefaultSelectIndex:3];
+    [self.filterDrawerController setDefaultSelectIndex:4];
     [self.filterDrawerController showAnimation];
 }
 
@@ -832,6 +826,7 @@ MDRecordCropImageViewControllerDelegate
 #pragma mark - MDRecordFilterDrawerControllerDelegate
 
 - (void)didSelectedMakeUpModel:(NSString *)modelType{
+    NSLog(@"波仔看看是 : %@",modelType);
     if ([modelType isEqualToString: @"无"]) {
         [self.adapter removeAllMakeupEffect];
         return;
@@ -926,9 +921,7 @@ MDRecordCropImageViewControllerDelegate
     [self.adapter setMakeupEffectIntensity:value makeupType:@"makeup_lut"];
 }
 - (void)didSetMakeUpBeautyIntensity:(CGFloat)value{
-    if (self.makeupType) {
-        [self.adapter setMakeupEffectIntensity:value makeupType:self.makeupType];
-    }
+    [self.adapter setMakeupEffectIntensity:value makeupType:self.makeupType];
 }
 
 // 滤镜

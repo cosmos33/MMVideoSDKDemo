@@ -70,6 +70,7 @@
     
     MDRecordVideoSettingManager.exportBitRate = 0;
     MDRecordVideoSettingManager.exportFrameRate = 0;
+	MDRecordVideoSettingManager.enableBlur = NO;
 	MDRecordVideoSettingManager.cropRegion = CGRectMake(0, 0, 1, 1);
     
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
@@ -96,9 +97,9 @@
     view2.translatesAutoresizingMaskIntoConstraints = NO;
     [visualEffectView.contentView addSubview:view2];
     
-//    UIView *view3 = [self toggleBlurWithTitle:@"启用背景模糊: "];
-//    view3.translatesAutoresizingMaskIntoConstraints = NO;
-//    [visualEffectView.contentView addSubview:view3];
+    UIView *view3 = [self toggleBlurWithTitle:@"启用背景模糊: "];
+    view3.translatesAutoresizingMaskIntoConstraints = NO;
+    [visualEffectView.contentView addSubview:view3];
 	
 	UIView *view4 = [self itemWithTitle:@"裁剪" placeholder:@"x,y,w,h 0-1 no space" textFiedlTag:1002];
 	view4.translatesAutoresizingMaskIntoConstraints = NO;
@@ -131,13 +132,13 @@
     [view2.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [view2.heightAnchor constraintEqualToConstant:80].active = YES;
     
-//    [view3.leftAnchor constraintEqualToAnchor:view1.leftAnchor].active = YES;
-//    [view3.topAnchor constraintEqualToAnchor:view2.bottomAnchor constant:20].active = YES;
-//    [view3.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-//    [view3.heightAnchor constraintEqualToConstant:80].active = YES;
+    [view3.leftAnchor constraintEqualToAnchor:view1.leftAnchor].active = YES;
+    [view3.topAnchor constraintEqualToAnchor:view2.bottomAnchor constant:20].active = YES;
+    [view3.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
+    [view3.heightAnchor constraintEqualToConstant:80].active = YES;
 	
 	[view4.leftAnchor constraintEqualToAnchor:view1.leftAnchor].active = YES;
-	[view4.topAnchor constraintEqualToAnchor:view2.bottomAnchor constant:20].active = YES;
+	[view4.topAnchor constraintEqualToAnchor:view3.bottomAnchor constant:20].active = YES;
 	[view4.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
 	[view4.heightAnchor constraintEqualToConstant:80].active = YES;
     
@@ -219,6 +220,7 @@
     
     UISwitch *toggle = [[UISwitch alloc] init];
     toggle.translatesAutoresizingMaskIntoConstraints = NO;
+    toggle.on = MDRecordVideoSettingManager.enableBlur;
     [toggle addTarget:self action:@selector(toggle:) forControlEvents:UIControlEventValueChanged];
     
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[titleLabel, toggle]];
@@ -235,7 +237,7 @@
 }
 
 - (void)toggle:(UISwitch *)toggle {
-    
+    MDRecordVideoSettingManager.enableBlur = toggle.on;
 }
 
 - (void)closeButtonTapped:(UIButton *)button {

@@ -24,8 +24,8 @@ static const NSInteger kNoCameraAndRecordAudioPermissionAlertTag = 40002;
     AVAuthorizationStatus audioAuthorizationStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
     ALAuthorizationStatus assetAuthorizationStatus = [ALAssetsLibrary authorizationStatus];
     
-    if ((videoAuthorizationStatus == AVAuthorizationStatusAuthorized || videoAuthorizationStatus == AVAuthorizationStatusNotDetermined) &&
-        (audioAuthorizationStatus == AVAuthorizationStatusAuthorized || audioAuthorizationStatus == AVAuthorizationStatusNotDetermined) &&
+    if ((videoAuthorizationStatus == AVAuthorizationStatusAuthorized ) &&
+        (audioAuthorizationStatus == AVAuthorizationStatusAuthorized ) &&
         (assetAuthorizationStatus == ALAuthorizationStatusAuthorized || assetAuthorizationStatus == ALAuthorizationStatusNotDetermined) ) {
         // 如果录音和摄像头权限都打开了,或者系统还没有向用户确认,则不用管.
         return YES;
@@ -229,16 +229,72 @@ static const NSInteger kNoCameraAndRecordAudioPermissionAlertTag = 40002;
     return havePermission;
 }
 
-#pragma mark - UIAlertViewDelegate
-+ (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
++ (void)requestUseVideoCamera:(void(^)(BOOL isCanUse))CompletionHandler
 {
-    if (buttonIndex != alertView.cancelButtonIndex) {
-        if (alertView.tag == kNoRecordAudioPermissionAlertTag || alertView.tag == kNoCameraPermissionAlertTag || alertView.tag == kNoCameraAndRecordAudioPermissionAlertTag) {
-            if ([UIUtility systemVersion] >= 8.0) {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        NSString *tipTextWhenNoPhotosAuthorization; // 提示语
+        NSString *mediaType = AVMediaTypeVideo;     //读取媒体类型
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];          //读取设备授权状态
+        if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) {
+            NSDictionary *mainInfoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *appName = [mainInfoDictionary objectForKey:@"CFBundleDisplayName"];
+            tipTextWhenNoPhotosAuthorization = [NSString stringWithFormat:@"请在\"设置-隐私-相机\"选项中，允许%@访问你的手机相机", appName];
+
+            [self showAlertViewFromController:(UIViewController *)self
+                                        title:@"温馨提示"
+                                      message:tipTextWhenNoPhotosAuthorization
+                            CancleButtonTitle:@"取消"
+                             otherButtonTitle:@"去设置"
+                            cancleButtonClick:^{
+
+                            } otherButtonClick:^{
+//                                [self openSystemSetting];
+                            }];
+            // 展示提示语
+            NSLog(@" -- %@ ",tipTextWhenNoPhotosAuthorization);
+            if (CompletionHandler) {
+                CompletionHandler(NO);
             }
         }
-    }
+        else if(authStatus == AVAuthorizationStatusNotDetermined) { //第一次请求。
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo  completionHandler:^(BOOL granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    CompletionHandler(granted);
+                });
+            }];
+        }
+        else {
+            if (CompletionHandler) {
+                CompletionHandler(YES);
+            }
+        }
+}
+
++ (void)showAlertViewFromController:(UIViewController *)controller
+                              title:(NSString *)title
+                            message:(NSString *)message
+                  CancleButtonTitle:(NSString *)cancleTitle
+                   otherButtonTitle:(NSString *)otherTitle
+                  cancleButtonClick:(void(^)(void))cancleClick
+                   otherButtonClick:(void(^)(void))otherButtonClick
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                             message:message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:cancleTitle
+                                                        style:UIAlertActionStyleCancel
+                                                      handler:^(UIAlertAction * _Nonnull action) {
+                                                          cancleClick ();
+                                               }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:otherTitle
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * _Nonnull action) {
+                                                          otherButtonClick ();
+                                                      }]];
+    
+    [controller presentViewController:alertController
+                             animated:YES
+                           completion:nil];
 }
 
 @end

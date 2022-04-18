@@ -26,6 +26,189 @@
                 "sliderType":0,
                 "selected":0,
                 "identifier": "1"
+            },  {
+                "title": "口红-野莓红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_yemeihong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            }, {
+                "title": "口红-蔷薇红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_qiangweihong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-枫叶红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_lieyanhong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-铁锈红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_fengyehong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-玫瑰红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_jingzhifen",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },  {
+                "title": "口红-暖棕红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_nuanzonghong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },  {
+                "title": "口红-元气红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_yuanqihong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-番茄红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_fanqiehong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-西瓜红",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_xiguahong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-脏橘色",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_zangjuse",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            }, {
+                "title": "口红-活力橘",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_huoliju",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            }, {
+                "title": "口红-甜茶橘",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_tianchaju",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-素颜粉",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_baoshihong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+               "title": "口红-樱雾粉",
+               "icon": "icon.png",
+               "highlight": "makeup_lips/lut_yingwufen",
+               "type": "lip",
+               "value": 0.7,
+               "sliderType":0,
+               "selected":0,
+               "identifier": "1"
+           },
+            {
+                "title": "口红-蔷薇粉",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_qiangweifen",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            }, {
+                "title": "口红-精致粉",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_meiguihong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-甜美粉",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_tiexiuhong",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-温柔粉",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_wenroufen",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
+            },
+            {
+                "title": "口红-白桃色",
+                "icon": "icon.png",
+                "highlight": "makeup_lips/lut_baitaose",
+                "type": "lip",
+                "value": 0.7,
+                "sliderType":0,
+                "selected":0,
+                "identifier": "1"
             },
             {
                 "title": "腮红-无",
@@ -53,6 +236,64 @@
                 "sliderType":0,
                 "identifier": "1"
             }, {
+                "title": "腮红-甜桃",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/tiantao",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "腮红-玫瑰",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/rose",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "腮红-烤奶",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/kaonai",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "腮红-浅茶",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/qiancha",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "腮红-阳光",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/sun",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }
+            , {
+                "title": "腮红-樱桃",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/yingtao",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }
+            , {
+                "title": "腮红-苹果",
+                "icon": "icon.png",
+                "highlight": "makeup_cheek/pingguo",
+                "type": "blush",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            },{
                 "title": "眼妆-无",
                 "icon": "none",
                 "highlight": "none",
@@ -77,6 +318,161 @@
                 "value": 0.6,
                 "sliderType":0,
                 "identifier": "1"
+            }, {
+                "title": "眼妆-焦糖",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/jiaotang",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-榛子",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/zhenzi",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }
+            , {
+                "title": "眼妆-落日",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/luori",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-拂晓",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/fuxiao",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }
+            , {
+                "title": "眼妆-嘉年华",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/jianianhua",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-桃李",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/taoli",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }
+            , {
+                "title": "眼妆-高级",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/gaoji",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-卡布奇诺",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/kabuqinuo",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-大地",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/dadi",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },
+            {
+                "title": "眼妆-烤奶茶",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/kaonaicha",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },
+            {
+                "title": "眼妆-甜茶橘",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/tianchaju",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },
+            {
+                "title": "眼妆-香槟棕",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/xiangbinzong",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },
+            {
+                "title": "眼妆-麋鹿棕",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/miluzong",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },
+            {
+                "title": "眼妆-甜樱粉",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/tianyingfen",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眼妆-蜜桃粉",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/mitaofen",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },
+            {
+               "title": "眼妆-野莓红",
+               "icon": "icon.png",
+               "highlight": "makeup_eyeshadow/yemeihong",
+               "type": "eyeshadow",
+               "value": 0.6,
+               "sliderType":0,
+               "identifier": "1"
+           },
+            {
+                "title": "眼妆-夕阳红",
+                "icon": "icon.png",
+                "highlight": "makeup_eyeshadow/xiyanghong",
+                "type": "eyeshadow",
+                "value": 0.6,
+                "sliderType":0,
+                "identifier": "1"
+            },{
+                "title": "眉毛-无",
+                "icon": "none",
+                "highlight": "none",
+                "type": "eyebrow",
+                "value": 0,
+                "sliderType":0,
+                "selected":1,
+                "identifier": "-1"
             },
             {
                "title": "眉毛-少女",
@@ -95,6 +491,112 @@
                "sliderType":0,
                "identifier": "1"
            },{
+               "title": "眉毛-丝雾",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/siwu",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "眉毛-柳叶",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/liuye",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           },{
+               "title": "眉毛-标准",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/biaozhun",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "眉毛-落尾",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/luowei",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           },{
+               "title": "眉毛-欧式",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/oshi",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "眉毛-弯月",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/wanyue",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           },{
+               "title": "眉毛-平行",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/xiaotiao",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "眉毛-流星",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/omei",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           },{
+               "title": "眉毛-欧美",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/liuxing",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           },
+           {
+               "title": "眉毛-秋波",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/qiubomei",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "眉毛-小山",
+               "icon": "icon.png",
+               "highlight": "makeup_eyebrow/xiaoshanmei",
+               "type": "eyebrow",
+               "value": 0.5,
+               "sliderType":0,
+               "identifier": "1"
+           },
+            {
+                "title": "眉毛-一字",
+                "icon": "icon.png",
+                "highlight": "makeup_eyebrow/pingxingmei",
+                "type": "eyebrow",
+                "value": 0.5,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "眉毛-远山",
+                "icon": "icon.png",
+                "highlight": "makeup_eyebrow/siwumei",
+                "type": "eyebrow",
+                "value": 0.5,
+                "sliderType":0,
+                "identifier": "1"
+            },{
                 "title": "美瞳-无",
                 "icon": "none",
                 "highlight": "none",
@@ -113,6 +615,22 @@
                "sliderType":0,
                "identifier": "1"
            }, {
+               "title": "美瞳-树莓",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/xingzi",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "美瞳-杏子",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/shumei",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
                "title": "美瞳-珍珠",
                "icon": "icon.png",
                "highlight": "makeup_pupil/zhenzhu",
@@ -121,6 +639,74 @@
                "sliderType":0,
                "identifier": "1"
            }, {
+               "title": "美瞳-水光",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/shuiguang",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           }, {
+               "title": "美瞳-星空",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/xingkong",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           },
+           {
+               "title": "美瞳-暮光",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/muguang",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           },
+           {
+               "title": "美瞳-蜜桃粉",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/mitaofen",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           },
+           {
+               "title": "美瞳-初见灰",
+               "icon": "icon.png",
+               "highlight": "makeup_pupil/chujianhui",
+               "type": "pupil",
+               "value": 0.4,
+               "sliderType":0,
+               "identifier": "1"
+           },
+            {
+                "title": "美瞳-混血棕",
+                "icon": "icon.png",
+                "highlight": "makeup_pupil/hunxuezong",
+                "type": "pupil",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "美瞳-可可棕",
+                "icon": "icon.png",
+                "highlight": "makeup_pupil/kekezong",
+                "type": "pupil",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "美瞳-星空蓝",
+                "icon": "icon.png",
+                "highlight": "makeup_pupil/xingkonglan",
+                "type": "pupil",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            },{
                 "title": "修容-无",
                 "icon": "none",
                 "highlight": "none",
@@ -133,6 +719,30 @@
                 "title": "修容-日常",
                 "icon": "icon.png",
                 "highlight": "makeup_facial/richang",
+                "type": "facial",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "修容-鼻影",
+                "icon": "icon.png",
+                "highlight": "makeup_facial/biying",
+                "type": "facial",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "修容-小脸",
+                "icon": "icon.png",
+                "highlight": "makeup_facial/xiaolian",
+                "type": "facial",
+                "value": 0.4,
+                "sliderType":0,
+                "identifier": "1"
+            }, {
+                "title": "修容-可爱",
+                "icon": "icon.png",
+                "highlight": "makeup_facial/keai",
                 "type": "facial",
                 "value": 0.4,
                 "sliderType":0,

@@ -1,0 +1,12 @@
+{
+    "name": "eyebrow",
+    "makeup": [
+        {
+            "type": "makeup_eyebrow",
+            "resources": ["eyebrow_pingxingmei/eyebrow.png"],
+            "blendMode": "Normal"
+        }
+    ]
+}
+
+

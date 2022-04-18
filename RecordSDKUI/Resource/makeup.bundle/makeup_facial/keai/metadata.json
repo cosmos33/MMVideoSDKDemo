@@ -1,0 +1,12 @@
+{
+    "name": "facial",
+    "makeup": [
+        {
+            "type": "makeup_facial",
+            "resources": ["facial_keai/face.png"],
+            "blendMode": "SoftLight"
+        }
+    ]
+}
+
+

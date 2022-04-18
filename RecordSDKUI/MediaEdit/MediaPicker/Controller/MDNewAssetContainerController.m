@@ -16,7 +16,7 @@
 //#import "MDAlbumVideoDynamicEffectModel.h"
 #import "MDAlbumiCloudAssetHelper.h"
 
-#import <KVOController/KVOController-umbrella.h>
+#import <KVOController/KVOController.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "MDRecordImageResult.h"
 #import "Toast/Toast.h"

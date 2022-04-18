@@ -1,0 +1,35 @@
+{
+    "name": "shenmi",
+    "makeup": [
+        {
+            "type": "makeup_blush",
+            "resources": ["makeup_shenmi/makeup_lip/blush.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_facial",
+            "resources": ["makeup_shenmi/makeup_xiurong/face.png"],
+            "blendMode": "SoftLight"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["makeup_shenmi/makeup_eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["makeup_shenmi/makeup_eyeshadow2/eyeshadow.png"],
+            "blendMode": "Screen"
+        },
+        {
+            "type": "makeup_blush",
+            "resources": ["makeup_shenmi/makeup_cheek/blush.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_lut",
+            "resources": ["makeup_shenmi/lookup/lookup.png"]
+        }
+    ]
+}
+

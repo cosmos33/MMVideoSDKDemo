@@ -12,6 +12,13 @@
 #import <objc/runtime.h>
 #include <GT/GT.h>
 
+#import <XEngineLua/XEngineLuaModule.h>
+#import <XEngineAudio/XEngineAudioModule.h>
+#import <XEnginePhysics/XEnginePhysicsModule.h>
+#import <XEngineUI/XEngineUIModule.h>
+
+
+
 @interface AppDelegate () <GTParaDelegate>
 
 @property (nonatomic, strong) NSTimer *batteryTimer;
@@ -23,8 +30,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    XEngineUseUIModule();
+    XEngineUseLuaModule();
+    XEngineUseAudioModule();
+    XEngineUsePhysicsModule();
+    AVAuthorizationStatus videoAuthorizationStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    AVAuthorizationStatus audioAuthorizationStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
     
-    [self initGT];
+    
+    if (videoAuthorizationStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo  completionHandler:^(BOOL granted) {
+//
+        }];
+    }
+    if (audioAuthorizationStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio  completionHandler:^(BOOL granted) {
+            
+        }];
+    }
+//    [self initGT];
     
     GT_TIME_SWITCH_SET(YES);
     dispatch_async(dispatch_get_main_queue(), ^{

@@ -1,0 +1,11 @@
+{
+    "name": "lips",
+    "makeup": [
+        {
+            "type": "makeup_lips",
+            "resources": ["lip_yingwufen/lookup.png"],
+            "blendMode": "LutSoftLight"
+        }
+    ]
+}
+

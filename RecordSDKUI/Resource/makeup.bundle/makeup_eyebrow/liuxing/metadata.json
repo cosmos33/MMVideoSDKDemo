@@ -1,0 +1,12 @@
+{
+    "name": "eyebrow",
+    "makeup": [
+        {
+            "type": "makeup_eyebrow",
+            "resources": ["eyebrow_liuxing/eyebrow.png"],
+            "blendMode": "Normal"
+        }
+    ]
+}
+
+

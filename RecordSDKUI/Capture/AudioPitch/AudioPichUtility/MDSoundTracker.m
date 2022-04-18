@@ -8,7 +8,7 @@
 
 #import "MDSoundTracker.h"
 #import <MMFoundation/MMFoundation.h>
-@import MomoCV;
+#import <MomoCV/MomoCV.h>
 
 #define MMSoundTrackerClass (NSClassFromString(@"MMSoundTracker"))
 #define MMSoundTrackOptionsClass (NSClassFromString(@"MMSoundTrackOptions"))

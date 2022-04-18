@@ -12,7 +12,7 @@
 #import "MDRecordHeader.h"
 #import "MBProgressHUD/MBProgressHUD.h"
 
-@import MomoCV;
+#import <MomoCV/MomoCV.h>
 
 @interface MDRegLoginPortraitManager ()
 @property (nonatomic, strong) MMFaceDetector *faceDetector;

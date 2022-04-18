@@ -10,7 +10,7 @@
 #import "UIImage+MDUtility.h"
 #import "MUAt8AlertBar.h"
 #import "MUAlertBarDispatcher.h"
-@import MomoCV;
+#import <MomoCV/MomoCV.h>
 
 const CGFloat kMediaEditorViewLeftRightMargin = 8;
 const CGFloat kMediaEditorBottomToolButtonWidth = 45;

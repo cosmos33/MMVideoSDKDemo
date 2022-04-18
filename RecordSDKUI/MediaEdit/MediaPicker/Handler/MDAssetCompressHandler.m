@@ -10,7 +10,7 @@
 #import <MMFoundation/MMFoundation.h>
 #import "MDMomentDownloadMaskView.h"
 
-@import MLMediaFoundation;
+#import <MLMediaFoundation/MLMediaFoundation.h>
 
 
 static NSString * const kMDAssetCompressInfoKeyPresetName = @"presetName";

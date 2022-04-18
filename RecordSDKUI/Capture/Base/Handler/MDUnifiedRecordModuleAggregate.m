@@ -919,6 +919,7 @@
 }
 
 - (void)didSelectedMakeUpModel:(NSString *)modelType{
+    NSLog(@"波仔看看是 : %@",modelType);
     if ([modelType isEqualToString: @"无"]) {
         [self.recordHandler removeAllMakeupEffect];
         return;
@@ -1048,9 +1049,7 @@
     [self.recordHandler setMakeupEffectIntensity:value makeupType:@"makeup_lut"];
 }
 - (void)didSetMakeUpBeautyIntensity:(CGFloat)value{
-    if (self.makeupType) {
-        [self.recordHandler setMakeupEffectIntensity:value makeupType:self.makeupType];
-    }
+    [self.recordHandler setMakeupEffectIntensity:value makeupType:self.makeupType];
 }
 
 - (void)didSetMicroSurgeryIntensity:(CGFloat)value{

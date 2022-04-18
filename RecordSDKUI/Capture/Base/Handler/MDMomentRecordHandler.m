@@ -13,14 +13,14 @@
 #import "UIConst.h"
 #import "MDRecordContext.h"
 #import "MDRecordRecordingSettingMananger.h"
-#import "MDRDebugHandler.h"
+//#import "MDRDebugHandler.h"
 #import "MDRCameraEngine+MDAudioPitch.h"
 
 //AI美颜
 //#import "MLRoomDecorationDataSource.h"
 
 #import "MDBeautySettings.h"
-#import <RecordSDK/MDRecordingAdapter.h>
+#import <RecordSDK/MDRCameraEngine.h>
 #import <RecordSDK/MDRMediaSegmentInfo.h>
 #import <RecordSDK/MDRCaptureDeviceCapability.h>
 #import <RecordSDK/MDRFaceFeatureInfo.h>
@@ -39,7 +39,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 >
 
 @property (atomic,    strong) MDFaceTipManager *faceTipManager;
-@property (nonatomic, strong) MDRecordingAdapter *cameraEngine;
+@property (nonatomic, strong) MDRCameraEngine *cameraEngine;
 @property (nonatomic, strong) MDRecordFilter *currentFilter;
 @property (nonatomic, strong) NSArray<MDRMediaSegmentInfo *> *segmentInfos;
 
@@ -56,10 +56,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 @implementation MDMomentRecordHandler
 
 - (void)dealloc {
-//    if (self.uploader) {
-//        [self.uploader stop];
-//        self.uploader = nil;
-//    }
+
     //清理gpu和变脸资源缓存
     [self cleanCache];
 }
@@ -77,13 +74,11 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
         _captureDeviceType = position == AVCaptureDevicePositionBack ? MDRCaptureDeviceType_Back : MDRCaptureDeviceType_Front;
         
         // 相机设置
-        _cameraEngine = [[MDRecordingAdapter alloc] initWithDelegate:self];
-//        _cameraEngine.captureFrameRate = MDRecordRecordingSettingMananger.frameRate;
-//        _cameraEngine.recordMaxDuration = maxDuration;
-//        _cameraEngine.segmentMinDuration = kRecordSegmentMinDuration;
-        [_cameraEngine setCameraFrameRate:MDRecordRecordingSettingMananger.frameRate];
-        [_cameraEngine setMaxRecordDuration:maxDuration];
-        [_cameraEngine setMinRecordDuration:kRecordSegmentMinDuration];
+        _cameraEngine = [[MDRCameraEngine alloc] initWithDelegate:self];
+        _cameraEngine.captureFrameRate = MDRecordRecordingSettingMananger.frameRate;
+        _cameraEngine.recordMaxDuration = maxDuration;
+        _cameraEngine.segmentMinDuration = kRecordSegmentMinDuration;
+        
 //        [_cameraEngine autoConfigAudioSessionDisable:YES];
         
         if (@available(iOS 10.0, *)) {
@@ -127,42 +122,6 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
         if (isOpen) {
             [_cameraEngine runXESEngineWithDecorationRootPath:[MDFaceDecorationFileHelper FaceDecorationBasePath]];
         }
-        
-#if defined(DEBUG) || defined(INHOUSE)
-        [self debugStateChangeObserve];
-        
-        MDRDebugHandler *debugHandler = [MDRDebugHandler shareInstance];
-        
-        if ([debugHandler isOnWithDebugType:MDDebugCellTypeReverseVideo]) {
-            _recordingFlags |= MDRRecordingFlagOption_ReverseVideo;
-        }
-        
-        if ([debugHandler isOnWithDebugType:MDDebugCellTypeRecordDisableAllEffects]) {
-            _recordingFlags |= MDRRecordingFlagOption_DisableAllEffects;
-        }
-        
-        if ([debugHandler isOnWithDebugType:MDDebugCellTypeDisableAudio]) {
-            _captureFlags |= MDRCaptureFlagOption_DisableAudio;
-        }
-//
-//        if ([debugHandler isOnWithDebugType:MDDebugCellTypeWebServer]) {
-//            if (!self.uploader) {
-//                self.uploader = [[MMWebUploader alloc] initWithUploadDirectory:NSHomeDirectory()];
-//                self.uploader.delegate = self;
-//                self.uploader.allowHiddenItems = YES;
-//                if ([self.uploader start]) {
-//                    NSLog(@"%@",[NSString stringWithFormat:NSLocalizedString(@"GCDWebServer running locally on port %i", nil), (int)self.uploader.port]);
-//                } else {
-//                    NSLog(@"%@",NSLocalizedString(@"GCDWebServer not running!", nil));
-//                }
-//            } else {
-//                [self.uploader stop];
-//                self.uploader = nil;
-//            }
-//        }
-//
-        [self.cameraEngine setCanUseAIBeautySetting:[debugHandler isOnWithDebugType:MDDebugCellTypeUseAIBeauty]];
-#endif
     }
     
     return self;
@@ -170,43 +129,6 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 
 - (void)debugStateChangeObserve {
     __weak typeof(self) weakSelf = self;
-    [MDRDebugHandler shareInstance].stateChangeBlock = ^(MDDebugCellType debugType, BOOL isOn) {
-        switch (debugType) {
-            case MDDebugCellTypeReverseVideo:
-                [weakSelf enableReverseVideoSampleBuffer:isOn];
-                break;
-            case MDDebugCellTypeDisableAudio:
-                [weakSelf enableRecordAudio:!isOn];
-                break;
-            case MDDebugCellTypeUseAIBeauty:
-                [weakSelf.cameraEngine setCanUseAIBeautySetting:isOn];
-                break;
-            case MDDebugCellTypeRecordDisableAllEffects:
-                [weakSelf disableAllEffectsWhenRecording:isOn];
-                break;
-//            case MDDebugCellTypeWebServer:
-//            {
-//            if (!weakSelf.uploader) {
-//                weakSelf.uploader = [[MMWebUploader alloc] initWithUploadDirectory:NSHomeDirectory()];
-//                weakSelf.uploader.delegate = weakSelf;
-//                weakSelf.uploader.allowHiddenItems = YES;
-//                if ([weakSelf.uploader start]) {
-//                    NSLog(@"%@",[NSString stringWithFormat:NSLocalizedString(@"GCDWebServer running locally on port %i", nil), (int)weakSelf.uploader.port]);
-//                } else {
-//                    NSLog(@"%@",NSLocalizedString(@"GCDWebServer not running!", nil));
-//                }
-//            } else {
-//                [weakSelf.uploader stop];
-//                weakSelf.uploader = nil;
-//            }
-//            }
-                break;
-                
-            default:
-                break;
-        }
-        
-    };
 }
 
 - (instancetype)initWithContentView:(UIView *)containerView maxRecordDuration:(NSTimeInterval)maxDuration {
@@ -218,13 +140,11 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 }
 
 - (void)setRecordDuration:(NSTimeInterval)recordDuration {
-//    self.cameraEngine.recordMaxDuration = recordDuration;
-    [self.cameraEngine setMaxRecordDuration:recordDuration];
+    self.cameraEngine.recordMaxDuration = recordDuration;
 }
 
 - (void)setMinRecordDuration:(NSTimeInterval)minRecordDuration {
-//    self.cameraEngine.segmentMinDuration = minRecordDuration;
-    [self.cameraEngine setMinRecordDuration:minRecordDuration];
+    self.cameraEngine.segmentMinDuration = minRecordDuration;
 }
 
 - (void)purgeGPUCache {
@@ -233,8 +153,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 
 //获取最大录制时长
 - (NSTimeInterval)recordDuration {
-//    return self.cameraEngine.recordMaxDuration;
-    return  [self.cameraEngine recordDuration];
+    return self.cameraEngine.recordMaxDuration;
 }
 
 - (NSArray *)segmentDurations {
@@ -271,23 +190,20 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 
 - (BOOL)isReadyToPlayMusic {
     return self.cameraEngine.isReadyToPlayMusic;
-    
 }
 
 - (BOOL)stopMerge {
-    return [self.cameraEngine stopMerge];;
+    return self.cameraEngine.engineState == MDRCameraEngineState_Exporting;
 }
 
 - (BOOL)isFaceCaptured {
     return self.cameraEngine.isFaceCaptured;
-    
 }
 // ---
 
 #pragma mark - record relates
 - (BOOL)isRecording {
-//    return self.cameraEngine.engineState == MDRCameraEngineState_Recording;
-    return [self.cameraEngine isRecording];
+    return self.cameraEngine.engineState == MDRCameraEngineState_Recording;
 }
 
 - (void)captureStillImage {
@@ -313,10 +229,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 //    NSValue *resolutionObj = [NSValue value:&resolution withObjCType:@encode(MDRVideoResolution)];
 //    encodeParams[MDRVideoEncodeResolutionKey] = resolutionObj;
     
-    [self.cameraEngine startRecording];
-    
-//    [self.cameraEngine startRecordingWithFlag:_recordingFlags andEncodeParams:encodeParams];
-    
+    [self.cameraEngine startRecordingWithFlag:_recordingFlags andEncodeParams:encodeParams];
 }
 
 - (void)stopVideoCaptureWithCompletionHandler:(void (^)(NSURL *videoFileURL, NSError *error))completionHandler {
@@ -360,8 +273,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 }
 
 - (NSInteger)savedSegmentCount {
-//    return self.cameraEngine.segmentInfos.count;
-    return self.cameraEngine.savedSegmentCount;
+    return self.cameraEngine.segmentInfos.count;
 }
 
 - (BOOL)canStartRecording {
@@ -377,14 +289,12 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 }
 
 - (void)setFaceFeatureHandler:(void(^)(CVPixelBufferRef pixelbuffer, NSArray<MMFaceFeature *> * faceFeatures, NSArray<MMBodyFeature *> * bodyFeatures))faceFeatureHandler {
-//    self.cameraEngine.faceFeatureHandler = faceFeatureHandler;
-//    self.cameraEngine setface
+    self.cameraEngine.faceFeatureHandler = faceFeatureHandler;
 }
 
-//- (void(^)(CVPixelBufferRef pixelbuffer, NSArray<MMFaceFeature *> * faceFeatures, NSArray<MMBodyFeature *> * bodyFeatures))faceFeatureHandler {
-////    return self.cameraEngine.faceFeatureHandler;
-//
-//}
+- (void(^)(CVPixelBufferRef pixelbuffer, NSArray<MMFaceFeature *> * faceFeatures, NSArray<MMBodyFeature *> * bodyFeatures))faceFeatureHandler {
+    return self.cameraEngine.faceFeatureHandler;
+}
 
 #pragma mark - process
 - (void)configureFilterA:(MDRecordFilter *)filterA filterB:(MDRecordFilter *)filterB offset:(double)filterOffset {
@@ -400,7 +310,6 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 - (void)updateDecorationWithBeautySettingsDict:(NSDictionary *)beautySettingsDict decoration:(FDKDecoration *)decoration {
     MDBeautySettings *beautySettings = [[MDBeautySettings alloc] initWithDictionary:beautySettingsDict];
     [beautySettings updateDecorationBeautySetting:decoration];
-    
 }
 
 - (void)setBeautyThinFace:(CGFloat)value {
@@ -435,6 +344,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
     
     if (decoration) {
         [self.cameraEngine updateDecoration:decoration];
+    
         [self configFaceTipManager:decoration.additionalInfo];
     }
 }
@@ -483,8 +393,10 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 
 #pragma mark - camera control
 - (void)startCapturing {
-
-    [self.cameraEngine startCapturing];
+    [_cameraEngine startCaptureWithResolution:MDRecordRecordingSettingMananger.cameraPreset
+                                   deviceType:self.captureDeviceType
+                                         flag:self.captureFlags
+                                  aspectRatio:MDRecordRecordingSettingMananger.videoRatioValue];
 }
 
 - (void)stopCapturing {
@@ -498,8 +410,8 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 
 - (void)rotateCamera {
     self.captureDeviceType = self.captureDeviceType == MDRCaptureDeviceType_Back ? MDRCaptureDeviceType_Front : MDRCaptureDeviceType_Back;
-//    [self.cameraEngine switchCaptureDeviceType:self.captureDeviceType];
-    [self.cameraEngine switchCameraPosition];
+    [self.cameraEngine switchCaptureDeviceType:self.captureDeviceType];
+    
     [self.faceTipManager input:MDFaceTipSignalCameraRotate];
 }
 
@@ -512,13 +424,11 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 }
 
 - (BOOL)hasFlash {
-//    return self.cameraEngine.currentDeviceCapability.supportFlash;
-    return YES;
+    return self.cameraEngine.currentDeviceCapability.supportFlash;
 }
 
 - (NSArray *)supportFlashModes {
-//    return self.cameraEngine.currentDeviceCapability.supportFlashModes;
-    return  [self.cameraEngine supportFlashModes];
+    return self.cameraEngine.currentDeviceCapability.supportFlashModes;
 }
 
 - (void)setFlashMode:(MDRecordCaptureFlashMode)mode {
@@ -530,8 +440,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 }
 
 - (AVCaptureDevicePosition)cameraPosition {
-//    return self.cameraEngine.currentDeviceType == MDRCaptureDeviceType_Back ? AVCaptureDevicePositionBack : AVCaptureDevicePositionFront;
-    return [self.cameraEngine cameraPosition];
+    return self.cameraEngine.currentDeviceType == MDRCaptureDeviceType_Back ? AVCaptureDevicePositionBack : AVCaptureDevicePositionFront;
 }
 
 - (void)updateFaceTipWithAFaceFeature:(BOOL)isTracking {
@@ -552,8 +461,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 }
 
 - (CGFloat)videoZoomFactor {
-//    return self.cameraEngine.currentVideoZoomFactor;
-    return [self.cameraEngine videoZoomFactor];
+    return self.cameraEngine.currentVideoZoomFactor;
 }
 
 - (void)runXESEngine {
@@ -564,11 +472,7 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 - (void)handleSoundPitchWithAssert:(AVAsset *)videoAsset
                     andPitchNumber:(NSInteger)pitchNumber
                  completionHandler:(void (^) (NSURL *))completionHandler {
-    
-    MDRCameraEngine *eng = [self.cameraEngine getCameraEngine];
-    [eng handleSoundPitchWithAssert:videoAsset andPitchNumber:pitchNumber completionHandler:completionHandler];
-//    [self.cameraEngine.cam handleSoundPitchWithAssert:videoAsset andPitchNumber:pitchNumber completionHandler:completionHandler];
-//    self.cameraPosition has
+    [self.cameraEngine handleSoundPitchWithAssert:videoAsset andPitchNumber:pitchNumber completionHandler:completionHandler];
 }
 
 //activateBarenessDetector
@@ -595,12 +499,11 @@ static AVCaptureSession *__weak MDTimelineRecordViewControllerCurrentCaptureSess
 #pragma mark - 变速
 
 - (void)setNextRecordSegmentSpeedVaryFactor:(CGFloat)factor {
-//    self.cameraEngine.speedVaryFactor = factor;
-    [self.cameraEngine setNextRecordSegmentSpeedVaryFactor:factor];
+    self.cameraEngine.speedVaryFactor = factor;
 }
 
 - (CGFloat)nextRecordSegmentSpeedVaryFactor {
-    return [self.cameraEngine nextRecordSegmentSpeedVaryFactor];
+    return self.cameraEngine.speedVaryFactor;
 }
 
 - (void)speedVaryShouldAllow:(BOOL)isAllow {
@@ -762,22 +665,7 @@ didASegmentGenerateFailType:(MDRSegmentGenerateFailType)failType {
 }
 
 #pragma mark - MMWebUploaderDelegate
-//
-//- (void)webUploader:(MMWebUploader*)uploader didUploadFileAtPath:(NSString*)path {
-//    NSLog(@"[UPLOAD] %@", path);
-//}
-//
-//- (void)webUploader:(MMWebUploader*)uploader didMoveItemFromPath:(NSString*)fromPath toPath:(NSString*)toPath {
-//    NSLog(@"[MOVE] %@ -> %@", fromPath, toPath);
-//}
-//
-//- (void)webUploader:(MMWebUploader*)uploader didDeleteItemAtPath:(NSString*)path {
-//    NSLog(@"[DELETE] %@", path);
-//}
-//
-//- (void)webUploader:(MMWebUploader*)uploader didCreateDirectoryAtPath:(NSString*)path {
-//    NSLog(@"[CREATE] %@", path);
-//}
+
 
 - (BOOL)hitTestTouch:(CGPoint)point withView:(UIView *)view{
     return [self.cameraEngine hitTestTouch:point withView:view];
@@ -830,5 +718,3 @@ didASegmentGenerateFailType:(MDRSegmentGenerateFailType)failType {
 }
 
 @end
-
-

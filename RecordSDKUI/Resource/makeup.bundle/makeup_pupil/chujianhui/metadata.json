@@ -1,0 +1,10 @@
+{
+    "name": "pupil",
+    "makeup": [
+        {
+            "type": "makeup_pupil",
+            "resources": ["pupil_chujianhui/pupil.png"],
+            "blendMode": "Normal"
+        }
+    ]
+}

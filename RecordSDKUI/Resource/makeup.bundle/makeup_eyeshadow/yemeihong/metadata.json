@@ -1,0 +1,10 @@
+{
+    "name": "eyeshadow",
+    "makeup": [
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_yemeihong/eyeshadow.png"],
+            "blendMode": "Normal"
+        }
+    ]
+}

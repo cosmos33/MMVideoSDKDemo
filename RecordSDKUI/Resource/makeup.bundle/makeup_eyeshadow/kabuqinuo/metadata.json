@@ -1,0 +1,15 @@
+{
+    "name": "eyeshadow",
+    "makeup": [
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_kabuqinuo/eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_kabuqinuo/eyeshadow2/eyeshadow.png"],
+            "blendMode": "Screen"
+        }
+    ]
+}

@@ -167,7 +167,7 @@ static NSString * const kMDRecordFilterOriginFilterIdentifier = @"原图";
     NSURL *path = [[NSBundle bundleForClass:self.class] URLForResource:@"makeup" withExtension:@"bundle"];
     NSURL *jsonPath = [[NSBundle bundleWithURL:path] URLForResource:@"makeup_list" withExtension:@"geojson"];
     NSArray *items = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:jsonPath] options:0 error:nil];
-    NSArray *stringArr0 = @[@"无",@"甜拽",@"白雪"];
+    NSArray *stringArr0 = @[@"无",@"甜拽",@"白雪",@"芭比",@"黑童话",@"裸装",@"韩式",@"玉兔",@"闪闪",@"秋日",@"跨年装",@"蜜桃",@"元气",@"混血",@"神秘"];
     NSInteger index = type == 0 ? stringArr0.count : items.count;
     for (NSInteger i = 0; i < index; i++) {
         NSDictionary *dict = [items objectAtIndex:i];

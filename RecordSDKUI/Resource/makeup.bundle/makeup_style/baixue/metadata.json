@@ -22,6 +22,11 @@
             "blendMode": "Normal"
         },
         {
+            "type": "makeup_eyebrow",
+            "resources": ["makeup_baixue/makeup_eyebrow/eyebrow.png"],
+            "blendMode": "Normal"
+        },
+        {
             "type": "makeup_blush",
             "resources": ["makeup_baixue/makeup_cheek/blush.png"],
             "blendMode": "Normal"

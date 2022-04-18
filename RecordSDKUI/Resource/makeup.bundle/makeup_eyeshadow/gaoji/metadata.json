@@ -1,0 +1,15 @@
+{
+    "name": "eyeshadow",
+    "makeup": [
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_gaoji/eyeshadow/eyeshadow.png"],
+            "blendMode": "Normal"
+        },
+        {
+            "type": "makeup_eyes",
+            "resources": ["shadow_gaoji/eyeshadow2/eyeshadow.png"],
+            "blendMode": "Screen"
+        }
+    ]
+}

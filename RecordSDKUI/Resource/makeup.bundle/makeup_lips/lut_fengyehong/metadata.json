@@ -1,0 +1,11 @@
+{
+    "name": "lips",
+    "makeup": [
+       {
+           "type": "makeup_lips",
+           "resources": ["lip_fengyehong/lip.png", "lip_fengyehong/lip00.png"],
+           "blendMode": "Normal"
+       }
+    ]
+}
+

@@ -1,0 +1,10 @@
+{
+    "name": "eyebrow",
+    "makeup": [
+        {
+            "type": "makeup_eyebrow",
+            "resources": ["eyebrow_wanyue/eyebrow.png"],
+            "blendMode": "Normal"
+        }
+    ]
+}
