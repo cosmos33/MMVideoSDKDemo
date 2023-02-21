@@ -2823,6 +2823,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72CZEEPG39;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 72CZEEPG39;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDRecordSDK/MDMediaKit",
@@ -2840,7 +2841,8 @@
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "common-inhouse-profile";
+				PROVISIONING_PROFILE_SPECIFIER = Inhouse_momotest_only;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Inhouse_momotest_only;
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2979,7 +2981,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = F52PY255FC;
+				DEVELOPMENT_TEAM = HH8NJ4X63W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDRecordSDK/MDMediaKit",
@@ -3015,6 +3017,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72CZEEPG39;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 72CZEEPG39;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDRecordSDK/MDMediaKit",
@@ -3032,7 +3035,8 @@
 				MTL_HEADER_SEARCH_PATHS = "${PODS_CONFIGURATION_BUILD_DIR}/MetalPetal/MetalPetal.framework/Headers";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wemomo.momotest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "common-inhouse-profile";
+				PROVISIONING_PROFILE_SPECIFIER = Inhouse_momotest_only;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Inhouse_momotest_only;
 				SWIFT_OBJC_BRIDGING_HEADER = "MDRecordSDK/MDRecordSDK-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
